@@ -20,14 +20,14 @@ public class BulletSlotDrag : MonoBehaviour,
     protected Vector2 originPos = new Vector2();
     public BulletSlotContent content;
     public Image clickArea;
-
     private Transform bulletUIDragSlot;
     private Image bulletUIDragSlotUI;
-
-    public UnityEvent<BulletInfo> onClick = new();
+    public UnityEvent<int> onClick = new();
+    private Inventory inventory;
 
     public void Initialize(BulletSlotContent slotContent)
     {
+        inventory = FindAnyObjectByType<Inventory>();
         bulletUIDragSlot = GameObject.Find("DragSlot").transform;
         bulletUIDragSlotUI = bulletUIDragSlot.GetComponent<Image>();
         content = slotContent;
@@ -36,8 +36,7 @@ public class BulletSlotDrag : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        content.ibulletSlotUI.UpdateUI(null);
-        bulletUIDragSlotUI.sprite = content.bulletInfo.infoSO.inventoryImage;
+        bulletUIDragSlotUI.sprite = AllBulletList.Instance.bulletInfoSODic[content.id].inventoryImage;
         bulletUIDragSlotUI.enabled = true;
 
         content.SetDragCondition(true);
@@ -52,7 +51,6 @@ public class BulletSlotDrag : MonoBehaviour,
     {
         GameObject UIObject = eventData.pointerCurrentRaycast.gameObject;
 
-        content.ibulletSlotUI.UpdateUI(content.bulletInfo);
         bulletUIDragSlotUI.sprite = null;
         bulletUIDragSlotUI.enabled = false;
 
@@ -66,9 +64,15 @@ public class BulletSlotDrag : MonoBehaviour,
 
     public void OnObjectDrop(GameObject UIObject)
     {
-        if (UIObject.CompareTag("BulletSlot"))
+        if (UIObject.CompareTag("BulletSlot"))//리볼버 슬롯끼리 교환
         {
             UIObject.GetComponent<BulletSlotDrag>().content.OnBulletDrop(content);
+        }
+        else //인벤토리로 돌아가기
+        {
+            int id = content.id;
+            content.UpdateBulletInfo(-1);
+            inventory.AddBullet(id);
         }
     }
 
@@ -79,6 +83,6 @@ public class BulletSlotDrag : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        onClick?.Invoke(content.bulletInfo);
+        onClick?.Invoke(content.id);
     }
 }

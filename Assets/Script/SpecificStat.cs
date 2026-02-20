@@ -17,7 +17,7 @@ public class SpecificStat
     {
         for (int i = 0; i < 6; i++)
         {
-            values[i] = new List<float>(){ 0, 0, 0 };
+            values[i] = new List<float>() { 0, 0, 0 };
         }
     }
     public SpecificStat(SpecificStat other)
@@ -27,9 +27,12 @@ public class SpecificStat
             values[i] = new List<float>(other.values[i]);
         }
     }
-    public void ResetValue(int slot)
+    public void ResetValue()
     {
-        values[slot] = new List<float>() { 0, 0, 0 };
+        for (int i = 0; i < 6; i++)
+        {
+            values[i] = new List<float>() { 0, 0, 0 };
+        }
     }
     public void AdjustValue(int slot, int index, float val)
     {
@@ -38,6 +41,7 @@ public class SpecificStat
     }
     public void SetValue(int slot, int index, float val)
     {
+        //Debug.Log($"{slot} 슬롯에서 {index} 번째줄로 {val}만큼 증가");
         values[slot][index] = val;
         OnChangeValue?.Invoke(Calculate());
     }

@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEngine.Events;
+using Unity.Android.Gradle.Manifest;
 public class RevolverSlots : MonoBehaviour
 {
     [SerializeField] Transform revolverContent;
     public List<BulletSlotContent> revolverSlotContents { get; private set; } = new();
     List<BulletSlotUI> slotUIs = new();
     List<BulletSlotDrag> slotDrags = new();
+    DamageCalculator calculator = new();
     int slotNum;
     public void Initialize(BulletSlotsRayController rayController, Workmanship workmanship)
     {
@@ -22,7 +25,8 @@ public class RevolverSlots : MonoBehaviour
             BulletSlotContent content = new BulletSlotContent(i, slotDrags[i], slotUIs[i]);
             revolverSlotContents.Add(content);
 
-            content.UpdateBulletInfo(null);
+            content.UpdateBulletInfo(-1);
+            AllBulletList.Instance.onBulletAdded.AddListener(content.RefreshInfo);
             rayController.AddSlot(content);
 
             slotDrags[i].Initialize(content);
@@ -35,39 +39,32 @@ public class RevolverSlots : MonoBehaviour
 
     public void CheckSlots()
     {
-        Debug.Log("resert");
+        DataManager.Instance.damage.ResetValue();
+        DataManager.Instance.typeDamage.ResetValue();
+        DataManager.Instance.finalDamage.ResetValue();
+
+        for (int k = 0; k < 4; k++)
+        {
+            DataManager.Instance.damageByType[k].ResetValue();
+            DataManager.Instance.finalDamageByType[k].ResetValue();
+            DataManager.Instance.typeDamageByType[k].ResetValue();
+        }
+
         for (int i = 0; i < slotNum; i++)//초기화
         {
-            for (int j = 0; j < 3; j++)
-            {
-                DataManager.Instance.damage.SetValue(i, j, 0);
-                DataManager.Instance.finalDamage.SetValue(i, j, 0);
-                for (int k = 0; k < 4; k++)
-                {
-                    DataManager.Instance.damageByType[k].SetValue(i, j, 0);
-                    DataManager.Instance.finalDamageByType[k].SetValue(i, j, 0);
-                    DataManager.Instance.typeDamage[k].SetValue(i, j, 0);
-                    DataManager.Instance.typeDamageByType[k].SetValue(i, j, 0);
-                }
+            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
+            if (info == null || info.Count == 0) continue;
 
-
-                BulletInfo info = revolverSlotContents[i].bulletInfo;
-                if (info == null) continue;
-
-                for (int k = 0; k < 6; k++)
-                {
-                    info.damage.SetValue(k, j, 0);
-                    info.finalDamage.SetValue(k, j, 0);
-                    info.typeDamage.SetValue(k, j, 0);
-                }
-            }
+            info.damage.ResetValue();
+            info.finalDamage.ResetValue();
+            info.typeDamage.ResetValue();
         }
 
 
         for (int i = 0; i < slotNum; i++)
         {
-            BulletInfo info = revolverSlotContents[i].bulletInfo;
-            if (info == null) continue;
+            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
+            if (info == null || info.Count == 0) continue;
 
             for (int j = 0; j < info.stats.Count; j++)
             {
@@ -78,20 +75,20 @@ public class RevolverSlots : MonoBehaviour
                         ApplyRewardSlot(i, j, stat, info);
                         break;
                     case TargetType.SlotIndex:
-                        ApplyRewardSlot(i, j, stat, revolverSlotContents[(int)stat.targetCoef[0]].bulletInfo);
+                        ApplyRewardSlot(i, j, stat, AllBulletList.Instance.GetBullet(revolverSlotContents[(int)stat.targetCoef[0]].id));
                         break;
                     case TargetType.BulletType:
 
                         switch (stat.reward)
                         {
                             case RewardType.PowerIncrease:
-                                DataManager.Instance.damageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.damageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
                                 break;
                             case RewardType.FinalDamageIncrease:
-                                DataManager.Instance.finalDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.finalDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
                                 break;
                             case RewardType.BulletTypeDamageIncrease:
-                                DataManager.Instance.typeDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.typeDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
                                 break;
                         }
 
@@ -101,13 +98,13 @@ public class RevolverSlots : MonoBehaviour
                         switch (stat.reward)
                         {
                             case RewardType.PowerIncrease:
-                                DataManager.Instance.damage.SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.damage.SetValue(i, j, stat.rewardCoef);
                                 break;
                             case RewardType.FinalDamageIncrease:
-                                DataManager.Instance.finalDamage.SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.finalDamage.SetValue(i, j, stat.rewardCoef);
                                 break;
                             case RewardType.BulletTypeDamageIncrease:
-                                DataManager.Instance.typeDamage[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef.Last());
+                                DataManager.Instance.typeDamage.SetValue(i, j, stat.rewardCoef);
                                 break;
                         }
 
@@ -115,6 +112,15 @@ public class RevolverSlots : MonoBehaviour
                 }
             }
         }
+
+        float power = 0;
+        for (int i = 0; i < slotNum; i++)//초기화
+        {
+            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
+            if (info == null || info.Count == 0) continue;
+            power += calculator.Calculate(info);
+        }
+        DataManager.Instance.UpdatePower(power);
     }
     public void ApplyRewardSlot(int infoFrom, int index, BulletStat stat, BulletInfo infoTarget = null)
     {
@@ -123,14 +129,13 @@ public class RevolverSlots : MonoBehaviour
         switch (stat.reward)
         {
             case RewardType.PowerIncrease:
-                infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef.Last());
+                infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef);
                 break;
             case RewardType.FinalDamageIncrease:
-                infoTarget.finalDamage.SetValue(infoFrom, index, stat.rewardCoef.Last());
+                infoTarget.finalDamage.SetValue(infoFrom, index, stat.rewardCoef);
                 break;
             case RewardType.BulletTypeDamageIncrease:
-                if ((int)infoTarget.infoSO.bulletType == stat.rewardCoef[0])
-                    infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef.Last());
+                infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef);
                 break;
         }
     }

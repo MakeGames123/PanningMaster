@@ -8,6 +8,7 @@ public enum BulletType
     ElectricBullet = 1,
     IceBullet = 2,
     PoisonBullet = 3,
+    All = 4,
 }
 [CreateAssetMenu(fileName = "BulletInfoSO", menuName = "Scriptable Object/BulletInfoSO")]
 public class BulletInfoSO : ScriptableObject
@@ -41,29 +42,19 @@ public class BulletInfo
     List<int> levelUpCount = new() { 2, 3, 5, 8, 12, 18, 30, 50, 100 };
     public BulletInfo(BulletInfoSO infoSO)
     {
-        Count = 1;
+        Count = 0;
         this.infoSO = infoSO;
         damage = new SpecificStat();
         typeDamage = new SpecificStat();
         finalDamage = new SpecificStat();
-    }
-    public BulletInfo(BulletInfo slot)
-    {
-        this.infoSO = slot.infoSO;
-        this.stats = slot.stats.ConvertAll(stat => new BulletStat(stat));
-        damage = new SpecificStat(slot.damage);
-        typeDamage = new SpecificStat(slot.typeDamage);
-        finalDamage = new SpecificStat(slot.typeDamage);
-        Count = slot.Count;
     }
     public void RollStats()
     {
         stats.Clear();
         for (int i = 0; i < infoSO.tier / 2 + 1; i++)
         {
-            stats.Add(new BulletStat());
+            stats.Add(new BulletStat(infoSO.tier));
         }
-        onStatChanged?.Invoke();
     }
     public (int, int) ReturnLevelStatus()
     {
@@ -84,8 +75,6 @@ public class BulletInfo
     public void IncreaseCount(int val)
     {
         Count += val;
-
-        onCountChanged?.Invoke(Count);
     }
     public int ReturnLevel()
     {
@@ -126,15 +115,15 @@ public class BulletInfo
         switch (stats[index].reward)
         {
             case RewardType.PowerIncrease:
-                float powerIncrease = (infoSO.tier + 1) * 0.5f * stats[index].rewardCoef[0];
+                float powerIncrease = stats[index].rewardCoef;
                 return $"공격력 {powerIncrease * 100:F1}% 증가({stats[index].percentage:F0}%)";
 
             case RewardType.FinalDamageIncrease:
-                float finalDamage = (infoSO.tier + 1) * 0.1f * stats[index].rewardCoef[0];
+                float finalDamage = stats[index].rewardCoef;
                 return $"최종 데미지 {finalDamage * 100:F1}% 증가({stats[index].percentage:F0}%)";
 
             case RewardType.BulletTypeDamageIncrease:
-                float typeDamage = (infoSO.tier + 1) * 0.5f * stats[index].rewardCoef[0];
+                float typeDamage = stats[index].rewardCoef;
                 return $"속성 공격력 {typeDamage * 100:F1}% 증가({stats[index].percentage:F0}%)";
 
             default:

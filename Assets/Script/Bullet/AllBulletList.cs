@@ -10,8 +10,7 @@ public class AllBulletList : MonoBehaviour
     public List<BulletInfoSO> bulletInfoSOs = new();
     public Dictionary<int, BulletInfoSO> bulletInfoSODic = new();
     public Dictionary<int, BulletInfo> bulletInfos = new();
-    public Dictionary<BulletInfoSO, int> bulletCount = new();
-    public Action<BulletInfoSO, int> onBulletAdded;
+    public UnityEvent<int> onBulletAdded;
     public Inventory inventory;
 
     private void Awake()
@@ -28,21 +27,24 @@ public class AllBulletList : MonoBehaviour
         foreach(BulletInfoSO so in bulletInfoSOs)
         {
             bulletInfoSODic.Add(so.bulletId, so);
+            bulletInfos.Add(so.bulletId, new BulletInfo(bulletInfoSODic[so.bulletId]));
         }
     }
-
+    public BulletInfo GetBullet(int id)
+    {
+        if(id == -1) return null;
+        else return bulletInfos[id];
+    }
     public void DrawBullet()
     {
-        int id = UnityEngine.Random.Range(0, 4);
+        int id = UnityEngine.Random.Range(0, 8);
 
         if (bulletInfos.ContainsKey(id))
         {
             bulletInfos[id].IncreaseCount(1);
-        }
-        else
-        {
-            bulletInfos.Add(id, new BulletInfo(bulletInfoSODic[id]));
-            inventory.AddBullet(bulletInfos[id]);
+            onBulletAdded.Invoke(id);
+
+            if(bulletInfos[id].Count == 1) inventory.AddBullet(id);
         }
     }
 }

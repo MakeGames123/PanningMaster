@@ -6,32 +6,56 @@ using System.Collections.Generic;
 
 public class Workmanship : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI infoText;
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI powerText;
+    [SerializeField] List<TextMeshProUGUI> infoText;
+    [SerializeField] Button button;
+    [SerializeField] TextMeshProUGUI reqText;
+    [SerializeField] RevolverSlots revolver;
     BulletInfo info;
-    List<float> basicDamage = new() { 2, 10, 50, 250, 1000, 4000, 15000, 50000, 120000 };
-    public void UpdateInfo(BulletInfo info)
+    DamageCalculator calculator = new();
+    public RectTransform layoutRoot;
+    List<int> goldReq = new() { 10, 100, 1000, 10000, 100000, 1000000 };
+    void Awake()
     {
-        this.info = info;
-        UpdateText();
+        button.gameObject.SetActive(false);
+
+        DataManager.Instance.onPowerChanged.AddListener(UpdateText);
+    }
+    public void UpdateInfo(int id)
+    {
+        info = AllBulletList.Instance.GetBullet(id);
+        reqText.text = goldReq[info.infoSO.tier].ToString();
+        UpdateText(0);
+        button.gameObject.SetActive(true);
     }
     public void TryWorkmanship()
     {
-        info.RollStats();
-        UpdateText();
+        if (DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+        {
+            info.RollStats();
+            revolver.CheckSlots();
+        }
     }
-    private void UpdateText()
+    private void UpdateText(float val)
     {
-        string text = "";
+        for (int i = 0; i < 3; i++)
+        {
+            infoText[i].text = "";
+        }
 
         if (info != null)
         {
-            text += basicDamage[info.infoSO.tier].ToString() + "\n";
+            nameText.text = $"{info.infoSO.bulletName}";
+
+            powerText.text = $"{calculator.Calculate(info):F0}";
+
             for (int i = 0; i < info.stats.Count; i++)
             {
-                text += info.GetTargetText(i) + info.GetRewardText(i);
-                text += "\n";
+                infoText[i].text = info.GetTargetText(i) + info.GetRewardText(i);
             }
         }
-        infoText.text = text;
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layoutRoot);
     }
 }

@@ -28,6 +28,8 @@ public class Enumy : MonoBehaviour
     }
     public void UpgradeEnumy()
     {
+        DataManager.Instance.IncreaseTicket(5);
+        DataManager.Instance.IncreaseStage();
         maxHp = (int)(maxHp * 1.5f);
         hp = maxHp;
         UpdateUI();

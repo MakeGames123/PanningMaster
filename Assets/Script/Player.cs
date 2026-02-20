@@ -42,8 +42,9 @@ public class Player : MonoBehaviour
 
         bulletLineCpy = Instantiate(bulletLine, transform.parent);
         bulletLineCpy.GetComponent<BulletLine>().AdjustLine(transform.localPosition, enumy.transform.localPosition + new Vector3(0, Random.Range(-40, 40)));
-
-        if (enumy.Attacked(calculator.Calculate(revolver.revolverSlotContents[bulletIndex].bulletInfo)))
+        BulletInfo info = AllBulletList.Instance.GetBullet(revolver.revolverSlotContents[bulletIndex].id);
+        
+        if (enumy.Attacked(calculator.Calculate(info)))
         {
             Win();
             return true;
@@ -65,11 +66,13 @@ public class Player : MonoBehaviour
     {
         bulletIndex = 0;
         enumy.ResetEnumy();
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power/4);
         StartCoroutine(AttackStart());
     }
     private void Win()
     {
         bulletIndex = 0;
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power/4);
         StartCoroutine(AttackStart());
     }
 }

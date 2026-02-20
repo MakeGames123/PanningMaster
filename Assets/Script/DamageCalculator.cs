@@ -25,7 +25,7 @@ public class DamageCalculator
 
         float normalTypeDamageAmp =
             info.typeDamage.GetValue()
-            + DataManager.Instance.typeDamage[(int)info.infoSO.bulletType].GetValue()
+            + DataManager.Instance.typeDamage.GetValue()
             + DataManager.Instance.typeDamageByType[(int)info.infoSO.bulletType].GetValue()
             + 1;
 
@@ -49,7 +49,7 @@ public class DamageCalculator
             $"NormalTypeDamage: {normalTypeDamage}\n" +
             $"NormalDamageAmp: {normalDamageAmp}\n" +
             $"NormalTypeDamageAmp: {info.typeDamage.GetValue()}\n" +
-            $"NormalTypeDamageAmp: {DataManager.Instance.typeDamage[(int)info.infoSO.bulletType].GetValue()}\n" +
+            $"NormalTypeDamageAmp: {DataManager.Instance.typeDamage.GetValue()}\n" +
             $"NormalTypeDamageAmp: {DataManager.Instance.typeDamageByType[(int)info.infoSO.bulletType].GetValue()}\n" +
             $"NormalTypeDamageAmp: {normalTypeDamageAmp}\n" +
             $"FinalDamageAmp1: {info.finalDamage.GetValue()}\n" +
@@ -62,5 +62,5 @@ public class DamageCalculator
 
         return damage;
     }
-
 }
+/**/

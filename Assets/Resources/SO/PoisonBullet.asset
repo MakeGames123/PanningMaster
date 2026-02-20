@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd4d0e0e454b7a4eaae8bf2a672ad28, type: 3}
   m_Name: PoisonBullet
   m_EditorClassIdentifier: 
-  bulletName: 
+  bulletName: "\uB178\uB9D0 \uB3C5"
   bulletType: 3
   inventoryImage: {fileID: 4981527754612962463, guid: 1905edbe5022eba4f9a4d4899d9f3127, type: 3}
   tier: 0

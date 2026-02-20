@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd4d0e0e454b7a4eaae8bf2a672ad28, type: 3}
   m_Name: IceBullet
   m_EditorClassIdentifier: 
-  bulletName: 
+  bulletName: "\uB178\uB9D0 \uC5BC\uC74C"
   bulletType: 2
   inventoryImage: {fileID: 3998051106887713588, guid: 6884cbffa8326f847984c1834466b063, type: 3}
   tier: 0

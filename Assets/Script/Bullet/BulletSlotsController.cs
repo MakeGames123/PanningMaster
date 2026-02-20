@@ -8,7 +8,7 @@ public class BulletSlotsController : MonoBehaviour
     BulletSlotsRayController rayController = new();
     void Awake()
     {
-        inventory.Initialize(rayController, workmanship);
         revolver.Initialize(rayController, workmanship);
+        inventory.Initialize(rayController, workmanship);
     }
 }

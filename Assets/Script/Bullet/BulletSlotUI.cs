@@ -16,7 +16,7 @@ public class BulletSlotUI : MonoBehaviour, IBulletSlotUI
     [SerializeField] Slider levelGage;
     public void UpdateUI(BulletInfo info)
     {
-        if(info == null)
+        if(info == null || info.Count == 0)
         {
             bulletImage.enabled = false;
             gageText.enabled = false;

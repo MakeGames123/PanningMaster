@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd4d0e0e454b7a4eaae8bf2a672ad28, type: 3}
   m_Name: FlameBullet 1
   m_EditorClassIdentifier: 
-  bulletName: 
+  bulletName: "\uB808\uC5B4 \uD654\uC5FC"
   bulletType: 0
   inventoryImage: {fileID: -2550687366230544036, guid: a62e51d6445810d498ada5dab0cb6146, type: 3}
   tier: 1

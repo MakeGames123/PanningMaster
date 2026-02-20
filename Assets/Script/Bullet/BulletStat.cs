@@ -22,15 +22,14 @@ public class BulletStat
     public TargetType target;
     public RewardType reward;
     public List<float> targetCoef = new();
-    public List<float> rewardCoef = new();
+    public float rewardCoef;
     public float percentage;
-    public BulletStat()
+    int tier;
+    public BulletStat(int tier)
     {
+        this.tier = tier;
         target = GetRandomEnumValue<TargetType>();
         reward = GetRandomEnumValue<RewardType>();
-
-        target = TargetType.All;
-        reward = RewardType.BulletTypeDamageIncrease;
 
         FillTargetCoef();
         FillRewardCoef();
@@ -43,7 +42,7 @@ public class BulletStat
         percentage = other.percentage;
 
         targetCoef = new List<float>(other.targetCoef);
-        rewardCoef = new List<float>(other.rewardCoef);
+        rewardCoef = other.rewardCoef;
     }
     private T GetRandomEnumValue<T>()
     {
@@ -79,20 +78,20 @@ public class BulletStat
         {
             case RewardType.PowerIncrease:
                 val1 = UnityEngine.Random.Range(0.5f, 1.5f);
-                val2 = targetCoef.Last() * val1;
-                rewardCoef.Add(val2);
+                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.5f;
+                rewardCoef = val2;
                 percentage = Normalize(val1, 0.5f, 1.5f) * 100;
                 break;
             case RewardType.FinalDamageIncrease:
                 val1 = UnityEngine.Random.Range(0.75f, 1.25f);
-                val2 = targetCoef.Last() * val1;
-                rewardCoef.Add(val2);
+                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.1f;;
+                rewardCoef = val2;
                 percentage = Normalize(val1, 0.75f, 1.25f) * 100;
                 break;
             case RewardType.BulletTypeDamageIncrease:
                 val1 = UnityEngine.Random.Range(0.5f, 1.5f);
-                val2 = targetCoef.Last() * val1;
-                rewardCoef.Add(val2);
+                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.5f;
+                rewardCoef = val2;
                 percentage = Normalize(val1, 0.5f, 1.5f) * 100;
                 break;
         }

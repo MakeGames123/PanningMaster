@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd4d0e0e454b7a4eaae8bf2a672ad28, type: 3}
   m_Name: ElectricBullet 1
   m_EditorClassIdentifier: 
-  bulletName: 
+  bulletName: "\uB808\uC5B4 \uC804\uAE30"
   bulletType: 1
   inventoryImage: {fileID: -2855089606194378493, guid: 41ec6c43e1d2bec489e90da79536193c, type: 3}
   tier: 1
