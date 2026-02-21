@@ -51,7 +51,7 @@ public class BulletInfo
     public void RollStats()
     {
         stats.Clear();
-        for (int i = 0; i < infoSO.tier / 2 + 1; i++)
+        for (int i = 0; i < (infoSO.tier + 1) / 2 + 1; i++)
         {
             stats.Add(new BulletStat(infoSO.tier));
         }

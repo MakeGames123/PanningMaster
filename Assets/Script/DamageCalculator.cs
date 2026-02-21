@@ -40,7 +40,12 @@ public class DamageCalculator
             + normalTypeDamage * normalTypeDamageAmp)
             * finalDamage;
 
-        Debug.Log(
+
+
+        return damage;
+    }
+}
+/*Debug.Log(
             $"[DamageCalculator]\n" +
             $"Bullet: {info.infoSO.bulletName}\n" +
             $"Tier Base: {tierBase}\n" +
@@ -58,9 +63,4 @@ public class DamageCalculator
             $"FinalDamageAmp: {finalDamage}\n" +
             $"---------------------------------\n" +
             $"Final Result: {damage}"
-        );
-
-        return damage;
-    }
-}
-/**/
+        );*/

@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
             if (slotContents[i].IsEmpty)
             {
                 bulletIds.Add(id);
-                slotContents[i].UpdateBulletInfo(id);
+                slotContents[i].RefreshInfo(id);
                 SortInventory();
                 return;
             }
@@ -58,6 +58,8 @@ public class Inventory : MonoBehaviour
     }
     public void SortInventory()
     {
+        bulletIds.Sort();
+        bulletIds.Reverse();
         for (int i = 0; i < slots.Count; i++)
         {
             slotContents[i].id = -1;
@@ -67,7 +69,7 @@ public class Inventory : MonoBehaviour
         {
             BulletInfo info = AllBulletList.Instance.GetBullet(bulletIds[i]);
 
-            if(info.infoSO.bulletType == typeTag || typeTag == BulletType.All)
+            if (info.infoSO.bulletType == typeTag || typeTag == BulletType.All)
             {
                 slotContents[index++].id = bulletIds[i];
             }

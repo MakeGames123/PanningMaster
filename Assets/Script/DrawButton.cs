@@ -11,10 +11,10 @@ public class DrawButton : MonoBehaviour
     int index = 0;
     void Awake()
     {
-        button.onClick.AddListener(ForgeBullet);
+        button.onClick.AddListener(DrawBullet);
         ChangeMultiple(0);
     }
-    public void ForgeBullet()
+    public void DrawBullet()
     {
         if (DataManager.Instance.UseTicket(multiple[index])) for (int i = 0; i < multiple[index]; i++) allBulletList.DrawBullet();
     }
