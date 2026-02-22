@@ -7,7 +7,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
     public int ticket = 10;
-    public double gold = 0;
+    public double gold = 100000;
     public double power;
     public int stage = 1;
     public int upgradeLevel = 1;
@@ -32,6 +32,7 @@ public class DataManager : MonoBehaviour
         }
 
         Instance = this;
+        IncreaseGold(999999);
     }
     void Start()
     {

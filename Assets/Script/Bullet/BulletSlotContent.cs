@@ -12,7 +12,6 @@ public abstract class BulletSlotContent
     public IBulletSlot ibulletSlot;
     public Action onBeginDragEvent;
     public Action onEndDragEvent;//onBeginDragEvent의 원상복구 이벤트
-    public Action onStatChanged;
     public abstract void RefreshInfo(int inputId);
     public abstract void RefreshUI();
     public void SetDragCondition(bool isDrag)

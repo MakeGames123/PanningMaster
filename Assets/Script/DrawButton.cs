@@ -1,14 +1,17 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DrawButton : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Button button;
     [SerializeField] List<Image> multipleButtons;
     public AllBulletList allBulletList;
     List<int> multiple = new() { 1, 10, 50 };
-    int index = 0;
+    int multipleIndex = 0;
+    int drawCount = 0;
     void Awake()
     {
         button.onClick.AddListener(DrawBullet);
@@ -17,15 +20,21 @@ public class DrawButton : MonoBehaviour
     public void DrawBullet()
     {
         int level = DataManager.Instance.upgradeLevel;
-        DrawData currentData = DrawLevelLoader.Instance.ReturnData(level);
+        DrawData currentData = DrawPercentageLoader.Instance.ReturnData(level);
 
-        if (DataManager.Instance.UseTicket(multiple[index]))
+        if (DataManager.Instance.UseTicket(multiple[multipleIndex]))
         {
-            for (int i = 0; i < multiple[index]; i++)
+            for (int i = 0; i < multiple[multipleIndex]; i++)
             {
                 int tier = GetRandomTier(currentData);
 
                 allBulletList.DrawBullet(tier);
+                drawCount++;
+                if (drawCount >= DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel))
+                {
+                    DataManager.Instance.upgradeLevel++;
+                }
+                UpdateLevelText();
             }
         }
     }
@@ -37,13 +46,19 @@ public class DrawButton : MonoBehaviour
         }
 
         multipleButtons[index].color = Color.yellow;
-        this.index = index;
+        this.multipleIndex = index;
+    }
+    void UpdateLevelText()
+    {
+        int currentCount = drawCount - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel - 1);
+        int req = DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel) - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel - 1);
+        levelText.text = $"Lv.{DataManager.Instance.upgradeLevel} {currentCount}/{req}";
     }
     int GetRandomTier(DrawData data)
     {
-        List<int> weights = data.weights;
+        List<float> weights = data.weights;
 
-        int totalWeight = 0;
+        float totalWeight = 0;
         for (int i = 0; i < weights.Count; i++)
         {
             totalWeight += weights[i];
@@ -52,10 +67,10 @@ public class DrawButton : MonoBehaviour
         if (totalWeight <= 0)
             return 0;
 
-        int rand = Random.Range(0, totalWeight);
+        float rand = Random.Range(0f, totalWeight);
 
 
-        int cumulative = 0;
+        float cumulative = 0;
         for (int i = 0; i < weights.Count; i++)
         {
             cumulative += weights[i];

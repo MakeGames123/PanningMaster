@@ -6,7 +6,6 @@ using System.Linq;
 public enum TargetType
 {
     Self,
-    SlotIndex,
     BulletType,
     All,
 }
@@ -56,10 +55,6 @@ public class BulletStat
         {
             case TargetType.Self:
                 targetCoef.Add(1);
-                break;
-            case TargetType.SlotIndex:
-                targetCoef.Add(UnityEngine.Random.Range(0, 6));
-                targetCoef.Add(1.2f);
                 break;
             case TargetType.BulletType:
                 targetCoef.Add(UnityEngine.Random.Range(0, 4));

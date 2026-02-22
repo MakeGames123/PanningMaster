@@ -42,9 +42,16 @@ public class Player : MonoBehaviour
 
         bulletLineCpy = Instantiate(bulletLine, transform.parent);
         bulletLineCpy.GetComponent<BulletLine>().AdjustLine(transform.localPosition, enumy.transform.localPosition + new Vector3(0, Random.Range(-40, 40)));
-        BulletInfo info = AllBulletList.Instance.GetBullet(revolver.revolverSlotContents[bulletIndex].id);
-        
-        if (enumy.Attacked(calculator.Calculate(info)))
+
+        List<BulletInfo> revolverInfo = new();
+        foreach (RevolverSlotContent content in revolver.revolverSlotContents)
+        {
+            revolverInfo.Add(AllBulletList.Instance.GetBullet(content.id));
+        }
+
+        DamageModifier mod = calculator.CollectModifiers(revolverInfo);
+
+        if (enumy.Attacked(calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex)))
         {
             Win();
             return true;
@@ -66,13 +73,13 @@ public class Player : MonoBehaviour
     {
         bulletIndex = 0;
         enumy.ResetEnumy();
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power/4);
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power / 4);
         StartCoroutine(AttackStart());
     }
     private void Win()
     {
         bulletIndex = 0;
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power/4);
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power / 4);
         StartCoroutine(AttackStart());
     }
 }

@@ -26,9 +26,6 @@ public class BulletInfo
 {
     public BulletInfoSO infoSO;
     public List<BulletStat> stats = new();
-    public SpecificStat damage;
-    public SpecificStat typeDamage;
-    public SpecificStat finalDamage;
     private int count;
 
     public int Count
@@ -44,17 +41,6 @@ public class BulletInfo
     {
         Count = 0;
         this.infoSO = infoSO;
-        damage = new SpecificStat();
-        typeDamage = new SpecificStat();
-        finalDamage = new SpecificStat();
-    }
-    public void RollStats()
-    {
-        stats.Clear();
-        for (int i = 0; i < Mathf.Min((infoSO.tier + 1) / 2 + 1, 4); i++)
-        {
-            stats.Add(new BulletStat(infoSO.tier));
-        }
     }
     public (int, int) ReturnLevelStatus()
     {
@@ -92,17 +78,16 @@ public class BulletInfo
     {
         return Count;
     }
-
-
-    List<string> typeString = new() { "화염", "전기", "얼음", "독" };
-    public string GetTargetText(int index)
+}
+public static class BulletStatText
+{
+    private static List<string> typeString = new() { "화염", "전기", "얼음", "독" };
+    public static string GetTargetText(List<BulletStat> stats, int index)
     {
         switch (stats[index].target)
         {
             case TargetType.Self:
                 return "이 탄환의 ";
-            case TargetType.SlotIndex:
-                return $"{stats[index].targetCoef[0] + 1}번째 슬롯 탄환의 ";
             case TargetType.BulletType:
                 return $"모든 {typeString[(int)stats[index].targetCoef[0]]}속성 탄환의 ";
             case TargetType.All:
@@ -111,7 +96,7 @@ public class BulletInfo
                 return "";
         }
     }
-    public string GetRewardText(int index)
+    public static string GetRewardText(List<BulletStat> stats, int index)
     {
         switch (stats[index].reward)
         {

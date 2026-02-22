@@ -33,110 +33,23 @@ public class RevolverSlots : MonoBehaviour
             slotDrags[i].onClick.AddListener(workmanship.UpdateInfo);
 
             content.onInfoChanged += (val1, val2) => CheckSlots();
-            content.onStatChanged += CheckSlots;
         }
     }
-
     public void CheckSlots()
     {
-        DataManager.Instance.damage.ResetValue();
-        DataManager.Instance.typeDamage.ResetValue();
-        DataManager.Instance.finalDamage.ResetValue();
-
-        for (int k = 0; k < 4; k++)
+        List<BulletInfo> revolverInfo = new();
+        foreach (RevolverSlotContent content in revolverSlotContents)
         {
-            DataManager.Instance.damageByType[k].ResetValue();
-            DataManager.Instance.finalDamageByType[k].ResetValue();
-            DataManager.Instance.typeDamageByType[k].ResetValue();
+            revolverInfo.Add(AllBulletList.Instance.GetBullet(content.id));
         }
-
-        for (int i = 0; i < slotNum; i++)//초기화
-        {
-            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
-            if (info == null || info.Count == 0) continue;
-
-            info.damage.ResetValue();
-            info.finalDamage.ResetValue();
-            info.typeDamage.ResetValue();
-        }
-
-
-        for (int i = 0; i < slotNum; i++)
-        {
-            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
-            if (info == null || info.Count == 0) continue;
-
-            for (int j = 0; j < info.stats.Count; j++)
-            {
-                BulletStat stat = info.stats[j];
-                switch (stat.target)
-                {
-                    case TargetType.Self:
-                        ApplyRewardSlot(i, j, stat, info);
-                        break;
-                    case TargetType.SlotIndex:
-                        ApplyRewardSlot(i, j, stat, AllBulletList.Instance.GetBullet(revolverSlotContents[(int)stat.targetCoef[0]].id));
-                        break;
-                    case TargetType.BulletType:
-
-                        switch (stat.reward)
-                        {
-                            case RewardType.PowerIncrease:
-                                DataManager.Instance.damageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
-                                break;
-                            case RewardType.FinalDamageIncrease:
-                                DataManager.Instance.finalDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
-                                break;
-                            case RewardType.BulletTypeDamageIncrease:
-                                DataManager.Instance.typeDamageByType[(int)stat.targetCoef[0]].SetValue(i, j, stat.rewardCoef);
-                                break;
-                        }
-
-                        break;
-                    case TargetType.All:
-
-                        switch (stat.reward)
-                        {
-                            case RewardType.PowerIncrease:
-                                DataManager.Instance.damage.SetValue(i, j, stat.rewardCoef);
-                                break;
-                            case RewardType.FinalDamageIncrease:
-                                DataManager.Instance.finalDamage.SetValue(i, j, stat.rewardCoef);
-                                break;
-                            case RewardType.BulletTypeDamageIncrease:
-                                DataManager.Instance.typeDamage.SetValue(i, j, stat.rewardCoef);
-                                break;
-                        }
-
-                        break;
-                }
-            }
-        }
-
+        
+        DamageModifier mod = calculator.CollectModifiers(revolverInfo);
         float power = 0;
-        for (int i = 0; i < slotNum; i++)//초기화
+        for (int i = 0; i < 6; i++)
         {
-            BulletInfo info = AllBulletList.Instance.GetBullet(revolverSlotContents[i].id);
-            if (info == null || info.Count == 0) continue;
-            power += calculator.Calculate(info);
+            power += calculator.CalculateDamage(revolverInfo[i], mod, i);
         }
-        DataManager.Instance.UpdatePower(power);
-    }
-    public void ApplyRewardSlot(int infoFrom, int index, BulletStat stat, BulletInfo infoTarget = null)
-    {
-        if (infoTarget == null) return;
 
-        switch (stat.reward)
-        {
-            case RewardType.PowerIncrease:
-                infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef);
-                break;
-            case RewardType.FinalDamageIncrease:
-                infoTarget.finalDamage.SetValue(infoFrom, index, stat.rewardCoef);
-                break;
-            case RewardType.BulletTypeDamageIncrease:
-                infoTarget.damage.SetValue(infoFrom, index, stat.rewardCoef);
-                break;
-        }
+        DataManager.Instance.UpdatePower(power);
     }
 }
