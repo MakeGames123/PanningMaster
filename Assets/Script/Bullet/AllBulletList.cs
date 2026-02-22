@@ -35,10 +35,9 @@ public class AllBulletList : MonoBehaviour
         if(id == -1) return null;
         else return bulletInfos[id];
     }
-    public void DrawBullet()
+    public void DrawBullet(int tier)
     {
-        int id = UnityEngine.Random.Range(0, 8);
-
+        int id = UnityEngine.Random.Range(0, 4) + tier * 4;
         if (bulletInfos.ContainsKey(id))
         {
             bulletInfos[id].IncreaseCount(1);

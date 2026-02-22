@@ -5,25 +5,25 @@ using System.Linq;
 
 public class BulletSlotsRayController
 {
-    public List<BulletSlotContent> slotContents { get; private set; } = new();
+    public List<RevolverSlotContent> slotContents { get; private set; } = new();
 
     public void AddSlot(BulletSlotContent slot)
     {
-        slotContents.Add(slot);
+        if(slot is RevolverSlotContent content) slotContents.Add(content);
 
         slot.onEndDragEvent += DisableRayCastEmptySlots;
         slot.onBeginDragEvent += EnableRayCastSlots;
     }
     private void EnableRayCastSlots()
     {
-        foreach (BulletSlotContent content in slotContents)
+        foreach (RevolverSlotContent content in slotContents)
         {
             if (!content.isDrag) content.ibulletSlot.ChangeRaycast(true);
         }
     }
     private void DisableRayCastEmptySlots()
     {
-        foreach (BulletSlotContent content in slotContents)
+        foreach (RevolverSlotContent content in slotContents)
         {
             if (content.IsEmpty) content.ibulletSlot.ChangeRaycast(false);
         }

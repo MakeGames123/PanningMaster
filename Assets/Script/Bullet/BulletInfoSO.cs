@@ -51,7 +51,7 @@ public class BulletInfo
     public void RollStats()
     {
         stats.Clear();
-        for (int i = 0; i < (infoSO.tier + 1) / 2 + 1; i++)
+        for (int i = 0; i < Mathf.Min((infoSO.tier + 1) / 2 + 1, 4); i++)
         {
             stats.Add(new BulletStat(infoSO.tier));
         }
@@ -63,8 +63,9 @@ public class BulletInfo
         int level = 0;
         while (true)
         {
-            if (currentCount - levelUpCount[level] < 0) break;
-            currentCount -= levelUpCount[level];
+            int req = level > levelUpCount.Count ? 100 : levelUpCount[level];
+            if (currentCount - req < 0) break;
+            currentCount -= req;
 
             level++;
             if (level > 99) break;

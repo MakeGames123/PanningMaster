@@ -17,7 +17,7 @@ public class SpecificStat
     {
         for (int i = 0; i < 6; i++)
         {
-            values[i] = new List<float>() { 0, 0, 0 };
+            values[i] = new List<float>() { 0, 0, 0, 0 };
         }
     }
     public SpecificStat(SpecificStat other)
@@ -31,7 +31,7 @@ public class SpecificStat
     {
         for (int i = 0; i < 6; i++)
         {
-            values[i] = new List<float>() { 0, 0, 0 };
+            values[i] = new List<float>() { 0, 0, 0, 0 };
         }
     }
     public void AdjustValue(int slot, int index, float val)

@@ -7,9 +7,11 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
     public int ticket = 10;
-    public int gold = 0;
-    public float power;
+    public double gold = 0;
+    public double power;
     public int stage = 1;
+    public int upgradeLevel = 1;
+
     public SpecificStat damage = new();
     public SpecificStat typeDamage = new();//전체 탄환 속뎀 증가
     public SpecificStat finalDamage = new();
@@ -17,9 +19,9 @@ public class DataManager : MonoBehaviour
     public List<SpecificStat> typeDamageByType = new(); //특정 속성 탄환 속성 증가
     public List<SpecificStat> finalDamageByType = new();
     public UnityEvent<int> onTicketChanged = new();
-    public UnityEvent<int> onGoldChanged = new();
+    public UnityEvent<double> onGoldChanged = new();
     public UnityEvent<int> onStageChanged = new();
-    public UnityEvent<float> onPowerChanged = new();
+    public UnityEvent<double> onPowerChanged = new();
     private void Awake()
     {
         // 싱글톤 설정
@@ -80,7 +82,7 @@ public class DataManager : MonoBehaviour
         ticket += amount;
         onTicketChanged.Invoke(ticket);
     }
-    public bool TryUseGold(int amount)
+    public bool TryUseGold(double amount)
     {
         if (gold - amount >= 0)
         {

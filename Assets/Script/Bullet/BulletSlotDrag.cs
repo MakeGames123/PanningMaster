@@ -54,24 +54,39 @@ public class BulletSlotDrag : MonoBehaviour,
         bulletUIDragSlotUI.sprite = null;
         bulletUIDragSlotUI.enabled = false;
 
+        content.SetDragCondition(false);
+
         if (UIObject != null)
         {
             OnObjectDrop(UIObject);
         }
-
-        content.SetDragCondition(false);
     }
 
     public void OnObjectDrop(GameObject UIObject)
     {
-        if (UIObject.CompareTag("BulletSlot"))//리볼버 슬롯끼리 교환
+        if (UIObject.CompareTag("BulletSlot"))
         {
-            UIObject.GetComponent<BulletSlotDrag>().content.OnBulletDrop(content);
+            BulletSlotContent oppoContent = UIObject.GetComponent<BulletSlotDrag>().content;
+
+            if (oppoContent is RevolverSlotContent revolverSlot)
+            {
+                revolverSlot.OnBulletDrop(content);
+            }
+
+            if (content is InventorySlotContent inventorySlot)
+            {
+                inventorySlot.ChangeActive(false);
+            }
         }
         else //인벤토리로 돌아가기
         {
             int id = content.id;
-            content.UpdateBulletInfo(-1);
+
+            if (content is RevolverSlotContent revolverSlot)
+            {
+                revolverSlot.UpdateBulletInfo(-1);
+            }
+            
             inventory.AddBullet(id);
         }
     }

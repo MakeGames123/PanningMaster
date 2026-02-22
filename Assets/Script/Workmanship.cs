@@ -16,6 +16,8 @@ public class Workmanship : MonoBehaviour
     DamageCalculator calculator = new();
     public RectTransform layoutRoot;
     List<int> goldReq = new() { 10, 100, 1000, 10000, 100000, 1000000 };
+    List<string> gradeTexts = new() { "일반", "레어", "유니크", "에픽", "전설", "신화1", "신화2", "신화3", "신화4" };
+    List<string> typeText = new() { "화염", "전기", "얼음", "독" };
     void Awake()
     {
         button.gameObject.SetActive(false);
@@ -37,16 +39,16 @@ public class Workmanship : MonoBehaviour
             revolver.CheckSlots();
         }
     }
-    private void UpdateText(float val)
+    private void UpdateText(double val)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             infoText[i].text = "";
         }
 
         if (info != null)
         {
-            nameText.text = $"{info.infoSO.bulletName}";
+            nameText.text = $"{gradeTexts[info.infoSO.tier]} {typeText[(int)info.infoSO.bulletType]}";
 
             powerText.text = $"{calculator.Calculate(info):F0}";
 
