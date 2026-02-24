@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Events;
 public class WorkmanshipPanel : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> beforeInfoText;
@@ -12,27 +13,91 @@ public class WorkmanshipPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI afterPowerText;
     [SerializeField] RectTransform afterLayoutRoot;
     [SerializeField] RevolverSlots revolver;
+    [SerializeField] WorkmanshipButton button;
     BulletInfo info;
     DamageCalculator calculator = new();
-
     List<BulletStat> newBulletStats = new();
+    Coroutine autoRerollRoutine;
+    List<int> goldReq = new() { 10, 100, 1000, 10000, 100000, 1000000 };
+    public UnityEvent<int> onInfoUpdated = new();
+    float cachedBasePower;
+    int cachedIndex;
+    List<BulletInfo> cachedRevolverInfo;
+    DamageModifier cachedModifier;
+    bool isPowerCached;
+    void Awake()
+    {
+        button.onReroll.AddListener(Reroll);
+        button.onRerollStart.AddListener(StartAutoReroll);
+        button.onRerollStop.AddListener(StopAutoReroll);
+    }
     public void SetCondition(BulletInfo info)
     {
         this.info = info;
-        RollStats();
 
-        afterPowerText.text = $"{GetPower(newBulletStats).ToString():F1}";
+        CacheBasePower();
+
+        Reroll();
 
         UpdateInfoText(info.stats, beforeInfoText, beforeLayoutRoot);
-        UpdateInfoText(newBulletStats, afterInfoText, afterLayoutRoot);
+    }
+    public void ApplyNewStats()
+    {
+        info.stats = new List<BulletStat>(newBulletStats);
+        onInfoUpdated.Invoke(info.infoSO.bulletId);
+        gameObject.SetActive(false);
     }
     public void Reroll()
     {
         RollStats();
-        
-        afterPowerText.text = GetPower(newBulletStats).ToString();
+
+        afterPowerText.text = $"{GetPower(newBulletStats):F1}";
 
         UpdateInfoText(newBulletStats, afterInfoText, afterLayoutRoot);
+    }
+    public void TryReroll()
+    {
+        if (DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+        {
+            Reroll();
+        }
+    }
+    void StartAutoReroll()
+    {
+        if (autoRerollRoutine == null)
+            autoRerollRoutine = StartCoroutine(AutoReroll());
+    }
+    void StopAutoReroll()
+    {
+        if (autoRerollRoutine != null)
+        {
+            StopCoroutine(autoRerollRoutine);
+            autoRerollRoutine = null;
+        }
+    }
+    IEnumerator AutoReroll()
+    {
+        while (true)
+        {
+            if (!DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+                break;
+
+            RollStats();
+
+            float diff = GetPower(newBulletStats);
+
+            afterPowerText.text = $"{diff:F1}";
+            UpdateInfoText(newBulletStats, afterInfoText, afterLayoutRoot);
+
+            if (diff > 0f)
+            {
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        autoRerollRoutine = null;
     }
     public void RollStats()
     {
@@ -58,66 +123,51 @@ public class WorkmanshipPanel : MonoBehaviour
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
-    private float GetPower(List<BulletStat> bulletStats)
+    void CacheBasePower()
     {
-        float power = 0;
-        float afterPower = 0;
+        cachedRevolverInfo = new();
 
-        if (info != null)
+        foreach (RevolverSlotContent content in revolver.revolverSlotContents)
         {
-            List<BulletInfo> revolverInfo = new();
-            foreach (RevolverSlotContent content in revolver.revolverSlotContents)
-            {
-                revolverInfo.Add(AllBulletList.Instance.GetBullet(content.id));
-            }
-
-            DamageModifier mod = calculator.CollectModifiers(revolverInfo);
-
-
-            int index = revolverInfo.IndexOf(info);
-
-            if (index == -1)
-            {
-                List<float> powers = new();
-
-                for (int i = 0; i < 6; i++)
-                {
-                    powers.Add(calculator.CalculateDamage(revolverInfo[i], mod, i));
-                }
-
-                int minIndex = powers.IndexOf(powers.Min());
-
-                revolverInfo[minIndex] = info;
-
-                DamageModifier mod2 = calculator.CollectModifiers(revolverInfo);
-
-                power = calculator.CalculateDamage(info, mod2, minIndex);
-
-                BulletInfo newInfo = new BulletInfo(info.infoSO);
-                newInfo.stats = bulletStats;
-
-                revolverInfo[minIndex] = newInfo;
-
-                DamageModifier mod3 = calculator.CollectModifiers(revolverInfo);
-
-                afterPower = calculator.CalculateDamage(newInfo, mod3, minIndex);
-            }
-            else
-            {
-                power = calculator.CalculateDamage(info, mod, index);
-
-                BulletInfo newInfo = new BulletInfo(info.infoSO);
-                newInfo.stats = bulletStats;
-
-                revolverInfo[index] = newInfo;
-
-                DamageModifier mod3 = calculator.CollectModifiers(revolverInfo);
-
-                afterPower = calculator.CalculateDamage(newInfo, mod3, index);
-            }
+            cachedRevolverInfo.Add(AllBulletList.Instance.GetBullet(content.id));
         }
 
-        Debug.Log(afterPower + " " + power);
-        return afterPower - power;
+        cachedModifier = calculator.CollectModifiers(cachedRevolverInfo);
+
+        cachedIndex = cachedRevolverInfo.IndexOf(info);
+
+        if (cachedIndex == -1)
+        {
+            List<float> powers = new();
+
+            for (int i = 0; i < 6; i++)
+                powers.Add(calculator.CalculateDamage(cachedRevolverInfo[i], cachedModifier, i));
+
+            cachedIndex = powers.IndexOf(powers.Min());
+            cachedRevolverInfo[cachedIndex] = info;
+
+            cachedModifier = calculator.CollectModifiers(cachedRevolverInfo);
+        }
+
+        cachedBasePower = calculator.CalculateDamage(info, cachedModifier, cachedIndex);
+
+        isPowerCached = true;
+    }
+    private float GetPower(List<BulletStat> bulletStats)
+    {
+        if (!isPowerCached)
+            CacheBasePower();
+
+        BulletInfo newInfo = new BulletInfo(info.infoSO);
+        newInfo.stats = bulletStats;
+
+        cachedRevolverInfo[cachedIndex] = newInfo;
+
+        DamageModifier newMod = calculator.CollectModifiers(cachedRevolverInfo);
+
+        float afterPower =
+            calculator.CalculateDamage(newInfo, newMod, cachedIndex);
+
+        return afterPower - cachedBasePower;
     }
 }

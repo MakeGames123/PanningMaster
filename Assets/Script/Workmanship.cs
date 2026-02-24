@@ -23,6 +23,7 @@ public class Workmanship : MonoBehaviour
     void Awake()
     {
         button.gameObject.SetActive(false);
+        panel.onInfoUpdated.AddListener(UpdateInfo);
     }
     public void UpdateInfo(int id)
     {
