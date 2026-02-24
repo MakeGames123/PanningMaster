@@ -6,9 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.PlayerLoop;
 public class DamageCalculator
 {
-    List<float> basicDamage = new() { 2, 10, 50, 250, 1000, 4000, 15000, 50000, 120000 };
+    List<float> basicDamage = new();
+    List<float> lvScale = new();
+    public void Initialize()
+    {
+        var dmgList = TierDataLoader.Instance.ReturnColumn(t => t.baseDmg);
+        basicDamage = dmgList;
+
+        var scaleList = TierDataLoader.Instance.ReturnColumn(t => t.lvScale);
+        lvScale = scaleList;
+    }
 
     public DamageModifier CollectModifiers(List<BulletInfo> infos)
     {
@@ -70,10 +80,12 @@ public class DamageCalculator
     }
     public float CalculateDamage(BulletInfo info, DamageModifier mod, int index)
     {
-        if(info == null) return 0;
-        
+        if (info == null) return 0;
+
+        if(basicDamage.Count == 0) Initialize();
+
         int type = (int)info.infoSO.bulletType;
-        float tierBase = basicDamage[info.infoSO.tier];
+        float tierBase = basicDamage[info.infoSO.tier] + (info.Level - 1) * basicDamage[info.infoSO.tier] * lvScale[info.infoSO.tier];
 
         float powerPart =
             tierBase *

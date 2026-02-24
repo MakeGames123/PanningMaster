@@ -25,17 +25,22 @@ public class InventorySlotUI : MonoBehaviour
         {
             bulletImage.sprite = info.infoSO.inventoryImage;
             bulletImage.enabled = true;
-            if (bulletDisabled != null) bulletDisabled.enabled = false;
+            bulletDisabled.enabled = false;
 
-            var levelStatus = info.ReturnLevelStatus();
+            int level = info.Level;
 
-            gageText.text = $"{levelStatus.Item1}/{levelStatus.Item2}";
+            int current;
+            int req;
+
+            BulletLevelLoader.Instance.GetProgress(info.Count, out current, out req);
+
+            gageText.text = $"{current}/{req}";
             gageText.enabled = true;
 
-            levelText.text = "Lv." + (info.ReturnLevel() + 1).ToString();
+            levelText.text = "Lv." + level.ToString();
             levelText.enabled = true;
 
-            levelGage.value = (float)levelStatus.Item1 / levelStatus.Item2;
+            levelGage.value = (float)current / req;
             levelGage.gameObject.SetActive(true);
         }
     }

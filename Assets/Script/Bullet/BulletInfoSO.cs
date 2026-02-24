@@ -27,7 +27,6 @@ public class BulletInfo
     public BulletInfoSO infoSO;
     public List<BulletStat> stats = new();
     private int count;
-
     public int Count
     {
         get => count;
@@ -36,43 +35,23 @@ public class BulletInfo
             count = value;
         }
     }
-    List<int> levelUpCount = new() { 2, 3, 5, 8, 12, 18, 30, 50, 100 };
+    private int level;
+    public int Level
+    {
+        get => level;
+        set
+        {
+            level = value;
+        }
+    }
     public BulletInfo(BulletInfoSO infoSO)
     {
         Count = 0;
         this.infoSO = infoSO;
     }
-    public (int, int) ReturnLevelStatus()
-    {
-        int currentCount = Count;
-
-        int level = 0;
-        while (true)
-        {
-            int req = level > levelUpCount.Count ? 100 : levelUpCount[level];
-            if (currentCount - req < 0) break;
-            currentCount -= req;
-
-            level++;
-            if (level > 99) break;
-        }
-
-        return (currentCount, levelUpCount[level]);
-    }
     public void IncreaseCount(int val)
     {
         Count += val;
-    }
-    public int ReturnLevel()
-    {
-        int ret = Count;
-        int level = 0;
-        for (level = 0; level < levelUpCount.Count; level++)
-        {
-            ret -= levelUpCount[level];
-            if (ret < 0) break;
-        }
-        return level;
     }
     public int ReturnCount()
     {

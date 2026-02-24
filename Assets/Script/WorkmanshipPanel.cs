@@ -18,7 +18,8 @@ public class WorkmanshipPanel : MonoBehaviour
     DamageCalculator calculator = new();
     List<BulletStat> newBulletStats = new();
     Coroutine autoRerollRoutine;
-    List<int> goldReq = new() { 10, 100, 1000, 10000, 100000, 1000000 };
+    List<int> goldReq = new();
+    List<int> slotCounts = new();
     public UnityEvent<int> onInfoUpdated = new();
     float cachedBasePower;
     int cachedIndex;
@@ -30,6 +31,18 @@ public class WorkmanshipPanel : MonoBehaviour
         button.onReroll.AddListener(Reroll);
         button.onRerollStart.AddListener(StartAutoReroll);
         button.onRerollStop.AddListener(StopAutoReroll);
+
+        TierDataLoader.Instance.OnDataLoaded += LoadData;
+    }
+    void LoadData()
+    {
+        var req = TierDataLoader.Instance.ReturnColumn(t => t.craftCost);
+        goldReq = req;
+
+        var slots = TierDataLoader.Instance.ReturnColumn(t => t.craftSlots);
+        slotCounts = slots;
+
+        TierDataLoader.Instance.OnDataLoaded -= LoadData;
     }
     public void SetCondition(BulletInfo info)
     {
@@ -102,7 +115,7 @@ public class WorkmanshipPanel : MonoBehaviour
     public void RollStats()
     {
         newBulletStats.Clear();
-        for (int i = 0; i < Mathf.Min((info.infoSO.tier + 1) / 2 + 1, 4); i++)
+        for (int i = 0; i < Mathf.Min(slotCounts[info.infoSO.tier], 4); i++)
         {
             newBulletStats.Add(new BulletStat(info.infoSO.tier));
         }

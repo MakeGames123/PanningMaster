@@ -12415,12 +12415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticket: 10
   gold: 0
-  power: 0
   stage: 1
   upgradeLevel: 1
-  damageByType: []
-  typeDamageByType: []
-  finalDamageByType: []
+  possPower: 0
+  power: 0
   onTicketChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15320,6 +15318,8 @@ GameObject:
   - component: {fileID: 2086357909}
   - component: {fileID: 2086357908}
   - component: {fileID: 2086357910}
+  - component: {fileID: 2086357911}
+  - component: {fileID: 2086357912}
   m_Layer: 0
   m_Name: TableLoader
   m_TagString: Untagged
@@ -15364,6 +15364,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e334299583d9c14288a03118c4f5dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2086357911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086357907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e48aa68267e97c4a87e95e8957ba6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2086357912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086357907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cee49b20231194096d7a5b8374416d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2088960970

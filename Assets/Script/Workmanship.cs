@@ -17,19 +17,33 @@ public class Workmanship : MonoBehaviour
     BulletInfo info;
     DamageCalculator calculator = new();
     public RectTransform layoutRoot;
-    List<int> goldReq = new() { 10, 100, 1000, 10000, 100000, 1000000 };
-    List<string> gradeTexts = new() { "일반", "레어", "유니크", "에픽", "전설", "신화1", "신화2", "신화3", "신화4" };
+    List<int> goldReq = new();
+    List<string> gradeTexts = new();
     List<string> typeText = new() { "화염", "전기", "얼음", "독" };
     void Awake()
     {
         button.gameObject.SetActive(false);
         panel.onInfoUpdated.AddListener(UpdateInfo);
     }
+    void Start()
+    {
+        TierDataLoader.Instance.OnDataLoaded += LoadData;
+    }
+    void LoadData()
+    {
+        var req = TierDataLoader.Instance.ReturnColumn(t => t.craftCost);
+        goldReq = req;
+
+        var grade = TierDataLoader.Instance.ReturnColumn(t => t.nameKR);
+        gradeTexts = grade;
+
+        TierDataLoader.Instance.OnDataLoaded -= LoadData;
+    }
     public void UpdateInfo(int id)
     {
         info = AllBulletList.Instance.GetBullet(id);
         reqText.text = goldReq[info.infoSO.tier].ToString();
-        button.gameObject.SetActive(true); 
+        button.gameObject.SetActive(true);
         UpdateText();
     }
     public void TryWorkmanship()

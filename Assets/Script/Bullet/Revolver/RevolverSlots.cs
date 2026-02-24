@@ -34,6 +34,7 @@ public class RevolverSlots : MonoBehaviour
 
             content.onInfoChanged += (val1, val2) => CheckSlots();
         }
+
     }
     public void CheckSlots()
     {

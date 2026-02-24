@@ -50,8 +50,9 @@ public class Player : MonoBehaviour
         }
 
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
+        float damage = calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex) * (DataManager.Instance.possPower + 1);
 
-        if (enumy.Attacked(calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex)))
+        if (enumy.Attacked(damage))
         {
             Win();
             return true;
@@ -73,13 +74,13 @@ public class Player : MonoBehaviour
     {
         bulletIndex = 0;
         enumy.ResetEnumy();
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power / 4);
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.Power / 4);
         StartCoroutine(AttackStart());
     }
     private void Win()
     {
         bulletIndex = 0;
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.power / 4);
+        DataManager.Instance.IncreaseGold((int)DataManager.Instance.Power / 4);
         StartCoroutine(AttackStart());
     }
 }

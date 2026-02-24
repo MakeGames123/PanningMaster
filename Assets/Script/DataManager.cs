@@ -6,18 +6,18 @@ using UnityEngine.Events;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
-    public int ticket = 10;
+    public int ticket = 100000;
     public double gold = 100000;
-    public double power;
     public int stage = 1;
     public int upgradeLevel = 1;
+    public float possPower;
+    private float power;
+    public float Power
+    {
+        get { return power * (possPower + 1); }
+        set { power = value; }
+    }
 
-    public SpecificStat damage = new();
-    public SpecificStat typeDamage = new();//전체 탄환 속뎀 증가
-    public SpecificStat finalDamage = new();
-    public List<SpecificStat> damageByType = new();
-    public List<SpecificStat> typeDamageByType = new(); //특정 속성 탄환 속성 증가
-    public List<SpecificStat> finalDamageByType = new();
     public UnityEvent<int> onTicketChanged = new();
     public UnityEvent<double> onGoldChanged = new();
     public UnityEvent<int> onStageChanged = new();
@@ -37,19 +37,12 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         IncreaseTicket();
-
-        for (int i = 0; i < 4; i++)
-        {
-            damageByType.Add(new SpecificStat());
-            finalDamageByType.Add(new SpecificStat());
-            typeDamageByType.Add(new SpecificStat());
-        }
     }
     private void IncreaseTicket()
     {
         if (ticket < 10)
         {
-            ticket++;
+            ticket += 1000000;
             onTicketChanged.Invoke(ticket);
         }
 
@@ -98,7 +91,7 @@ public class DataManager : MonoBehaviour
     }
     public void UpdatePower(float power)
     {
-        this.power = power;
+        this.Power = power;
         onPowerChanged.Invoke(power);
     }
 }
