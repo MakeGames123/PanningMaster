@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DrawLevelUpLoader : MonoBehaviour
+public class DrawLevelUpLoader : MonoBehaviour, ITableLoader
 {
     public static DrawLevelUpLoader Instance { get; private set; }
     const string SHEET_URL =
@@ -13,6 +13,7 @@ public class DrawLevelUpLoader : MonoBehaviour
     private Dictionary<int, LevelUpData> dataDict
         = new Dictionary<int, LevelUpData>();
 
+    public event Action OnLoaded;
     void Awake()
     {
         if (Instance != null)
@@ -67,6 +68,7 @@ public class DrawLevelUpLoader : MonoBehaviour
 
             dataDict[data.FromLv] = data;
         }
+        OnLoaded?.Invoke();
 
         Debug.Log($"LevelUpData Loaded: {dataDict.Count}");
     }
@@ -82,7 +84,7 @@ public class DrawLevelUpLoader : MonoBehaviour
 
     public int GetRequiredXP(int fromLv)
     {
-        if(fromLv < 0) return 0; 
+        if (fromLv < 0) return 0;
         int total = 0;
 
         for (int lv = 1; lv <= fromLv; lv++)

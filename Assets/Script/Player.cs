@@ -50,8 +50,7 @@ public class Player : MonoBehaviour
         }
 
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
-        float damage = calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex) * (DataManager.Instance.possPower + 1);
-
+        float damage = calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex, DataManager.Instance.possPower).Item2;
         if (enumy.Attacked(damage))
         {
             Win();

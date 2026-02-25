@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
-public class DrawPercentageLoader : MonoBehaviour
+public class DrawPercentageLoader : MonoBehaviour, ITableLoader
 {
     public static DrawPercentageLoader Instance { get; private set; }
     const string SHEET_URL =
@@ -13,6 +13,7 @@ public class DrawPercentageLoader : MonoBehaviour
     private Dictionary<int, DrawData> dataDict
         = new Dictionary<int, DrawData>();
 
+    public event Action OnLoaded;
     void Awake()
     {
         if (Instance != null)
@@ -85,6 +86,7 @@ public class DrawPercentageLoader : MonoBehaviour
 
             dataDict[data.Index] = data;
         }
+        OnLoaded?.Invoke();
 
         Debug.Log($"DrawData Loaded (Column Based): {dataDict.Count}");
     }

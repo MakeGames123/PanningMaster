@@ -24,10 +24,7 @@ public class Workmanship : MonoBehaviour
     {
         button.gameObject.SetActive(false);
         panel.onInfoUpdated.AddListener(UpdateInfo);
-    }
-    void Start()
-    {
-        TierDataLoader.Instance.OnDataLoaded += LoadData;
+        TableLoaderManager.Instance.OnAllTablesLoaded.AddListener(LoadData);
     }
     void LoadData()
     {
@@ -36,8 +33,6 @@ public class Workmanship : MonoBehaviour
 
         var grade = TierDataLoader.Instance.ReturnColumn(t => t.nameKR);
         gradeTexts = grade;
-
-        TierDataLoader.Instance.OnDataLoaded -= LoadData;
     }
     public void UpdateInfo(int id)
     {
@@ -83,7 +78,7 @@ public class Workmanship : MonoBehaviour
 
                 for (int i = 0; i < 6; i++)
                 {
-                    powers.Add(calculator.CalculateDamage(revolverInfo[i], mod, i));
+                    powers.Add(calculator.CalculateDamage(revolverInfo[i], mod, i, DataManager.Instance.possPower).Item1);
                 }
 
                 int minIndex = powers.IndexOf(powers.Min());
@@ -92,18 +87,18 @@ public class Workmanship : MonoBehaviour
 
                 DamageModifier mod2 = calculator.CollectModifiers(revolverInfo);
 
-                power = calculator.CalculateDamage(info, mod2, minIndex);
+                power = calculator.CalculateDamage(info, mod2, minIndex, DataManager.Instance.possPower).Item1;
             }
             else
             {
-                power = calculator.CalculateDamage(info, mod, index);
+                power = calculator.CalculateDamage(info, mod, index, DataManager.Instance.possPower).Item1;
             }
 
             powerText.text = $"{power:F0}";
 
             for (int i = 0; i < info.stats.Count; i++)
             {
-                infoText[i].text = BulletStatText.GetTargetText(info.stats, i) + BulletStatText.GetRewardText(info.stats, i);
+                infoText[i].text = BulletStatText.GetTargetText(info.stats, i) + BulletStatText.GetRewardText(info.stats, i, gradeTexts);
             }
         }
 

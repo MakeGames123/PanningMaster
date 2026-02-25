@@ -49,6 +49,12 @@ public class BulletInfo
         Count = 0;
         this.infoSO = infoSO;
     }
+    public BulletInfo(BulletInfo info)
+    {
+        count = info.count;
+        level = info.level;
+        this.infoSO = info.infoSO;
+    }
     public void IncreaseCount(int val)
     {
         Count += val;
@@ -68,28 +74,32 @@ public static class BulletStatText
             case TargetType.Self:
                 return "이 탄환의 ";
             case TargetType.BulletType:
-                return $"모든 {typeString[(int)stats[index].targetCoef[0]]}속성 탄환의 ";
+                return $"모든 {typeString[(int)stats[index].targetCoef]}속성 탄환의 ";
             case TargetType.All:
                 return $"모든 탄환의 ";
             default:
                 return "";
         }
     }
-    public static string GetRewardText(List<BulletStat> stats, int index)
+    public static string GetRewardText(List<BulletStat> stats, int index, List<string> gradeTexts)
     {
+        float stat = stats[index].rewardCoef;
         switch (stats[index].reward)
         {
             case RewardType.PowerIncrease:
-                float powerIncrease = stats[index].rewardCoef;
-                return $"공격력 {powerIncrease * 100:F1}% 증가({stats[index].percentage:F0}%)";
+                return $"공격력 {stat * 100:F1}% 증가[{gradeTexts[stats[index].statTier]}]";
 
             case RewardType.FinalDamageIncrease:
-                float finalDamage = stats[index].rewardCoef;
-                return $"최종 데미지 {finalDamage * 100:F1}% 증가({stats[index].percentage:F0}%)";
+                return $"최종 데미지 {stat * 100:F1}% 증가[{gradeTexts[stats[index].statTier]}]";
 
             case RewardType.BulletTypeDamageIncrease:
-                float typeDamage = stats[index].rewardCoef;
-                return $"속성 공격력 {typeDamage * 100:F1}% 증가({stats[index].percentage:F0}%)";
+                return $"속성 공격력 {stat * 100:F1}% 증가[{gradeTexts[stats[index].statTier]}]";
+
+            case RewardType.CriticalChanceIncrease:
+                return $"크리티컬 확률 {stat * 100:F1}% 증가[{gradeTexts[stats[index].statTier]}]";
+
+            case RewardType.CriticalDamageIncrease:
+                return $"크리티컬 데미지 {stat * 100:F1}% 증가[{gradeTexts[stats[index].statTier]}]";
 
             default:
                 return "";

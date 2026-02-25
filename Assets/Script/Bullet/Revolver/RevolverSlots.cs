@@ -48,7 +48,7 @@ public class RevolverSlots : MonoBehaviour
         float power = 0;
         for (int i = 0; i < 6; i++)
         {
-            power += calculator.CalculateDamage(revolverInfo[i], mod, i);
+            power += calculator.CalculateDamage(revolverInfo[i], mod, i, DataManager.Instance.possPower).Item1;
         }
 
         DataManager.Instance.UpdatePower(power);

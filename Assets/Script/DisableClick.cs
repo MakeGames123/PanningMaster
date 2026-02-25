@@ -7,8 +7,10 @@ using UnityEngine.Events;
 public class DisableClick : MonoBehaviour, IPointerClickHandler
 {
     public GameObject panel;
+    public UnityEvent disable;
     public void OnPointerClick(PointerEventData eventData)
     {
         panel.SetActive(false);
+        disable.Invoke();
     }
 }

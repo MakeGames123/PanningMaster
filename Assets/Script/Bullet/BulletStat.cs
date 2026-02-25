@@ -14,34 +14,34 @@ public enum RewardType
     PowerIncrease,
     FinalDamageIncrease,
     BulletTypeDamageIncrease,
+    CriticalChanceIncrease,
+    CriticalDamageIncrease,
 }
 
 public class BulletStat
 {
     public TargetType target;
     public RewardType reward;
-    public List<float> targetCoef = new();
+    public float targetCoef;
+    public float conditionCoef;
     public float rewardCoef;
     public float percentage;
+    public int statTier;
     int tier;
-    public BulletStat(int tier)
+    List<CraftConditionData> conditionData;
+    Dictionary<string, List<StatRangeData>> statData;
+    Dictionary<int, List<float>> weightDict;
+    public BulletStat(int tier, List<CraftConditionData> conditionData, Dictionary<string, List<StatRangeData>> statData, Dictionary<int, List<float>> weightDict)
     {
         this.tier = tier;
+        this.conditionData = conditionData;
+        this.statData = statData;
+        this.weightDict = weightDict;
         target = GetRandomEnumValue<TargetType>();
         reward = GetRandomEnumValue<RewardType>();
 
         FillTargetCoef();
         FillRewardCoef();
-    }
-
-    public BulletStat(BulletStat other)
-    {
-        target = other.target;
-        reward = other.reward;
-        percentage = other.percentage;
-
-        targetCoef = new List<float>(other.targetCoef);
-        rewardCoef = other.rewardCoef;
     }
     private T GetRandomEnumValue<T>()
     {
@@ -54,14 +54,14 @@ public class BulletStat
         switch (target)
         {
             case TargetType.Self:
-                targetCoef.Add(1);
+                conditionCoef = conditionData[0].multiplier;
                 break;
             case TargetType.BulletType:
-                targetCoef.Add(UnityEngine.Random.Range(0, 4));
-                targetCoef.Add(0.5f);
+                targetCoef = UnityEngine.Random.Range(0, 4);
+                conditionCoef = conditionData[1].multiplier;
                 break;
             case TargetType.All:
-                targetCoef.Add(0.2f);
+                conditionCoef = conditionData[2].multiplier;
                 break;
         }
     }
@@ -69,31 +69,50 @@ public class BulletStat
     {
         float val1;
         float val2;
+
+        statTier = GetRandomByWeight(weightDict[tier]);
         switch (reward)
         {
             case RewardType.PowerIncrease:
-                val1 = UnityEngine.Random.Range(0.5f, 1.5f);
-                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.5f;
+                val1 = UnityEngine.Random.Range(statData["atk"][statTier].min, statData["atk"][statTier].max);
+                val2 = conditionCoef * val1;
                 rewardCoef = val2;
-                percentage = Normalize(val1, 0.5f, 1.5f) * 100;
                 break;
             case RewardType.FinalDamageIncrease:
-                val1 = UnityEngine.Random.Range(0.75f, 1.25f);
-                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.1f;;
+                val1 = UnityEngine.Random.Range(statData["finalDmg"][statTier].min, statData["finalDmg"][statTier].max);
+                val2 = conditionCoef * val1;
                 rewardCoef = val2;
-                percentage = Normalize(val1, 0.75f, 1.25f) * 100;
                 break;
             case RewardType.BulletTypeDamageIncrease:
-                val1 = UnityEngine.Random.Range(0.5f, 1.5f);
-                val2 = targetCoef.Last() * val1 * (tier + 1) * 0.5f;
+                val1 = UnityEngine.Random.Range(statData["elemDmg"][statTier].min, statData["elemDmg"][statTier].max);
+                val2 = conditionCoef * val1;
                 rewardCoef = val2;
-                percentage = Normalize(val1, 0.5f, 1.5f) * 100;
+                break;
+            case RewardType.CriticalChanceIncrease:
+                val1 = UnityEngine.Random.Range(statData["critR"][statTier].min, statData["critR"][statTier].max);
+                val2 = conditionCoef * val1;
+                rewardCoef = val2;
+                break;
+            case RewardType.CriticalDamageIncrease:
+                val1 = UnityEngine.Random.Range(statData["critD"][statTier].min, statData["critD"][statTier].max);
+                val2 = conditionCoef * val1;
+                rewardCoef = val2;
                 break;
         }
     }
-    public float Normalize(float value, float a, float b)
+    public int GetRandomByWeight(List<float> weights)
     {
-        return Mathf.Clamp01((value - a) / (b - a));
+        float rand = UnityEngine.Random.Range(0, 100);
+
+        float sum = 0f;
+        for (int i = 0; i < weights.Count; i++)
+        {
+            sum += weights[i];
+            if (rand <= sum)
+                return i;
+        }
+
+        return 0;
     }
 }
 /**/

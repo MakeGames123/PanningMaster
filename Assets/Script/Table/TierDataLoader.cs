@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TierDataLoader : MonoBehaviour
+public class TierDataLoader : MonoBehaviour, ITableLoader
 {
     public static TierDataLoader Instance { get; private set; }
 
@@ -15,7 +15,7 @@ public class TierDataLoader : MonoBehaviour
     private Dictionary<int, TierData> tierDict
         = new Dictionary<int, TierData>();
 
-    public event Action OnDataLoaded;
+    public event Action OnLoaded;
 
     void Awake()
     {
@@ -72,7 +72,7 @@ public class TierDataLoader : MonoBehaviour
 
             tierDict[data.tier] = data;
         }
-        OnDataLoaded?.Invoke();
+        OnLoaded?.Invoke();
 
         Debug.Log($"TierData Loaded: {tierDict.Count}");
     }

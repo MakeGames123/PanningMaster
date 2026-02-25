@@ -24,6 +24,10 @@ public class WorkmanshipPanel : MonoBehaviour
     float cachedBasePower;
     int cachedIndex;
     List<BulletInfo> cachedRevolverInfo;
+    List<CraftConditionData> conditionData = new();
+    Dictionary<string, List<StatRangeData>> statData;
+    Dictionary<int, List<float>> weightDict;
+    List<string> gradeTexts = new();
     DamageModifier cachedModifier;
     bool isPowerCached;
     void Awake()
@@ -31,10 +35,10 @@ public class WorkmanshipPanel : MonoBehaviour
         button.onReroll.AddListener(Reroll);
         button.onRerollStart.AddListener(StartAutoReroll);
         button.onRerollStop.AddListener(StopAutoReroll);
-
-        TierDataLoader.Instance.OnDataLoaded += LoadData;
+        
+        TableLoaderManager.Instance.OnAllTablesLoaded.AddListener(LoadData);
     }
-    void LoadData()
+    public void LoadData()
     {
         var req = TierDataLoader.Instance.ReturnColumn(t => t.craftCost);
         goldReq = req;
@@ -42,17 +46,28 @@ public class WorkmanshipPanel : MonoBehaviour
         var slots = TierDataLoader.Instance.ReturnColumn(t => t.craftSlots);
         slotCounts = slots;
 
-        TierDataLoader.Instance.OnDataLoaded -= LoadData;
+        var grade = TierDataLoader.Instance.ReturnColumn(t => t.nameKR);
+        gradeTexts = grade;
+
+        conditionData = CraftConditionLoader.Instance.GetAll();
+        Debug.Log(conditionData[1].multiplier);
+        statData = StatTableLoader.Instance.statDict;
+        weightDict = StatWeightLoader.Instance.weightDict;
     }
     public void SetCondition(BulletInfo info)
     {
         this.info = info;
+        GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         CacheBasePower();
 
         Reroll();
 
         UpdateInfoText(info.stats, beforeInfoText, beforeLayoutRoot);
+    }
+    public void DisablePanel()
+    {
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(9999, 0);
     }
     public void ApplyNewStats()
     {
@@ -117,7 +132,7 @@ public class WorkmanshipPanel : MonoBehaviour
         newBulletStats.Clear();
         for (int i = 0; i < Mathf.Min(slotCounts[info.infoSO.tier], 4); i++)
         {
-            newBulletStats.Add(new BulletStat(info.infoSO.tier));
+            newBulletStats.Add(new BulletStat(info.infoSO.tier, conditionData, statData, weightDict));
         }
     }
     private void UpdateInfoText(List<BulletStat> bulletStats, List<TextMeshProUGUI> infoText, RectTransform layout)
@@ -131,7 +146,7 @@ public class WorkmanshipPanel : MonoBehaviour
         {
             for (int i = 0; i < bulletStats.Count; i++)
             {
-                infoText[i].text = BulletStatText.GetTargetText(bulletStats, i) + BulletStatText.GetRewardText(bulletStats, i);
+                infoText[i].text = BulletStatText.GetTargetText(bulletStats, i) + BulletStatText.GetRewardText(bulletStats, i, gradeTexts);
             }
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
@@ -154,7 +169,7 @@ public class WorkmanshipPanel : MonoBehaviour
             List<float> powers = new();
 
             for (int i = 0; i < 6; i++)
-                powers.Add(calculator.CalculateDamage(cachedRevolverInfo[i], cachedModifier, i));
+                powers.Add(calculator.CalculateDamage(cachedRevolverInfo[i], cachedModifier, i, DataManager.Instance.possPower).Item1);
 
             cachedIndex = powers.IndexOf(powers.Min());
             cachedRevolverInfo[cachedIndex] = info;
@@ -162,7 +177,7 @@ public class WorkmanshipPanel : MonoBehaviour
             cachedModifier = calculator.CollectModifiers(cachedRevolverInfo);
         }
 
-        cachedBasePower = calculator.CalculateDamage(info, cachedModifier, cachedIndex);
+        cachedBasePower = calculator.CalculateDamage(info, cachedModifier, cachedIndex, DataManager.Instance.possPower).Item1;
 
         isPowerCached = true;
     }
@@ -171,7 +186,7 @@ public class WorkmanshipPanel : MonoBehaviour
         if (!isPowerCached)
             CacheBasePower();
 
-        BulletInfo newInfo = new BulletInfo(info.infoSO);
+        BulletInfo newInfo = new BulletInfo(info);
         newInfo.stats = bulletStats;
 
         cachedRevolverInfo[cachedIndex] = newInfo;
@@ -179,7 +194,7 @@ public class WorkmanshipPanel : MonoBehaviour
         DamageModifier newMod = calculator.CollectModifiers(cachedRevolverInfo);
 
         float afterPower =
-            calculator.CalculateDamage(newInfo, newMod, cachedIndex);
+            calculator.CalculateDamage(newInfo, newMod, cachedIndex, DataManager.Instance.possPower).Item1;
 
         return afterPower - cachedBasePower;
     }

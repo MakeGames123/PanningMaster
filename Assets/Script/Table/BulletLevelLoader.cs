@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class BulletLevelLoader : MonoBehaviour
+public class BulletLevelLoader : MonoBehaviour, ITableLoader
 {
     public static BulletLevelLoader Instance { get; private set; }
 

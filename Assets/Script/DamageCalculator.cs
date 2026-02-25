@@ -50,7 +50,7 @@ public class DamageCalculator
                 break;
 
             case TargetType.BulletType:
-                int type = (int)stat.targetCoef[0];
+                int type = (int)stat.targetCoef;
                 ApplyReward(mod, stat.reward, stat.rewardCoef, type, index);
                 break;
         }
@@ -76,13 +76,25 @@ public class DamageCalculator
                 else if (type == -2) mod.AllFinal += value;
                 else mod.FinalByType[type] += value;
                 break;
+
+            case RewardType.CriticalChanceIncrease:
+                if (type == -1) mod.SelfCriticalChance[index] += value;
+                else if (type == -2) mod.AllCriticalChance += value;
+                else mod.CriticalChanceByType[type] += value;
+                break;
+
+            case RewardType.CriticalDamageIncrease:
+                if (type == -1) mod.SelfFinal[index] += value;
+                else if (type == -2) mod.AllCriticalDamage += value;
+                else mod.CriticalDamageByType[type] += value;
+                break;
         }
     }
-    public float CalculateDamage(BulletInfo info, DamageModifier mod, int index)
+    public (float, float, bool) CalculateDamage(BulletInfo info, DamageModifier mod, int index, float poss)
     {
-        if (info == null) return 0;
+        if (info == null) return (0, 0, false);
 
-        if(basicDamage.Count == 0) Initialize();
+        if (basicDamage.Count == 0) Initialize();
 
         int type = (int)info.infoSO.bulletType;
         float tierBase = basicDamage[info.infoSO.tier] + (info.Level - 1) * basicDamage[info.infoSO.tier] * lvScale[info.infoSO.tier];
@@ -104,7 +116,20 @@ public class DamageCalculator
             (1 + mod.AllFinal) *
             (1 + mod.FinalByType[type]);
 
-        return (powerPart + typePart) * finalAmp;
+        float criticalChance = (mod.SelfCriticalChance[index] + mod.AllCriticalChance + mod.CriticalChanceByType[type]) * 100;
+        criticalChance = Mathf.Min(100, criticalChance);
+
+        float criticalDamage =
+            (1 + mod.SelfCriticalDamage[index]) *
+            (1 + mod.AllCriticalDamage) *
+            (1 + mod.CriticalDamageByType[type]);
+
+        bool isCritical = UnityEngine.Random.Range(0, 100) < criticalChance;
+
+        float damage = !isCritical ? (powerPart + typePart) * finalAmp : (powerPart + typePart) * finalAmp * (1 + (criticalDamage + 50) / 100) * (1 + poss);
+        float power = (powerPart + typePart) * finalAmp * (1 + criticalChance / 100 * (criticalDamage + 50) / 100) * (1 + poss);
+
+        return (power, damage, isCritical);
     }
 }
 public class DamageModifier
@@ -112,14 +137,20 @@ public class DamageModifier
     public List<float> SelfPower = new() { 0, 0, 0, 0, 0, 0 };
     public List<float> SelfTypePower = new() { 0, 0, 0, 0, 0, 0 };
     public List<float> SelfFinal = new() { 0, 0, 0, 0, 0, 0 };
+    public List<float> SelfCriticalChance = new() { 0, 0, 0, 0, 0, 0 };
+    public List<float> SelfCriticalDamage = new() { 0, 0, 0, 0, 0, 0 };
 
     public float AllPower;
     public float AllTypePower;
     public float AllFinal;
+    public float AllCriticalChance;
+    public float AllCriticalDamage;
 
     public List<float> PowerByType = new() { 0, 0, 0, 0 };
     public List<float> TypePowerByType = new() { 0, 0, 0, 0 };
     public List<float> FinalByType = new() { 0, 0, 0, 0 };
+    public List<float> CriticalChanceByType = new() { 0, 0, 0, 0 };
+    public List<float> CriticalDamageByType = new() { 0, 0, 0, 0 };
 }
 /*Debug.Log(
             $"[DamageCalculator]\n" +
