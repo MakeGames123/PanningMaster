@@ -73,13 +73,23 @@ public class Player : MonoBehaviour
     {
         bulletIndex = 0;
         enumy.ResetEnumy();
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.Power / 4);
+
+        int stage = DataManager.Instance.stage;
+        float gold = stage
+        * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
+        * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"));
+        DataManager.Instance.IncreaseGold((int)gold);
         StartCoroutine(AttackStart());
     }
     private void Win()
     {
         bulletIndex = 0;
-        DataManager.Instance.IncreaseGold((int)DataManager.Instance.Power / 4);
+        int stage = DataManager.Instance.stage;
+        float gold = stage
+        * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
+        * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"))
+        * GameConfigLoader.Instance.GetFloat("failGoldRatio");
+        DataManager.Instance.IncreaseGold((int)gold);
         StartCoroutine(AttackStart());
     }
 }
