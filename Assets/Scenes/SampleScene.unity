@@ -3371,6 +3371,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf38ac47ad7c874a90cc039cc20d726, type: 3}
+--- !u!1 &345203992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345203994}
+  - component: {fileID: 345203993}
+  m_Layer: 0
+  m_Name: GameConfigLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &345203993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345203992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86995d6db41a30b479e706d54b4099ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &345203994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345203992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2086357909}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345317556
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,6 +8503,7 @@ MonoBehaviour:
   afterLayoutRoot: {fileID: 1148012146}
   revolver: {fileID: 293808659}
   button: {fileID: 280415740}
+  table: {fileID: 2086357916}
   onInfoUpdated:
     m_PersistentCalls:
       m_Calls: []
@@ -14663,6 +14708,7 @@ MonoBehaviour:
   reqText: {fileID: 957563999}
   revolver: {fileID: 293808659}
   panel: {fileID: 969737256}
+  table: {fileID: 2086357916}
   layoutRoot: {fileID: 1780766342}
 --- !u!1001 &1951884117
 PrefabInstance:
@@ -15696,6 +15742,7 @@ Transform:
   - {fileID: 1638845723}
   - {fileID: 1339163681}
   - {fileID: 2050116718}
+  - {fileID: 345203994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2086357916
@@ -15722,6 +15769,7 @@ MonoBehaviour:
   - {fileID: 1638845721}
   - {fileID: 1339163679}
   - {fileID: 2050116716}
+  - {fileID: 345203992}
 --- !u!1001 &2088960970
 PrefabInstance:
   m_ObjectHideFlags: 0

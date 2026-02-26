@@ -28,7 +28,7 @@ public class Enumy : MonoBehaviour
     }
     public void UpgradeEnumy()
     {
-        DataManager.Instance.IncreaseTicket(5);
+        DataManager.Instance.IncreaseTicket(2);
         DataManager.Instance.IncreaseStage();
         maxHp = MonsterHpTableLoader.Instance.GetHP(DataManager.Instance.stage);
         hp = maxHp;

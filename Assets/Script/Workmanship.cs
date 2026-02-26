@@ -14,6 +14,7 @@ public class Workmanship : MonoBehaviour
     [SerializeField] TextMeshProUGUI reqText;
     [SerializeField] RevolverSlots revolver;
     [SerializeField] WorkmanshipPanel panel;
+    [SerializeField] TableLoaderManager table;
     BulletInfo info;
     DamageCalculator calculator = new();
     public RectTransform layoutRoot;
@@ -24,7 +25,7 @@ public class Workmanship : MonoBehaviour
     {
         button.gameObject.SetActive(false);
         panel.onInfoUpdated.AddListener(UpdateInfo);
-        TableLoaderManager.Instance.OnAllTablesLoaded.AddListener(LoadData);
+        table.OnAllTablesLoaded.AddListener(LoadData);
     }
     void LoadData()
     {

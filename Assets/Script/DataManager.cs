@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
-    public int ticket = 100000;
-    public double gold = 100000;
+    public int ticket = 10;
+    public double gold = 0;
     public int stage = 1;
     public int upgradeLevel = 1;
     public float possPower;
@@ -32,7 +32,6 @@ public class DataManager : MonoBehaviour
         }
 
         Instance = this;
-        IncreaseGold(999999);
     }
     void Start()
     {
@@ -40,11 +39,8 @@ public class DataManager : MonoBehaviour
     }
     private void IncreaseTicket()
     {
-        if (ticket < 10)
-        {
-            ticket += 1000000;
-            onTicketChanged.Invoke(ticket);
-        }
+        ticket += 1;
+        onTicketChanged.Invoke(ticket);
 
         Invoke(nameof(IncreaseTicket), 1);
     }

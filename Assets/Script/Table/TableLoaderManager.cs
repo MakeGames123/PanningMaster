@@ -46,7 +46,7 @@ public class TableLoaderManager : MonoBehaviour
 
         if (loadedCount >= loaders.Count)
         {
-            Debug.Log("🔥 All Tables Loaded");
+            Debug.Log("All Tables Loaded");
             OnAllTablesLoaded?.Invoke();
         }
     }

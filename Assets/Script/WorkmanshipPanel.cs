@@ -14,6 +14,7 @@ public class WorkmanshipPanel : MonoBehaviour
     [SerializeField] RectTransform afterLayoutRoot;
     [SerializeField] RevolverSlots revolver;
     [SerializeField] WorkmanshipButton button;
+    [SerializeField] TableLoaderManager table;
     BulletInfo info;
     DamageCalculator calculator = new();
     List<BulletStat> newBulletStats = new();
@@ -35,8 +36,8 @@ public class WorkmanshipPanel : MonoBehaviour
         button.onReroll.AddListener(Reroll);
         button.onRerollStart.AddListener(StartAutoReroll);
         button.onRerollStop.AddListener(StopAutoReroll);
-        
-        TableLoaderManager.Instance.OnAllTablesLoaded.AddListener(LoadData);
+
+        table.OnAllTablesLoaded.AddListener(LoadData);
     }
     public void LoadData()
     {
