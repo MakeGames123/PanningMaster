@@ -6,15 +6,15 @@ public class Enumy : MonoBehaviour
 {
     private float maxHp = 10;
     private float hp = 10;
-    [SerializeField]private Slider slider;
-    [SerializeField]private TextMeshProUGUI text;
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI text;
     public bool Attacked(float damage)
     {
         hp -= damage;
 
         if (hp <= 0)
         {
-            UpgradeEnumy();
+            UpdateUI();
             return true;
         }
 
@@ -23,8 +23,14 @@ public class Enumy : MonoBehaviour
     }
     void UpdateUI()
     {
+        if (hp <= 0) hp = 0;
         slider.value = hp / maxHp;
         text.text = $"{hp:F0}/{maxHp}";
+    }
+    public void HandleEnumy()
+    {
+        if (hp <= 0) UpgradeEnumy();
+        else ResetEnumy();
     }
     public void UpgradeEnumy()
     {

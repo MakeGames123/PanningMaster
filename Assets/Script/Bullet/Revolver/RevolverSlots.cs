@@ -43,7 +43,7 @@ public class RevolverSlots : MonoBehaviour
         {
             revolverInfo.Add(AllBulletList.Instance.GetBullet(content.id));
         }
-        
+
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
         float power = 0;
         for (int i = 0; i < 6; i++)
@@ -52,5 +52,14 @@ public class RevolverSlots : MonoBehaviour
         }
 
         DataManager.Instance.UpdatePower(power);
+    }
+    public bool CheckEmpty()
+    {
+        foreach (RevolverSlotContent content in revolverSlotContents)
+        {
+            if(!content.IsEmpty) return false;
+        }
+
+        return true;
     }
 }

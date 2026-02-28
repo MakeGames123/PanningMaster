@@ -25,7 +25,7 @@ public class AllBulletList : MonoBehaviour
 
         Instance = this;
 
-        foreach(BulletInfoSO so in bulletInfoSOs)
+        foreach (BulletInfoSO so in bulletInfoSOs)
         {
             bulletInfoSODic.Add(so.bulletId, so);
             bulletInfos.Add(so.bulletId, new BulletInfo(bulletInfoSODic[so.bulletId]));
@@ -33,29 +33,36 @@ public class AllBulletList : MonoBehaviour
     }
     public BulletInfo GetBullet(int id)
     {
-        if(id == -1) return null;
+        if (id == -1) return null;
         else return bulletInfos[id];
     }
-    public void DrawBullet(int tier)
+    public (int, bool) DrawBullet(int tier)//id, 탄환 레벨업 여부 반환
     {
         int id = UnityEngine.Random.Range(0, 4) + tier * 4;
         if (bulletInfos.ContainsKey(id))
         {
+            int level = bulletInfos[id].Level;
+
             bulletInfos[id].IncreaseCount(1);
             bulletInfos[id].Level = BulletLevelLoader.Instance.GetLevelByBulletCount(bulletInfos[id].ReturnCount());
+
             onBulletAdded.Invoke(id);
 
             DataManager.Instance.possPower = CalculatePossPower();
 
-            if(bulletInfos[id].Count == 1) inventory.AddBullet(id);
+            if (bulletInfos[id].Count == 1) inventory.AddBullet(id);
+            
+            if (level != bulletInfos[id].Level) return (id, true);
         }
+
+        return (id, false);
     }
     private float CalculatePossPower()
     {
         float power = 0;
         List<float> posses = TierDataLoader.Instance.ReturnColumn(t => t.possScale);
 
-        foreach(BulletInfo info in bulletInfos.Values)
+        foreach (BulletInfo info in bulletInfos.Values)
         {
             power += info.Level * posses[info.infoSO.tier];
         }

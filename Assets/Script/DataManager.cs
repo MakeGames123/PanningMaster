@@ -42,7 +42,7 @@ public class DataManager : MonoBehaviour
         ticket += 1;
         onTicketChanged.Invoke(ticket);
 
-        Invoke(nameof(IncreaseTicket), 1);
+        Invoke(nameof(IncreaseTicket), GameConfigLoader.Instance.GetInt("ticketTimerSec"));
     }
     public bool UseTicket(int amount)
     {

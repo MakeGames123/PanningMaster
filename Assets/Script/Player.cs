@@ -7,9 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] RevolverSlots revolver;
     [SerializeField] Enumy enumy;
     [SerializeField] GameObject bulletLine;
+    [SerializeField] BattleResult battleResult;
     GameObject bulletLineCpy;
     DamageCalculator calculator = new();
     int bulletIndex = 0;
+    Coroutine attackCoroutine = null;
 
     void Start()
     {
@@ -17,13 +19,22 @@ public class Player : MonoBehaviour
     }
     private IEnumerator AttackStart()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
+
         StartCoroutine(PlayerAttack());
     }
     private IEnumerator PlayerAttack()
     {
         while (true)
         {
+            if (revolver.CheckEmpty())
+            {
+                if (attackCoroutine != null) StopCoroutine(attackCoroutine);
+
+                attackCoroutine = StartCoroutine(AttackStart());
+                break;
+            }
+
             if (Attack()) break;
             yield return new WaitForSeconds(0.1f);
         }
@@ -35,7 +46,7 @@ public class Player : MonoBehaviour
             bulletIndex++;
             if (bulletIndex == 6)
             {
-                Lose();
+                StartCoroutine(Lose());
                 return true;
             }
         }
@@ -53,7 +64,7 @@ public class Player : MonoBehaviour
         float damage = calculator.CalculateDamage(revolverInfo[bulletIndex], mod, bulletIndex, DataManager.Instance.possPower).Item2;
         if (enumy.Attacked(damage))
         {
-            Win();
+            StartCoroutine(Win());
             return true;
         }
         else
@@ -61,7 +72,7 @@ public class Player : MonoBehaviour
             bulletIndex++;
             if (bulletIndex == 6)
             {
-                Lose();
+                StartCoroutine(Lose());
                 return true;
             }
         }
@@ -69,27 +80,53 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    private void Lose()
+    private IEnumerator Lose()
     {
-        bulletIndex = 0;
-        enumy.ResetEnumy();
+        yield return new WaitForSeconds(0.5f);
 
-        int stage = DataManager.Instance.stage;
-        float gold = stage
-        * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
-        * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"));
-        DataManager.Instance.IncreaseGold((int)gold);
-        StartCoroutine(AttackStart());
-    }
-    private void Win()
-    {
         bulletIndex = 0;
         int stage = DataManager.Instance.stage;
+
         float gold = stage
         * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
         * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"))
         * GameConfigLoader.Instance.GetFloat("failGoldRatio");
         DataManager.Instance.IncreaseGold((int)gold);
-        StartCoroutine(AttackStart());
+
+        DataManager.Instance.IncreaseTicket(GameConfigLoader.Instance.GetInt("failBaseTickets"));
+
+        battleResult.SetCondition(false, gold);
+
+        if (attackCoroutine != null) StopCoroutine(attackCoroutine);
+
+        attackCoroutine = StartCoroutine(AttackStart());
+
+        yield return new WaitForSeconds(2f);
+
+        enumy.HandleEnumy();
+    }
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        bulletIndex = 0;
+        int stage = DataManager.Instance.stage;
+
+        float gold = stage
+        * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
+        * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"));
+        DataManager.Instance.IncreaseGold((int)gold);
+
+        DataManager.Instance.IncreaseTicket(GameConfigLoader.Instance.GetInt("clearBaseTickets"));
+
+        battleResult.SetCondition(true, gold);
+
+        if (attackCoroutine != null) StopCoroutine(attackCoroutine);
+
+        attackCoroutine = StartCoroutine(AttackStart());
+
+        yield return new WaitForSeconds(2f);
+
+        enumy.HandleEnumy();
     }
 }

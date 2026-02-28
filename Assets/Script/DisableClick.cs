@@ -10,7 +10,7 @@ public class DisableClick : MonoBehaviour, IPointerClickHandler
     public UnityEvent disable;
     public void OnPointerClick(PointerEventData eventData)
     {
-        panel.SetActive(false);
+        if (panel != null) panel.SetActive(false);
         disable.Invoke();
     }
 }

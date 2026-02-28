@@ -8,6 +8,7 @@ public class DrawButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Button button;
     [SerializeField] List<Image> multipleButtons;
+    [SerializeField] DrawResult drawResult;
     public AllBulletList allBulletList;
     List<int> multiple = new() { 1, 10, 50 };
     int multipleIndex = 0;
@@ -24,18 +25,29 @@ public class DrawButton : MonoBehaviour
 
         if (DataManager.Instance.UseTicket(multiple[multipleIndex]))
         {
+            Dictionary<int, DrawInfo> drawResult = new();
+
             for (int i = 0; i < multiple[multipleIndex]; i++)
             {
                 int tier = GetRandomTier(currentData);
+                var result = allBulletList.DrawBullet(tier);
 
-                allBulletList.DrawBullet(tier);
-                drawCount++;
-                if (drawCount >= DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel))
+                int id = result.Item1;
+                bool isLevelUp = result.Item2;
+
+                if (!drawResult.TryGetValue(id, out var info))
                 {
-                    DataManager.Instance.upgradeLevel++;
+                    info = new DrawInfo();
+                    drawResult[id] = info;
                 }
-                UpdateLevelText();
+
+                info.TotalCount++;
+
+                if (isLevelUp)
+                    info.LevelUpCount++;
             }
+
+            if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
         }
     }
     public void ChangeMultiple(int index)
@@ -81,4 +93,9 @@ public class DrawButton : MonoBehaviour
 
         return 0; // 안전 fallback
     }
+}
+public class DrawInfo
+{
+    public int LevelUpCount;
+    public int TotalCount;
 }
