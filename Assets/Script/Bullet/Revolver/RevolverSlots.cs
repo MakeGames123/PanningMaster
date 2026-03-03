@@ -13,7 +13,7 @@ public class RevolverSlots : MonoBehaviour
     List<BulletSlotDrag> slotDrags = new();
     DamageCalculator calculator = new();
     int slotNum;
-    public void Initialize(BulletSlotsRayController rayController, Workmanship workmanship)
+    public void Initialize(BulletSlotsRayController rayController, Forge workmanship)
     {
         slotNum = 6;
 

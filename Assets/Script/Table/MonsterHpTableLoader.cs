@@ -28,7 +28,6 @@ public class MonsterHpTableLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         StartCoroutine(LoadSheet());
     }

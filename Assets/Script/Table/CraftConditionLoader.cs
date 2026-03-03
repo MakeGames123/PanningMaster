@@ -26,7 +26,6 @@ public class CraftConditionLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         StartCoroutine(LoadSheet());
     }

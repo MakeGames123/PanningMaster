@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Workmanship : MonoBehaviour
+public class Forge : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI powerText;
@@ -13,12 +13,12 @@ public class Workmanship : MonoBehaviour
     [SerializeField] Button button;
     [SerializeField] TextMeshProUGUI reqText;
     [SerializeField] RevolverSlots revolver;
-    [SerializeField] WorkmanshipPanel panel;
+    [SerializeField] ForgePanel panel;
     [SerializeField] TableLoaderManager table;
     BulletInfo info;
     DamageCalculator calculator = new();
     public RectTransform layoutRoot;
-    List<int> goldReq = new();
+    List<long> goldReq = new();
     List<string> gradeTexts = new();
     List<string> typeText = new() { "화염", "전기", "얼음", "독" };
     void Awake()
@@ -42,9 +42,9 @@ public class Workmanship : MonoBehaviour
         button.gameObject.SetActive(true);
         UpdateText();
     }
-    public void TryWorkmanship()
+    public void TryForge()
     {
-        if (DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+        if (DataManager.Instance.Gold.Use(GoldUseType.Forge, goldReq[info.infoSO.tier]))
         {
             panel.gameObject.SetActive(true);
             panel.SetCondition(info);

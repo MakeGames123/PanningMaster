@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Net.Sockets;
+using System.Linq;
 
 public class AllBulletList : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class AllBulletList : MonoBehaviour
     }
     public (int, bool) DrawBullet(int tier)//id, 탄환 레벨업 여부 반환
     {
-        int id = UnityEngine.Random.Range(0, 4) + tier * 4;
+        int id = UnityEngine.Random.Range(0, 4) + tier * 4 + 1000;
         if (bulletInfos.ContainsKey(id))
         {
             int level = bulletInfos[id].Level;
@@ -51,11 +52,15 @@ public class AllBulletList : MonoBehaviour
             DataManager.Instance.possPower = CalculatePossPower();
 
             if (bulletInfos[id].Count == 1) inventory.AddBullet(id);
-            
+
             if (level != bulletInfos[id].Level) return (id, true);
         }
 
         return (id, false);
+    }
+    public void LoadRefresh()
+    {
+        inventory.ActiveAll();
     }
     private float CalculatePossPower()
     {

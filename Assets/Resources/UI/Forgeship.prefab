@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 4808368602611273790}
   - component: {fileID: 6332205173690476806}
   m_Layer: 5
-  m_Name: Workmanship
+  m_Name: Forgeship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 7890762136110308181}
   - component: {fileID: 2291490752159811074}
   m_Layer: 5
-  m_Name: WorkmanshipButton
+  m_Name: ForgeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,8 +1085,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6332205173690476806}
-        m_TargetAssemblyTypeName: Workmanship, Assembly-CSharp
-        m_MethodName: TryWorkmanship
+        m_TargetAssemblyTypeName: Forge, Assembly-CSharp
+        m_MethodName: TryForge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1518,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145864277186167006, guid: 7d0fee5341ed18e4386375d76f165123, type: 3}
       propertyPath: m_Name
-      value: WorkmanshipPanel
+      value: ForgePanel
       objectReference: {fileID: 0}
     - target: {fileID: 6627741124054852473, guid: 7d0fee5341ed18e4386375d76f165123, type: 3}
       propertyPath: m_AnchorMax.y

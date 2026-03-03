@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class RevolverSlotContent : BulletSlotContent
 {
     public int index { get; private set; }
-    public bool IsEmpty => id == -1; // 리볼버 슬롯에서만 사용
+    public bool IsEmpty => id == -1; // 리볼버 슬롯에서만 사용 인벤토리 절대 사용 금지
     public Action<int, int> onInfoChanged;
     RevolverSlotUI bulletSlotUI;
     public RevolverSlotContent(int index, IBulletSlot ibulletSlot, RevolverSlotUI bulletSlotUI)

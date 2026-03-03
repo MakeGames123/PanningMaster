@@ -26,7 +26,6 @@ public class GameConfigLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         StartCoroutine(LoadSheet());
     }

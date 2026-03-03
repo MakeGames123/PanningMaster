@@ -16,5 +16,5 @@ MonoBehaviour:
   bulletType: 3
   inventoryImage: {fileID: 21300000, guid: 5ffda5aae6a2f3541aceb772d25db0ef, type: 3}
   tier: 7
-  bulletId: 31
+  bulletId: 1031
   particleID: 0

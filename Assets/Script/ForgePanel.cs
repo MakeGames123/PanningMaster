@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
-public class WorkmanshipPanel : MonoBehaviour
+public class ForgePanel : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> beforeInfoText;
     [SerializeField] RectTransform beforeLayoutRoot;
@@ -13,13 +13,13 @@ public class WorkmanshipPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI afterPowerText;
     [SerializeField] RectTransform afterLayoutRoot;
     [SerializeField] RevolverSlots revolver;
-    [SerializeField] WorkmanshipButton button;
+    [SerializeField] ForgeButton button;
     [SerializeField] TableLoaderManager table;
     BulletInfo info;
     DamageCalculator calculator = new();
     List<BulletStat> newBulletStats = new();
     Coroutine autoRerollRoutine;
-    List<int> goldReq = new();
+    List<long> goldReq = new();
     List<int> slotCounts = new();
     public UnityEvent<int> onInfoUpdated = new();
     float cachedBasePower;
@@ -31,6 +31,8 @@ public class WorkmanshipPanel : MonoBehaviour
     List<string> gradeTexts = new();
     DamageModifier cachedModifier;
     bool isPowerCached;
+    BulletStatGenerator statGenerator = new();
+    long goldUsed = 0;
     void Awake()
     {
         button.onReroll.AddListener(Reroll);
@@ -51,12 +53,14 @@ public class WorkmanshipPanel : MonoBehaviour
         gradeTexts = grade;
 
         conditionData = CraftConditionLoader.Instance.GetAll();
-        Debug.Log(conditionData[1].multiplier);
         statData = StatTableLoader.Instance.statDict;
         weightDict = StatWeightLoader.Instance.weightDict;
+
+        statGenerator.Init(conditionData, statData, weightDict);
     }
     public void SetCondition(BulletInfo info)
     {
+        goldUsed = 0;
         this.info = info;
         GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
@@ -69,6 +73,8 @@ public class WorkmanshipPanel : MonoBehaviour
     public void DisablePanel()
     {
         GetComponent<RectTransform>().anchoredPosition = new Vector2(9999, 0);
+
+        DataManager.Instance.Gold.GoldUseReq(GoldUseType.Forge, goldUsed);
     }
     public void ApplyNewStats()
     {
@@ -86,8 +92,9 @@ public class WorkmanshipPanel : MonoBehaviour
     }
     public void TryReroll()
     {
-        if (DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+        if (DataManager.Instance.Gold.Use(GoldUseType.Forge, goldReq[info.infoSO.tier]))
         {
+            goldUsed += goldReq[info.infoSO.tier];
             Reroll();
         }
     }
@@ -108,8 +115,10 @@ public class WorkmanshipPanel : MonoBehaviour
     {
         while (true)
         {
-            if (!DataManager.Instance.TryUseGold(goldReq[info.infoSO.tier]))
+            if (!DataManager.Instance.Gold.Use(GoldUseType.Forge, goldReq[info.infoSO.tier]))
                 break;
+
+            goldUsed += goldReq[info.infoSO.tier];
 
             RollStats();
 
@@ -133,7 +142,7 @@ public class WorkmanshipPanel : MonoBehaviour
         newBulletStats.Clear();
         for (int i = 0; i < Mathf.Min(slotCounts[info.infoSO.tier], 4); i++)
         {
-            newBulletStats.Add(new BulletStat(info.infoSO.tier, conditionData, statData, weightDict));
+            newBulletStats.Add(statGenerator.Generate(info.infoSO.tier));
         }
     }
     private void UpdateInfoText(List<BulletStat> bulletStats, List<TextMeshProUGUI> infoText, RectTransform layout)

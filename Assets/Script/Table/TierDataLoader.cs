@@ -26,7 +26,6 @@ public class TierDataLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         StartCoroutine(LoadSheet());
     }
@@ -104,7 +103,7 @@ public class TierData
 
     public float baseDmg;
     public int craftSlots;
-    public int craftCost;
+    public long craftCost;
 
     public float lvScale;
     public float possScale;

@@ -23,7 +23,6 @@ public class BulletLevelLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         StartCoroutine(LoadSheet());
     }

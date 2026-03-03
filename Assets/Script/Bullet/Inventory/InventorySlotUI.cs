@@ -11,7 +11,7 @@ public class InventorySlotUI : MonoBehaviour
     [SerializeField] Slider levelGage;
     public void UpdateUI(BulletInfo info, bool isActive)
     {
-        if (info.Count == 0 || !isActive)
+        if ((info.Count == 0 && info.Level == 0) || !isActive)
         {
             bulletImage.sprite = info.infoSO.inventoryImage;
             bulletImage.enabled = true;
@@ -23,6 +23,7 @@ public class InventorySlotUI : MonoBehaviour
         }
         else
         {
+            Debug.Log(info.infoSO.bulletId + " " + info.Count + " " + info.Level);
             bulletImage.sprite = info.infoSO.inventoryImage;
             bulletImage.enabled = true;
             bulletDisabled.enabled = false;

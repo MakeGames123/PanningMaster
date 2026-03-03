@@ -4,7 +4,7 @@ public class BulletSlotsController : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
     [SerializeField] RevolverSlots revolver;
-    [SerializeField] Workmanship workmanship;
+    [SerializeField] Forge workmanship;
     BulletSlotsRayController rayController = new();
     void Awake()
     {

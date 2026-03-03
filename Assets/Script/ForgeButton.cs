@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-public class WorkmanshipButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ForgeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public UnityEvent onRerollStop = new();
     public UnityEvent onRerollStart = new();

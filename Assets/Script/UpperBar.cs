@@ -9,8 +9,8 @@ public class UpperBar : MonoBehaviour
 
     void Start()
     {
-        DataManager.Instance.onTicketChanged.AddListener((val)=>ticketText.text = "티켓:" + val.ToString());
-        DataManager.Instance.onGoldChanged.AddListener((val)=>goldText.text = "골드:" + val.ToString());
+        DataManager.Instance.Ticket.onValueChanged += (val)=>ticketText.text = "티켓:" + val.ToString();
+        DataManager.Instance.Gold.onValueChanged += (val)=>goldText.text = "골드:" + val.ToString();
         DataManager.Instance.onPowerChanged.AddListener((val)=>powerText.text = $"{val:F0}");
     }
 }

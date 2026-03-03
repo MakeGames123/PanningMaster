@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 public enum BulletType
 {
     FlameBullet = 0,
@@ -63,6 +64,40 @@ public class BulletInfo
     {
         return Count;
     }
+    public BulletSaveData ToSaveData()
+    {
+        BulletSaveData data = new BulletSaveData();
+        data.bulletId = infoSO.bulletId;
+        data.level = Level;
+        data.count = Count;
+        data.stats = stats
+            .Select(s => new BulletStat(
+                s.target,
+                s.reward,
+                s.rewardCoef,
+                s.targetCoef,
+                s.statTier))
+            .ToList();
+
+        return data;
+    }
+    public static BulletInfo FromSaveData(
+    BulletSaveData save,
+    BulletInfoSO so)
+    {
+        BulletInfo info = new BulletInfo(so);
+        info.Level = save.level;
+        info.Count = save.count;
+
+        foreach (var s in save.stats)
+        {
+            BulletStat stat = new BulletStat(s.target, s.reward, s.rewardCoef, s.targetCoef, s.statTier);
+
+            info.stats.Add(stat);
+        }
+
+        return info;
+    }
 }
 public static class BulletStatText
 {
@@ -106,8 +141,3 @@ public static class BulletStatText
         }
     }
 }
-/*
-
-
-
-*/

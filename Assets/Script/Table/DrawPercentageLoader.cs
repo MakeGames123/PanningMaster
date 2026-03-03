@@ -23,7 +23,6 @@ public class DrawPercentageLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLoad());
     }
     public IEnumerator StartLoad()

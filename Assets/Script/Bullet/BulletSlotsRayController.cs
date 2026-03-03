@@ -25,7 +25,7 @@ public class BulletSlotsRayController
     {
         foreach (RevolverSlotContent content in slotContents)
         {
-            if (content.IsEmpty) content.ibulletSlot.ChangeRaycast(false);
+            if (content.IsEmpty || AllBulletList.Instance.GetBullet(content.id).Count == 0) content.ibulletSlot.ChangeRaycast(false);
         }
     }
 }

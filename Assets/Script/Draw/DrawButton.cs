@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class DrawButton : MonoBehaviour
 {
@@ -20,35 +23,117 @@ public class DrawButton : MonoBehaviour
     }
     public void DrawBullet()
     {
-        int level = DataManager.Instance.upgradeLevel;
+        int level = DataManager.Instance.drawLevel;
         DrawData currentData = DrawPercentageLoader.Instance.ReturnData(level);
 
-        if (DataManager.Instance.UseTicket(multiple[multipleIndex]))
-        {
-            Dictionary<int, DrawInfo> drawResult = new();
-
-            for (int i = 0; i < multiple[multipleIndex]; i++)
-            {
-                int tier = GetRandomTier(currentData);
-                var result = allBulletList.DrawBullet(tier);
-
-                int id = result.Item1;
-                bool isLevelUp = result.Item2;
-
-                if (!drawResult.TryGetValue(id, out var info))
+        DrawBullet(multiple[multipleIndex]);
+        /*
+                if (DataManager.Instance.UseTicket(multiple[multipleIndex]))
                 {
-                    info = new DrawInfo();
-                    drawResult[id] = info;
+                    Dictionary<int, DrawInfo> drawResult = new();
+
+                    for (int i = 0; i < multiple[multipleIndex]; i++)
+                    {
+                        int tier = GetRandomTier(currentData);
+                        var result = allBulletList.DrawBullet(tier);
+
+                        int id = result.Item1;
+                        bool isLevelUp = result.Item2;
+
+                        if (!drawResult.TryGetValue(id, out var info))
+                        {
+                            info = new DrawInfo();
+                            drawResult[id] = info;
+                        }
+
+                        info.TotalCount++;
+
+                        if (isLevelUp)
+                            info.LevelUpCount++;
+                    }
+
+                    if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
                 }
+                */
+    }
+    public void DrawBullet(int drawCount)
+    {
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = "DrawBullet",
+            FunctionParameter = new
+            {
+                drawCount = 3
+            },
+            GeneratePlayStreamEvent = true
+        };
 
-                info.TotalCount++;
+        PlayFabClientAPI.ExecuteCloudScript(
+            request,
+            OnDrawSuccess,
+            OnDrawError);
+    }
+    private void OnDrawSuccess(ExecuteCloudScriptResult result)
+    {
+        if (result.FunctionResult == null)
+        {
+            Debug.LogError("DrawBullet: FunctionResult is null");
+            return;
+        }
 
-                if (isLevelUp)
-                    info.LevelUpCount++;
+        var dict = result.FunctionResult as IDictionary<string, object>;
+
+        if (dict == null)
+        {
+            Debug.LogError("DrawBullet: Result cast failed");
+            return;
+        }
+
+        if (dict.ContainsKey("error"))
+        {
+            Debug.LogError("Draw Failed: " + result.FunctionResult);
+            return;
+        }
+
+        DataManager.Instance.drawLevel = System.Convert.ToInt32(dict["drawLevel"]);
+        DataManager.Instance.Ticket.ResetMinusPending(TicketUseType.Draw);
+
+        Debug.Log("Draw Success");
+        var resultList = dict["results"] as IList<object>;
+        Dictionary<int, DrawInfo> drawResult = new();
+
+        foreach (var item in resultList)
+        {
+            var entry = item as IDictionary<string, object>;
+
+            int bulletId = System.Convert.ToInt32(entry["bulletId"]);
+            int gained = System.Convert.ToInt32(entry["gained"]);
+            int finalCount = System.Convert.ToInt32(entry["finalCount"]);
+            int finalLevel = System.Convert.ToInt32(entry["finalLevel"]);
+
+            if (!drawResult.TryGetValue(bulletId, out var info))
+            {
+                info = new DrawInfo
+                {
+                    Gained = gained,
+                    Count = finalCount,
+                    Level = finalLevel
+                };
+                drawResult[bulletId] = info;
             }
 
-            if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
+            Debug.Log($"ID: {bulletId} Count: {finalCount} Level: {finalLevel}");
         }
+
+        if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
+
+        // TODO:
+        // 여기서 UI 반영, 연출, 인벤 갱신 등 처리
+    }
+
+    private void OnDrawError(PlayFabError error)
+    {
+        Debug.LogError("CloudScript Error: " + error.GenerateErrorReport());
     }
     public void ChangeMultiple(int index)
     {
@@ -62,40 +147,14 @@ public class DrawButton : MonoBehaviour
     }
     void UpdateLevelText()
     {
-        int currentCount = drawCount - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel - 1);
-        int req = DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel) - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.upgradeLevel - 1);
-        levelText.text = $"Lv.{DataManager.Instance.upgradeLevel} {currentCount}/{req}";
-    }
-    int GetRandomTier(DrawData data)
-    {
-        List<float> weights = data.weights;
-
-        float totalWeight = 0;
-        for (int i = 0; i < weights.Count; i++)
-        {
-            totalWeight += weights[i];
-        }
-
-        if (totalWeight <= 0)
-            return 0;
-
-        float rand = Random.Range(0f, totalWeight);
-
-
-        float cumulative = 0;
-        for (int i = 0; i < weights.Count; i++)
-        {
-            cumulative += weights[i];
-
-            if (rand < cumulative)
-                return i;   // 리스트 index = tier
-        }
-
-        return 0; // 안전 fallback
+        int currentCount = drawCount - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel - 1);
+        int req = DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel) - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel - 1);
+        levelText.text = $"Lv.{DataManager.Instance.drawLevel} {currentCount}/{req}";
     }
 }
 public class DrawInfo
 {
-    public int LevelUpCount;
-    public int TotalCount;
+    public int Level;
+    public int Count;
+    public int Gained;
 }

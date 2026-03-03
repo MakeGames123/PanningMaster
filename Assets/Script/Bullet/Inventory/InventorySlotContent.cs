@@ -32,7 +32,7 @@ public class InventorySlotContent : BulletSlotContent
 
         BulletInfo info = AllBulletList.Instance.GetBullet(id);
 
-        if (info.Count > 0 && isActive)
+        if ((info.Count > 0 || info.Level > 0) && isActive)
         {
             ibulletSlot.ChangeRaycast(true);
         }

@@ -23,7 +23,6 @@ public class DrawLevelUpLoader : MonoBehaviour, ITableLoader
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         StartCoroutine(LoadSheet());
     }
 
