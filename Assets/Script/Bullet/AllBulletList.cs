@@ -12,7 +12,7 @@ public class AllBulletList : MonoBehaviour
     public List<BulletInfoSO> bulletInfoSOs = new();
     public Dictionary<int, BulletInfoSO> bulletInfoSODic = new();
     public Dictionary<int, BulletInfo> bulletInfos = new();
-    public UnityEvent<int> onBulletAdded;
+    public UnityEvent<int> onBulletChanged;
     public Inventory inventory;
 
     private void Awake()
@@ -37,30 +37,21 @@ public class AllBulletList : MonoBehaviour
         if (id == -1) return null;
         else return bulletInfos[id];
     }
-    public (int, bool) DrawBullet(int tier)//id, 탄환 레벨업 여부 반환
-    {
-        int id = UnityEngine.Random.Range(0, 4) + tier * 4 + 1000;
-        if (bulletInfos.ContainsKey(id))
-        {
-            int level = bulletInfos[id].Level;
-
-            bulletInfos[id].IncreaseCount(1);
-            bulletInfos[id].Level = BulletLevelLoader.Instance.GetLevelByBulletCount(bulletInfos[id].ReturnCount());
-
-            onBulletAdded.Invoke(id);
-
-            DataManager.Instance.possPower = CalculatePossPower();
-
-            if (bulletInfos[id].Count == 1) inventory.AddBullet(id);
-
-            if (level != bulletInfos[id].Level) return (id, true);
-        }
-
-        return (id, false);
-    }
     public void LoadRefresh()
     {
-        inventory.ActiveAll();
+        foreach (BulletInfo info in bulletInfos.Values)
+        {
+            onBulletChanged.Invoke(info.infoSO.bulletId);
+        }
+    }
+    public void AddBullet(DrawInfo drawInfo)
+    {
+        BulletInfo bulletInfo = bulletInfos[drawInfo.Id];
+
+        bulletInfo.Level = drawInfo.Level;
+        bulletInfo.Count = drawInfo.Count;
+
+        onBulletChanged.Invoke(drawInfo.Id);
     }
     private float CalculatePossPower()
     {

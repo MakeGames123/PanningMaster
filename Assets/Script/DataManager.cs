@@ -15,7 +15,7 @@ public class DataManager : MonoBehaviour
     public TicketData Ticket = new();
     public GoldData Gold = new();
     public int stage = 1;
-    public int drawLevel = 1;
+    public DrawLevelData drawData;
     public float possPower;
     private float power;
     public float Power
@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
         set { power = value; }
     }
 
+    public UnityEvent onDrawDataChanged = new();
     public UnityEvent<int> onStageChanged = new();
     public UnityEvent<double> onPowerChanged = new();
     public PlayFabLoginManager login;

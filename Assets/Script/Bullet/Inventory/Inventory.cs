@@ -16,9 +16,9 @@ public class Inventory : MonoBehaviour
 
             InventorySlotContent content = new InventorySlotContent(i + 1000, slotDrags[i], slotUIs[i]);
             slotContents.Add(content);
-            content.ChangeActive(false);
+            content.ChangeActive(true);
 
-            AllBulletList.Instance.onBulletAdded.AddListener(content.RefreshInfo);
+            AllBulletList.Instance.onBulletChanged.AddListener(content.RefreshInfo);
             rayController.AddSlot(content);
 
             slotDrags[i].Initialize(content);
@@ -33,17 +33,6 @@ public class Inventory : MonoBehaviour
             {
                 slotContents[i].ChangeActive(true);
                 return;
-            }
-        }
-    }
-    public void ActiveAll()//탄환 로드후 호출
-    {
-        for (int i = 0; i < slots.Count; i++)
-        {
-            BulletInfo info = AllBulletList.Instance.bulletInfos[slotContents[i].id];
-            if (info.Count > 0 || info.Level > 0)
-            {
-                slotContents[i].ChangeActive(true);
             }
         }
     }

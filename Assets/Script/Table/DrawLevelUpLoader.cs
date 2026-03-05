@@ -72,29 +72,13 @@ public class DrawLevelUpLoader : MonoBehaviour, ITableLoader
         Debug.Log($"LevelUpData Loaded: {dataDict.Count}");
     }
 
-    public LevelUpData GetData(int fromLv)
+    public int GetReqData(int fromLv)
     {
         if (dataDict.TryGetValue(fromLv, out var data))
-            return data;
+            return data.RequiredXP;
 
         Debug.LogWarning($"LevelUpData 없음: {fromLv}");
-        return null;
-    }
-
-    public int GetRequiredXP(int fromLv)
-    {
-        if (fromLv < 0) return 0;
-        int total = 0;
-
-        for (int lv = 1; lv <= fromLv; lv++)
-        {
-            if (dataDict.TryGetValue(lv, out var data))
-            {
-                total += data.RequiredXP;
-            }
-        }
-
-        return total;
+        return 0;
     }
 }
 [System.Serializable]

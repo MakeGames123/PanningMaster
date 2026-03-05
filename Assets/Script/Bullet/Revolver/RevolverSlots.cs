@@ -26,7 +26,7 @@ public class RevolverSlots : MonoBehaviour
             revolverSlotContents.Add(content);
             content.RefreshUI();
 
-            AllBulletList.Instance.onBulletAdded.AddListener(content.RefreshInfo);
+            AllBulletList.Instance.onBulletChanged.AddListener(content.RefreshInfo);
             rayController.AddSlot(content);
 
             slotDrags[i].Initialize(content);

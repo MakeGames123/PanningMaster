@@ -12,49 +12,14 @@ public class DrawButton : MonoBehaviour
     [SerializeField] Button button;
     [SerializeField] List<Image> multipleButtons;
     [SerializeField] DrawResult drawResult;
-    public AllBulletList allBulletList;
+    public DataManager dataManager;//이벤트 할당용
     List<int> multiple = new() { 1, 10, 50 };
     int multipleIndex = 0;
-    int drawCount = 0;
     void Awake()
     {
-        button.onClick.AddListener(DrawBullet);
+        dataManager.onDrawDataChanged.AddListener(UpdateLevelText);
+        button.onClick.AddListener(() => DrawBullet(multiple[multipleIndex]));
         ChangeMultiple(0);
-    }
-    public void DrawBullet()
-    {
-        int level = DataManager.Instance.drawLevel;
-        DrawData currentData = DrawPercentageLoader.Instance.ReturnData(level);
-
-        DrawBullet(multiple[multipleIndex]);
-        /*
-                if (DataManager.Instance.UseTicket(multiple[multipleIndex]))
-                {
-                    Dictionary<int, DrawInfo> drawResult = new();
-
-                    for (int i = 0; i < multiple[multipleIndex]; i++)
-                    {
-                        int tier = GetRandomTier(currentData);
-                        var result = allBulletList.DrawBullet(tier);
-
-                        int id = result.Item1;
-                        bool isLevelUp = result.Item2;
-
-                        if (!drawResult.TryGetValue(id, out var info))
-                        {
-                            info = new DrawInfo();
-                            drawResult[id] = info;
-                        }
-
-                        info.TotalCount++;
-
-                        if (isLevelUp)
-                            info.LevelUpCount++;
-                    }
-
-                    if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
-                }
-                */
     }
     public void DrawBullet(int drawCount)
     {
@@ -63,7 +28,7 @@ public class DrawButton : MonoBehaviour
             FunctionName = "DrawBullet",
             FunctionParameter = new
             {
-                drawCount = 3
+                drawCount = drawCount
             },
             GeneratePlayStreamEvent = true
         };
@@ -95,10 +60,11 @@ public class DrawButton : MonoBehaviour
             return;
         }
 
-        DataManager.Instance.drawLevel = System.Convert.ToInt32(dict["drawLevel"]);
+        DataManager.Instance.drawData.drawLevel = System.Convert.ToInt32(dict["drawLevel"]);
+        DataManager.Instance.drawData.drawExp = System.Convert.ToInt32(dict["drawExp"]);
         DataManager.Instance.Ticket.ResetMinusPending(TicketUseType.Draw);
 
-        Debug.Log("Draw Success");
+        //Debug.Log("Draw Success");
         var resultList = dict["results"] as IList<object>;
         Dictionary<int, DrawInfo> drawResult = new();
 
@@ -115,6 +81,7 @@ public class DrawButton : MonoBehaviour
             {
                 info = new DrawInfo
                 {
+                    Id = bulletId,
                     Gained = gained,
                     Count = finalCount,
                     Level = finalLevel
@@ -122,13 +89,17 @@ public class DrawButton : MonoBehaviour
                 drawResult[bulletId] = info;
             }
 
-            Debug.Log($"ID: {bulletId} Count: {finalCount} Level: {finalLevel}");
+            //Debug.Log($"ID: {bulletId} Count: {finalCount} Level: {finalLevel}");
         }
 
         if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
 
-        // TODO:
-        // 여기서 UI 반영, 연출, 인벤 갱신 등 처리
+        foreach (var data in drawResult.Values) //뽑기 결과에서 기존 인포값 사용해야 하므로 연출 뒤에 인포 갱신
+        {
+            AllBulletList.Instance.AddBullet(data);
+        }
+
+        UpdateLevelText();
     }
 
     private void OnDrawError(PlayFabError error)
@@ -147,13 +118,13 @@ public class DrawButton : MonoBehaviour
     }
     void UpdateLevelText()
     {
-        int currentCount = drawCount - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel - 1);
-        int req = DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel) - DrawLevelUpLoader.Instance.GetRequiredXP(DataManager.Instance.drawLevel - 1);
-        levelText.text = $"Lv.{DataManager.Instance.drawLevel} {currentCount}/{req}";
+        int req = DrawLevelUpLoader.Instance.GetReqData(DataManager.Instance.drawData.drawLevel);
+        levelText.text = $"Lv.{DataManager.Instance.drawData.drawLevel} {DataManager.Instance.drawData.drawExp}/{req}";
     }
 }
 public class DrawInfo
 {
+    public int Id;
     public int Level;
     public int Count;
     public int Gained;

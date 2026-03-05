@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class InventorySlotContent : BulletSlotContent
 {
     InventorySlotUI bulletSlotUI;
-    private bool isActive = true;//사용 가능한지
+    private bool isActive = true;//리볼버 슬롯에 등록 여부
     public InventorySlotContent(int newId, IBulletSlot ibulletSlot, InventorySlotUI bulletSlotUI)
     {
         id = newId;

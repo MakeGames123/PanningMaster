@@ -81,13 +81,10 @@ public class BulletLevelLoader : MonoBehaviour, ITableLoader
 
         Debug.Log($"LevelTable Expanded Loaded: {levelList.Count}");
     }
-    public void GetProgress(int totalCount, out int current, out int required)
+    public void GetProgress(int level, out int required)
     {
         LevelData currentLevel = null;
-        int level = GetLevelByBulletCount(totalCount);
         currentLevel = levelList[level];
-
-        current = totalCount - levelList[level - 1].cumulativeXP;
         required = currentLevel.requiredXP;
     }
     public int GetLevelByBulletCount(int bulletCount)

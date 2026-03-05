@@ -13,7 +13,7 @@ public class UpgradePanel : MonoBehaviour
 
     void OnEnable()
     {
-        int level = DataManager.Instance.drawLevel;
+        int level = DataManager.Instance.drawData.drawLevel;
         index = level - 1;
 
         UpdateUI();

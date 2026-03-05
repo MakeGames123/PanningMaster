@@ -26,18 +26,17 @@ public class RevolverSlotUI : MonoBehaviour
 
             int level = info.Level;
 
-            int current;
             int req;
 
-            BulletLevelLoader.Instance.GetProgress(info.Count, out current, out req);
+            BulletLevelLoader.Instance.GetProgress(info.Level, out req);
 
-            gageText.text = $"{current}/{req}";
+            gageText.text = $"{info.Count}/{req}";
             gageText.enabled = true;
 
             levelText.text = "Lv." + level.ToString();
             levelText.enabled = true;
 
-            levelGage.value = (float)current / req;
+            levelGage.value = (float)info.Count / req;
             levelGage.gameObject.SetActive(true);
         }
     }

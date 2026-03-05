@@ -10,43 +10,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] AllBulletList allBulletList;
 
     private const string BULLET_SAVE_KEY = "BulletInventory";
-
-    #region Save
-
-    public void SaveBulletsToServer()
-    {
-        List<BulletSaveData> saveList = new List<BulletSaveData>();
-
-        foreach (var bullet in allBulletList.bulletInfos.Values)
-        {
-            // Count가 0인 건 굳이 저장 안 해도 됨 (선택)
-            if (bullet.Count <= 0)
-                continue;
-
-            saveList.Add(bullet.ToSaveData());
-        }
-
-        BulletInventoryWrapper wrapper = new BulletInventoryWrapper
-        {
-            bullets = saveList
-        };
-
-        string json = JsonUtility.ToJson(wrapper);
-
-        var request = new UpdateUserDataRequest
-        {
-            Data = new Dictionary<string, string>
-            {
-                { BULLET_SAVE_KEY, json }
-            }
-        };
-
-        PlayFabClientAPI.UpdateUserData(request,
-            result => Debug.Log("Bullet Save Success"),
-            error => Debug.LogError("Bullet Save Failed: " + error.GenerateErrorReport()));
-    }
-
-    #endregion
+    private const string DRAW_LEVEL_KEY = "DrawLevelData";
 
     #region Load
 
@@ -57,6 +21,7 @@ public class SaveManager : MonoBehaviour
         PlayFabClientAPI.GetUserData(request,
             result =>
             {
+                // BulletInventory 로드
                 if (result.Data != null && result.Data.ContainsKey(BULLET_SAVE_KEY))
                 {
                     string json = result.Data[BULLET_SAVE_KEY].Value;
@@ -65,6 +30,17 @@ public class SaveManager : MonoBehaviour
                         JsonUtility.FromJson<BulletInventoryWrapper>(json);
 
                     ApplyLoadedData(wrapper);
+                }
+
+                // DrawLevelData 로드
+                if (result.Data != null && result.Data.ContainsKey(DRAW_LEVEL_KEY))
+                {
+                    string json = result.Data[DRAW_LEVEL_KEY].Value;
+
+                    DrawLevelData drawData =
+                        JsonUtility.FromJson<DrawLevelData>(json);
+
+                    ApplyDrawLevel(drawData);
                 }
 
                 //onComplete?.Invoke();
@@ -93,13 +69,27 @@ public class SaveManager : MonoBehaviour
         allBulletList.LoadRefresh();
     }
 
+    private void ApplyDrawLevel(DrawLevelData data)
+    {
+        Debug.Log(data.drawLevel);
+        if (data == null)
+            return;
+
+        DataManager.Instance.drawData.drawLevel = data.drawLevel;
+        DataManager.Instance.drawData.drawExp = data.drawExp;
+
+        DataManager.Instance.onDrawDataChanged.Invoke();
+    }
+
     #endregion
 }
+
 [Serializable]
 public class BulletInventoryWrapper
 {
     public List<BulletSaveData> bullets;
 }
+
 [Serializable]
 public class BulletSaveData
 {
@@ -107,4 +97,11 @@ public class BulletSaveData
     public int level;
     public int count;
     public List<BulletStat> stats;
+}
+
+[Serializable]
+public class DrawLevelData
+{
+    public int drawLevel;
+    public int drawExp;
 }
