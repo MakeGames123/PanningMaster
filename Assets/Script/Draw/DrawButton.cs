@@ -75,16 +75,19 @@ public class DrawButton : MonoBehaviour
             int bulletId = System.Convert.ToInt32(entry["bulletId"]);
             int gained = System.Convert.ToInt32(entry["gained"]);
             int finalCount = System.Convert.ToInt32(entry["finalCount"]);
-            int finalLevel = System.Convert.ToInt32(entry["finalLevel"]);
 
             if (!drawResult.TryGetValue(bulletId, out var info))
             {
+                //갱신 전 기존 레벨과 최종 카운트 기준 새 레벨을 비교해 상승 폭 계산
+                int oldLevel = AllBulletList.Instance.bulletInfos[bulletId].Level;
+                int newLevel = BulletLevelLoader.Instance.GetLevelByBulletCount(finalCount);
+
                 info = new DrawInfo
                 {
                     Id = bulletId,
                     Gained = gained,
                     Count = finalCount,
-                    Level = finalLevel
+                    LevelUp = newLevel - oldLevel,
                 };
                 drawResult[bulletId] = info;
             }
@@ -92,12 +95,12 @@ public class DrawButton : MonoBehaviour
             //Debug.Log($"ID: {bulletId} Count: {finalCount} Level: {finalLevel}");
         }
 
-        if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
-
-        foreach (var data in drawResult.Values) //뽑기 결과에서 기존 인포값 사용해야 하므로 연출 뒤에 인포 갱신
+        foreach (var data in drawResult.Values) //인포를 먼저 안전하게 갱신, 연출은 LevelUp으로 역산 처리
         {
-            AllBulletList.Instance.AddBullet(data);
+            AllBulletList.Instance.UpdateBullet(data);
         }
+
+        if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
 
         UpdateLevelText();
     }
@@ -122,10 +125,10 @@ public class DrawButton : MonoBehaviour
         levelText.text = $"Lv.{DataManager.Instance.drawData.drawLevel} {DataManager.Instance.drawData.drawExp}/{req}";
     }
 }
-public class DrawInfo
+public struct DrawInfo
 {
     public int Id;
-    public int Level;
     public int Count;
     public int Gained;
+    public int LevelUp; //이번 뽑기로 오른 레벨 수 (0이면 레벨업 없음)
 }

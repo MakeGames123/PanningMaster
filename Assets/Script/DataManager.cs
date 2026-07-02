@@ -16,11 +16,16 @@ public class DataManager : MonoBehaviour
     public GoldData Gold = new();
     public int stage = 1;
     public DrawLevelData drawData;
-    public float possPower;
+    private float possPower;
+    public float PossPower
+    {
+        get { return possPower; }
+        set { possPower = value; }
+    }
     private float power;
     public float Power
     {
-        get { return power * (possPower + 1); }
+        get { return power * (PossPower + 1); }
         set { power = value; }
     }
 
@@ -75,6 +80,12 @@ public class DataManager : MonoBehaviour
     {
         this.Power = power;
         onPowerChanged.Invoke(power);
+    }
+    public void UpdatePossPower(float power)
+    {
+        float tmp = PossPower;
+        this.PossPower = power;
+        if(tmp != PossPower) onPowerChanged.Invoke(Power);
     }
     private IEnumerator SyncCycle()
     {

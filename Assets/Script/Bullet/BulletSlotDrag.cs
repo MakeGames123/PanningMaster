@@ -22,13 +22,14 @@ public class BulletSlotDrag : MonoBehaviour,
     public Image clickArea;
     private Transform bulletUIDragSlot;
     private Image bulletUIDragSlotUI;
-    public UnityEvent<int> onClick = new();
     private Inventory inventory;
+    private BulletLowPanel lowPanel;
 
     public void Initialize(BulletSlotContent slotContent)
     {
         inventory = FindAnyObjectByType<Inventory>();
         bulletUIDragSlot = GameObject.Find("DragSlot").transform;
+        lowPanel = FindFirstObjectByType<BulletLowPanel>();
         bulletUIDragSlotUI = bulletUIDragSlot.GetComponent<Image>();
         content = slotContent;
         originPos = transform.position;
@@ -87,7 +88,7 @@ public class BulletSlotDrag : MonoBehaviour,
                 revolverSlot.UpdateBulletInfo(-1);
             }
             
-            inventory.AddBullet(id);
+            inventory.ReturnBullet(id);
         }
     }
 
@@ -98,6 +99,7 @@ public class BulletSlotDrag : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        onClick?.Invoke(content.id);
+        lowPanel.gameObject.SetActive(true);
+        lowPanel.UpdateUI(content.id);
     }
 }

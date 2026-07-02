@@ -84,7 +84,7 @@ public class DamageCalculator
                 break;
 
             case RewardType.CriticalDamageIncrease:
-                if (type == -1) mod.SelfFinal[index] += value;
+                if (type == -1) mod.SelfCriticalDamage[index] += value;
                 else if (type == -2) mod.AllCriticalDamage += value;
                 else mod.CriticalDamageByType[type] += value;
                 break;
@@ -120,8 +120,8 @@ public class DamageCalculator
         criticalChance = Mathf.Min(100, criticalChance);
 
         float criticalDamage =
-            (1 + mod.SelfCriticalDamage[index]) *
-            (1 + mod.AllCriticalDamage) *
+            (1 + mod.SelfCriticalDamage[index]) +
+            (1 + mod.AllCriticalDamage) +
             (1 + mod.CriticalDamageByType[type]);
 
         bool isCritical = UnityEngine.Random.Range(0, 100) < criticalChance;

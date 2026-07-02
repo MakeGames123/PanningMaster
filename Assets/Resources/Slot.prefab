@@ -149,9 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickArea: {fileID: 3342781680871976936}
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3342781680871976936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -74, y: 65}
+  m_AnchoredPosition: {x: 0, y: 56}
   m_SizeDelta: {x: 56.0545, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7558078494273847609
@@ -282,8 +279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -599,10 +596,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 282564178903176922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.4, y: -45.296}
-  m_SizeDelta: {x: -60.9159, y: -130.5923}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -36}
+  m_SizeDelta: {x: 89.0841, y: 19.4077}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9153745838433719838
 CanvasRenderer:
@@ -666,7 +663,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -871,8 +868,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

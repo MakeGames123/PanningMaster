@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Net.Sockets;
 using System.Linq;
+using Unity.Android.Gradle.Manifest;
 
 public class AllBulletList : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class AllBulletList : MonoBehaviour
     public Dictionary<int, BulletInfo> bulletInfos = new();
     public UnityEvent<int> onBulletChanged;
     public Inventory inventory;
+    public TableLoaderManager table;
+    List<float> posses;
 
     private void Awake()
     {
@@ -31,7 +34,16 @@ public class AllBulletList : MonoBehaviour
             bulletInfoSODic.Add(so.bulletId, so);
             bulletInfos.Add(so.bulletId, new BulletInfo(bulletInfoSODic[so.bulletId]));
         }
+
+        table = FindFirstObjectByType<TableLoaderManager>();
+
+        table.OnAllTablesLoaded.AddListener(LoadData);
     }
+    public void LoadData()
+    {
+        posses = TierDataLoader.Instance.ReturnColumn(t => t.possScale);
+    }
+
     public BulletInfo GetBullet(int id)
     {
         if (id == -1) return null;
@@ -41,22 +53,37 @@ public class AllBulletList : MonoBehaviour
     {
         foreach (BulletInfo info in bulletInfos.Values)
         {
+            info.Level = BulletLevelLoader.Instance.GetLevelByBulletCount(info.Count);
             onBulletChanged.Invoke(info.infoSO.bulletId);
         }
     }
-    public void AddBullet(DrawInfo drawInfo)
+    //뽑기외에 탄환 정보 업데이트
+    public void UpdateBullet(BulletInfo info)
+    {
+        BulletInfo bulletInfo = bulletInfos[info.infoSO.bulletId];
+
+        bulletInfo.Count = info.Count;
+
+        bulletInfo.Level = BulletLevelLoader.Instance.GetLevelByBulletCount(bulletInfo.Count);
+
+        onBulletChanged.Invoke(info.infoSO.bulletId);
+    }
+    //뽑기에서 적용
+    public void UpdateBullet(DrawInfo drawInfo)
     {
         BulletInfo bulletInfo = bulletInfos[drawInfo.Id];
 
-        bulletInfo.Level = drawInfo.Level;
         bulletInfo.Count = drawInfo.Count;
+
+        bulletInfo.Level = BulletLevelLoader.Instance.GetLevelByBulletCount(bulletInfo.Count);
+
+        DataManager.Instance.UpdatePossPower(CalculatePossPower());
 
         onBulletChanged.Invoke(drawInfo.Id);
     }
     private float CalculatePossPower()
     {
         float power = 0;
-        List<float> posses = TierDataLoader.Instance.ReturnColumn(t => t.possScale);
 
         foreach (BulletInfo info in bulletInfos.Values)
         {
@@ -65,4 +92,5 @@ public class AllBulletList : MonoBehaviour
 
         return power;
     }
+
 }

@@ -59,15 +59,18 @@ public class BulletLevelLoader : MonoBehaviour, ITableLoader
             int required = TableLoaderTool.ToInt(cols[2]);
 
             // from ~ to 구간을 레벨 단위로 확장
+            // 시트의 requiredXP는 구간 상한(마지막 레벨 to-1 -> to)의 요구치이므로,
+            // 구간 안에서는 레벨이 낮을수록 1씩 줄여서 램프 형태로 풀어준다.
             for (int lv = from; lv < to; lv++)
             {
-                cumulative += required;
+                int req = required - (to - 1 - lv);
+                cumulative += req;
 
                 LevelData data = new LevelData
                 {
                     fromLv = lv,
                     toLv = lv + 1,
-                    requiredXP = required,
+                    requiredXP = req,
                     cumulativeXP = cumulative
                 };
 
@@ -81,11 +84,10 @@ public class BulletLevelLoader : MonoBehaviour, ITableLoader
 
         Debug.Log($"LevelTable Expanded Loaded: {levelList.Count}");
     }
-    public void GetProgress(int level, out int required)
+    public void GetProgress(int level, out (int, int) data)
     {
-        LevelData currentLevel = null;
-        currentLevel = levelList[level];
-        required = currentLevel.requiredXP;
+        data.Item1 = levelList[level].requiredXP;
+        data.Item2 = level == 0 ? 0 : levelList[level - 1].cumulativeXP;
     }
     public int GetLevelByBulletCount(int bulletCount)
     {

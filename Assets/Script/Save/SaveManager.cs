@@ -36,7 +36,7 @@ public class SaveManager : MonoBehaviour
                 if (result.Data != null && result.Data.ContainsKey(DRAW_LEVEL_KEY))
                 {
                     string json = result.Data[DRAW_LEVEL_KEY].Value;
-
+                    
                     DrawLevelData drawData =
                         JsonUtility.FromJson<DrawLevelData>(json);
 
@@ -71,7 +71,6 @@ public class SaveManager : MonoBehaviour
 
     private void ApplyDrawLevel(DrawLevelData data)
     {
-        Debug.Log(data.drawLevel);
         if (data == null)
             return;
 

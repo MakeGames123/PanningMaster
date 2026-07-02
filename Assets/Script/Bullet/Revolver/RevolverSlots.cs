@@ -13,7 +13,8 @@ public class RevolverSlots : MonoBehaviour
     List<BulletSlotDrag> slotDrags = new();
     DamageCalculator calculator = new();
     int slotNum;
-    public void Initialize(BulletSlotsRayController rayController, Forge workmanship)
+    bool suppressPowerUpdate; //자동장착 등 일괄 변경 중 전투력 연쇄 갱신 억제
+    public void Initialize(BulletSlotsRayController rayController)
     {
         slotNum = 6;
 
@@ -30,7 +31,6 @@ public class RevolverSlots : MonoBehaviour
             rayController.AddSlot(content);
 
             slotDrags[i].Initialize(content);
-            slotDrags[i].onClick.AddListener(workmanship.UpdateInfo);
 
             content.onInfoChanged += (val1, val2) => CheckSlots();
         }
@@ -38,6 +38,8 @@ public class RevolverSlots : MonoBehaviour
     }
     public void CheckSlots()
     {
+        if (suppressPowerUpdate) return; //일괄 변경 중에는 마지막에 한 번만 갱신
+
         List<BulletInfo> revolverInfo = new();
         foreach (RevolverSlotContent content in revolverSlotContents)
         {
@@ -48,7 +50,7 @@ public class RevolverSlots : MonoBehaviour
         float power = 0;
         for (int i = 0; i < 6; i++)
         {
-            power += calculator.CalculateDamage(revolverInfo[i], mod, i, DataManager.Instance.possPower).Item1;
+            power += calculator.CalculateDamage(revolverInfo[i], mod, i, DataManager.Instance.PossPower).Item1;
         }
 
         DataManager.Instance.UpdatePower(power);
@@ -61,5 +63,37 @@ public class RevolverSlots : MonoBehaviour
         }
 
         return true;
+    }
+    //자동장착: 슬롯을 전부 비운 뒤 count 1 이상인 탄환을 id 높은 순으로 슬롯 수만큼 장착(모자라면 있는 만큼만)
+    public void AutoEquip()
+    {
+        suppressPowerUpdate = true; //일괄 변경 동안 전투력 연쇄 갱신 억제
+
+        Inventory inventory = AllBulletList.Instance.inventory;
+
+        //1. 슬롯 비우기 + 기존 장착 탄환은 인벤토리로 되돌림(active true)
+        foreach (RevolverSlotContent content in revolverSlotContents)
+        {
+            if (!content.IsEmpty) inventory.SetActive(content.id, true);
+            content.UpdateBulletInfo(-1);
+        }
+
+        //2. count 1 이상인 탄환을 id 내림차순으로 슬롯 수만큼
+        List<BulletInfo> candidates = AllBulletList.Instance.bulletInfos.Values
+            .Where(b => b.Count >= 1)
+            .OrderByDescending(b => b.infoSO.bulletId)
+            .Take(revolverSlotContents.Count)
+            .ToList();
+
+        //3. 장착 + 해당 인벤토리 슬롯은 장착중 표시(active false)
+        for (int i = 0; i < candidates.Count; i++)
+        {
+            int id = candidates[i].infoSO.bulletId;
+            revolverSlotContents[i].UpdateBulletInfo(id);
+            inventory.SetActive(id, false);
+        }
+
+        suppressPowerUpdate = false;
+        CheckSlots(); //전투력은 마지막에 한 번만 갱신
     }
 }

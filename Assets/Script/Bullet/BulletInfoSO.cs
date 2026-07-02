@@ -56,14 +56,6 @@ public class BulletInfo
         level = info.level;
         this.infoSO = info.infoSO;
     }
-    public void IncreaseCount(int val)
-    {
-        Count += val;
-    }
-    public int ReturnCount()
-    {
-        return Count;
-    }
     public BulletSaveData ToSaveData()
     {
         BulletSaveData data = new BulletSaveData();

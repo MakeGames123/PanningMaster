@@ -21,18 +21,21 @@ public class DrawSlotUI : MonoBehaviour
         if(gradeTexts.Count <= 0) LoadData();
 
         BulletInfo info = AllBulletList.Instance.bulletInfos[id];
-        bool isLevelUp = info.Level - drawInfo.Level <= 0;
+        bool isLevelUp = drawInfo.LevelUp > 0;
 
         bulletImage.sprite = info.infoSO.inventoryImage;
         bulletName.text = $"{gradeTexts[info.infoSO.tier]} {typeText[(int)info.infoSO.bulletType]}";
 
-        if (isLevelUp)
+        if (!isLevelUp)
         {
             levelOrCount.text = $"x{drawInfo.Gained}";
         }
         else
         {
-            levelOrCount.text = $"{info.Level - drawInfo.Level} -> {drawInfo.Level}";
+            //연출 시점에는 info가 이미 갱신된 상태이므로 LevelUp만큼 역산해 이전 레벨을 구함
+            int newLevel = info.Level;
+            int prevLevel = info.Level - drawInfo.LevelUp;
+            levelOrCount.text = $"{prevLevel} -> {newLevel}";
         }
     }
 }
