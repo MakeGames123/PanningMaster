@@ -32,6 +32,8 @@ public class ForgePanel : MonoBehaviour
     DamageModifier cachedModifier;
     bool isPowerCached;
     BulletStatGenerator statGenerator = new();
+    RevolverSlots revolverSlots;
+    SaveManager saveManager;
     long goldUsed = 0;
     void Awake()
     {
@@ -40,6 +42,9 @@ public class ForgePanel : MonoBehaviour
         button.onRerollStop.AddListener(StopAutoReroll);
 
         table.OnAllTablesLoaded.AddListener(LoadData);
+
+        revolverSlots = FindAnyObjectByType<RevolverSlots>();
+        saveManager = FindAnyObjectByType<SaveManager>();
     }
     public void LoadData()
     {
@@ -80,6 +85,11 @@ public class ForgePanel : MonoBehaviour
     {
         info.stats = new List<BulletStat>(newBulletStats);
         onInfoUpdated.Invoke(info.infoSO.bulletId);
+
+        revolverSlots.CheckSlots();
+
+        saveManager.SaveBulletToServer(info); //변경된 단일 탄환의 스탯만 PlayFab에 저장
+
         gameObject.SetActive(false);
     }
     public void Reroll()

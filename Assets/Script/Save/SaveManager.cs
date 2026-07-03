@@ -12,6 +12,28 @@ public class SaveManager : MonoBehaviour
     private const string BULLET_SAVE_KEY = "BulletInventory";
     private const string DRAW_LEVEL_KEY = "DrawLevelData";
 
+    #region Save
+
+    //단일 탄환만 서버에 저장. CloudScript(UpdateBulletStats)에서 해당 bulletId의 stats만 병합
+    public void SaveBulletToServer(BulletInfo info)
+    {
+        BulletSaveData data = info.ToSaveData();
+        string bulletJson = JsonUtility.ToJson(data);
+
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = "UpdateBulletStats",
+            FunctionParameter = new { bulletJson = bulletJson },
+            GeneratePlayStreamEvent = false
+        };
+
+        PlayFabClientAPI.ExecuteCloudScript(request,
+            result => Debug.Log("Bullet Stats Save Success"),
+            error => Debug.LogError("Bullet Stats Save Failed: " + error.GenerateErrorReport()));
+    }
+
+    #endregion
+
     #region Load
 
     public void LoadBulletsFromServer()

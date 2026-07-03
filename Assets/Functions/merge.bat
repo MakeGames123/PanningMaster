@@ -15,6 +15,7 @@ echo // Auto-generated CloudScript >> %OUTPUT_FILE%
 REM handlers 폴더 안 JS 파일을 합치기 (순서 중요)
 type handlers\BulletDrawHandler.js>> %OUTPUT_FILE%
 type handlers\CurrencyHandler.js >> %OUTPUT_FILE%
+type handlers\BulletForgeHandler.js >> %OUTPUT_FILE%
 
 echo 합치기 완료! 파일: %OUTPUT_FILE%
 pause
