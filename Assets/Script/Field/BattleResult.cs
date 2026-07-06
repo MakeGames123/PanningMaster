@@ -22,6 +22,17 @@ public class BattleResult : MonoBehaviour
         Invoke(nameof(Disable), 1.5f);
     }
 
+    //커스텀 결과 문구만 표시(던전 클리어/실패 등). 보상 텍스트는 숨김.
+    public void ShowResult(string label)
+    {
+        resultText.enabled = true;
+        rewardText.enabled = false;
+
+        resultText.text = label;
+
+        Invoke(nameof(Disable), 1.5f);
+    }
+
     void Disable()
     {
         resultText.enabled = false;

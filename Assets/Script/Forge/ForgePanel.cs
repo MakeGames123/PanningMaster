@@ -189,7 +189,7 @@ public class ForgePanel : MonoBehaviour
             List<float> powers = new();
 
             for (int i = 0; i < 6; i++)
-                powers.Add(calculator.CalculateDamage(cachedRevolverInfo[i], cachedModifier, i, DataManager.Instance.PossPower).Item1);
+                powers.Add(calculator.CalculateDamage(cachedRevolverInfo[i], cachedModifier, i, PlayerData.Instance.PossPower).Item1);
 
             cachedIndex = powers.IndexOf(powers.Min());
             cachedRevolverInfo[cachedIndex] = info;
@@ -197,7 +197,7 @@ public class ForgePanel : MonoBehaviour
             cachedModifier = calculator.CollectModifiers(cachedRevolverInfo);
         }
 
-        cachedBasePower = calculator.CalculateDamage(info, cachedModifier, cachedIndex, DataManager.Instance.PossPower).Item1;
+        cachedBasePower = calculator.CalculateDamage(info, cachedModifier, cachedIndex, PlayerData.Instance.PossPower).Item1;
 
         isPowerCached = true;
     }
@@ -214,7 +214,7 @@ public class ForgePanel : MonoBehaviour
         DamageModifier newMod = calculator.CollectModifiers(cachedRevolverInfo);
 
         float afterPower =
-            calculator.CalculateDamage(newInfo, newMod, cachedIndex, DataManager.Instance.PossPower).Item1;
+            calculator.CalculateDamage(newInfo, newMod, cachedIndex, PlayerData.Instance.PossPower).Item1;
 
         return afterPower - cachedBasePower;
     }

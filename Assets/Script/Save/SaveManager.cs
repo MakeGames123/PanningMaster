@@ -11,6 +11,7 @@ public class SaveManager : MonoBehaviour
 
     private const string BULLET_SAVE_KEY = "BulletInventory";
     private const string DRAW_LEVEL_KEY = "DrawLevelData";
+    private const string LAB_DATA_KEY = "LabData";
 
     #region Save
 
@@ -30,6 +31,23 @@ public class SaveManager : MonoBehaviour
         PlayFabClientAPI.ExecuteCloudScript(request,
             result => Debug.Log("Bullet Stats Save Success"),
             error => Debug.LogError("Bullet Stats Save Failed: " + error.GenerateErrorReport()));
+    }
+
+    // 연구소 스킬트리 노드 레벨을 서버(UserData "LabData")에 저장
+    public void SaveLabToServer(LabSaveData data)
+    {
+        string labJson = JsonUtility.ToJson(data);
+
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = "UpdateLabData",
+            FunctionParameter = new { labJson = labJson },
+            GeneratePlayStreamEvent = false
+        };
+
+        PlayFabClientAPI.ExecuteCloudScript(request,
+            result => Debug.Log("Lab Save Success"),
+            error => Debug.LogError("Lab Save Failed: " + error.GenerateErrorReport()));
     }
 
     #endregion
@@ -63,6 +81,17 @@ public class SaveManager : MonoBehaviour
                         JsonUtility.FromJson<DrawLevelData>(json);
 
                     ApplyDrawLevel(drawData);
+                }
+
+                // LabData 로드
+                if (result.Data != null && result.Data.ContainsKey(LAB_DATA_KEY))
+                {
+                    string json = result.Data[LAB_DATA_KEY].Value;
+
+                    LabSaveData labData =
+                        JsonUtility.FromJson<LabSaveData>(json);
+
+                    ApplyLabData(labData);
                 }
 
                 //onComplete?.Invoke();
@@ -100,6 +129,15 @@ public class SaveManager : MonoBehaviour
         DataManager.Instance.drawData.drawExp = data.drawExp;
 
         DataManager.Instance.onDrawDataChanged.Invoke();
+    }
+
+    private void ApplyLabData(LabSaveData data)
+    {
+        if (data == null)
+            return;
+
+        if (LaboratoryManager.Instance != null)
+            LaboratoryManager.Instance.ApplyLoaded(data);
     }
 
     #endregion

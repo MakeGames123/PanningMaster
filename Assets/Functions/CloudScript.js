@@ -129,6 +129,7 @@ handlers.DrawBullet = function (args, context) {
         return {
             success: true,
             drawLevel: drawData.drawLevel,
+            drawExp: drawData.drawExp,
             results: resultObjects
         };
 
@@ -138,8 +139,6 @@ handlers.DrawBullet = function (args, context) {
         return { error: "Server error", detail: e };
     }
 };
-
-
 // =========================
 // 🔥 초고속 레벨업 처리
 // =========================
@@ -347,6 +346,30 @@ handlers.UpdateBulletStats = function (args, context) {
 
     } catch (e) {
         log.error("UpdateBulletStats Error: " + JSON.stringify(e));
+        return { error: "Server error", detail: e };
+    }
+};
+
+// 연구소 스킬트리 노드 레벨 저장 (LaboratoryManager.TryEnhance 시 호출)
+handlers.UpdateLabData = function (args, context) {
+    try {
+        if (!args.labJson)
+            return { error: "Missing labJson" };
+
+        // 형식 검증용 파싱 (그대로 저장)
+        JSON.parse(args.labJson);
+
+        server.UpdateUserData({
+            PlayFabId: currentPlayerId,
+            Data: {
+                "LabData": args.labJson
+            }
+        });
+
+        return { success: true };
+
+    } catch (e) {
+        log.error("UpdateLabData Error: " + JSON.stringify(e));
         return { error: "Server error", detail: e };
     }
 };

@@ -79,6 +79,7 @@ public class DrawButton : MonoBehaviour
             if (!drawResult.TryGetValue(bulletId, out var info))
             {
                 //갱신 전 기존 레벨과 최종 카운트 기준 새 레벨을 비교해 상승 폭 계산
+                int oldCount = AllBulletList.Instance.bulletInfos[bulletId].Count;
                 int oldLevel = AllBulletList.Instance.bulletInfos[bulletId].Level;
                 int newLevel = BulletLevelLoader.Instance.GetLevelByBulletCount(finalCount);
 
@@ -88,6 +89,7 @@ public class DrawButton : MonoBehaviour
                     Gained = gained,
                     Count = finalCount,
                     LevelUp = newLevel - oldLevel,
+                    IsNew = oldCount <= 0, //뽑기 전 보유량이 0이면 새 탄환
                 };
                 drawResult[bulletId] = info;
             }
@@ -131,4 +133,5 @@ public struct DrawInfo
     public int Count;
     public int Gained;
     public int LevelUp; //이번 뽑기로 오른 레벨 수 (0이면 레벨업 없음)
+    public bool IsNew;  //이번 뽑기로 처음 획득한 탄환인지
 }

@@ -7,7 +7,9 @@ using PlayFab.ClientModels;
 using System.Threading.Tasks;
 public enum GoldUseType
 {
-    Forge = 0
+    Forge = 0,
+    Laboratory = 1,
+    ChamberEnforce = 2
 }
 public class GoldData
 {

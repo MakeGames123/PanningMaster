@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using Unity.Android.Gradle.Manifest;
 public class RevolverSlots : MonoBehaviour
 {
-    [SerializeField] Transform revolverContent;
+    [SerializeField] List<Transform> revolverSlotTransforms = new();
     public List<RevolverSlotContent> revolverSlotContents { get; private set; } = new();
     List<RevolverSlotUI> slotUIs = new();
     List<BulletSlotDrag> slotDrags = new();
@@ -16,12 +16,12 @@ public class RevolverSlots : MonoBehaviour
     bool suppressPowerUpdate; //자동장착 등 일괄 변경 중 전투력 연쇄 갱신 억제
     public void Initialize(BulletSlotsRayController rayController)
     {
-        slotNum = 6;
+        slotNum = revolverSlotTransforms.Count;
 
         for (int i = 0; i < slotNum; i++)
         {
-            slotUIs.Add(revolverContent.GetChild(i).GetComponent<RevolverSlotUI>());
-            slotDrags.Add(revolverContent.GetChild(i).GetComponent<BulletSlotDrag>());
+            slotUIs.Add(revolverSlotTransforms[i].GetComponent<RevolverSlotUI>());
+            slotDrags.Add(revolverSlotTransforms[i].GetComponent<BulletSlotDrag>());
 
             RevolverSlotContent content = new RevolverSlotContent(i, slotDrags[i], slotUIs[i]);
             revolverSlotContents.Add(content);
@@ -50,7 +50,7 @@ public class RevolverSlots : MonoBehaviour
         float power = 0;
         for (int i = 0; i < 6; i++)
         {
-            power += calculator.CalculateDamage(revolverInfo[i], mod, i, DataManager.Instance.PossPower).Item1;
+            power += calculator.CalculateDamage(revolverInfo[i], mod, i, PlayerData.Instance.PossPower).Item1;
         }
 
         DataManager.Instance.UpdatePower(power);

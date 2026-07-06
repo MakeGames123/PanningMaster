@@ -27,7 +27,7 @@ public class PowerFloatingText : MonoBehaviour
     void Start()
     {
         DataManager.Instance.onPowerChanged.AddListener(Floating);
-        lastPower = DataManager.Instance.Power;
+        lastPower = PlayerData.Instance.Power;
     }
 
     void OnDestroy()

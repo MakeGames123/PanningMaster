@@ -128,6 +128,7 @@ handlers.DrawBullet = function (args, context) {
         return {
             success: true,
             drawLevel: drawData.drawLevel,
+            drawExp: drawData.drawExp,
             results: resultObjects
         };
 
@@ -137,8 +138,6 @@ handlers.DrawBullet = function (args, context) {
         return { error: "Server error", detail: e };
     }
 };
-
-
 // =========================
 // 🔥 초고속 레벨업 처리
 // =========================
