@@ -26,6 +26,7 @@ public class LaboratoryManager : MonoBehaviour
 
     public UnityEvent<int> onNodeChanged = new();
     public UnityEvent onTreeChanged = new();
+    public UnityEvent onResearchCompleted = new(); //연구 1건 완료 시(페이지 버튼 갱신용)
 
     SaveManager saveManager;
     LabSaveData pendingLoad;
@@ -124,6 +125,7 @@ public class LaboratoryManager : MonoBehaviour
 
         onNodeChanged.Invoke(id);
         onTreeChanged.Invoke(); // 이 노드 마스터 시 후행 노드가 열릴 수 있음
+        onResearchCompleted.Invoke();
     }
 
     #region 조회

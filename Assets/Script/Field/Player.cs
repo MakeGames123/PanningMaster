@@ -21,7 +21,14 @@ public class Player : MonoBehaviour
     // FieldManager만 = 로 할당하므로 항상 핸들러는 하나만 존재한다.
     public System.Action<bool> onCycleComplete;
 
+    // 다중 표적 모드(연구소 던전 등). 설정되면 기본 enumy 대신 공급받은 표적에 발사한다.
+    // 표적을 죽여도 사이클은 끝나지 않고 다음 표적으로 이어지며, 표적이 없으면 그 총알은 스킵된다.
+    System.Func<IFireTarget> targetProvider;
+
     public Enumy Enemy => enumy;
+
+    // 다중 표적 모드 설정/해제(null). FieldManager가 필드 전환 시 호출한다.
+    public void SetTargetProvider(System.Func<IFireTarget> provider) => targetProvider = provider;
 
     void Awake()
     {
@@ -78,6 +85,16 @@ public class Player : MonoBehaviour
         {
             if (revolver.revolverSlotContents[i].IsEmpty) continue; //빈 약실 스킵
 
+            if (targetProvider != null) //다중 표적 모드(연구소 던전)
+            {
+                IFireTarget target = targetProvider();
+                if (target != null) FireChamberAt(i, target); //죽여도 사이클 계속 -> 다음 총알은 다음 표적
+                //target == null: 아직 소환된 적이 없음 -> 이 총알은 스킵
+
+                yield return new WaitForSeconds(PlayerData.Instance.AttackSpeed);
+                continue;
+            }
+
             if (FireChamber(i))
             {
                 onCycleComplete?.Invoke(true); //적 처치 = 성공
@@ -93,8 +110,20 @@ public class Player : MonoBehaviour
     // 약실 1칸 발사 -> 적이 죽었는지 반환
     bool FireChamber(int index)
     {
+        return FireAt(index, enumy.transform.localPosition, enumy.Attacked);
+    }
+
+    // 다중 표적 모드 발사: 표적의 월드 좌표를 필드(부모) 로컬 좌표로 변환해 조준
+    bool FireChamberAt(int index, IFireTarget target)
+    {
+        Vector3 targetLocal = transform.parent.InverseTransformPoint(target.AimPosition);
+        return FireAt(index, targetLocal, target.Attacked);
+    }
+
+    bool FireAt(int index, Vector3 targetLocalPos, System.Func<float, bool> attacked)
+    {
         bulletLineCpy = Instantiate(bulletLine, transform.parent);
-        bulletLineCpy.GetComponent<BulletLine>().AdjustLine(transform.localPosition, enumy.transform.localPosition + new Vector3(0, Random.Range(-40, 40)));
+        bulletLineCpy.GetComponent<BulletLine>().AdjustLine(transform.localPosition, targetLocalPos + new Vector3(0, Random.Range(-40, 40)));
 
         if (revolverAnim != null) revolverAnim.Fire(); //발사 1발 -> 실린더 시계방향 60도
 
@@ -107,6 +136,6 @@ public class Player : MonoBehaviour
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
         float damage = calculator.CalculateDamage(revolverInfo[index], mod, index, PlayerData.Instance.PossPower).Item2;
 
-        return enumy.Attacked(damage);
+        return attacked(damage);
     }
 }

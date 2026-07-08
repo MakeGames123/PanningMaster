@@ -99,6 +99,20 @@ public class BulletLevelLoader : MonoBehaviour, ITableLoader
 
         return 0;
     }
+
+    //해당 레벨이 되기 위한 최소 탄환 개수(GetLevelByBulletCount의 역함수). 테이블 범위 밖이면 -1
+    public int GetMinCountForLevel(int level)
+    {
+        if (level <= 0) return 0;
+
+        foreach (LevelData data in levelList)
+            if (data.toLv == level) return data.cumulativeXP;
+
+        return -1;
+    }
+
+    //테이블이 지원하는 최대 레벨
+    public int MaxLevel => levelList.Count > 0 ? levelList[levelList.Count - 1].toLv : 0;
 }
 [System.Serializable]
 public class LevelData

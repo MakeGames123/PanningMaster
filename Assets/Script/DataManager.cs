@@ -42,6 +42,7 @@ public class DataManager : MonoBehaviour
             return;
         }
 
+        Application.runInBackground = true;
         Instance = this;
 
         login.onLogined.AddListener(StartSync);

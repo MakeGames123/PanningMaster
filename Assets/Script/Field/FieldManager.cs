@@ -9,6 +9,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] NormalField normalField;
     [SerializeField] DungeonField dungeonField;
+    [SerializeField] LabDungeonField labDungeonField;
 
     bool inDungeon;
 
@@ -41,14 +42,32 @@ public class FieldManager : MonoBehaviour
         dungeonField.Begin(player, floor);
     }
 
-    // 던전 종료 -> 일반 전투 복귀 (DungeonField에서 호출)
+    // 연구소 던전 입장 (DungeonEntry에서 호출). 정예 열쇠 소모, 다중 표적 전투.
+    public void EnterLabDungeon()
+    {
+        if (inDungeon || labDungeonField == null) return;
+        inDungeon = true;
+
+        normalField.Stop();
+        player.ResetRevolver(); //장전 취소 + 약실 1번으로 초기화
+        player.Enemy.gameObject.SetActive(false); //기존 적은 던전 동안 잠시 숨김
+
+        player.onCycleComplete = labDungeonField.OnCycleComplete; //유일 핸들러 교체
+        player.SetTargetProvider(labDungeonField.GetCurrentTarget); //다중 표적 모드 켜기
+        labDungeonField.Begin(player);
+    }
+
+    // 던전 종료 -> 일반 전투 복귀 (DungeonField/LabDungeonField에서 호출)
     public void ReturnToNormal()
     {
         if (!inDungeon) return;
         inDungeon = false;
 
         dungeonField.Stop();
+        if (labDungeonField != null) labDungeonField.Stop();
+        player.SetTargetProvider(null); //다중 표적 모드 끄기
         player.ResetRevolver(); //던전 종료 시에도 장전 취소 + 약실 1번으로 초기화
+        player.Enemy.gameObject.SetActive(true); //숨겨둔 기존 적 복구
 
         ActivateNormal();
     }

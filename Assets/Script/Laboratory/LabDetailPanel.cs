@@ -28,7 +28,6 @@ public class LabDetailPanel : MonoBehaviour
     void Awake()
     {
         if (researchButton != null) researchButton.onClick.AddListener(OnResearch);
-        Hide();
     }
 
     public void Show(int nodeId)

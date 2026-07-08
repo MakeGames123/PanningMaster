@@ -10,6 +10,7 @@ public class PlayFabLoginManager : MonoBehaviour
 {
     public UnityEvent onLogined = new();
     public GameObject reconnectPanel;
+    public string PlayFabId { get; private set; } //로그인한 내 PlayFabId (순위표 내 행 판별 등)
     void Start()
     {
         Login();
@@ -72,6 +73,7 @@ public class PlayFabLoginManager : MonoBehaviour
     {
         Debug.Log("플레이팹 로그인 성공!");
         Debug.Log($"사용자 ID: {result.PlayFabId}");
+        PlayFabId = result.PlayFabId;
         //reconnectPanel.SetActive(false);
 
         onLogined.Invoke();
