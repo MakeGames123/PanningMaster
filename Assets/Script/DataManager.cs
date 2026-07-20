@@ -31,7 +31,7 @@ public class DataManager : MonoBehaviour
     public UnityEvent<int> onDungeonFloorChanged = new();
     public UnityEvent onKeyChanged = new();
     public PlayFabLoginManager login;
-    public TableLoaderManager table;
+    public SheetService table;
     Coroutine syncCoroutine;
     private void Awake()
     {
@@ -60,12 +60,15 @@ public class DataManager : MonoBehaviour
     {
         Ticket.Add(1);
 
-        Invoke(nameof(IncreaseTicket), GameConfigLoader.Instance.GetInt("ticketTimerSec"));
+        Invoke(nameof(IncreaseTicket), GameConfigLoader.Instance.GetInt("TicketTimerSec"));
     }
     public void IncreaseStage()
     {
         stage++;
         onStageChanged.Invoke(stage);
+
+        if (QuestEventManager.Instance != null)
+            QuestEventManager.Instance.SetValue("stage", stage);
     }
     //던전 층 클리어 기록(최고 층 갱신 시에만)
     public void ClearDungeonFloor(int floor)

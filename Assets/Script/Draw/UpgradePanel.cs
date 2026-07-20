@@ -20,7 +20,7 @@ public class UpgradePanel : MonoBehaviour
     }
     public void UpdateUI()
     {
-        DrawData currentData = DrawPercentageLoader.Instance.ReturnData(index + 1);
+        DrawData currentData = BulletGachaProbLoader.Instance.ReturnData(index + 1);
         levelText.text = (index + 1).ToString();
 
         for (int i = 0; i < 9; i++)

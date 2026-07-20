@@ -72,6 +72,10 @@ public class BulletSlotDrag : MonoBehaviour,
             if (oppoContent is RevolverSlotContent revolverSlot)
             {
                 revolverSlot.OnBulletDrop(content);
+
+                //인벤토리 탄환을 약실로 드롭 = 수동 장착 (퀘스트/튜토리얼 equipAct)
+                if (content is InventorySlotContent && QuestEventManager.Instance != null)
+                    QuestEventManager.Instance.AddEvent("equipAct");
             }
 
             if (content is InventorySlotContent inventorySlot)

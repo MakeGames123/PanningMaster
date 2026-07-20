@@ -9,7 +9,8 @@ public enum GoldUseType
 {
     Forge = 0,
     Laboratory = 1,
-    ChamberEnforce = 2
+    ChamberEnforce = 2,
+    Growth = 3
 }
 public class GoldData
 {

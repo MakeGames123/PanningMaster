@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-// LabNode 시트 로더. ID/Name/Cost/Effect/Amount/Time/MaxLevel 컬럼을 읽는다.
-public class LabNodeLoader : MonoBehaviour, ITableLoader
+// LabNode(ResearchNode) 시트 로더. ID/Name/Effect/Amount/Time/MaxLevel 컬럼을 읽는다.
+public class LabNodeLoader : ISheetLoader
 {
     public static LabNodeLoader Instance { get; private set; }
     const string SHEET_URL =
-        "https://docs.google.com/spreadsheets/d/1uo6Tm2UDagmMJ09O3qIT6m4mfCTsakRTB5KVbSS0-DI/gviz/tq?tqx=out:csv&sheet=LabNode";
+        "https://docs.google.com/spreadsheets/d/1nVXQ0fwyor6S7wXYO4MvfMzPmkY8rNwKZyc1t827Lao/gviz/tq?tqx=out:csv&sheet=ResearchNode";
 
     readonly Dictionary<int, LabNodeData> dataDict = new();
     public IReadOnlyDictionary<int, LabNodeData> All => dataDict;
@@ -17,32 +17,11 @@ public class LabNodeLoader : MonoBehaviour, ITableLoader
 
     public event Action OnLoaded;
 
-    void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        StartCoroutine(LoadSheet());
-    }
+    public string Url => SHEET_URL;
 
-    IEnumerator LoadSheet()
-    {
-        UnityWebRequest req = UnityWebRequest.Get(SHEET_URL);
-        yield return req.SendWebRequest();
+    public LabNodeLoader() { Instance = this; }
 
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(req.error);
-            yield break;
-        }
-
-        ParseCSV(req.downloadHandler.text);
-    }
-
-    void ParseCSV(string csv)
+    public void Parse(string csv)
     {
         dataDict.Clear();
 
@@ -57,17 +36,16 @@ public class LabNodeLoader : MonoBehaviour, ITableLoader
         for (int i = 1; i < lines.Length; i++)
         {
             var cols = lines[i].Split(',');
-            if (cols.Length < 7) continue;
+            if (cols.Length < 6) continue;
 
             LabNodeData d = new()
             {
                 id = TableLoaderTool.ToInt(cols[0]),
                 name = TableLoaderTool.CleanString(cols[1]),
-                cost = TableLoaderTool.ToInt(cols[2]),
-                effect = ParseEffect(cols[3]),
-                amount = TableLoaderTool.ToFloat(cols[4]),
-                timeSeconds = ParseTime(cols[5]),
-                maxLevel = TableLoaderTool.ToInt(cols[6]),
+                effect = ParseEffect(cols[2]),
+                amount = TableLoaderTool.ToFloat(cols[3]),
+                timeSeconds = ParseTime(cols[4]),
+                maxLevel = TableLoaderTool.ToInt(cols[5]),
             };
 
             dataDict[d.id] = d;
@@ -79,13 +57,13 @@ public class LabNodeLoader : MonoBehaviour, ITableLoader
         Debug.Log($"LabNode Loaded: {dataDict.Count}");
     }
 
-    static LabEffectType ParseEffect(string raw)
+    static StatType ParseEffect(string raw)
     {
         string s = TableLoaderTool.CleanString(raw);
-        if (Enum.TryParse(s, true, out LabEffectType e)) return e;
+        if (Enum.TryParse(s, true, out StatType e)) return e;
 
         Debug.LogWarning($"[LabNode] 알 수 없는 Effect: '{raw}'");
-        return LabEffectType.Damage;
+        return StatType.Damage;
     }
 
     // "H:M" (앞=시, 뒤=분) -> 초. 예) "0:06" = 6분 = 360초. 초까지 있으면 함께 반영.

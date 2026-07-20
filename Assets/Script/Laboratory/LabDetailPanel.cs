@@ -16,6 +16,7 @@ public class LabDetailPanel : MonoBehaviour
     [Header("연구 가능 시")]
     [SerializeField] GameObject enhanceGroup;     // 비용 + 버튼 묶음
     [SerializeField] TextMeshProUGUI costText;    // "30 (보유 11k)"
+    [SerializeField] TextMeshProUGUI timeText;    // "연구 시간 2시간 30분"
     [SerializeField] Button researchButton;       // "연구"
 
     [Header("상태 표시")]
@@ -63,7 +64,7 @@ public class LabDetailPanel : MonoBehaviour
         if (effectText != null)
         {
             effectText.text = available
-                ? $"{node.FormatEffect(cur)} -> +{(level + 1) * node.amount:0.##}"
+                ? $"{node.FormatEffect(cur)} -> {node.FormatValue((level + 1) * node.amount)}"
                 : node.FormatEffect(cur);
         }
 
@@ -75,7 +76,8 @@ public class LabDetailPanel : MonoBehaviour
             long cost = mgr.GetCost(currentId);
             long owned = DataManager.Instance.Gold.GetValue();
 
-            if (costText != null) costText.text = $"{cost} (보유 {Abbrev(owned)})";
+            if (costText != null) costText.text = $"{cost} (보유 {NumberFormatLoader.Abbrev(owned)})";
+            if (timeText != null) timeText.text = $"연구 시간 {FormatDuration(node.timeSeconds)}";
             if (researchButton != null) researchButton.interactable = owned >= cost;
         }
         else if (statusText != null)
@@ -96,18 +98,23 @@ public class LabDetailPanel : MonoBehaviour
         // onTreeChanged -> LaboratoryPanel.RefreshAll -> 이 패널 Refresh
     }
 
+    // 총 소요 초 -> "2시간 30분" / "30분" / "45초"
+    static string FormatDuration(float seconds)
+    {
+        int total = Mathf.CeilToInt(seconds);
+        int h = total / 3600;
+        int m = (total % 3600) / 60;
+        int s = total % 60;
+
+        if (h > 0) return m > 0 ? $"{h}시간 {m}분" : $"{h}시간";
+        if (m > 0) return s > 0 ? $"{m}분 {s}초" : $"{m}분";
+        return $"{s}초";
+    }
+
     // 남은 초 -> "mm:ss"
     static string FormatTime(float seconds)
     {
         int total = Mathf.CeilToInt(seconds);
         return $"{total / 60:00}:{total % 60:00}";
-    }
-
-    static string Abbrev(long v)
-    {
-        if (v >= 1_000_000_000) return (v / 1_000_000_000f).ToString("0.#") + "B";
-        if (v >= 1_000_000) return (v / 1_000_000f).ToString("0.#") + "M";
-        if (v >= 1_000) return (v / 1_000f).ToString("0.#") + "k";
-        return v.ToString();
     }
 }

@@ -13,16 +13,29 @@ public class DrawButton : MonoBehaviour
     [SerializeField] List<Image> multipleButtons;
     [SerializeField] DrawResult drawResult;
     public DataManager dataManager;//이벤트 할당용
-    List<int> multiple = new() { 1, 10, 50 };
+    const int MaxDraw = -1; //Max 뽑기(보유 티켓 전부) 선택지
+    List<int> multiple = new() { 1, 10, MaxDraw };
     int multipleIndex = 0;
     void Awake()
     {
         dataManager.onDrawDataChanged.AddListener(UpdateLevelText);
-        button.onClick.AddListener(() => DrawBullet(multiple[multipleIndex]));
+        button.onClick.AddListener(() => DrawBullet(GetDrawCount()));
         ChangeMultiple(0);
     }
+    //현재 선택 배수의 실제 뽑기 횟수. Max는 보유 티켓 전부
+    int GetDrawCount()
+    {
+        int m = multiple[multipleIndex];
+        return m == MaxDraw ? DataManager.Instance.Ticket.GetValue() : m;
+    }
+    int pendingDrawCount; //서버 콜백에서 퀘스트 이벤트 발행에 쓸 이번 뽑기 수
+
     public void DrawBullet(int drawCount)
     {
+        if (drawCount <= 0) return; //Max 뽑기인데 티켓이 없으면 요청 생략
+
+        pendingDrawCount = drawCount;
+
         var request = new ExecuteCloudScriptRequest
         {
             FunctionName = "DrawBullet",
@@ -104,6 +117,9 @@ public class DrawButton : MonoBehaviour
 
         if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
 
+        if (QuestEventManager.Instance != null)
+            QuestEventManager.Instance.AddEvent("draw", pendingDrawCount); //퀘스트/튜토리얼: 뽑은 탄환 수
+
         UpdateLevelText();
     }
 
@@ -123,7 +139,7 @@ public class DrawButton : MonoBehaviour
     }
     void UpdateLevelText()
     {
-        int req = DrawLevelUpLoader.Instance.GetReqData(DataManager.Instance.drawData.drawLevel);
+        int req = BulletDrawLevelLoader.Instance.GetReqData(DataManager.Instance.drawData.drawLevel);
         levelText.text = $"Lv.{DataManager.Instance.drawData.drawLevel} {DataManager.Instance.drawData.drawExp}/{req}";
     }
 }

@@ -15,7 +15,7 @@ public class AllBulletList : MonoBehaviour
     public Dictionary<int, BulletInfo> bulletInfos = new();
     public UnityEvent<int> onBulletChanged;
     public Inventory inventory;
-    public TableLoaderManager table;
+    public SheetService table;
     List<float> posses;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class AllBulletList : MonoBehaviour
             bulletInfos.Add(so.bulletId, new BulletInfo(bulletInfoSODic[so.bulletId]));
         }
 
-        table = FindFirstObjectByType<TableLoaderManager>();
+        table = FindFirstObjectByType<SheetService>();
 
         table.OnAllTablesLoaded.AddListener(LoadData);
     }

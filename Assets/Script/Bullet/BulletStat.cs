@@ -89,19 +89,19 @@ public class BulletStatGenerator
         switch (reward)
         {
             case RewardType.PowerIncrease:
-                val1 = UnityEngine.Random.Range(statData["atk"][statTier].min, statData["atk"][statTier].max);
+                val1 = UnityEngine.Random.Range(statData["Damage"][statTier].min, statData["Damage"][statTier].max);
                 return conditionCoef * val1;
             case RewardType.FinalDamageIncrease:
-                val1 = UnityEngine.Random.Range(statData["finalDmg"][statTier].min, statData["finalDmg"][statTier].max);
+                val1 = UnityEngine.Random.Range(statData["FinalDamage"][statTier].min, statData["FinalDamage"][statTier].max);
                 return conditionCoef * val1;
             case RewardType.BulletTypeDamageIncrease:
-                val1 = UnityEngine.Random.Range(statData["elemDmg"][statTier].min, statData["elemDmg"][statTier].max);
+                val1 = UnityEngine.Random.Range(statData["TypeDamage"][statTier].min, statData["TypeDamage"][statTier].max);
                 return conditionCoef * val1;
             case RewardType.CriticalChanceIncrease:
-                val1 = UnityEngine.Random.Range(statData["critR"][statTier].min, statData["critR"][statTier].max);
+                val1 = UnityEngine.Random.Range(statData["CriticalChance"][statTier].min, statData["CriticalChance"][statTier].max);
                 return conditionCoef * val1;
             case RewardType.CriticalDamageIncrease:
-                val1 = UnityEngine.Random.Range(statData["critD"][statTier].min, statData["critD"][statTier].max);
+                val1 = UnityEngine.Random.Range(statData["CriticalDamage"][statTier].min, statData["CriticalDamage"][statTier].max);
                 return conditionCoef * val1;
         }
 

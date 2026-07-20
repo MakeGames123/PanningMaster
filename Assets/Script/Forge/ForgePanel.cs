@@ -14,7 +14,7 @@ public class ForgePanel : MonoBehaviour
     [SerializeField] RectTransform afterLayoutRoot;
     [SerializeField] RevolverSlots revolver;
     [SerializeField] ForgeButton button;
-    [SerializeField] TableLoaderManager table;
+    [SerializeField] SheetService table;
     BulletInfo info;
     DamageCalculator calculator = new();
     List<BulletStat> newBulletStats = new();

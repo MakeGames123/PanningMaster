@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 // LabEdge 시트 로더. From/To 컬럼을 읽어 "To 노드의 선행(From) 목록"으로 보관한다.
-public class LabEdgeLoader : MonoBehaviour, ITableLoader
+public class LabEdgeLoader : ISheetLoader
 {
     public static LabEdgeLoader Instance { get; private set; }
     const string SHEET_URL =
-        "https://docs.google.com/spreadsheets/d/1uo6Tm2UDagmMJ09O3qIT6m4mfCTsakRTB5KVbSS0-DI/gviz/tq?tqx=out:csv&sheet=LabEdge";
+        "https://docs.google.com/spreadsheets/d/1nVXQ0fwyor6S7wXYO4MvfMzPmkY8rNwKZyc1t827Lao/gviz/tq?tqx=out:csv&sheet=ResearchNodeEdge";
 
     // To -> 선행 노드(From) 목록
     readonly Dictionary<int, List<int>> prereqOf = new();
@@ -20,32 +20,11 @@ public class LabEdgeLoader : MonoBehaviour, ITableLoader
 
     public event Action OnLoaded;
 
-    void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        StartCoroutine(LoadSheet());
-    }
+    public string Url => SHEET_URL;
 
-    IEnumerator LoadSheet()
-    {
-        UnityWebRequest req = UnityWebRequest.Get(SHEET_URL);
-        yield return req.SendWebRequest();
+    public LabEdgeLoader() { Instance = this; }
 
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(req.error);
-            yield break;
-        }
-
-        ParseCSV(req.downloadHandler.text);
-    }
-
-    void ParseCSV(string csv)
+    public void Parse(string csv)
     {
         prereqOf.Clear();
         endNodes.Clear();

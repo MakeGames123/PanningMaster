@@ -8,7 +8,7 @@ public class NormalField : MonoBehaviour
     [SerializeField] BattleResult battleResult;
 
     Player player;
-    Enumy enumy;
+    Enemy enumy;
 
     // FieldManager가 이 필드를 활성화할 때 호출
     public void Begin(Player p)
@@ -36,13 +36,15 @@ public class NormalField : MonoBehaviour
 
         int stage = DataManager.Instance.stage;
 
+        var cfg = GameConfigLoader.Instance;
         float gold = stage
-            * GameConfigLoader.Instance.GetFloat("goldBaseMultiplier")
-            * (1 + Mathf.Max(0, stage - GameConfigLoader.Instance.GetFloat("goldScaleStartStage")) * GameConfigLoader.Instance.GetFloat("goldPostStageScale"));
-        if (!win) gold *= GameConfigLoader.Instance.GetFloat("failGoldRatio");
+            * cfg.GetFloat("ClearGoldPerStage")
+            * (1 + Mathf.Max(0, stage - cfg.GetFloat("ClearGoldRampStage")) * cfg.GetFloat("ClearGoldRampPerStage"))
+            * Mathf.Pow(cfg.GetFloat("ClearGoldExpoRate"), Mathf.Max(0, stage - cfg.GetFloat("ClearGoldExpoStage")));
+        if (!win) gold *= cfg.GetFloat("FailGoldRatio");
 
         DataManager.Instance.IncreaseGold((int)gold);
-        DataManager.Instance.IncreaseTicket(GameConfigLoader.Instance.GetInt(win ? "clearBaseTickets" : "failBaseTickets"));
+        DataManager.Instance.IncreaseTicket(cfg.GetInt(win ? "ClearTicket" : "FailTicket"));
 
         battleResult.SetCondition(win, gold);
 

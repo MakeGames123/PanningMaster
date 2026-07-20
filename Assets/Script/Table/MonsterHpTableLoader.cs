@@ -5,12 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class MonsterHpTableLoader : MonoBehaviour, ITableLoader
+public class MonsterHpTableLoader : ISheetLoader
 {
     public static MonsterHpTableLoader Instance { get; private set; }
 
     const string SHEET_URL =
-        "https://docs.google.com/spreadsheets/d/1uo6Tm2UDagmMJ09O3qIT6m4mfCTsakRTB5KVbSS0-DI/gviz/tq?tqx=out:csv&sheet=HPRateBrackets";
+        "https://docs.google.com/spreadsheets/d/1nVXQ0fwyor6S7wXYO4MvfMzPmkY8rNwKZyc1t827Lao/gviz/tq?tqx=out:csv&sheet=HPRateBrackets";
 
     private Dictionary<int, float> stageRotDict
         = new Dictionary<int, float>();
@@ -19,34 +19,11 @@ public class MonsterHpTableLoader : MonoBehaviour, ITableLoader
     public bool IsLoaded { get; private set; }
     public event Action OnLoaded;
 
-    void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    public string Url => SHEET_URL;
 
-        Instance = this;
+    public MonsterHpTableLoader() { Instance = this; }
 
-        StartCoroutine(LoadSheet());
-    }
-
-    IEnumerator LoadSheet()
-    {
-        UnityWebRequest req = UnityWebRequest.Get(SHEET_URL);
-        yield return req.SendWebRequest();
-
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(req.error);
-            yield break;
-        }
-
-        ParseCSV(req.downloadHandler.text);
-    }
-
-    void ParseCSV(string csv)
+    public void Parse(string csv)
     {
         var lines = csv.Split('\n');
 

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X50
+  m_text: MAX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 174965754632160627}
   - component: {fileID: 8021374103252001073}
   m_Layer: 5
-  m_Name: X50
+  m_Name: Max
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1513,7 @@ MonoBehaviour:
   - {fileID: 8703300897009002835}
   - {fileID: 174965754632160627}
   drawResult: {fileID: 715402275503072846}
-  allBulletList: {fileID: 0}
+  dataManager: {fileID: 0}
 --- !u!1 &9086124431799311718
 GameObject:
   m_ObjectHideFlags: 0

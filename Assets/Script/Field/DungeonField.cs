@@ -18,7 +18,7 @@ public class DungeonField : MonoBehaviour
     [SerializeField] Slider timerSlider;        //남은 시간 게이지(선택)
 
     Player player;
-    Enumy enumy;
+    Enemy enumy;
     float savedMaxHp;
     Coroutine timerCo;
     bool resolved;

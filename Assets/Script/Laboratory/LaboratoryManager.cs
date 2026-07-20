@@ -17,7 +17,7 @@ public class LaboratoryManager : MonoBehaviour
 {
     public static LaboratoryManager Instance { get; private set; }
 
-    [SerializeField] TableLoaderManager table;
+    [SerializeField] SheetService table;
 
     readonly Dictionary<int, LabNodeData> nodeById = new();
     readonly Dictionary<int, int> levels = new();
@@ -174,7 +174,7 @@ public class LaboratoryManager : MonoBehaviour
     }
 
     // 특정 효과 타입의 총합 (레벨 * 레벨당효과)
-    public float GetTotalValue(LabEffectType type)
+    public float GetTotalValue(StatType type)
     {
         float sum = 0f;
         foreach (var kv in nodeById)
@@ -214,38 +214,15 @@ public class LaboratoryManager : MonoBehaviour
 
     #region 효과 반영
 
-    // 모든 노드 레벨을 합산해 PlayerData 스탯에 반영(idempotent set).
+    // 모든 노드 레벨을 합산해 연구소 몫으로 집계기에 등록(성장 등 다른 소스와 합산됨).
     void RecomputeEffects()
     {
-        if (PlayerData.Instance == null) return;
-
-        float dmg = 0, shoot = 0, reload = 0, gold = 0, crit = 0, critDmg = 0, finalD = 0, typeD = 0;
+        StatSet set = default;
 
         foreach (var kv in nodeById)
-        {
-            float v = GetLevel(kv.Key) * kv.Value.amount;
-            switch (kv.Value.effect)
-            {
-                case LabEffectType.Damage: dmg += v; break;
-                case LabEffectType.ShootSpeed: shoot += v; break;
-                case LabEffectType.ReloadSpeed: reload += v; break;
-                case LabEffectType.GoldAcq: gold += v; break;
-                case LabEffectType.CriticalChance: crit += v; break;
-                case LabEffectType.CriticalDamage: critDmg += v; break;
-                case LabEffectType.FinalDamage: finalD += v; break;
-                case LabEffectType.TypeDamage: typeD += v; break;
-            }
-        }
+            set.AddEffect(kv.Value.effect, GetLevel(kv.Key) * kv.Value.amount);
 
-        var p = PlayerData.Instance;
-        p.Damage = dmg;
-        p.ShootSpeed = shoot;
-        p.ReloadSpeed = reload;
-        p.GoldAcq = gold;
-        p.CriticalChance = crit;
-        p.CriticalDamage = critDmg;
-        p.FinalDamage = finalD;
-        p.TypeDamage = typeD;
+        PlayerStatAggregator.SetContribution("lab", set);
     }
 
     #endregion

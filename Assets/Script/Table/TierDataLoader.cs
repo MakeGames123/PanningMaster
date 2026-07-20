@@ -5,47 +5,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TierDataLoader : MonoBehaviour, ITableLoader
+public class TierDataLoader : ISheetLoader
 {
     public static TierDataLoader Instance { get; private set; }
 
     const string SHEET_URL =
-        "https://docs.google.com/spreadsheets/d/1uo6Tm2UDagmMJ09O3qIT6m4mfCTsakRTB5KVbSS0-DI/gviz/tq?tqx=out:csv&sheet=TierData";
+        "https://docs.google.com/spreadsheets/d/1nVXQ0fwyor6S7wXYO4MvfMzPmkY8rNwKZyc1t827Lao/gviz/tq?tqx=out:csv&sheet=BulletTier";
 
     private Dictionary<int, TierData> tierDict
         = new Dictionary<int, TierData>();
 
     public event Action OnLoaded;
 
-    void Awake()
+    public string Url => SHEET_URL;
+
+    public TierDataLoader() { Instance = this; }
+
+    public void Parse(string csv)
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
 
-        Instance = this;
-
-        StartCoroutine(LoadSheet());
-    }
-
-    IEnumerator LoadSheet()
-    {
-        UnityWebRequest req = UnityWebRequest.Get(SHEET_URL);
-        yield return req.SendWebRequest();
-
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(req.error);
-            yield break;
-        }
-
-        ParseCSV(req.downloadHandler.text);
-    }
-
-    void ParseCSV(string csv)
-    {
         var lines = csv.Split('\n');
 
         for (int i = 1; i < lines.Length; i++)
@@ -54,19 +32,18 @@ public class TierDataLoader : MonoBehaviour, ITableLoader
 
             var cols = lines[i].Split(',');
 
-            if (cols.Length < 9) continue;
+            if (cols.Length < 8) continue;
 
             TierData data = new TierData
             {
                 tier = TableLoaderTool.ToInt(cols[0]),
                 nameKR = TableLoaderTool.CleanString(cols[1]),
-                nameEN = TableLoaderTool.CleanString(cols[2]),
-                baseDmg = TableLoaderTool.ToFloat(cols[3]),
-                craftSlots = TableLoaderTool.ToInt(cols[4]),
-                craftCost = TableLoaderTool.ToInt(cols[5]),
-                lvScale = TableLoaderTool.ToFloat(cols[6]),
-                possScale = TableLoaderTool.ToFloat(cols[7]),
-                colorHex = TableLoaderTool.CleanString(cols[8])
+                baseDmg = TableLoaderTool.ToFloat(cols[2]),
+                craftSlots = TableLoaderTool.ToInt(cols[3]),
+                craftCost = TableLoaderTool.ToInt(cols[4]),
+                lvScale = TableLoaderTool.ToFloat(cols[5]),
+                possScale = TableLoaderTool.ToFloat(cols[6]),
+                colorHex = TableLoaderTool.CleanString(cols[7])
             };
 
             tierDict[data.tier] = data;
@@ -99,7 +76,6 @@ public class TierData
 {
     public int tier;
     public string nameKR;
-    public string nameEN;
 
     public float baseDmg;
     public int craftSlots;

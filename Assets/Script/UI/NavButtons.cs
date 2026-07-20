@@ -62,6 +62,30 @@ public class NavButtons : MonoBehaviour
         _initialized = true;
         EnablePanel(bulletPanel);
     }
+    // QuestMain 시트의 NavTab 값(bullet/growth/lab/slotEnh/dungeon/equip/pvp)으로 패널 전환.
+    // 전용 패널이 아직 없는 탭은 가장 가까운 패널로 임시 매핑 — 패널 생기면 여기만 수정.
+    public void Navigate(string navTab)
+    {
+        RectTransform target = navTab switch
+        {
+            "bullet" => bulletPanel,
+            "slotEnh" => bulletPanel,   // 약실 강화 — 탄환 화면 내
+            "equip" => bulletPanel,     // 리볼버 장비 — 전용 패널 생기면 교체
+            "growth" => upgradePanel,
+            "lab" => upgradePanel,      // 연구소 — 전용 패널 생기면 교체
+            "dungeon" => dungeonPanel,
+            "pvp" => pvpPanel,
+            _ => null
+        };
+
+        if (target == null)
+        {
+            Debug.LogWarning($"[Nav] 이동할 패널이 없는 NavTab: '{navTab}'");
+            return;
+        }
+        EnablePanel(target);
+    }
+
     public void EnablePanel(RectTransform target)
     {
         foreach (RectTransform panel in allPanels)

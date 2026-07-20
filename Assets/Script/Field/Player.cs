@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     [SerializeField] RevolverSlots revolver;
-    [SerializeField] Enumy enumy;
+    [SerializeField] Enemy enumy;
     [SerializeField] GameObject bulletLine;
     [SerializeField] ReloadingUI reloadingUI;
     [SerializeField] RevolverAnim revolverAnim;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     // 표적을 죽여도 사이클은 끝나지 않고 다음 표적으로 이어지며, 표적이 없으면 그 총알은 스킵된다.
     System.Func<IFireTarget> targetProvider;
 
-    public Enumy Enemy => enumy;
+    public Enemy Enemy => enumy;
 
     // 다중 표적 모드 설정/해제(null). FieldManager가 필드 전환 시 호출한다.
     public void SetTargetProvider(System.Func<IFireTarget> provider) => targetProvider = provider;

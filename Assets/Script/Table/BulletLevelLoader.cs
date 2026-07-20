@@ -4,44 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class BulletLevelLoader : MonoBehaviour, ITableLoader
+public class BulletLevelLoader : ISheetLoader
 {
     public static BulletLevelLoader Instance { get; private set; }
 
     const string SHEET_URL =
-        "https://docs.google.com/spreadsheets/d/1uo6Tm2UDagmMJ09O3qIT6m4mfCTsakRTB5KVbSS0-DI/gviz/tq?tqx=out:csv&sheet=BulletLevelXP";
+        "https://docs.google.com/spreadsheets/d/1nVXQ0fwyor6S7wXYO4MvfMzPmkY8rNwKZyc1t827Lao/gviz/tq?tqx=out:csv&sheet=BulletLevelXP";
 
     private List<LevelData> levelList = new List<LevelData>();
     public event Action OnLoaded;
 
-    void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    public string Url => SHEET_URL;
 
-        Instance = this;
+    public BulletLevelLoader() { Instance = this; }
 
-        StartCoroutine(LoadSheet());
-    }
-
-    IEnumerator LoadSheet()
-    {
-        UnityWebRequest req = UnityWebRequest.Get(SHEET_URL);
-        yield return req.SendWebRequest();
-
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(req.error);
-            yield break;
-        }
-
-        ParseCSV(req.downloadHandler.text);
-    }
-
-    void ParseCSV(string csv)
+    public void Parse(string csv)
     {
         var lines = csv.Split('\n');
 

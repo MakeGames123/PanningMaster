@@ -95,5 +95,8 @@ public class RevolverSlots : MonoBehaviour
 
         suppressPowerUpdate = false;
         CheckSlots(); //전투력은 마지막에 한 번만 갱신
+
+        if (QuestEventManager.Instance != null)
+            QuestEventManager.Instance.AddEvent("autoEq"); //퀘스트/튜토리얼: 자동장착
     }
 }
