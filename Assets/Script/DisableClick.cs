@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
-public class DisableClick : MonoBehaviour, IPointerClickHandler
+using UnityEngine.InputSystem;
+
+// Update에서 클릭(마우스 왼쪽 버튼/터치 탭)을 감지해 onClick 을 발화한다.
+public class DisableClick : MonoBehaviour
 {
-    public GameObject panel;
-    public UnityEvent disable;
-    public void OnPointerClick(PointerEventData eventData)
+    public UnityEvent onClick;
+
+    void Update()
     {
-        if (panel != null) panel.SetActive(false);
-        disable.Invoke();
+        var pointer = Pointer.current; // 마우스·터치 통합
+        if (pointer != null && pointer.press.wasPressedThisFrame)
+            onClick.Invoke();
     }
 }

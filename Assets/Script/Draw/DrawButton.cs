@@ -117,8 +117,11 @@ public class DrawButton : MonoBehaviour
 
         if (drawResult.Count > 0) this.drawResult.SetCondition(drawResult);
 
+        //뽑은 탄환 수를 퀘스트·튜토리얼 각각의 이벤트 버스에 발행
         if (QuestEventManager.Instance != null)
-            QuestEventManager.Instance.AddEvent("draw", pendingDrawCount); //퀘스트/튜토리얼: 뽑은 탄환 수
+            QuestEventManager.Instance.AddEvent("draw", pendingDrawCount);
+        if (TutorialEventManager.Instance != null)
+            TutorialEventManager.Instance.AddEvent("draw", pendingDrawCount);
 
         UpdateLevelText();
     }

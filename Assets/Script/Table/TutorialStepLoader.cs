@@ -48,7 +48,7 @@ public class TutorialStepLoader : ISheetLoader
         for (int i = 1; i < lines.Length; i++)
         {
             var cols = TableLoaderTool.SplitCsvLine(lines[i]);
-            if (cols.Count < 13) continue;
+            if (cols.Count < 15) continue;
 
             TutorialStepData d = new()
             {
@@ -62,9 +62,11 @@ public class TutorialStepLoader : ISheetLoader
                 targetSelector = TableLoaderTool.CleanString(cols[7]),
                 tab = TableLoaderTool.CleanString(cols[8]),
                 markerKo = TableLoaderTool.CleanString(cols[9]),
-                rig = TableLoaderTool.CleanString(cols[10]),
-                free = TableLoaderTool.CleanString(cols[11]) == "1",
-                dialogKo = TableLoaderTool.CleanString(cols[12]).Replace("\\n", "\n"), // \n 리터럴 → 실제 개행
+                posY = TableLoaderTool.ToFloat(cols[10]),
+                rig = TableLoaderTool.CleanString(cols[11]),
+                free = TableLoaderTool.CleanString(cols[12]) == "1",
+                transparent = TableLoaderTool.ToBool(cols[13]),
+                dialogKo = TableLoaderTool.CleanString(cols[14]).Replace("\\n", "\n"), // \n 리터럴 → 실제 개행
             };
 
             if (string.IsNullOrEmpty(d.seq)) continue;
@@ -122,7 +124,9 @@ public class TutorialStepData
     public string targetSelector; // 강조 대상(프로토 CSS 셀렉터 — 유니티 포팅 시 치환 필요)
     public string tab;            // 강제 이동 탭
     public string markerKo;       // 손가락 마커 문구
+    public float posY;            // 말풍선 Y 위치(anchoredPosition.y)
     public string rig;            // 티켓 지급 등 리그
     public bool free;             // 터치 제한 해제 여부
+    public bool transparent;      // true면 blocker를 투명하게(차단은 유지, 시각만 숨김)
     public string dialogKo;       // 보안관 대사(개행 반영됨)
 }

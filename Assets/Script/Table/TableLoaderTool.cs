@@ -79,6 +79,12 @@ public static class TableLoaderTool
         return result;
     }
 
+    public static bool ToBool(string value)
+    {
+        string s = CleanString(value);
+        return s == "1" || s.Equals("true", System.StringComparison.OrdinalIgnoreCase);
+    }
+
     public static string CleanString(string value)
     {
         if (string.IsNullOrEmpty(value)) return string.Empty;

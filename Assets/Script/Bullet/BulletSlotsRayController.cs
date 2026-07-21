@@ -16,6 +16,8 @@ public class BulletSlotsRayController
     }
     private void EnableRayCastSlots()
     {
+        if (TutorialBlocker.Instance != null) TutorialBlocker.Instance.SetRaycast(false);
+
         foreach (RevolverSlotContent content in slotContents)
         {
             if (!content.isDrag) content.ibulletSlot.ChangeRaycast(true);
@@ -23,6 +25,8 @@ public class BulletSlotsRayController
     }
     private void DisableRayCastEmptySlots()
     {
+        if (TutorialBlocker.Instance != null) TutorialBlocker.Instance.SetRaycast(true);
+
         foreach (RevolverSlotContent content in slotContents)
         {
             if (content.IsEmpty || AllBulletList.Instance.GetBullet(content.id).Count == 0) content.ibulletSlot.ChangeRaycast(false);

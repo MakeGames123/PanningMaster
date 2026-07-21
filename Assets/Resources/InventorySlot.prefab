@@ -925,6 +925,7 @@ GameObject:
   - component: {fileID: 8584768110249636305}
   - component: {fileID: 3929783889575360315}
   - component: {fileID: 8197839436240838513}
+  - component: {fileID: 3695813072008255646}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: InventorySlot
@@ -1027,3 +1028,16 @@ MonoBehaviour:
   levelText: {fileID: 9091639065187992530}
   equipText: {fileID: 3017374118263661535}
   levelGage: {fileID: 7253428188250929463}
+--- !u!114 &3695813072008255646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289374618967390853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8096d18850d265943a2326d77701a910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: '#first-slot'

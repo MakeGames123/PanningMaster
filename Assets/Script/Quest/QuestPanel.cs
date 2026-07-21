@@ -10,6 +10,10 @@ public class QuestPanel : MonoBehaviour
     [SerializeField] QuestUI questUI;
     [SerializeField] NavButtons navButtons; // 퀘스트 이동 버튼 → 탭 전환 연계
 
+    [Header("튜토리얼 연동")]
+    [SerializeField] string tutorialCompleteStepId = "quest";      // 이 스텝 진입 시(=직전 autoeq 완료) 튜토리얼 완료 퀘스트 클리어
+    [SerializeField] string tutorialCompleteEventKey = "tutorial"; // QuestMain 1번(튜토리얼 완료)의 EventKey
+
     // 탭 이동 추가 훅(연출 등). 실제 패널 전환은 navButtons가 담당
     public UnityEvent<string> onNavigate;
     // 보상 수령 시 통지 — 해금 팝업(UnlockKey)·튜토리얼(TutorialSeq) 연출 연결용
@@ -29,6 +33,8 @@ public class QuestPanel : MonoBehaviour
             QuestMainLoader.Instance.OnLoaded += HandleSheetLoaded;
         if (QuestEventManager.Instance != null)
             QuestEventManager.Instance.OnEventChanged += HandleEventChanged;
+        if (TutorialManager.Instance != null)
+            TutorialManager.Instance.onStepEnter.AddListener(HandleTutorialStep);
 
         Refresh();
     }
@@ -41,6 +47,16 @@ public class QuestPanel : MonoBehaviour
             QuestMainLoader.Instance.OnLoaded -= HandleSheetLoaded;
         if (QuestEventManager.Instance != null)
             QuestEventManager.Instance.OnEventChanged -= HandleEventChanged;
+        if (TutorialManager.Instance != null)
+            TutorialManager.Instance.onStepEnter.RemoveListener(HandleTutorialStep);
+    }
+
+    // 튜토리얼 특정 스텝 진입 시 튜토리얼 완료 퀘스트(EventKey=tutorial)를 클리어 상태로 만든다.
+    void HandleTutorialStep(TutorialStepData step)
+    {
+        if (step == null || step.stepId != tutorialCompleteStepId) return;
+        if (QuestEventManager.Instance != null)
+            QuestEventManager.Instance.SetValue(tutorialCompleteEventKey, 1); // Absolute goal 1 → 완료
     }
 
     void HandleSheetLoaded() => SetQuest(currentId);
@@ -61,6 +77,11 @@ public class QuestPanel : MonoBehaviour
         {
             GiveReward(q);
             onQuestClaimed?.Invoke(q);
+
+            // 튜토리얼 main_12: 퀘스트 배너를 탭해 보상을 수령하면 questComplete 발행
+            if (TutorialEventManager.Instance != null)
+                TutorialEventManager.Instance.AddEvent("questComplete");
+
             NextQuest();
         }
         else

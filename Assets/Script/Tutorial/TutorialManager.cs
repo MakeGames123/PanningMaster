@@ -29,12 +29,30 @@ public class TutorialManager : MonoBehaviour
         }
         Instance = this;
     }
+
+    // 테스트: 시트가 로드되면 main 시퀀스 자동 시작
     void Start()
     {
+        var loader = TutorialStepLoader.Instance;
+        if (loader == null) return;
+
+        if (loader.IsLoaded) StartSequence("main");
+        else loader.OnLoaded += OnSheetLoaded;
+    }
+
+    void OnSheetLoaded()
+    {
+        if (TutorialStepLoader.Instance != null)
+            TutorialStepLoader.Instance.OnLoaded -= OnSheetLoaded;
         StartSequence("main");
     }
 
-    void OnDestroy() => StopWaiting();
+    void OnDestroy()
+    {
+        StopWaiting();
+        if (TutorialStepLoader.Instance != null)
+            TutorialStepLoader.Instance.OnLoaded -= OnSheetLoaded;
+    }
 
     // 시퀀스 시작(seq = main/dungeon/craft…)
     public void StartSequence(string seq)
@@ -57,6 +75,10 @@ public class TutorialManager : MonoBehaviour
         index = -1;
         Next();
     }
+
+    // 현재 진행 중인 스텝(없으면 null)
+    public TutorialStepData CurrentStep =>
+        (steps != null && index >= 0 && index < steps.Count) ? steps[index] : null;
 
     // talk/click 스텝을 UI에서 진행시킬 때 호출(await 스텝에는 무효)
     public void Advance()
@@ -96,10 +118,10 @@ public class TutorialManager : MonoBehaviour
     {
         awaitKey = step.awaitEvent;
         awaitTarget = Mathf.Max(1, step.count);
-        awaitBase = QuestEventManager.Instance != null ? QuestEventManager.Instance.GetValue(awaitKey) : 0;
+        awaitBase = TutorialEventManager.Instance != null ? TutorialEventManager.Instance.GetValue(awaitKey) : 0;
 
-        if (QuestEventManager.Instance != null)
-            QuestEventManager.Instance.OnEventChanged += OnEvent;
+        if (TutorialEventManager.Instance != null)
+            TutorialEventManager.Instance.OnEventChanged += OnEvent;
 
         waiting = true;
         Debug.Log($"[Tutorial] await 대기 시작 — 이벤트 '{awaitKey}' {awaitTarget}회 (기준값 {awaitBase})");
@@ -122,8 +144,8 @@ public class TutorialManager : MonoBehaviour
 
     void StopWaiting()
     {
-        if (waiting && QuestEventManager.Instance != null)
-            QuestEventManager.Instance.OnEventChanged -= OnEvent;
+        if (waiting && TutorialEventManager.Instance != null)
+            TutorialEventManager.Instance.OnEventChanged -= OnEvent;
         waiting = false;
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4177012604559163848}
   - component: {fileID: 3252049118185695712}
   - component: {fileID: 7291774288641577274}
+  - component: {fileID: 1291231907208305747}
   m_Layer: 5
   m_Name: Background(Button)
   m_TagString: Untagged
@@ -120,6 +121,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1291231907208305747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46361467297407744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8096d18850d265943a2326d77701a910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: '#quest-banner'
 --- !u!1 &598178647324100457
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +570,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3255925348429456069}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -586,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questUI: {fileID: 2704099942511322524}
+  navButtons: {fileID: 0}
   onNavigate:
     m_PersistentCalls:
       m_Calls: []

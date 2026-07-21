@@ -48,13 +48,17 @@ public class DataManager : MonoBehaviour
         login.onLogined.AddListener(StartSync);
         table.OnAllTablesLoaded.AddListener(IncreaseTicket);
     }
+    void Start()
+    {
+        Ticket.Add(999);
+    }
     public void StopSync()
     {
         StopCoroutine(syncCoroutine);
     }
     public void StartSync()
     {
-        syncCoroutine = StartCoroutine(SyncCycle());
+        //syncCoroutine = StartCoroutine(SyncCycle());
     }
     private void IncreaseTicket()
     {
@@ -153,6 +157,8 @@ public class DataManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.1f);
             Ticket.SyncData();
             yield return new WaitForSecondsRealtime(10);
+            
+            yield break;
         }
     }
 }
