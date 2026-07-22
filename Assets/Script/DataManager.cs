@@ -16,6 +16,7 @@ public class DataManager : MonoBehaviour
     public GoldData Gold = new();
     public int stage = 1;
     public int clearedDungeonFloor = 0; //클리어한 던전 최고 층 (0이면 1층도 아직 미클리어)
+    public int gem = 0;       //젬(업적 등 보상)
     public int normalKey = 3; //일반 열쇠
     public int eliteKey = 3;  //정예 열쇠
     public int maxNormalKey = 5; //일반 열쇠 최대 보유 개수
@@ -30,6 +31,7 @@ public class DataManager : MonoBehaviour
     public UnityEvent<double> onPowerChanged = new();
     public UnityEvent<int> onDungeonFloorChanged = new();
     public UnityEvent onKeyChanged = new();
+    public UnityEvent<int> onGemChanged = new();
     public PlayFabLoginManager login;
     public SheetService table;
     Coroutine syncCoroutine;
@@ -133,6 +135,11 @@ public class DataManager : MonoBehaviour
     {
         Gold.Add(amount);
     }
+    public void IncreaseGem(int amount)
+    {
+        gem += amount;
+        onGemChanged.Invoke(gem);
+    }
     public void IncreaseTicket(int amount)
     {
         Ticket.Add(amount);
@@ -141,6 +148,10 @@ public class DataManager : MonoBehaviour
     {
         PlayerData.Instance.Power = power;
         onPowerChanged.Invoke(power);
+
+        //업적: 전투력 달성(Absolute — SetValue가 최고값 유지)
+        if (QuestEventManager.Instance != null)
+            QuestEventManager.Instance.SetValue("power", (long)PlayerData.Instance.Power);
     }
     public void UpdatePossPower(float power)
     {

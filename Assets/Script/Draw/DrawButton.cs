@@ -119,7 +119,10 @@ public class DrawButton : MonoBehaviour
 
         //뽑은 탄환 수를 퀘스트·튜토리얼 각각의 이벤트 버스에 발행
         if (QuestEventManager.Instance != null)
+        {
             QuestEventManager.Instance.AddEvent("draw", pendingDrawCount);
+            QuestEventManager.Instance.AddEvent("forge", pendingDrawCount); //업적: 탄환 뽑기
+        }
         if (TutorialEventManager.Instance != null)
             TutorialEventManager.Instance.AddEvent("draw", pendingDrawCount);
 

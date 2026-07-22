@@ -42,7 +42,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("기본 속도")]
     public float baseReloadTime = 2.5f; //기본 장전 시간(초)
-    public float baseAttackSpeed = 0.5f; //기본 공격 간격(초)
+    public float baseAttackSpeed = 0.1f; //기본 공격 간격(초)
 
     //ReloadSpeed/ShootSpeed(%)를 반영한 실제 값. 속도가 x% 빠르면 걸리는 시간은 /(1 + x/100)
     public float ReloadTime => baseReloadTime / (1f + ReloadSpeed / 100f);

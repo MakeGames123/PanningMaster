@@ -106,6 +106,7 @@ public class ForgePanel : MonoBehaviour
         {
             goldUsed += goldReq[info.infoSO.tier];
             Reroll();
+            if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("craft"); //업적: 세공
         }
     }
     void StartAutoReroll()

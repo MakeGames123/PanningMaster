@@ -103,7 +103,11 @@ public class DungeonField : MonoBehaviour
 
         battleResult.ShowResult(success ? "던전 클리어" : "던전 실패");
 
-        if (success) DataManager.Instance.ClearDungeonFloor(currentFloor); //클리어 층 기록
+        if (success)
+        {
+            DataManager.Instance.ClearDungeonFloor(currentFloor); //클리어 층 기록
+            if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("dgClear"); //업적: 던전 클리어
+        }
 
         yield return new WaitForSeconds(2f);
 

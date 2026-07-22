@@ -45,6 +45,7 @@ public class SheetService : MonoBehaviour
         loaders.Add(new LabNodeLoader());
         loaders.Add(new LabEdgeLoader());
         loaders.Add(new QuestMainLoader());
+        loaders.Add(new AchievementLoader());
         loaders.Add(new MonsterHpTableLoader());
         loaders.Add(new StatTableLoader());
         loaders.Add(new StatTypeLoader());

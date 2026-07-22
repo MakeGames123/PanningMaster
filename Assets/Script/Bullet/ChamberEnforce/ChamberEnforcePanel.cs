@@ -77,7 +77,10 @@ public class ChamberEnforcePanel : MonoBehaviour
         }
 
         // 성공 시 확률 -5%, 실패 시 다음 확률 +5% (레벨 유지)
-        selected.TryEnhance(bonusPerFail, basePenaltyOnSuccess);
+        if (selected.TryEnhance(bonusPerFail, basePenaltyOnSuccess))
+        {
+            if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("enhAny"); //업적: 강화 성공
+        }
         // NOTE: 강화 수치의 실제 데미지 반영은 아직 하지 않음
 
         RefreshInfo();

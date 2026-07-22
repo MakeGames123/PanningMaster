@@ -2,8 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 던전 종류. Normal = 기존 층 진행형 던전, Laboratory = 연구소 던전(층 없음, 다중 적)
-public enum DungeonKind { Normal, Laboratory }
+// 던전 종류. Normal = 층 진행형 던전, Gold = 골드 던전(층 없음, 실패 없음, 체력 2배씩+이월), Laboratory = 연구소 던전(층 없음, 다중 적)
+public enum DungeonKind { Normal, Gold, Laboratory }
 
 // 던전 목록의 한 항목(예: 골드 던전). 층 선택(< n >) + 입장 버튼 + 입장 비용 표시.
 // 선택 가능 최고 층 = 클리어 층 + 1. 다음 층이 안 열렸으면 오른쪽, 1층이면 왼쪽 버튼 비활성.
@@ -45,7 +45,8 @@ public class DungeonEntry : MonoBehaviour
     // 연구소 던전은 층 개념이 없으므로 항상 1층 고정(양쪽 화살표 자동 숨김)
     int MaxSelectableFloor()
     {
-        if (kind == DungeonKind.Laboratory) return 1;
+        // 골드·연구소 던전은 층 개념이 없으므로 항상 1층 고정(양쪽 화살표 자동 숨김)
+        if (kind == DungeonKind.Laboratory || kind == DungeonKind.Gold) return 1;
 
         int cleared = DataManager.Instance != null ? DataManager.Instance.clearedDungeonFloor : 0;
         return cleared + 1;
@@ -78,6 +79,7 @@ public class DungeonEntry : MonoBehaviour
         if (FieldManager.Instance == null) return;
 
         if (kind == DungeonKind.Laboratory) FieldManager.Instance.EnterLabDungeon();
+        else if (kind == DungeonKind.Gold) FieldManager.Instance.EnterGoldDungeon();
         else FieldManager.Instance.EnterDungeon(selectedFloor);
     }
 }

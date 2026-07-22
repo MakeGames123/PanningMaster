@@ -9,6 +9,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] NormalField normalField;
     [SerializeField] DungeonField dungeonField;
+    [SerializeField] GoldDungeonField goldDungeonField;
     [SerializeField] LabDungeonField labDungeonField;
 
     bool inDungeon;
@@ -42,6 +43,21 @@ public class FieldManager : MonoBehaviour
         dungeonField.Begin(player, floor);
     }
 
+    // 골드 던전 입장 (DungeonEntry에서 호출). 층 없음 · 실패 없음 · 죽음/장전 없음 · 전용 적.
+    public void EnterGoldDungeon()
+    {
+        if (inDungeon || goldDungeonField == null) return;
+        inDungeon = true;
+
+        normalField.Stop();
+        player.ResetRevolver(); //장전 취소 + 약실 1번으로 초기화
+        player.Enemy.gameObject.SetActive(false); //기본 적은 던전 동안 숨김
+
+        player.onCycleComplete = goldDungeonField.OnCycleComplete; //유일 핸들러 교체
+        player.SetTargetProvider(goldDungeonField.GetTarget); //골드 전용 적 조준(죽음으로 사이클 안 끊김)
+        goldDungeonField.Begin(player);
+    }
+
     // 연구소 던전 입장 (DungeonEntry에서 호출). 정예 열쇠 소모, 다중 표적 전투.
     public void EnterLabDungeon()
     {
@@ -64,6 +80,7 @@ public class FieldManager : MonoBehaviour
         inDungeon = false;
 
         dungeonField.Stop();
+        if (goldDungeonField != null) goldDungeonField.Stop();
         if (labDungeonField != null) labDungeonField.Stop();
         player.SetTargetProvider(null); //다중 표적 모드 끄기
         player.ResetRevolver(); //던전 종료 시에도 장전 취소 + 약실 1번으로 초기화

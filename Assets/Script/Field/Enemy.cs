@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private EnemyAnim anim;
     [SerializeField] private DamageFloatingText damageText;
+
     public bool Attacked(float damage)
     {
         hp -= damage;
@@ -41,6 +42,8 @@ public class Enemy : MonoBehaviour
     {
         DataManager.Instance.IncreaseTicket(2);
         DataManager.Instance.IncreaseStage();
+
+        if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("kill"); //업적: 클리어(처치)
         maxHp = MonsterHpTableLoader.Instance.GetHP(DataManager.Instance.stage);
         hp = maxHp;
         if (anim != null) anim.ResetAnim(); //리스폰: 원위치/원상태 복귀
