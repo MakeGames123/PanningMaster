@@ -40,6 +40,12 @@ public class RevolverSlots : MonoBehaviour
     {
         if (suppressPowerUpdate) return; //일괄 변경 중에는 마지막에 한 번만 갱신
 
+        DataManager.Instance.UpdatePower(ComputePower());
+    }
+
+    //현재 장착 탄환/전역 스탯 기준 전투력 계산(상태 변경 없음 — 무기 비교 시뮬레이션에서도 사용)
+    public float ComputePower()
+    {
         List<BulletInfo> revolverInfo = new();
         foreach (RevolverSlotContent content in revolverSlotContents)
         {
@@ -53,7 +59,7 @@ public class RevolverSlots : MonoBehaviour
             power += calculator.CalculateDamage(revolverInfo[i], mod, i, PlayerData.Instance.PossPower).Item1;
         }
 
-        DataManager.Instance.UpdatePower(power);
+        return power;
     }
     public bool CheckEmpty()
     {

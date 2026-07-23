@@ -43,6 +43,9 @@ public class NormalField : MonoBehaviour
             * Mathf.Pow(cfg.GetFloat("ClearGoldExpoRate"), Mathf.Max(0, stage - cfg.GetFloat("ClearGoldExpoStage")));
         if (!win) gold *= cfg.GetFloat("FailGoldRatio");
 
+        //골드 획득량 증가(연구소 GoldAcq + 무기 현상금 wgold — PlayerStatAggregator 합산, 값 1 = 1%)
+        if (PlayerData.Instance != null) gold *= 1f + PlayerData.Instance.GoldAcq / 100f;
+
         DataManager.Instance.IncreaseGold((int)gold);
         DataManager.Instance.IncreaseTicket(cfg.GetInt(win ? "ClearTicket" : "FailTicket"));
 

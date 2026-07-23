@@ -11,6 +11,7 @@ public class NavButtons : MonoBehaviour
     [SerializeField] RectTransform rankPanel;
     [SerializeField] RectTransform upgradePanel;
     [SerializeField] RectTransform pvpPanel;
+    [SerializeField] RectTransform weaponPanel;
     List<RectTransform> allPanels = new();
     [SerializeField] Button bulletButton;
     [SerializeField] Button dungeonButton;
@@ -18,6 +19,7 @@ public class NavButtons : MonoBehaviour
     [SerializeField] Button rankButton;
     [SerializeField] Button upgradeButton;
     [SerializeField] Button pvpButton;
+    [SerializeField] Button weaponButton;
     List<Button> allButtons = new();
     Vector2 disablePos = new Vector2(-9999, -9999);
     void Awake()
@@ -28,6 +30,7 @@ public class NavButtons : MonoBehaviour
         allPanels.Add(rankPanel);
         allPanels.Add(upgradePanel);
         if (pvpPanel != null) allPanels.Add(pvpPanel); //아직 씬에 연결 안 됐으면 무시
+        if (weaponPanel != null) allPanels.Add(weaponPanel);
 
         allButtons.Add(bulletButton);
         allButtons.Add(dungeonButton);
@@ -35,6 +38,7 @@ public class NavButtons : MonoBehaviour
         allButtons.Add(rankButton);
         allButtons.Add(upgradeButton);
         if (pvpButton != null) allButtons.Add(pvpButton);
+        if (weaponButton != null) allButtons.Add(weaponButton);
 
         bulletButton.onClick.AddListener(() => EnablePanel(bulletPanel));
         dungeonButton.onClick.AddListener(() => EnablePanel(dungeonPanel));
@@ -42,6 +46,7 @@ public class NavButtons : MonoBehaviour
         rankButton.onClick.AddListener(() => EnablePanel(rankPanel));
         upgradeButton.onClick.AddListener(() => EnablePanel(upgradePanel));
         if (pvpButton != null && pvpPanel != null) pvpButton.onClick.AddListener(() => EnablePanel(pvpPanel));
+        if (weaponButton != null && weaponPanel != null) weaponButton.onClick.AddListener(() => EnablePanel(weaponPanel));
     }
     bool _initialized;
 
@@ -70,7 +75,7 @@ public class NavButtons : MonoBehaviour
         {
             "bullet" => bulletPanel,
             "slotEnh" => bulletPanel,   // 약실 강화 — 탄환 화면 내
-            "equip" => bulletPanel,     // 리볼버 장비 — 전용 패널 생기면 교체
+            "equip" => weaponPanel != null ? weaponPanel : bulletPanel, // 무기(리볼버) 탭 — 미연결 시 탄환으로 폴백
             "growth" => upgradePanel,
             "lab" => upgradePanel,      // 연구소 — 전용 패널 생기면 교체
             "dungeon" => dungeonPanel,

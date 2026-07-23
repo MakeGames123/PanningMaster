@@ -30,6 +30,10 @@ public static class PlayerStatAggregator
         p.ReloadSpeed = sum.ReloadSpeed;
         p.ShootSpeed = sum.ShootSpeed;
         p.GoldAcq = sum.GoldAcq;
+
+        // 스탯 변화 → 전투력 재계산 → onPowerChanged 변화량이 PowerFloatingText로 연출됨
+        var revolver = UnityEngine.Object.FindAnyObjectByType<RevolverSlots>();
+        if (revolver != null) revolver.CheckSlots();
     }
 }
 

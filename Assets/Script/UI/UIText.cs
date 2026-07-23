@@ -6,7 +6,8 @@ public enum UITextValueType
     Ticket,
     Gold,
     Power,
-    Stage
+    Stage,
+    Crate
 }
 
 [RequireComponent(typeof(TextMeshProUGUI))]
@@ -43,6 +44,10 @@ public class UIText : MonoBehaviour
                 dm.onStageChanged.AddListener(OnStage);
                 OnStage(dm.stage);
                 break;
+            case UITextValueType.Crate:
+                dm.onCrateChanged.AddListener(OnCrate);
+                OnCrate(dm.crate);
+                break;
         }
     }
 
@@ -57,6 +62,7 @@ public class UIText : MonoBehaviour
             case UITextValueType.Gold: dm.Gold.onValueChanged -= OnGold; break;
             case UITextValueType.Power: dm.onPowerChanged.RemoveListener(OnPower); break;
             case UITextValueType.Stage: dm.onStageChanged.RemoveListener(OnStage); break;
+            case UITextValueType.Crate: dm.onCrateChanged.RemoveListener(OnCrate); break;
         }
     }
 
@@ -64,4 +70,5 @@ public class UIText : MonoBehaviour
     void OnGold(long v) => text.text = "골드:" + NumberFormatLoader.Abbrev(v);
     void OnPower(double v) => text.text = NumberFormatLoader.Abbrev(v);
     void OnStage(int v) => text.text = v.ToString(); // 스테이지는 카운터라 축약 없이 원값
+    void OnCrate(int v) => text.text = "🧰" + NumberFormatLoader.Abbrev(v);
 }

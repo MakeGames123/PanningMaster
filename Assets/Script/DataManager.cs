@@ -17,6 +17,7 @@ public class DataManager : MonoBehaviour
     public int stage = 1;
     public int clearedDungeonFloor = 0; //클리어한 던전 최고 층 (0이면 1층도 아직 미클리어)
     public int gem = 0;       //젬(업적 등 보상)
+    public int crate = 100;     //무기 상자(🧰) — 무기 뽑기 재화
     public int normalKey = 3; //일반 열쇠
     public int eliteKey = 3;  //정예 열쇠
     public int maxNormalKey = 5; //일반 열쇠 최대 보유 개수
@@ -32,6 +33,7 @@ public class DataManager : MonoBehaviour
     public UnityEvent<int> onDungeonFloorChanged = new();
     public UnityEvent onKeyChanged = new();
     public UnityEvent<int> onGemChanged = new();
+    public UnityEvent<int> onCrateChanged = new();
     public PlayFabLoginManager login;
     public SheetService table;
     Coroutine syncCoroutine;
@@ -139,6 +141,19 @@ public class DataManager : MonoBehaviour
     {
         gem += amount;
         onGemChanged.Invoke(gem);
+    }
+    public void IncreaseCrate(int amount)
+    {
+        crate += amount;
+        onCrateChanged.Invoke(crate);
+    }
+    //무기 상자 소모. 부족하면 false
+    public bool UseCrate(int amount)
+    {
+        if (crate < amount) return false;
+        crate -= amount;
+        onCrateChanged.Invoke(crate);
+        return true;
     }
     public void IncreaseTicket(int amount)
     {

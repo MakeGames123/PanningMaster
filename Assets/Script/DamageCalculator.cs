@@ -99,30 +99,42 @@ public class DamageCalculator
         int type = (int)info.infoSO.bulletType;
         float tierBase = basicDamage[info.infoSO.tier] + (info.Level - 1) * basicDamage[info.infoSO.tier] * lvScale[info.infoSO.tier];
 
+        // 전역 스탯 버킷(성장·연구소·무기 합산 — PlayerStatAggregator 경유, 값 1 = 1%)
+        var p = PlayerData.Instance;
+        float gDamage = p != null ? p.Damage / 100f : 0f;
+        float gTypeDamage = p != null ? p.TypeDamage / 100f : 0f;
+        float gFinal = p != null ? p.FinalDamage / 100f : 0f;
+        float gCritChance = p != null ? p.CriticalChance : 0f;
+        float gCritDamage = p != null ? p.CriticalDamage / 100f : 0f;
+
         float powerPart =
             tierBase *
             (1 + mod.SelfPower[index]) *
             (1 + mod.AllPower) *
-            (1 + mod.PowerByType[type]);
+            (1 + mod.PowerByType[type]) *
+            (1 + gDamage);
 
         float typePart =
             tierBase *
             (1 + mod.SelfTypePower[index]) *
             (1 + mod.AllTypePower) *
-            (1 + mod.TypePowerByType[type]);
+            (1 + mod.TypePowerByType[type]) *
+            (1 + gTypeDamage);
 
         float finalAmp =
             (1 + mod.SelfFinal[index]) *
             (1 + mod.AllFinal) *
-            (1 + mod.FinalByType[type]);
+            (1 + mod.FinalByType[type]) *
+            (1 + gFinal);
 
-        float criticalChance = (mod.SelfCriticalChance[index] + mod.AllCriticalChance + mod.CriticalChanceByType[type]) * 100;
+        float criticalChance = (mod.SelfCriticalChance[index] + mod.AllCriticalChance + mod.CriticalChanceByType[type]) * 100 + gCritChance;
         criticalChance = Mathf.Min(100, criticalChance);
 
         float criticalDamage =
             (1 + mod.SelfCriticalDamage[index]) +
             (1 + mod.AllCriticalDamage) +
-            (1 + mod.CriticalDamageByType[type]);
+            (1 + mod.CriticalDamageByType[type]) +
+            gCritDamage;
 
         bool isCritical = UnityEngine.Random.Range(0, 100) < criticalChance;
 
