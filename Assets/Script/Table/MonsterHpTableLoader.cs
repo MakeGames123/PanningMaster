@@ -70,7 +70,7 @@ public class MonsterHpTableLoader : ISheetLoader
     public float GetHP(int stage)
     {
         if (stage <= 1)
-            return 10f;
+            return 10000f;
 
         if (hpCache.TryGetValue(stage, out var cached))
             return cached;

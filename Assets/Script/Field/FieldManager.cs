@@ -6,7 +6,7 @@ public class FieldManager : MonoBehaviour
 {
     public static FieldManager Instance { get; private set; }
 
-    [SerializeField] Player player;
+    [SerializeField] PlayerSquad player;
     [SerializeField] NormalField normalField;
     [SerializeField] DungeonField dungeonField;
     [SerializeField] GoldDungeonField goldDungeonField;

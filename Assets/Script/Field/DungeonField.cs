@@ -17,7 +17,7 @@ public class DungeonField : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText; //남은 시간 텍스트
     [SerializeField] Slider timerSlider;        //남은 시간 게이지(선택)
 
-    Player player;
+    PlayerSquad player;
     Enemy enumy;
     float savedMaxHp;
     Coroutine timerCo;
@@ -30,7 +30,7 @@ public class DungeonField : MonoBehaviour
     }
 
     // FieldManager가 던전을 활성화할 때 호출
-    public void Begin(Player p, int floor)
+    public void Begin(PlayerSquad p, int floor)
     {
         player = p;
         enumy = p.Enemy;

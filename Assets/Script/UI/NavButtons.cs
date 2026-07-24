@@ -12,6 +12,7 @@ public class NavButtons : MonoBehaviour
     [SerializeField] RectTransform upgradePanel;
     [SerializeField] RectTransform pvpPanel;
     [SerializeField] RectTransform weaponPanel;
+    [SerializeField] RectTransform characterPanel;
     List<RectTransform> allPanels = new();
     [SerializeField] Button bulletButton;
     [SerializeField] Button dungeonButton;
@@ -20,6 +21,7 @@ public class NavButtons : MonoBehaviour
     [SerializeField] Button upgradeButton;
     [SerializeField] Button pvpButton;
     [SerializeField] Button weaponButton;
+    [SerializeField] Button characterButton;
     List<Button> allButtons = new();
     Vector2 disablePos = new Vector2(-9999, -9999);
     void Awake()
@@ -31,6 +33,7 @@ public class NavButtons : MonoBehaviour
         allPanels.Add(upgradePanel);
         if (pvpPanel != null) allPanels.Add(pvpPanel); //아직 씬에 연결 안 됐으면 무시
         if (weaponPanel != null) allPanels.Add(weaponPanel);
+        if (characterPanel != null) allPanels.Add(characterPanel);
 
         allButtons.Add(bulletButton);
         allButtons.Add(dungeonButton);
@@ -39,6 +42,7 @@ public class NavButtons : MonoBehaviour
         allButtons.Add(upgradeButton);
         if (pvpButton != null) allButtons.Add(pvpButton);
         if (weaponButton != null) allButtons.Add(weaponButton);
+        if (characterButton != null) allButtons.Add(characterButton);
 
         bulletButton.onClick.AddListener(() => EnablePanel(bulletPanel));
         dungeonButton.onClick.AddListener(() => EnablePanel(dungeonPanel));
@@ -47,6 +51,7 @@ public class NavButtons : MonoBehaviour
         upgradeButton.onClick.AddListener(() => EnablePanel(upgradePanel));
         if (pvpButton != null && pvpPanel != null) pvpButton.onClick.AddListener(() => EnablePanel(pvpPanel));
         if (weaponButton != null && weaponPanel != null) weaponButton.onClick.AddListener(() => EnablePanel(weaponPanel));
+        if (characterButton != null && characterPanel != null) characterButton.onClick.AddListener(() => EnablePanel(characterPanel));
     }
     bool _initialized;
 
@@ -79,6 +84,7 @@ public class NavButtons : MonoBehaviour
             "growth" => upgradePanel,
             "lab" => upgradePanel,      // 연구소 — 전용 패널 생기면 교체
             "dungeon" => dungeonPanel,
+            "character" => characterPanel,
             "pvp" => pvpPanel,
             _ => null
         };

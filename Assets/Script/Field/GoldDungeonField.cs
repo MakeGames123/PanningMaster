@@ -17,7 +17,7 @@ public class GoldDungeonField : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] Slider timerSlider;
 
-    Player player;
+    PlayerSquad player;
     Coroutine timerCo;
     bool ended;
 
@@ -31,7 +31,7 @@ public class GoldDungeonField : MonoBehaviour
     public IFireTarget GetTarget() => goldEnemy;
 
     // FieldManager가 골드 던전을 활성화할 때 호출
-    public void Begin(Player p)
+    public void Begin(PlayerSquad p)
     {
         player = p;
         ended = false;

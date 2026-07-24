@@ -29,7 +29,7 @@ public class LabDungeonField : MonoBehaviour
     [SerializeField] GameObject progressRoot;       //진행 UI 루트(켜고 끔)
     [SerializeField] TextMeshProUGUI progressText;  //"3/10"
 
-    Player player;
+    PlayerSquad player;
     readonly List<LabDungeonEnemy> enemies = new(); //죽어서 파괴되면 항목이 null이 된다
     int spawnedCount;
     Coroutine spawnCo;
@@ -42,7 +42,7 @@ public class LabDungeonField : MonoBehaviour
     }
 
     // FieldManager가 연구소 던전을 활성화할 때 호출
-    public void Begin(Player p)
+    public void Begin(PlayerSquad p)
     {
         player = p;
         resolved = false;

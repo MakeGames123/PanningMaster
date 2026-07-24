@@ -7,11 +7,11 @@ public class NormalField : MonoBehaviour
 {
     [SerializeField] BattleResult battleResult;
 
-    Player player;
+    PlayerSquad player;
     Enemy enumy;
 
     // FieldManager가 이 필드를 활성화할 때 호출
-    public void Begin(Player p)
+    public void Begin(PlayerSquad p)
     {
         player = p;
         enumy = p.Enemy;
