@@ -7,6 +7,9 @@ using UnityEngine.Events;
 using Unity.Android.Gradle.Manifest;
 public class RevolverSlots : MonoBehaviour
 {
+    // 씬의 모든 리볼버(사수별 전용 3개) — 전투력은 전체 합으로 계산한다
+    public static readonly List<RevolverSlots> All = new();
+
     [SerializeField] List<Transform> revolverSlotTransforms = new();
     public List<RevolverSlotContent> revolverSlotContents { get; private set; } = new();
     List<RevolverSlotUI> slotUIs = new();
@@ -14,6 +17,16 @@ public class RevolverSlots : MonoBehaviour
     DamageCalculator calculator = new();
     int slotNum;
     bool suppressPowerUpdate; //자동장착 등 일괄 변경 중 전투력 연쇄 갱신 억제
+    void Awake()
+    {
+        if (!All.Contains(this)) All.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        All.Remove(this);
+    }
+
     public void Initialize(BulletSlotsRayController rayController)
     {
         slotNum = revolverSlotTransforms.Count;
@@ -40,7 +53,12 @@ public class RevolverSlots : MonoBehaviour
     {
         if (suppressPowerUpdate) return; //일괄 변경 중에는 마지막에 한 번만 갱신
 
-        DataManager.Instance.UpdatePower(ComputePower());
+        //전투력 = 모든 리볼버(사수 3명)의 합
+        float total = 0;
+        foreach (RevolverSlots revolver in All)
+            total += revolver.ComputePower();
+
+        DataManager.Instance.UpdatePower(total);
     }
 
     //현재 장착 탄환/전역 스탯 기준 전투력 계산(상태 변경 없음 — 무기 비교 시뮬레이션에서도 사용)

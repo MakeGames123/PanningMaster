@@ -25,7 +25,7 @@ public class BulletSlotsRayController
     }
     private void DisableRayCastEmptySlots()
     {
-        if (TutorialBlocker.Instance != null) TutorialBlocker.Instance.SetRaycast(true);
+        if (TutorialBlocker.Instance != null) TutorialBlocker.Instance.RestoreRaycast();
 
         foreach (RevolverSlotContent content in slotContents)
         {

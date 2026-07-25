@@ -69,21 +69,19 @@ public class BulletSlotDrag : MonoBehaviour,
         {
             BulletSlotContent oppoContent = UIObject.GetComponent<BulletSlotDrag>().content;
 
+            //content가 null(리볼버 미초기화 등)이거나 리볼버 슬롯이 아니면 장착 실패 — 인벤토리 표시도 건드리지 않는다
             if (oppoContent is RevolverSlotContent revolverSlot)
             {
                 revolverSlot.OnBulletDrop(content);
 
-                //인벤토리 탄환을 약실로 드롭 = 수동 장착 → 퀘스트·튜토리얼 각각에 equipAct 발행
-                if (content is InventorySlotContent)
+                //인벤토리 탄환을 약실로 드롭 = 수동 장착 → 장착 표시 + 퀘스트·튜토리얼 각각에 equipAct 발행
+                if (content is InventorySlotContent inventorySlot)
                 {
+                    inventorySlot.ChangeActive(false);
+
                     if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("equipAct");
                     if (TutorialEventManager.Instance != null) TutorialEventManager.Instance.AddEvent("equipAct");
                 }
-            }
-
-            if (content is InventorySlotContent inventorySlot)
-            {
-                inventorySlot.ChangeActive(false);
             }
         }
         else //인벤토리로 돌아가기

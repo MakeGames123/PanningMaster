@@ -756,8 +756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pvpBoardRoot: {fileID: 2349442886759172992}
-  powerBoardRoot: {fileID: 0}
-  stageBoardRoot: {fileID: 0}
+  powerBoardRoot: {fileID: 3127885627066896559}
+  stageBoardRoot: {fileID: 83116558815888106}
   pvpButton: {fileID: 8784966255420400810}
   powerButton: {fileID: 6137083381053442853}
   stageButton: {fileID: 117581846203981056}

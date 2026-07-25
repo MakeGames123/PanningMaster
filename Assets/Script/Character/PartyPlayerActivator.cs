@@ -2,7 +2,7 @@ using UnityEngine;
 
 // 파티 슬롯(0~2) ↔ 씬의 Player 3개를 1:1로 묶어, 캐릭터가 장착된 슬롯의 Player만 활성화한다.
 // 스타터가 슬롯 0에 자동 배치되므로 시작 시 1번 Player는 항상 켜진다.
-// 탄환은 공유 — 세 Player의 revolver에 같은 RevolverSlots를 연결(인스펙터).
+// 리볼버는 사수별 전용 — 각 Player의 revolver에 서로 다른 RevolverSlots를 연결(인스펙터).
 public class PartyPlayerActivator : MonoBehaviour
 {
     [SerializeField] Player[] players = new Player[CharacterManager.PartySize]; // 파티 슬롯 순서대로 0~2

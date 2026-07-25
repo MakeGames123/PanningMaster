@@ -46,6 +46,13 @@ public class TutorialBlocker : MonoBehaviour
         if (graphic != null) graphic.raycastTarget = on;
     }
 
+    // 드래그 종료 후 복원용 — 현재 모드가 요구하는 상태로만 되돌린다(튜토리얼 꺼져 있으면 차단 안 함).
+    // 무조건 true로 복원하면 평상시에도 투명 오버레이가 모든 클릭을 먹는다.
+    public void RestoreRaycast()
+    {
+        if (graphic != null) graphic.raycastTarget = mode != Mode.Off;
+    }
+
     void OnEnable()
     {
         if (TM != null)
