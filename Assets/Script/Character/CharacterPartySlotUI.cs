@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // 캐릭터 장착 슬롯 1칸(프로토 배럭 G.party 포팅 — 총 3칸, slotIndex 0~2).
-// 카드/다른 슬롯 드롭 = 장착·스왑, 슬롯을 드래그해 밖에 놓으면 해제.
+// 카드/다른 슬롯 드롭 = 장착·스왑, 슬롯을 드래그해 밖에 놓으면 해제, 클릭 = 상세 팝업.
 // 드롭을 받으려면 루트에 Raycast Target 켜진 Image 필요.
-public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] int slotIndex;               // 0~2
     [SerializeField] Image mainImage;             // 장착 캐릭터 스프라이트(빈 슬롯·미등록이면 숨김)
@@ -14,6 +14,8 @@ public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandl
     [SerializeField] TextMeshProUGUI nameText;    // 장착 이름(선택 연결)
     [SerializeField] TextMeshProUGUI infoText;    // Lv.1 ×위력 배수(카드와 동일 표기, 선택 연결)
     [SerializeField] Image borderImage;           // 등급색 테두리(선택 연결)
+    [SerializeField] CharacterDragGhost dragGhost;      // 드래그 고스트(씬 1개 — 인스펙터 연결)
+    [SerializeField] CharacterDetailPopup detailPopup;  // 클릭 시 상세 팝업(인스펙터 연결)
 
     static readonly Color EmptyBorder = new(0.16f, 0.19f, 0.27f);
     static readonly Color EmptyInk = new(0.42f, 0.46f, 0.55f);
@@ -70,9 +72,19 @@ public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         if (emojiText != null) { emojiText.text = c.emoji; emojiText.color = Color.white; }
         if (nameText != null) nameText.text = c.nameKo;
         if (infoText != null)
-            infoText.text = $"Lv.1 <b>×{CharacterCardUI.FormatMul(grade != null ? grade.powerMul : 1f)}</b>";
+        {
+            var st = CharacterManager.Instance.GetState(c.id);
+            infoText.text = $"Lv.{(st != null ? st.level : 1)} <b>×{CharacterCardUI.FormatMul(CharacterManager.Instance.PowerMulOf(c.id))}</b>";
+        }
         if (borderImage != null)
             borderImage.color = CharacterCardUI.ParseColor(grade != null ? grade.colorHex : null, Color.white);
+    }
+
+    // 클릭 = 장착 캐릭터 상세 팝업(빈 슬롯은 무시 — 드래그가 시작되면 클릭은 발화하지 않음)
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        var c = Current();
+        if (c != null && detailPopup != null) detailPopup.Open(c.id);
     }
 
     // ── 슬롯에서 드래그로 빼기(리볼버 슬롯 문법) ──
@@ -83,15 +95,14 @@ public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         dragging = c != null;
         if (!dragging) return;
 
-        if (CharacterDragGhost.Instance != null && CharacterManager.Instance != null)
-            CharacterDragGhost.Instance.Show(CharacterManager.Instance.GetSprite(c.id));
+        if (dragGhost != null && CharacterManager.Instance != null)
+            dragGhost.Show(CharacterManager.Instance.GetSprite(c.id));
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!dragging) return;
-        if (CharacterDragGhost.Instance != null)
-            CharacterDragGhost.Instance.Move(eventData.position);
+        if (dragGhost != null) dragGhost.Move(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -99,8 +110,7 @@ public class CharacterPartySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         if (!dragging) return;
         dragging = false;
 
-        if (CharacterDragGhost.Instance != null)
-            CharacterDragGhost.Instance.Hide();
+        if (dragGhost != null) dragGhost.Hide();
 
         var mgr = CharacterManager.Instance;
         string id = mgr.GetPartyMember(slotIndex);

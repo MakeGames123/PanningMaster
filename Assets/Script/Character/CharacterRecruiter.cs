@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,24 +36,78 @@ public class CharacterRecruiter : MonoBehaviour
         return open;
     }
 
+    [System.Serializable]
+    public struct RecruitResult
+    {
+        public CharacterRosterData character;
+        public bool isNew;
+    }
+
+    // ── 천장(프로토 CH_CEIL=300 · chPityG): 보증 대상 = 현재 창에서 열린 최고 등급. 대상 등급 획득 시 리셋 ──
+
+    public const int PityCeil = 300;
+
+    public int CeilCount { get; private set; } // 보증 대상 미등장 누적
+    public int PityRemaining => Mathf.Max(0, PityCeil - CeilCount);
+
+    // 보증 대상 등급 = 현재 창에서 확률이 열려 있는 최고 등급
+    public int PityTargetGrade()
+    {
+        var window = GetWindow();
+        for (int g = window.Length - 1; g >= 0; g--)
+            if (window[g] > 0) return g;
+        return 0;
+    }
+
     // 🪪 1개 = 1뽑. 결과는 onRecruited(캐릭터, 신규 여부)로 통지.
-    public bool TryRecruit()
+    public bool TryRecruit() => TryRecruitMany(1) != null;
+
+    // 🪪 count개 = count뽑(x10 버튼). 부족하면 null — 하나도 뽑지 않는다.
+    public List<RecruitResult> TryRecruitMany(int count)
     {
         var mgr = CharacterManager.Instance;
-        if (mgr == null || !mgr.IsReady) return false;
-        if (DataManager.Instance == null || !DataManager.Instance.UseScroll(1)) return false;
+        if (mgr == null || !mgr.IsReady) return null;
+        if (DataManager.Instance == null || !DataManager.Instance.UseScroll(count)) return null;
 
-        int levelBefore = mgr.RecruitLevel;
-        mgr.AddRecruitCount();
+        var results = new List<RecruitResult>();
+        for (int n = 0; n < count; n++)
+        {
+            int levelBefore = mgr.RecruitLevel;
+            mgr.AddRecruitCount();
 
-        CharacterRosterData picked = RollCharacter();
-        bool isNew = mgr.Acquire(picked.id);
+            int pityGrade = PityTargetGrade();
+            CharacterRosterData picked;
+            if (CeilCount + 1 >= PityCeil)
+                picked = PityPick(pityGrade); //천장 = 보증 등급·미보유 우선(시트순 결정론)
+            else
+                picked = RollCharacter();
 
-        if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("chDraw");
+            if (picked.grade >= pityGrade) CeilCount = 0; //보증 등급 이상 획득 = 리셋
+            else CeilCount++;
 
-        if (mgr.RecruitLevel > levelBefore) onRecruitLevelUp.Invoke(mgr.RecruitLevel);
-        onRecruited.Invoke(picked, isNew);
-        return true;
+            bool isNew = mgr.Acquire(picked.id);
+
+            if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("chDraw");
+
+            if (mgr.RecruitLevel > levelBefore) onRecruitLevelUp.Invoke(mgr.RecruitLevel);
+            onRecruited.Invoke(picked, isNew);
+
+            results.Add(new RecruitResult { character = picked, isNew = isNew });
+        }
+
+        return results;
+    }
+
+    // 천장 발동 픽: 보증 등급 풀에서 미보유 우선, 전부 보유면 시트 첫 번째(프로토 v37 결정론)
+    CharacterRosterData PityPick(int grade)
+    {
+        var mgr = CharacterManager.Instance;
+        var pool = CharacterRosterLoader.Instance.ByGrade(grade);
+        if (pool.Count == 0) return RollCharacter();
+
+        foreach (var c in pool)
+            if (!mgr.IsOwned(c.id)) return c;
+        return pool[0];
     }
 
     // 테스트용 모집 — 재화 소모 없이 롤만 진행. 누적 카운트/모집 레벨/보유·카드는 실제와 동일하게 굴러간다.

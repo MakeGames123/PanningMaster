@@ -26,8 +26,25 @@ public class WeaponManager : MonoBehaviour
     public int DrawCount { get; private set; }
     public int MaxSeenGrade { get; private set; }
 
-    public WeaponData Equipped { get; private set; }
+    // 슬롯별 장착 무기(파티 슬롯 0~2와 1:1). 뽑기 레벨/XP/천장은 계정 공용, 무기만 슬롯별.
+    readonly WeaponData[] equipped = new WeaponData[CharacterManager.PartySize];
+
+    public int SelectedSlot { get; private set; } // 패널이 보여주는 슬롯(WeaponSlotSwitcher가 전환)
+
+    public WeaponData Equipped => equipped[SelectedSlot]; // UI 호환: 현재 선택 슬롯의 무기
+    public WeaponData GetEquipped(int slot) => slot >= 0 && slot < equipped.Length ? equipped[slot] : null;
+
     public WeaponData Pending { get; private set; } // 비교 대기 중인 신규 무기(없으면 null)
+
+    // 패널 표시 슬롯 전환 — 비교 미해결 중에는 잠금(Pending이 다른 슬롯에 장착되는 사고 방지)
+    public void SelectSlot(int slot)
+    {
+        if (slot < 0 || slot >= equipped.Length || slot == SelectedSlot) return;
+        if (Pending != null) return;
+
+        SelectedSlot = slot;
+        onChanged.Invoke(); //패널이 선택 슬롯 무기로 다시 그림
+    }
 
     readonly Dictionary<int, int> ceilCounters = new(); // 등급 → 미등장 누적 카운트
 
@@ -58,30 +75,40 @@ public class WeaponManager : MonoBehaviour
         if (WeaponCeilingLoader.Instance == null || !WeaponCeilingLoader.Instance.IsLoaded) return;
         if (PlayerData.Instance == null) return; // 스탯 반영 대상이 생길 때까지 대기
 
-        // 시작 = 무조건 Lv1 E등급 고정(결정론·최약 베이스 — 첫 뽑기부터 상승 체감, 프로토 v34f)
-        Equipped ??= new WeaponData { level = 1, grade = 0, atk = AtkBase };
+        // 시작 = 슬롯마다 Lv1 E등급 고정(결정론·최약 베이스 — 첫 뽑기부터 상승 체감, 프로토 v34f)
+        for (int i = 0; i < equipped.Length; i++)
+            equipped[i] ??= new WeaponData { level = 1, grade = 0, atk = AtkBase };
 
         initialized = true;
         ApplyEquippedStats();
         onChanged.Invoke();
     }
 
-    // 장착 무기 스탯을 전역 스탯 집계기에 "weapon" 소스로 반영.
+    // 장착 무기(3슬롯 전부) 스탯을 전역 스탯 집계기에 "weapon" 소스로 반영.
+    // ※ 현재 스탯은 전역 합산 — 무기 스탯을 그 캐릭터에게만 적용하려면 DamageCalculator의 사수별 스탯 분리가 필요(미구현).
     // wboss/wdgn(보스/던전 상황부 스탯)은 미적용 — 추후 상황부 배율 구현 시 연결.
     void ApplyEquippedStats()
     {
-        PlayerStatAggregator.SetContribution("weapon", BuildStatSet(Equipped)); // 집계기가 전투력 재계산까지 트리거
+        StatSet total = default;
+        foreach (var w in equipped) AccumulateWeapon(ref total, w);
+
+        PlayerStatAggregator.SetContribution("weapon", total); // 집계기가 전투력 재계산까지 트리거
     }
 
     // 무기 1자루의 스탯 기여분(StatSet) 구성
     static StatSet BuildStatSet(WeaponData w)
     {
         StatSet set = default;
-        if (w == null) return set;
+        AccumulateWeapon(ref set, w);
+        return set;
+    }
+
+    static void AccumulateWeapon(ref StatSet set, WeaponData w)
+    {
+        if (w == null) return;
 
         set.Damage += w.atk; // 주스탯 = 공격력%
         foreach (var s in w.subs) AddSubStat(ref set, s.sid, s.value);
-        return set;
     }
 
     // 부옵 sid → 전역 스탯 필드 매핑 (WeaponSubStat 시트의 Id 기준)
@@ -135,10 +162,10 @@ public class WeaponManager : MonoBehaviour
 
         if (lvUp) onLevelUp.Invoke(DrawLevel);
 
-        if (Equipped == null)
+        if (equipped[SelectedSlot] == null)
         {
             // 첫 무기 = 즉시 장착(빈 슬롯 — 비교 없음)
-            Equipped = w;
+            equipped[SelectedSlot] = w;
             ApplyEquippedStats();
             if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("revEquip");
             onEquipped.Invoke(w);
@@ -146,29 +173,29 @@ public class WeaponManager : MonoBehaviour
         else
         {
             Pending = w;
-            onPending.Invoke(Equipped, w);
+            onPending.Invoke(equipped[SelectedSlot], w);
         }
 
         onChanged.Invoke();
         return true;
     }
 
-    // 비교 택1: 신규 장착(기존 판매). 판매 골드 반환.
+    // 비교 택1: 신규를 선택 슬롯에 장착(기존 판매). 판매 골드 반환.
     public long EquipPending()
     {
         if (Pending == null) return 0;
 
-        long gold = SellGold(Equipped);
+        long gold = SellGold(equipped[SelectedSlot]);
         if (DataManager.Instance != null) DataManager.Instance.IncreaseGold((int)gold);
 
-        Equipped = Pending;
+        equipped[SelectedSlot] = Pending;
         Pending = null;
         ApplyEquippedStats();
 
         if (QuestEventManager.Instance != null) QuestEventManager.Instance.AddEvent("revEquip");
-        onEquipped.Invoke(Equipped);
+        onEquipped.Invoke(equipped[SelectedSlot]);
         onChanged.Invoke();
-        
+
         return gold;
     }
 
@@ -200,7 +227,7 @@ public class WeaponManager : MonoBehaviour
         var p = PlayerData.Instance;
         if (revolver == null || p == null) return 0f;
 
-        StatSet cur = BuildStatSet(Equipped);
+        StatSet cur = BuildStatSet(equipped[SelectedSlot]);
         StatSet cand = BuildStatSet(candidate);
 
         var saved = (p.Damage, p.TypeDamage, p.CriticalChance, p.CriticalDamage, p.FinalDamage);
@@ -331,7 +358,7 @@ public class WeaponManager : MonoBehaviour
         public int maxSeenGrade;
         public List<int> ceilGrades = new();
         public List<int> ceilCounts = new();
-        public WeaponData equipped;
+        public List<WeaponData> equippedSlots = new(); // 파티 슬롯 0~2 순서
     }
 
     public SaveData GetSaveData()
@@ -342,8 +369,8 @@ public class WeaponManager : MonoBehaviour
             drawXp = DrawXp,
             drawCount = DrawCount,
             maxSeenGrade = MaxSeenGrade,
-            equipped = Equipped,
         };
+        data.equippedSlots.AddRange(equipped);
         foreach (var kv in ceilCounters)
         {
             data.ceilGrades.Add(kv.Key);
@@ -360,7 +387,8 @@ public class WeaponManager : MonoBehaviour
         DrawXp = data.drawXp;
         DrawCount = data.drawCount;
         MaxSeenGrade = data.maxSeenGrade;
-        if (data.equipped != null) Equipped = data.equipped;
+        for (int i = 0; i < equipped.Length && i < data.equippedSlots.Count; i++)
+            if (data.equippedSlots[i] != null) equipped[i] = data.equippedSlots[i];
 
         ceilCounters.Clear();
         int n = Mathf.Min(data.ceilGrades.Count, data.ceilCounts.Count);

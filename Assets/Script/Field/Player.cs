@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     GameObject bulletLineCpy;
     DamageCalculator calculator = new();
 
+    // 장착 캐릭터의 등급 위력 배수(CharacterGrade.PowerMul) — 이 사수의 탄환 데미지에만 곱한다.
+    // PartyPlayerActivator가 장착 변경 시 주입(빈 슬롯 = 1).
+    public float PowerMul { get; set; } = 1f;
+
     public Enemy Enemy => enumy;
     public RevolverSlots Revolver => revolver; // 배선 검증용(PlayerSquad가 중복 연결 감지)
 
@@ -66,6 +70,6 @@ public class Player : MonoBehaviour
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
         float damage = calculator.CalculateDamage(revolverInfo[index], mod, index, PlayerData.Instance.PossPower).Item2;
 
-        return attacked(damage);
+        return attacked(damage * PowerMul); //캐릭터 등급 위력 배수(사수 개인 적용)
     }
 }

@@ -98,8 +98,6 @@ public class PlayerSquad : MonoBehaviour
                     if (!p.HasBullet(i)) continue; //이 사수의 약실이 비었으면 스킵
 
                     bool killed = p.FireChamber(i);
-                    Debug.Log($"[사이클] 약실{i + 1} 발사 ({p.name}){(killed ? " → 적 처치, 사이클 성공 종료" : "")}"); //TODO: 약실 애니 검증 끝나면 삭제
-
                     if (killed)
                     {
                         onCycleComplete?.Invoke(true); //적 처치 = 성공

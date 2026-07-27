@@ -21,13 +21,32 @@ public class CharacterCardUI : MonoBehaviour
     static readonly Color UnownedInk = new(0.42f, 0.46f, 0.55f);
     static readonly Color OwnedInk = new(0.68f, 0.72f, 0.8f);
 
-    // 현재 카드가 표시 중인 캐릭터(드래그 장착용 — 미보유 카드는 드래그 불가)
+    // 이 카드에 고정 배정된 캐릭터(드래그 장착용 — 미보유 카드는 드래그 불가)
     public CharacterRosterData Data { get; private set; }
     public bool IsOwnedCard { get; private set; }
 
-    public void SetOwned(CharacterRosterData c, CharacterGradeData grade, CharacterManager.CharacterState state)
+    CharacterGradeData grade;
+
+    // 카드 ↔ 캐릭터 배정은 시작 시 1회 고정(CharacterListPanel.TryBind — 위치 불변 설계)
+    public void SetCharacter(CharacterRosterData c, CharacterGradeData grade)
     {
         Data = c;
+        this.grade = grade;
+    }
+
+    // 상태 변화 시 보유 여부에 맞게 다시 그린다(배정은 불변)
+    public void Refresh()
+    {
+        var mgr = CharacterManager.Instance;
+        if (Data == null || mgr == null || !mgr.IsReady) return;
+
+        if (mgr.IsOwned(Data.id)) SetOwned(mgr.GetState(Data.id));
+        else SetUnowned();
+    }
+
+    void SetOwned(CharacterManager.CharacterState state)
+    {
+        var c = Data;
         IsOwnedCard = true;
 
         if (clickArea != null) clickArea.raycastTarget = true;
@@ -46,17 +65,20 @@ public class CharacterCardUI : MonoBehaviour
         nameText.text = c.nameKo;
         nameText.color = Color.white;
 
-        // 성장 미구현 — 레벨 1 고정, 배수는 등급 위력 배수(프로토 chMulOf의 Lv.1 값)
-        infoText.text = $"Lv.1 <b>×{FormatMul(grade != null ? grade.powerMul : 1f)}</b>";
+        // 레벨 + 화력 배수(등급 × 성장 × ⚔️패시브 — 프로토 chMulOf)
+        int lv = state != null ? state.level : 1;
+        float mul = CharacterManager.Instance != null
+            ? CharacterManager.Instance.PowerMulOf(c.id)
+            : (grade != null ? grade.powerMul : 1f);
+        infoText.text = $"Lv.{lv} <b>×{FormatMul(mul)}</b>";
         infoText.color = OwnedInk;
 
         bool hasCards = state != null && state.cards > 0;
         if (cardsBadge != null) cardsBadge.SetActive(hasCards);
         if (hasCards && cardsText != null) cardsText.text = "🃏" + state.cards;
 
-        // 성장 미구현 — Lv.1 고정이라 요구치는 LevelUpCost(1)
         int cards = state != null ? state.cards : 0;
-        int need = CharacterManager.LevelUpCost(1);
+        int need = CharacterManager.LevelUpCost(lv); //다음 레벨 요구 🃏
         if (cardProgress != null)
         {
             cardProgress.gameObject.SetActive(true);
@@ -66,9 +88,8 @@ public class CharacterCardUI : MonoBehaviour
         if (cardProgressText != null) cardProgressText.text = cards + "/" + need;
     }
 
-    public void SetUnowned(CharacterRosterData c, CharacterGradeData grade)
+    void SetUnowned()
     {
-        Data = c;
         IsOwnedCard = false;
 
         if (clickArea != null) clickArea.raycastTarget = false;
