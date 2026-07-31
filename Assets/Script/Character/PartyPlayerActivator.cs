@@ -23,9 +23,14 @@ public class PartyPlayerActivator : MonoBehaviour
 
         mgr.onChanged.AddListener(Refresh);
 
-        foreach (var p in players)
-            if (p != null && p.Revolver != null)
-                p.Revolver.onChanged += RefreshPower; //탄환 장착/해제 → 전투력 재합산
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i] == null) continue;
+
+            players[i].PartySlot = i; //v43 무기 속성 매칭용 슬롯 주입
+            if (players[i].Revolver != null)
+                players[i].Revolver.onChanged += RefreshPower; //탄환 장착/해제 → 전투력 재합산
+        }
 
         bound = true;
         Refresh();
@@ -73,7 +78,9 @@ public class PartyPlayerActivator : MonoBehaviour
         string id = mgr.GetPartyMember(slot);
         if (id == null) return 0f;
 
-        return players[slot].Revolver.ComputePower() * mgr.PowerMulOf(id);
+        //v43: 그 슬롯 장착 무기의 속성 매칭까지 반영해 개별 전투력 계산
+        var weapon = WeaponManager.Instance != null ? WeaponManager.Instance.GetEquipped(slot) : null;
+        return players[slot].Revolver.ComputePower(weapon) * mgr.PowerMulOf(id);
     }
 
     //전투력 = Σ(장착 슬롯의 개별 전투력). 빈 슬롯의 리볼버는 제외

@@ -64,10 +64,8 @@ public class BulletInfo
         data.count = Count;
         data.stats = stats
             .Select(s => new BulletStat(
-                s.target,
                 s.reward,
                 s.rewardCoef,
-                s.targetCoef,
                 s.statTier))
             .ToList();
 
@@ -83,7 +81,7 @@ public class BulletInfo
 
         foreach (var s in save.stats)
         {
-            BulletStat stat = new BulletStat(s.target, s.reward, s.rewardCoef, s.targetCoef, s.statTier);
+            BulletStat stat = new BulletStat(s.reward, s.rewardCoef, s.statTier);
 
             info.stats.Add(stat);
         }
@@ -93,21 +91,6 @@ public class BulletInfo
 }
 public static class BulletStatText
 {
-    private static List<string> typeString = new() { "화염", "전기", "얼음", "독" };
-    public static string GetTargetText(List<BulletStat> stats, int index)
-    {
-        switch (stats[index].target)
-        {
-            case TargetType.Self:
-                return "이 탄환의 ";
-            case TargetType.BulletType:
-                return $"모든 {typeString[(int)stats[index].targetCoef]}속성 탄환의 ";
-            case TargetType.All:
-                return $"모든 탄환의 ";
-            default:
-                return "";
-        }
-    }
     public static string GetRewardText(List<BulletStat> stats, int index, List<string> gradeTexts)
     {
         float stat = stats[index].rewardCoef;

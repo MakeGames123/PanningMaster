@@ -46,7 +46,8 @@ public class RevolverSlots : MonoBehaviour
     }
 
     //현재 장착 탄환/전역 스탯 기준 전투력 계산(상태 변경 없음 — 무기 비교 시뮬레이션에서도 사용)
-    public float ComputePower()
+    //weapon = 이 리볼버 사수(파티 슬롯)의 장착 무기 — v43 속성 매칭 반영(null=매칭 없음)
+    public float ComputePower(WeaponData weapon = null)
     {
         if (revolverSlotContents.Count == 0) return 0; // 아직 Initialize 전 — 계산 불가
 
@@ -56,8 +57,8 @@ public class RevolverSlots : MonoBehaviour
 
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
         float power = 0;
-        for (int i = 0; i < revolverInfo.Count; i++) 
-            power += calculator.CalculateDamage(revolverInfo[i], mod, i, PlayerData.Instance.PossPower).Item1;
+        for (int i = 0; i < revolverInfo.Count; i++)
+            power += calculator.CalculateDamage(revolverInfo[i], mod, i, PlayerData.Instance.PossPower, weapon).Item1;
 
         return power;
     }
@@ -70,42 +71,37 @@ public class RevolverSlots : MonoBehaviour
 
         return true;
     }
-    //자동장착: 슬롯을 전부 비운 뒤 count 1 이상인 탄환을 id 높은 순으로 슬롯 수만큼 장착(모자라면 있는 만큼만)
+    //자동장착 버튼 호환용 — 전 리볼버 일괄 분배(BulletSlotsController)로 위임.
+    //(구) 리볼버 1개만 채우던 방식은 다른 리볼버와 같은 탄환이 중복 장착되는 문제로 폐지.
     public void AutoEquip()
     {
-        suppressPowerUpdate = true; //일괄 변경 동안 전투력 연쇄 갱신 억제
+        var controller = FindAnyObjectByType<BulletSlotsController>();
+        if (controller != null) controller.AutoEquipAll();
+    }
 
-        Inventory inventory = AllBulletList.Instance.inventory;
+    //이 리볼버의 로드아웃을 통째로 교체: 전부 비우고(인벤토리 반납) 주어진 id 순서대로 장착.
+    //전투력 연쇄 갱신은 억제하고 마지막에 1회만. ids가 null/빈 리스트면 비우기만 한다.
+    public void SetLoadout(List<int> bulletIds, Inventory inventory)
+    {
+        suppressPowerUpdate = true;
 
-        //1. 슬롯 비우기 + 기존 장착 탄환은 인벤토리로 되돌림(active true)
         foreach (RevolverSlotContent content in revolverSlotContents)
         {
             if (!content.IsEmpty) inventory.SetActive(content.id, true);
             content.UpdateBulletInfo(-1);
         }
 
-        //2. count 1 이상인 탄환을 id 내림차순으로 슬롯 수만큼
-        List<BulletInfo> candidates = AllBulletList.Instance.bulletInfos.Values
-            .Where(b => b.Count >= 1)
-            .OrderByDescending(b => b.infoSO.bulletId)
-            .Take(revolverSlotContents.Count)
-            .ToList();
-
-        //3. 장착 + 해당 인벤토리 슬롯은 장착중 표시(active false)
-        for (int i = 0; i < candidates.Count; i++)
+        if (bulletIds != null)
         {
-            int id = candidates[i].infoSO.bulletId;
-            revolverSlotContents[i].UpdateBulletInfo(id);
-            inventory.SetActive(id, false);
+            int n = Mathf.Min(bulletIds.Count, revolverSlotContents.Count);
+            for (int i = 0; i < n; i++)
+            {
+                revolverSlotContents[i].UpdateBulletInfo(bulletIds[i]);
+                inventory.SetActive(bulletIds[i], false);
+            }
         }
 
         suppressPowerUpdate = false;
-        CheckSlots(); //전투력은 마지막에 한 번만 갱신
-
-        //자동장착 → 퀘스트·튜토리얼 각각에 autoEq 발행
-        if (QuestEventManager.Instance != null)
-            QuestEventManager.Instance.AddEvent("autoEq");
-        if (TutorialEventManager.Instance != null)
-            TutorialEventManager.Instance.AddEvent("autoEq");
+        CheckSlots();
     }
 }

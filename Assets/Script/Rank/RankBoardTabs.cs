@@ -7,12 +7,10 @@ using UnityEngine.UI;
 public class RankBoardTabs : MonoBehaviour
 {
     [Header("보드 루트")]
-    [SerializeField] RectTransform pvpBoardRoot;   //결투(PvPRank)
     [SerializeField] RectTransform powerBoardRoot; //전투력(Power)
     [SerializeField] RectTransform stageBoardRoot; //스테이지(Stage)
 
     [Header("탭 버튼")]
-    [SerializeField] Button pvpButton;
     [SerializeField] Button powerButton;
     [SerializeField] Button stageButton;
 
@@ -21,20 +19,17 @@ public class RankBoardTabs : MonoBehaviour
 
     void Awake()
     {
-        if (pvpButton != null) pvpButton.onClick.AddListener(ShowPvp);
         if (powerButton != null) powerButton.onClick.AddListener(ShowPower);
         if (stageButton != null) stageButton.onClick.AddListener(ShowStage);
 
-        ShowPvp(); //기본 탭: 결투
+        ShowPower(); //기본 탭: 결투
     }
 
-    public void ShowPvp() => Switch(pvpBoardRoot);
     public void ShowPower() => Switch(powerBoardRoot);
     public void ShowStage() => Switch(stageBoardRoot);
 
     void Switch(RectTransform target)
     {
-        Place(pvpBoardRoot, target);
         Place(powerBoardRoot, target);
         Place(stageBoardRoot, target);
     }

@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     // PartyPlayerActivator가 장착 변경 시 주입(빈 슬롯 = 1).
     public float PowerMul { get; set; } = 1f;
 
+    // 이 사수의 파티 슬롯 인덱스(0~2) — PartyPlayerActivator가 바인딩 시 주입.
+    // v43 무기 속성 매칭(그 슬롯 장착 무기 vs 발사 탄환)에 사용. -1 = 미주입(매칭 없음)
+    public int PartySlot { get; set; } = -1;
+
     public Enemy Enemy => enumy;
     public RevolverSlots Revolver => revolver; // 배선 검증용(PlayerSquad가 중복 연결 감지)
 
@@ -68,7 +72,15 @@ public class Player : MonoBehaviour
         }
 
         DamageModifier mod = calculator.CollectModifiers(revolverInfo);
-        float damage = calculator.CalculateDamage(revolverInfo[index], mod, index, PlayerData.Instance.PossPower).Item2;
+
+        // v43 무기 속성: 이 슬롯 장착 무기와 같은 속성 탄환 = 최종 데미지 가산(배럭 스코프)
+        var weapon = WeaponManager.Instance != null ? WeaponManager.Instance.GetEquipped(PartySlot) : null;
+        float damage = calculator.CalculateDamage(revolverInfo[index], mod, index, PlayerData.Instance.PossPower, weapon).Item2;
+
+        // v45 월드보스: 전투 중 이번 주 보스 속성과 같은 속성 탄환 = 집계 데미지 ×2(프로토 evtElMul)
+        if (WorldBossManager.Instance != null && revolverInfo[index] != null)
+            damage *= WorldBossManager.Instance.ElemMulFor(
+                ElementLoader.IdFromBulletType(revolverInfo[index].infoSO.bulletType));
 
         return attacked(damage * PowerMul); //캐릭터 등급 위력 배수(사수 개인 적용)
     }

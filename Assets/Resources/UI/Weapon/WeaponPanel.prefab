@@ -1053,7 +1053,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 211.80034, y: -157}
-  m_SizeDelta: {x: 354.2426, y: 0}
+  m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1160266495451590522
 CanvasRenderer:
@@ -3413,7 +3413,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 211.80034, y: -157}
-  m_SizeDelta: {x: 354.2426, y: 0}
+  m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5528586645139680737
 CanvasRenderer:
@@ -4249,6 +4249,9 @@ MonoBehaviour:
   mainStatRow:
     nameText: {fileID: 833774174956261353}
     valueText: {fileID: 7086181816913056290}
+  elemStatRow:
+    nameText: {fileID: 0}
+    valueText: {fileID: 0}
   subStatRows:
   - nameText: {fileID: 6719853823365732774}
     valueText: {fileID: 3784345928635581549}

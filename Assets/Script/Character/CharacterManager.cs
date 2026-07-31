@@ -171,6 +171,7 @@ public class CharacterManager : MonoBehaviour
 
     public CharacterState GetState(string id) => roster.TryGetValue(id, out var st) ? st : null;
     public bool IsOwned(string id) => roster.ContainsKey(id);
+    public int OwnedCount => roster.Count; // 보유 동료 수(v45 월드보스 해금 판정 등)
 
     // ── 장착 파티(프로토 chAssign) ──
 

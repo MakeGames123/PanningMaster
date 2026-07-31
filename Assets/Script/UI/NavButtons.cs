@@ -6,20 +6,16 @@ using UnityEngine.UI;
 public class NavButtons : MonoBehaviour
 {
     [SerializeField] RectTransform bulletPanel;
-    [SerializeField] RectTransform dungeonPanel;
+    [SerializeField] RectTransform battlePanel;
     [SerializeField] RectTransform shopPanel;
-    [SerializeField] RectTransform rankPanel;
     [SerializeField] RectTransform upgradePanel;
-    [SerializeField] RectTransform pvpPanel;
     [SerializeField] RectTransform weaponPanel;
     [SerializeField] RectTransform characterPanel;
     List<RectTransform> allPanels = new();
     [SerializeField] Button bulletButton;
-    [SerializeField] Button dungeonButton;
+    [SerializeField] Button battleButton;
     [SerializeField] Button shopButton;
-    [SerializeField] Button rankButton;
     [SerializeField] Button upgradeButton;
-    [SerializeField] Button pvpButton;
     [SerializeField] Button weaponButton;
     [SerializeField] Button characterButton;
     List<Button> allButtons = new();
@@ -27,29 +23,23 @@ public class NavButtons : MonoBehaviour
     void Awake()
     {
         allPanels.Add(bulletPanel);
-        allPanels.Add(dungeonPanel);
+        allPanels.Add(battlePanel);
         //allPanels.Add(shopPanel);
-        allPanels.Add(rankPanel);
         allPanels.Add(upgradePanel);
-        if (pvpPanel != null) allPanels.Add(pvpPanel); //아직 씬에 연결 안 됐으면 무시
         if (weaponPanel != null) allPanels.Add(weaponPanel);
         if (characterPanel != null) allPanels.Add(characterPanel);
 
         allButtons.Add(bulletButton);
-        allButtons.Add(dungeonButton);
+        allButtons.Add(battleButton);
         //allButtons.Add(shopButton);
-        allButtons.Add(rankButton);
         allButtons.Add(upgradeButton);
-        if (pvpButton != null) allButtons.Add(pvpButton);
         if (weaponButton != null) allButtons.Add(weaponButton);
         if (characterButton != null) allButtons.Add(characterButton);
 
         bulletButton.onClick.AddListener(() => EnablePanel(bulletPanel));
-        dungeonButton.onClick.AddListener(() => EnablePanel(dungeonPanel));
+        battleButton.onClick.AddListener(() => EnablePanel(battlePanel));
         //shopButton.onClick.AddListener(() => EnablePanel(shopPanel));
-        rankButton.onClick.AddListener(() => EnablePanel(rankPanel));
         upgradeButton.onClick.AddListener(() => EnablePanel(upgradePanel));
-        if (pvpButton != null && pvpPanel != null) pvpButton.onClick.AddListener(() => EnablePanel(pvpPanel));
         if (weaponButton != null && weaponPanel != null) weaponButton.onClick.AddListener(() => EnablePanel(weaponPanel));
         if (characterButton != null && characterPanel != null) characterButton.onClick.AddListener(() => EnablePanel(characterPanel));
     }
@@ -83,9 +73,8 @@ public class NavButtons : MonoBehaviour
             "equip" => weaponPanel != null ? weaponPanel : bulletPanel, // 무기(리볼버) 탭 — 미연결 시 탄환으로 폴백
             "growth" => upgradePanel,
             "lab" => upgradePanel,      // 연구소 — 전용 패널 생기면 교체
-            "dungeon" => dungeonPanel,
+            "dungeon" => battlePanel,
             "character" => characterPanel,
-            "pvp" => pvpPanel,
             _ => null
         };
 

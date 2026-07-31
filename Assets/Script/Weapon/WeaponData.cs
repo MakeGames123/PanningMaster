@@ -7,6 +7,7 @@ public class WeaponData
     public int level;  // 등장 시점의 뽑기 레벨(=티어 외형)
     public int grade;  // 등급 인덱스(0=E ~ 12=MR)
     public long atk;   // 주스탯 공격력 = AtkBase × 1.15^(lv-1) × 등급배수 × 지터
+    public string element; // v43 무기 속성(Element.Id — fire/ice/…). 매칭 속성 탄환 최종뎀 +ElemFinalDmg%
     public List<WeaponSub> subs = new(); // 부옵 목록
 
     // 부옵 값 조회(해당 스탯이 없으면 0)

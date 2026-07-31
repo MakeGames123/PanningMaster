@@ -19,6 +19,7 @@ public class WeaponManager : MonoBehaviour
     const float XpGrow = 1.4f;        // 22/31/43/60/85… 커브
     const int SubSlotBonusLevel = 5;  // 이 뽑기 레벨부터 부옵 슬롯 +1(캡 4)
     const int MaxSubSlots = 4;
+    const string StarterElement = "fire"; // v43: 시작 무기 속성 = 화염 고정(결정론)
 
     // 뽑기 상태
     public int DrawLevel { get; private set; } = 1;
@@ -73,11 +74,12 @@ public class WeaponManager : MonoBehaviour
         if (WeaponGradeWindowLoader.Instance == null || !WeaponGradeWindowLoader.Instance.IsLoaded) return;
         if (WeaponSubStatLoader.Instance == null || !WeaponSubStatLoader.Instance.IsLoaded) return;
         if (WeaponCeilingLoader.Instance == null || !WeaponCeilingLoader.Instance.IsLoaded) return;
+        if (ElementLoader.Instance == null || !ElementLoader.Instance.IsLoaded) return; // v43 속성 롤 풀
         if (PlayerData.Instance == null) return; // 스탯 반영 대상이 생길 때까지 대기
 
-        // 시작 = 슬롯마다 Lv1 E등급 고정(결정론·최약 베이스 — 첫 뽑기부터 상승 체감, 프로토 v34f)
+        // 시작 = 슬롯마다 Lv1 E등급 화염 고정(결정론·최약 베이스 — 첫 뽑기부터 상승 체감, 프로토 v34f·v43)
         for (int i = 0; i < equipped.Length; i++)
-            equipped[i] ??= new WeaponData { level = 1, grade = 0, atk = AtkBase };
+            equipped[i] ??= new WeaponData { level = 1, grade = 0, atk = AtkBase, element = StarterElement };
 
         initialized = true;
         ApplyEquippedStats();
@@ -216,7 +218,7 @@ public class WeaponManager : MonoBehaviour
     public float PowerCurrent()
     {
         var revolver = FindAnyObjectByType<RevolverSlots>();
-        return revolver != null ? revolver.ComputePower() : 0f;
+        return revolver != null ? revolver.ComputePower(equipped[SelectedSlot]) : 0f;
     }
 
     // 후보 무기를 장착했다고 가정한 전투력 — 실제 상태는 변경하지 않음(비교 표시용, 프로토 revPowerWith).
@@ -237,7 +239,7 @@ public class WeaponManager : MonoBehaviour
         p.CriticalDamage += cand.CriticalDamage - cur.CriticalDamage;
         p.FinalDamage += cand.FinalDamage - cur.FinalDamage;
 
-        float power = revolver.ComputePower();
+        float power = revolver.ComputePower(candidate); // 후보 무기의 속성 매칭까지 반영
 
         (p.Damage, p.TypeDamage, p.CriticalChance, p.CriticalDamage, p.FinalDamage) = saved;
         return power;
@@ -301,6 +303,11 @@ public class WeaponManager : MonoBehaviour
                 value = Mathf.Max(1, Mathf.RoundToInt(st.step * (1 + g) * (1 + Random.value))),
             });
         }
+
+        // v43 속성 롤: Element 시트 순서 풀에서 균등 1종(프로토 11번째 롤)
+        var elems = ElementLoader.Instance.AllOrdered();
+        if (elems.Count > 0)
+            w.element = elems[Mathf.Min(elems.Count - 1, Mathf.FloorToInt(Random.value * elems.Count))].id;
 
         return w;
     }
@@ -389,6 +396,14 @@ public class WeaponManager : MonoBehaviour
         MaxSeenGrade = data.maxSeenGrade;
         for (int i = 0; i < equipped.Length && i < data.equippedSlots.Count; i++)
             if (data.equippedSlots[i] != null) equipped[i] = data.equippedSlots[i];
+
+        // v43 마이그레이션: 속성 없는 구 세이브 무기에 결정론 백필(프로토 mig43 — (슬롯+Lv+등급)%6)
+        for (int i = 0; i < equipped.Length; i++)
+        {
+            var w = equipped[i];
+            if (w != null && string.IsNullOrEmpty(w.element))
+                w.element = ElementLoader.DefaultOrder[(i + w.level + w.grade) % ElementLoader.DefaultOrder.Length];
+        }
 
         ceilCounters.Clear();
         int n = Mathf.Min(data.ceilGrades.Count, data.ceilCounts.Count);

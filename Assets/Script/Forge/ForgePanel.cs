@@ -167,7 +167,7 @@ public class ForgePanel : MonoBehaviour
         {
             for (int i = 0; i < bulletStats.Count; i++)
             {
-                infoText[i].text = BulletStatText.GetTargetText(bulletStats, i) + BulletStatText.GetRewardText(bulletStats, i, gradeTexts);
+                infoText[i].text = BulletStatText.GetRewardText(bulletStats, i, gradeTexts);
             }
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);

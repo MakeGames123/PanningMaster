@@ -66,7 +66,8 @@ public class WeaponComparePopup : MonoBehaviour
             newNameText.text = WeaponGrades.DisplayName(pend);
             newNameText.color = WeaponGrades.Color(pend.grade);
         }
-        if (newInfoText != null) newInfoText.text = WeaponGrades.InfoText(pend);
+        // 신규 쪽은 현재 무기를 비교 상대로 넘겨 속성이 다르면 '변경' 뱃지 표시(v43)
+        if (newInfoText != null) newInfoText.text = WeaponGrades.InfoText(pend, cur);
 
         if (curNameText != null)
         {
@@ -90,7 +91,7 @@ public class WeaponComparePopup : MonoBehaviour
                 string color = diff > 0 ? "#5eff7a" : diff < 0 ? "#ff6a6a" : "#8a93a8"; // 상승=초록/하락=빨강/동일=회색
                 string sign = diff >= 0 ? "+" : "-";
                 newPowerText.text =
-                    $"⚔️ {NumberFormatLoader.Abbrev(newPower)} " +
+                    $"{NumberFormatLoader.Abbrev(newPower)} " +
                     $"<color={color}>({sign}{NumberFormatLoader.Abbrev(Mathf.Abs(diff))})</color>";
             }
         }

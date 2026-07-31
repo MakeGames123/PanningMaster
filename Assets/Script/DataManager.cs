@@ -57,6 +57,7 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         Ticket.Add(999);
+        IncreaseGold(9999999);
     }
     public void StopSync()
     {

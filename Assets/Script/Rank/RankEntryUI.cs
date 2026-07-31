@@ -10,6 +10,7 @@ public class RankEntryUI : MonoBehaviour
     [SerializeField] Image faceImage;           //얼굴(선택)
     [SerializeField] TextMeshProUGUI nameText;  //"도박꾼 로사"
     [SerializeField] TextMeshProUGUI scoreText; //"1047점"
+    [SerializeField] TextMeshProUGUI rewardText; //순위 보상(선택 — 월드보스 보드 전용 "🔴400 🎫40")
     [SerializeField] Image background;          //내 행 강조용(선택)
     [SerializeField] Color myColor = new(1f, 0.84f, 0f, 0.25f);
 
@@ -17,6 +18,10 @@ public class RankEntryUI : MonoBehaviour
     bool colorCached;
 
     public void Set(int rank, string playerName, int score, bool isMe, Sprite face, string scoreSuffix = "점")
+        => Set(rank.ToString(), playerName, $"{score}{scoreSuffix}", isMe, face);
+
+    // 순위/점수를 문자열로 직접 지정(월드보스 보드 — 축약 데미지 "2597M"·기록 없음 "—" 표기용)
+    public void Set(string rank, string playerName, string score, bool isMe, Sprite face)
     {
         if (!colorCached && background != null)
         {
@@ -24,9 +29,9 @@ public class RankEntryUI : MonoBehaviour
             colorCached = true;
         }
 
-        if (rankText != null) rankText.text = rank.ToString();
+        if (rankText != null) rankText.text = rank;
         if (nameText != null) nameText.text = isMe ? $"{playerName} (나)" : playerName;
-        if (scoreText != null) scoreText.text = $"{score}{scoreSuffix}";
+        if (scoreText != null) scoreText.text = score;
 
         if (faceImage != null)
         {
@@ -35,5 +40,14 @@ public class RankEntryUI : MonoBehaviour
         }
 
         if (background != null) background.color = isMe ? myColor : normalColor;
+    }
+
+    // 순위 보상 열(선택). null/빈 문자열 = 숨김 — 보상 열이 없는 일반 보드는 영향 없음.
+    public void SetReward(string reward)
+    {
+        if (rewardText == null) return;
+        bool has = !string.IsNullOrEmpty(reward);
+        rewardText.gameObject.SetActive(has);
+        if (has) rewardText.text = reward;
     }
 }

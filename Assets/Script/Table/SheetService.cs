@@ -46,9 +46,15 @@ public class SheetService : MonoBehaviour
         loaders.Add(new LabEdgeLoader());
         loaders.Add(new QuestMainLoader());
         loaders.Add(new AchievementLoader());
+        loaders.Add(new ElementLoader());
+        loaders.Add(new WeaponGradeLoader());
         loaders.Add(new WeaponGradeWindowLoader());
         loaders.Add(new WeaponCeilingLoader());
         loaders.Add(new WeaponSubStatLoader());
+        loaders.Add(new WeaponElemNameLoader());
+        loaders.Add(new WorldBossOutlawLoader());
+        loaders.Add(new WorldBossConfigLoader());
+        loaders.Add(new WorldBossRankRewardLoader());
         loaders.Add(new RecruitLevelLoader());
         loaders.Add(new CharacterGradeLoader());
         loaders.Add(new CharacterRosterLoader());

@@ -11,6 +11,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] DungeonField dungeonField;
     [SerializeField] GoldDungeonField goldDungeonField;
     [SerializeField] LabDungeonField labDungeonField;
+    [SerializeField] WorldBossField worldBossField; // v45 월드보스(주간 펀치킹)
 
     bool inDungeon;
 
@@ -73,6 +74,22 @@ public class FieldManager : MonoBehaviour
         labDungeonField.Begin(player);
     }
 
+    // 월드보스 입장 (WorldBossManager.TryBeginChallenge에서 호출) — 골드 던전 문법(불사신·다중 표적)
+    public bool EnterWorldBoss()
+    {
+        if (inDungeon || worldBossField == null) return false;
+        inDungeon = true;
+
+        normalField.Stop();
+        player.ResetRevolver(); //장전 취소 + 약실 1번으로 초기화
+        player.Enemy.gameObject.SetActive(false); //기본 적은 전투 동안 숨김
+
+        player.onCycleComplete = worldBossField.OnCycleComplete; //유일 핸들러 교체
+        player.SetTargetProvider(worldBossField.GetTarget); //불사신 보스 조준(죽음으로 사이클 안 끊김)
+        worldBossField.Begin(player);
+        return true;
+    }
+
     // 던전 종료 -> 일반 전투 복귀 (DungeonField/LabDungeonField에서 호출)
     public void ReturnToNormal()
     {
@@ -82,6 +99,7 @@ public class FieldManager : MonoBehaviour
         dungeonField.Stop();
         if (goldDungeonField != null) goldDungeonField.Stop();
         if (labDungeonField != null) labDungeonField.Stop();
+        if (worldBossField != null) worldBossField.Stop();
         player.SetTargetProvider(null); //다중 표적 모드 끄기
         player.ResetRevolver(); //던전 종료 시에도 장전 취소 + 약실 1번으로 초기화
         player.Enemy.gameObject.SetActive(true); //숨겨둔 기존 적 복구

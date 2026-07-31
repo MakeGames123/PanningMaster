@@ -1767,7 +1767,6 @@ GameObject:
   - component: {fileID: 7494099035473034370}
   - component: {fileID: 5626594510076453415}
   - component: {fileID: 3977980715832842666}
-  - component: {fileID: 6992953979456631940}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1850,55 +1849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &6992953979456631940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5783427645419349188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889ab781a2e821948b67c523a78d3986, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 7334302666703191845}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5881039265831697604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,11 +3905,6 @@ PrefabInstance:
 --- !u!224 &3307294841924483934 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2529802653695454618, guid: 79822080fab7f334fb47cb2701465daf, type: 3}
-  m_PrefabInstance: {fileID: 1080429873542485700}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7334302666703191845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7725600067250514401, guid: 79822080fab7f334fb47cb2701465daf, type: 3}
   m_PrefabInstance: {fileID: 1080429873542485700}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1103736896861271832

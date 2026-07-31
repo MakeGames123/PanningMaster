@@ -17,8 +17,9 @@ public class WeaponDrawPanel : MonoBehaviour
     }
 
     [Header("장착 중 리볼버")]
-    [SerializeField] TextMeshProUGUI equippedNameText; // "[C] 무쇠 리볼버 Lv.2" (등급 부분만 등급색)
+    [SerializeField] TextMeshProUGUI equippedNameText; // "[C] 🔥 블레이즈 Lv.2" (등급 부분만 등급색, 속성 이모지)
     [SerializeField] StatRow mainStatRow;              // 주스탯(공격력) 행
+    [SerializeField] StatRow elemStatRow;              // v43 속성 행(매칭 탄환 최종뎀) — 미연결이면 공격력 행을 복제해 자동 생성
     [SerializeField] List<StatRow> subStatRows = new(); // 부옵 행 4개(순서대로)
     [SerializeField] Color rowColor = Color.white;                       // 채워진 행 색
     [SerializeField] Color ghostColor = new(0.42f, 0.46f, 0.55f);        // 빈 슬롯(고스트) 행 색
@@ -92,18 +93,58 @@ public class WeaponDrawPanel : MonoBehaviour
         if (drawButton != null) drawButton.interactable = canDraw;
     }
 
+    // v43 속성 행 자동 생성: 인스펙터 연결이 없으면 공격력 행(StatRow)을 복제해 바로 아래에 삽입.
+    // Stats 컨테이너의 VerticalLayoutGroup이 위치를 정렬하므로 씬 수정 없이 동작한다(1회만).
+    void EnsureElemRow()
+    {
+        if (elemStatRow != null && (elemStatRow.nameText != null || elemStatRow.valueText != null)) return;
+        if (mainStatRow == null || mainStatRow.nameText == null) return;
+
+        Transform rowRoot = mainStatRow.nameText.transform.parent;
+        if (rowRoot == null || rowRoot.parent == null) return;
+
+        // 원본 행 안에서 nameText/valueText가 몇 번째 TMP인지 기억해 복제본에서 같은 순서로 찾는다
+        var srcTexts = rowRoot.GetComponentsInChildren<TextMeshProUGUI>(true);
+        int nameIdx = System.Array.IndexOf(srcTexts, mainStatRow.nameText);
+        int valueIdx = System.Array.IndexOf(srcTexts, mainStatRow.valueText);
+        if (nameIdx < 0) return;
+
+        GameObject clone = Instantiate(rowRoot.gameObject, rowRoot.parent);
+        clone.name = "StatRow_Element";
+        clone.transform.SetSiblingIndex(rowRoot.GetSiblingIndex() + 1); // 공격력 행 바로 아래
+
+        var cloneTexts = clone.GetComponentsInChildren<TextMeshProUGUI>(true);
+        elemStatRow = new StatRow
+        {
+            nameText = nameIdx < cloneTexts.Length ? cloneTexts[nameIdx] : null,
+            valueText = valueIdx >= 0 && valueIdx < cloneTexts.Length ? cloneTexts[valueIdx] : null,
+        };
+    }
+
     void RefreshEquipped(WeaponData w)
     {
-        // 이름: 등급 부분만 등급색 + 레벨 (프로토 revPaint)
+        EnsureElemRow();
+
+        var el = w != null && ElementLoader.Instance != null ? ElementLoader.Instance.Get(w.element) : null;
+
+        // 이름: 등급 부분만 등급색 + 속성 뱃지 + 속성×등급 사다리 이름 + 레벨 (프로토 revPaint·v43b)
         if (equippedNameText != null)
         {
             equippedNameText.text = w != null
-                ? $"<color={WeaponGrades.ColorHex(w.grade)}>[{WeaponGrades.Code(w.grade)}]</color> {WeaponGrades.TierName(w)} <size=70%>Lv.{w.level}</size>"
+                ? $"<color={WeaponGrades.ColorHex(w.grade)}>[{WeaponGrades.Code(w.grade)}]</color> " +
+                  $"{(el != null ? el.emoji + " " : "")}{WeaponGrades.BaseName(w)} <size=70%>Lv.{w.level}</size>"
                 : "🧰 상자를 열어 첫 리볼버를 얻으세요";
         }
 
         // 주스탯 행
         SetRow(mainStatRow, "⚔️ 공격력", $"+{NumberFormatLoader.Abbrev(w != null ? w.atk : 0)}%", false);
+
+        // v43 속성 행: 매칭 속성 탄환 최종 데미지 가산(씬에 행이 연결된 경우에만 표시)
+        if (el != null)
+            SetRow(elemStatRow, "속성",
+                $"<color={el.colorHex}>{el.emoji} {el.nameKo}</color>탄환 최종 데미지 +{WeaponGrades.ElemFinalDmg(w.grade):0.#}%", false);
+        else
+            SetRow(elemStatRow, "속성", "—", true);
 
         // 부옵 행 4개: 채워진 슬롯 = 스탯, 빈 슬롯 = 고스트(해금 힌트) — 프로토 revStatRows
         for (int i = 0; i < subStatRows.Count; i++)

@@ -53,7 +53,7 @@ public class BulletLowPanel : MonoBehaviour
     {
         Init();
 
-        rect.anchoredPosition = Vector2.zero;
+        rect.anchoredPosition = new Vector2(0, -910);
 
         info = allBulletList.GetBullet(id);
 
@@ -73,7 +73,7 @@ public class BulletLowPanel : MonoBehaviour
             for (int i = 0; i < bulletStats.Count; i++)
             {
                 if(i != 0) statText += "\n";
-                statText += BulletStatText.GetTargetText(bulletStats, i) + BulletStatText.GetRewardText(bulletStats, i, gradeTexts);
+                statText += BulletStatText.GetRewardText(bulletStats, i, gradeTexts);
             }
         }
 

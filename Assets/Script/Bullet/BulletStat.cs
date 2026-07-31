@@ -3,12 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public enum TargetType
-{
-    Self = 0,
-    BulletType = 1,
-    All = 2,
-}
 public enum RewardType
 {
     PowerIncrease,
@@ -18,26 +12,22 @@ public enum RewardType
     CriticalDamageIncrease,
 }
 
+// 세공 스탯 1줄 — 무조건 이 탄환에만 적용(프로토 v40 확정: 조건부(전체·속성탄) 전면 폐지).
+// 구세이브의 target/targetCoef 필드는 로드 시 무시되어 값 그대로 자기 전용으로 전환된다(mig40 문법).
 [Serializable]
 public class BulletStat
 {
-    public TargetType target;
     public RewardType reward;
     public float rewardCoef;
-    public int targetCoef;
     public int statTier;
 
     public BulletStat(
-        TargetType target,
         RewardType reward,
         float rewardCoef,
-        int targetCoef,
         int statTier)
     {
-        this.target = target;
         this.reward = reward;
         this.rewardCoef = rewardCoef;
-        this.targetCoef = targetCoef;
         this.statTier = statTier;
     }
 }
@@ -55,32 +45,29 @@ public class BulletStatGenerator
     }
     public BulletStat Generate(int tier)
     {
-        TargetType target = GetRandomEnumValue<TargetType>();
         RewardType reward = GetRandomEnumValue<RewardType>();
 
-        int targetCoef = CalculateTargetCoef(target);
-        float conditionCoef = conditionData[(int)target].multiplier;
+        // 조건 배율은 self 행만 사용(v40: 세공 = 해당 탄환만 강화 — CraftCondition 시트의 self=1)
+        float conditionCoef = SelfConditionCoef();
         int statTier = GetRandomStatTier(weightDict[tier]);
         float rewardCoef = CalculateRewardCoef(reward, conditionCoef, statTier);
 
         return new BulletStat(
-            target,
             reward,
             rewardCoef,
-            targetCoef,
             statTier);
+    }
+    float SelfConditionCoef()
+    {
+        if (conditionData == null) return 1f;
+        foreach (var c in conditionData)
+            if (c.condId == "self") return c.multiplier;
+        return conditionData.Count > 0 ? conditionData[0].multiplier : 1f;
     }
     T GetRandomEnumValue<T>()
     {
         Array values = Enum.GetValues(typeof(T));
         return (T)values.GetValue(UnityEngine.Random.Range(0, values.Length));
-    }
-    int CalculateTargetCoef(TargetType target)
-    {
-        if (target == TargetType.BulletType)
-            return UnityEngine.Random.Range(0, 4);
-
-        return -1;
     }
     private float CalculateRewardCoef(RewardType reward, float conditionCoef, int statTier)
     {

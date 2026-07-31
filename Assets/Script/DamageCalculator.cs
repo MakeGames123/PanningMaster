@@ -37,66 +37,26 @@ public class DamageCalculator
 
         return mod;
     }
+    // v40: 세공 스탯은 무조건 자기 탄환(약실 index)에만 적용 — 조건부(전체·속성탄) 폐지로 단일 경로
     void ApplyStat(DamageModifier mod, BulletStat stat, int index)
     {
-        switch (stat.target)
+        switch (stat.reward)
         {
-            case TargetType.Self:
-                ApplyReward(mod, stat.reward, stat.rewardCoef, -1, index);
-                break;
-
-            case TargetType.All:
-                ApplyReward(mod, stat.reward, stat.rewardCoef, -2, index);
-                break;
-
-            case TargetType.BulletType:
-                int type = (int)stat.targetCoef;
-                ApplyReward(mod, stat.reward, stat.rewardCoef, type, index);
-                break;
+            case RewardType.PowerIncrease: mod.SelfPower[index] += stat.rewardCoef; break;
+            case RewardType.BulletTypeDamageIncrease: mod.SelfTypePower[index] += stat.rewardCoef; break;
+            case RewardType.FinalDamageIncrease: mod.SelfFinal[index] += stat.rewardCoef; break;
+            case RewardType.CriticalChanceIncrease: mod.SelfCriticalChance[index] += stat.rewardCoef; break;
+            case RewardType.CriticalDamageIncrease: mod.SelfCriticalDamage[index] += stat.rewardCoef; break;
         }
     }
-    void ApplyReward(DamageModifier mod, RewardType reward, float value, int type, int index)
-    {
-        switch (reward)
-        {
-            case RewardType.PowerIncrease:
-                if (type == -1) mod.SelfPower[index] += value;
-                else if (type == -2) mod.AllPower += value;
-                else mod.PowerByType[type] += value;
-                break;
-
-            case RewardType.BulletTypeDamageIncrease:
-                if (type == -1) mod.SelfTypePower[index] += value;
-                else if (type == -2) mod.AllTypePower += value;
-                else mod.TypePowerByType[type] += value;
-                break;
-
-            case RewardType.FinalDamageIncrease:
-                if (type == -1) mod.SelfFinal[index] += value;
-                else if (type == -2) mod.AllFinal += value;
-                else mod.FinalByType[type] += value;
-                break;
-
-            case RewardType.CriticalChanceIncrease:
-                if (type == -1) mod.SelfCriticalChance[index] += value;
-                else if (type == -2) mod.AllCriticalChance += value;
-                else mod.CriticalChanceByType[type] += value;
-                break;
-
-            case RewardType.CriticalDamageIncrease:
-                if (type == -1) mod.SelfCriticalDamage[index] += value;
-                else if (type == -2) mod.AllCriticalDamage += value;
-                else mod.CriticalDamageByType[type] += value;
-                break;
-        }
-    }
-    public (float, float, bool) CalculateDamage(BulletInfo info, DamageModifier mod, int index, float poss)
+    // weapon: 이 탄환을 쏘는 사수(파티 슬롯)의 장착 무기 — v43 무기 속성 매칭용(null=매칭 없음).
+    // 무기와 같은 속성 탄환이면 최종 데미지 +ElemFinalDmg%(배럭 스코프 — 전역 gdmg와 같은 가산 축, 프로토 fB+=revElFd).
+    public (float, float, bool) CalculateDamage(BulletInfo info, DamageModifier mod, int index, float poss, WeaponData weapon = null)
     {
         if (info == null) return (0, 0, false);
 
         if (basicDamage.Count == 0) Initialize();
 
-        int type = (int)info.infoSO.bulletType;
         float tierBase = basicDamage[info.infoSO.tier] + (info.Level - 1) * basicDamage[info.infoSO.tier] * lvScale[info.infoSO.tier];
 
         // 전역 스탯 버킷(성장·연구소·무기 합산 — PlayerStatAggregator 경유, 값 1 = 1%)
@@ -110,31 +70,28 @@ public class DamageCalculator
         float powerPart =
             tierBase *
             (1 + mod.SelfPower[index]) *
-            (1 + mod.AllPower) *
-            (1 + mod.PowerByType[type]) *
             (1 + gDamage);
 
         float typePart =
             tierBase *
             (1 + mod.SelfTypePower[index]) *
-            (1 + mod.AllTypePower) *
-            (1 + mod.TypePowerByType[type]) *
             (1 + gTypeDamage);
+
+        // v43 무기 속성 매칭: 무기와 같은 속성 탄환 = 최종 데미지 가산(전역 gdmg와 같은 축)
+        float weaponElemFd = 0f;
+        if (weapon != null && !string.IsNullOrEmpty(weapon.element)
+            && weapon.element == ElementLoader.IdFromBulletType(info.infoSO.bulletType))
+            weaponElemFd = WeaponGrades.ElemFinalDmg(weapon.grade) / 100f;
 
         float finalAmp =
             (1 + mod.SelfFinal[index]) *
-            (1 + mod.AllFinal) *
-            (1 + mod.FinalByType[type]) *
-            (1 + gFinal);
+            (1 + gFinal + weaponElemFd);
 
-        float criticalChance = (mod.SelfCriticalChance[index] + mod.AllCriticalChance + mod.CriticalChanceByType[type]) * 100 + gCritChance;
+        float criticalChance = mod.SelfCriticalChance[index] * 100 + gCritChance;
         criticalChance = Mathf.Min(100, criticalChance);
 
-        float criticalDamage =
-            (1 + mod.SelfCriticalDamage[index]) +
-            (1 + mod.AllCriticalDamage) +
-            (1 + mod.CriticalDamageByType[type]) +
-            gCritDamage;
+        // 상수 3 = 구 3항((1+자기)+(1+전체)+(1+속성탄)) 합의 보존 — 조건부 폐지 전과 수치 동일 유지
+        float criticalDamage = 3 + mod.SelfCriticalDamage[index] + gCritDamage;
 
         bool isCritical = UnityEngine.Random.Range(0, 100) < criticalChance;
 
@@ -144,6 +101,7 @@ public class DamageCalculator
         return (power, damage, isCritical);
     }
 }
+// v40: 조건부(전체 All·속성탄 ByType) 폐지 — 세공 스탯은 자기 약실 것만 남음
 public class DamageModifier
 {
     public List<float> SelfPower = new() { 0, 0, 0, 0, 0, 0 };
@@ -151,18 +109,6 @@ public class DamageModifier
     public List<float> SelfFinal = new() { 0, 0, 0, 0, 0, 0 };
     public List<float> SelfCriticalChance = new() { 0, 0, 0, 0, 0, 0 };
     public List<float> SelfCriticalDamage = new() { 0, 0, 0, 0, 0, 0 };
-
-    public float AllPower;
-    public float AllTypePower;
-    public float AllFinal;
-    public float AllCriticalChance;
-    public float AllCriticalDamage;
-
-    public List<float> PowerByType = new() { 0, 0, 0, 0 };
-    public List<float> TypePowerByType = new() { 0, 0, 0, 0 };
-    public List<float> FinalByType = new() { 0, 0, 0, 0 };
-    public List<float> CriticalChanceByType = new() { 0, 0, 0, 0 };
-    public List<float> CriticalDamageByType = new() { 0, 0, 0, 0 };
 }
 /*Debug.Log(
             $"[DamageCalculator]\n" +
