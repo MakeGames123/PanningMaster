@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // 다 닳으면 다음 체력(×배수)으로 리필된다. 넣은 총 데미지(TotalDamage)가 곧 점수.
 // 체력바 연출은 골드 던전 적과 동일: 논리(점수·이월)는 즉시 반영하고, 표시용 바가 실제 상태를
 // 향해 매우 빠르게 감소(던파식). 바를 넘길 때마다 뒤에 깔린 다음 바 색이 드러난다.
-// IFireTarget으로 Player가 다중 표적 모드로 조준한다(죽음 판정으로 사이클이 끊기지 않음).
+// IFireTarget으로 Player가 전용 표적으로 조준한다(죽지 않으므로 사이클이 끊기지 않음).
 public class WorldBossEnemy : MonoBehaviour, IFireTarget
 {
     [Header("표시")]

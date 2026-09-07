@@ -15,13 +15,12 @@ public class PlayerSquad : MonoBehaviour
     // FieldManager만 = 로 할당하므로 항상 핸들러는 하나만 존재한다.
     public System.Action<bool> onCycleComplete;
 
-    // 다중 표적 모드(연구소 던전 등). 설정되면 기본 enumy 대신 공급받은 표적에 발사한다.
-    // 표적을 죽여도 사이클은 끝나지 않고 다음 표적으로 이어지며, 표적이 없으면 그 총알은 스킵된다.
+    // 전용 표적(던전·월드보스). 설정되면 기본 enumy 대신 공급받은 표적에 발사한다.
     System.Func<IFireTarget> targetProvider;
 
     public Enemy Enemy => enumy;
 
-    // 다중 표적 모드 설정/해제(null). FieldManager가 필드 전환 시 호출한다.
+    // 전용 표적 설정/해제(null). FieldManager가 필드 전환 시 호출한다.
     public void SetTargetProvider(System.Func<IFireTarget> provider) => targetProvider = provider;
 
     // 한 사이클 발사 시작
@@ -79,30 +78,24 @@ public class PlayerSquad : MonoBehaviour
             foreach (Player p in ActivePlayers())
                 p.StepCylinder();
 
-            if (targetProvider != null) //다중 표적 모드(연구소 던전)
+            //1발사→체크→2발사→체크→3발사→체크
+            foreach (Player p in ActivePlayers())
             {
-                foreach (Player p in ActivePlayers())
-                {
-                    if (!p.HasBullet(i)) continue; //이 사수의 약실이 비었으면 스킵
+                if (!p.HasBullet(i)) continue; //이 사수의 약실이 비었으면 스킵
 
+                bool killed;
+                if (targetProvider != null) //전용 표적(던전·월드보스)
+                {
                     IFireTarget target = targetProvider();
-                    if (target != null) p.FireChamberAt(i, target); //죽여도 사이클 계속 -> 다음 사수는 다음 표적
-                    //target == null: 아직 소환된 적이 없음 -> 이 총알은 스킵
+                    if (target == null) continue; //표적이 이미 제거됨 -> 이 총알은 스킵
+                    killed = p.FireChamberAt(i, target);
                 }
-            }
-            else
-            {
-                //1발사→체크→2발사→체크→3발사→체크
-                foreach (Player p in ActivePlayers())
-                {
-                    if (!p.HasBullet(i)) continue; //이 사수의 약실이 비었으면 스킵
+                else killed = p.FireChamber(i);
 
-                    bool killed = p.FireChamber(i);
-                    if (killed)
-                    {
-                        onCycleComplete?.Invoke(true); //적 처치 = 성공
-                        yield break;
-                    }
+                if (killed)
+                {
+                    onCycleComplete?.Invoke(true); //적 처치 = 성공
+                    yield break;
                 }
             }
 

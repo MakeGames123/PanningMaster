@@ -142,9 +142,9 @@ public class QuestPanel : MonoBehaviour
         {
             case "Gold": dm.IncreaseGold((int)amount); break;
             case "Ticket": dm.IncreaseTicket((int)amount); break;
-            case "KeyGold": dm.AddKey(KeyType.Normal, (int)amount); break;   // 현재 열쇠 2종 체계 매핑
-            case "KeyResearch":
-            case "KeyArmory": dm.AddKey(KeyType.Elite, (int)amount); break;
+            case "KeyGold": dm.AddKey(DungeonKind.Gold, (int)amount); break; // 던전별 개별 열쇠
+            case "KeyResearch": dm.AddKey(DungeonKind.Laboratory, (int)amount); break;
+            case "KeyArmory": dm.AddKey(DungeonKind.Armory, (int)amount); break;
             default:
                 Debug.LogWarning($"[Quest] 미구현 보상 재화: {q.rewardType} x{amount} (퀘스트 {q.id})");
                 break;

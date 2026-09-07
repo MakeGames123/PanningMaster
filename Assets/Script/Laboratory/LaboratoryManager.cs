@@ -134,6 +134,7 @@ public class LaboratoryManager : MonoBehaviour
     public int GetLevel(int id) => levels.TryGetValue(id, out int lv) ? lv : 0;
     public int GetMaxLevel(int id) { var n = GetNode(id); return n != null ? n.maxLevel : 0; }
     public bool IsMastered(int id) { var n = GetNode(id); return n != null && GetLevel(id) >= n.maxLevel; }
+    public bool IsResearched(int id) => IsMastered(id); // 노드당 1회 연구(레벨 개념 없음) — UI 가독용 별칭
     public bool IsResearching(int id) => researching.ContainsKey(id);
     public float GetRemaining(int id) => researching.TryGetValue(id, out float r) ? r : 0f;
 
@@ -185,6 +186,46 @@ public class LaboratoryManager : MonoBehaviour
     #endregion
 
     #region 연구
+
+    // ⏳ 모래시계 시간 단축 — 1개 = 30분(프로토 v1.0.4: 30분 배수 연구 시간과 1:1 대응)
+    public const int HourglassSeconds = 1800;
+
+    // 즉시완료에 필요한 모래시계 수 = ceil(남은 시간 / 30분). 연구 중이 아니면 0
+    public int InstantCompleteCost(int id)
+        => researching.TryGetValue(id, out float rem) ? Mathf.Max(1, Mathf.CeilToInt(rem / HourglassSeconds)) : 0;
+
+    // ⏳1 소모 → 남은 시간 -30분. 30분 이하가 남았으면 그대로 완료된다.
+    public bool TryReduceTime(int id)
+    {
+        if (!researching.TryGetValue(id, out float rem)) return false;
+        if (DataManager.Instance == null || !DataManager.Instance.UseHourglass(1)) return false;
+
+        rem -= HourglassSeconds;
+        if (rem <= 0f)
+        {
+            researching.Remove(id);
+            CompleteResearch(id); // 내부에서 onNodeChanged/onTreeChanged 발화
+        }
+        else
+        {
+            researching[id] = rem;
+            onNodeChanged.Invoke(id);
+            onTreeChanged.Invoke();
+        }
+        return true;
+    }
+
+    // ⏳ceil(남은/30분) 소모 → 즉시 완료
+    public bool TryInstantComplete(int id)
+    {
+        int cost = InstantCompleteCost(id);
+        if (cost <= 0) return false;
+        if (DataManager.Instance == null || !DataManager.Instance.UseHourglass(cost)) return false;
+
+        researching.Remove(id);
+        CompleteResearch(id);
+        return true;
+    }
 
     // 연구 시작. 골드를 소모하고 시간이 지나면 완료(레벨 +1).
     // 서로 다른 열린 노드는 동시에(병렬로) 연구 가능하다.

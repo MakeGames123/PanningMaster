@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         return FireAt(index, enumy.transform.localPosition, enumy.Attacked);
     }
 
-    // 다중 표적 모드 발사: 표적의 월드 좌표를 필드(부모) 로컬 좌표로 변환해 조준
+    // 전용 표적 발사(던전·월드보스): 표적의 월드 좌표를 필드(부모) 로컬 좌표로 변환해 조준
     public bool FireChamberAt(int index, IFireTarget target)
     {
         Vector3 targetLocal = transform.parent.InverseTransformPoint(target.AimPosition);

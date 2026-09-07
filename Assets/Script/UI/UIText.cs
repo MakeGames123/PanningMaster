@@ -7,7 +7,8 @@ public enum UITextValueType
     Gold,
     Power,
     Stage,
-    Crate
+    Crate,
+    Hourglass
 }
 
 [RequireComponent(typeof(TextMeshProUGUI))]
@@ -48,6 +49,10 @@ public class UIText : MonoBehaviour
                 dm.onCrateChanged.AddListener(OnCrate);
                 OnCrate(dm.crate);
                 break;
+            case UITextValueType.Hourglass:
+                dm.onHourglassChanged.AddListener(OnHourglass);
+                OnHourglass(dm.hourglass);
+                break;
         }
     }
 
@@ -63,6 +68,7 @@ public class UIText : MonoBehaviour
             case UITextValueType.Power: dm.onPowerChanged.RemoveListener(OnPower); break;
             case UITextValueType.Stage: dm.onStageChanged.RemoveListener(OnStage); break;
             case UITextValueType.Crate: dm.onCrateChanged.RemoveListener(OnCrate); break;
+            case UITextValueType.Hourglass: dm.onHourglassChanged.RemoveListener(OnHourglass); break;
         }
     }
 
@@ -71,4 +77,5 @@ public class UIText : MonoBehaviour
     void OnPower(double v) => text.text = NumberFormatLoader.Abbrev(v);
     void OnStage(int v) => text.text = v.ToString(); // 스테이지는 카운터라 축약 없이 원값
     void OnCrate(int v) => text.text = "🧰" + NumberFormatLoader.Abbrev(v);
+    void OnHourglass(int v) => text.text = "⏳" + NumberFormatLoader.Abbrev(v);
 }

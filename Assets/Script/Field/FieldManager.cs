@@ -10,7 +10,9 @@ public class FieldManager : MonoBehaviour
     [SerializeField] NormalField normalField;
     [SerializeField] DungeonField dungeonField;
     [SerializeField] GoldDungeonField goldDungeonField;
+    [SerializeField] TrainDungeonField trainDungeonField; // 열차 강탈(v39 — 골드 던전 문법, 보상 🎫)
     [SerializeField] LabDungeonField labDungeonField;
+    [SerializeField] ArmoryDungeonField armoryDungeonField; // 버려진 무기고(등반 — 연구소와 동일 동작)
     [SerializeField] WorldBossField worldBossField; // v45 월드보스(주간 펀치킹)
 
     bool inDungeon;
@@ -31,7 +33,7 @@ public class FieldManager : MonoBehaviour
         normalField.Begin(player);
     }
 
-    // 던전 입장 (DungeonEntry에서 호출)
+    // 던전 입장 (DungeonDetailPopup에서 호출)
     public void EnterDungeon(int floor)
     {
         if (inDungeon) return;
@@ -44,7 +46,7 @@ public class FieldManager : MonoBehaviour
         dungeonField.Begin(player, floor);
     }
 
-    // 골드 던전 입장 (DungeonEntry에서 호출). 층 없음 · 실패 없음 · 죽음/장전 없음 · 전용 적.
+    // 골드 던전 입장 (DungeonDetailPopup에서 호출). 층 없음 · 실패 없음 · 죽음/장전 없음 · 전용 적.
     public void EnterGoldDungeon()
     {
         if (inDungeon || goldDungeonField == null) return;
@@ -59,19 +61,37 @@ public class FieldManager : MonoBehaviour
         goldDungeonField.Begin(player);
     }
 
-    // 연구소 던전 입장 (DungeonEntry에서 호출). 정예 열쇠 소모, 다중 표적 전투.
-    public void EnterLabDungeon()
+    // 열차 강탈 입장 (DungeonDetailPopup에서 호출). 골드 던전 문법 — 30초 · 실패 없음 · 화물칸 카운트, 보상 🎫.
+    public void EnterTrainDungeon()
     {
-        if (inDungeon || labDungeonField == null) return;
+        if (inDungeon || trainDungeonField == null) return;
         inDungeon = true;
 
         normalField.Stop();
         player.ResetRevolver(); //장전 취소 + 약실 1번으로 초기화
-        player.Enemy.gameObject.SetActive(false); //기존 적은 던전 동안 잠시 숨김
+        player.Enemy.gameObject.SetActive(false); //기본 적은 던전 동안 숨김
 
-        player.onCycleComplete = labDungeonField.OnCycleComplete; //유일 핸들러 교체
-        player.SetTargetProvider(labDungeonField.GetCurrentTarget); //다중 표적 모드 켜기
-        labDungeonField.Begin(player);
+        player.onCycleComplete = trainDungeonField.OnCycleComplete; //유일 핸들러 교체
+        player.SetTargetProvider(trainDungeonField.GetTarget); //화물칸 조준(죽음으로 사이클 안 끊김)
+        trainDungeonField.Begin(player);
+    }
+
+    // 연구소 던전 입장 (DungeonDetailPopup에서 호출). 정예 열쇠 소모, 일반 몬스터 재활용(단계 등반) 전투.
+    public void EnterLabDungeon(int stage) => EnterClimbDungeon(labDungeonField, stage);
+
+    // 버려진 무기고 입장 (DungeonDetailPopup에서 호출). 연구소와 동일 동작, 보상만 다름(🧰 무기 상자).
+    public void EnterArmoryDungeon(int stage) => EnterClimbDungeon(armoryDungeonField, stage);
+
+    void EnterClimbDungeon(ClimbDungeonField field, int stage)
+    {
+        if (inDungeon || field == null) return;
+        inDungeon = true;
+
+        normalField.Stop();
+        player.ResetRevolver(); //장전 취소 + 약실 1번으로 초기화
+
+        player.onCycleComplete = field.OnCycleComplete; //유일 핸들러 교체
+        field.Begin(player, stage);
     }
 
     // 월드보스 입장 (WorldBossManager.TryBeginChallenge에서 호출) — 골드 던전 문법(불사신·다중 표적)
@@ -98,9 +118,11 @@ public class FieldManager : MonoBehaviour
 
         dungeonField.Stop();
         if (goldDungeonField != null) goldDungeonField.Stop();
+        if (trainDungeonField != null) trainDungeonField.Stop();
         if (labDungeonField != null) labDungeonField.Stop();
+        if (armoryDungeonField != null) armoryDungeonField.Stop();
         if (worldBossField != null) worldBossField.Stop();
-        player.SetTargetProvider(null); //다중 표적 모드 끄기
+        player.SetTargetProvider(null); //전용 표적 해제
         player.ResetRevolver(); //던전 종료 시에도 장전 취소 + 약실 1번으로 초기화
         player.Enemy.gameObject.SetActive(true); //숨겨둔 기존 적 복구
 

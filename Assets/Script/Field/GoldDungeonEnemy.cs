@@ -4,7 +4,7 @@ using UnityEngine.UI;
 // 골드 던전 전용 적. 죽지 않는다 — 체력바는 연출용이고, 다 닳으면 그 자리에서 다음 체력(2배)으로 리필하며 골드를 준다.
 // 오버킬(초과 데미지)은 다음 체력으로 이월되어 연쇄 소진될 수 있다.
 // 큰 한 방으로 여러 바를 넘겨도 값을 스냅하지 않고, 표시용 바가 실제 상태를 향해 매우 빠르게 감소(던파식)한다.
-// IFireTarget으로 Player가 다중 표적 모드로 조준한다(죽음 판정으로 사이클이 끊기지 않음).
+// IFireTarget으로 Player가 전용 표적으로 조준한다(죽지 않으므로 사이클이 끊기지 않음).
 public class GoldDungeonEnemy : MonoBehaviour, IFireTarget
 {
     [Header("체력 UI")]

@@ -1,26 +1,26 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-// 던전 탭 패널. 보유 열쇠 표시 + 던전 목록 갱신 관리.
+// 던전 탭 패널. 던전 배너 목록 관리 — 열쇠는 던전마다 개별 종류라 보유/충전 표시는 각 배너가 담당.
+// 배너(DungeonBannerUI)를 누르면 상세 팝업(DungeonDetailPopup)이 열린다.
 public class DungeonPanel : MonoBehaviour
 {
-    [Header("보유 열쇠")]
-    [SerializeField] TextMeshProUGUI normalKeyText;        // 일반 열쇠 (보유/최대)
-    [SerializeField] TextMeshProUGUI eliteKeyText;         // 정예 열쇠 (보유/최대)
-    [SerializeField] TextMeshProUGUI normalChargeTimerText; // 다음 일반 열쇠 충전 남은 시간
-    [SerializeField] TextMeshProUGUI eliteChargeTimerText;  // 다음 정예 열쇠 충전 남은 시간
-
     [Header("던전 목록")]
-    [Tooltip("비우면 자식에서 자동 수집")]
-    [SerializeField] List<DungeonEntry> entries = new();
+    [Tooltip("비우면 자식에서 자동 수집 — 순서 = 상세 팝업 ◀▶ 순환 순서")]
+    [SerializeField] List<DungeonBannerUI> banners = new();
+    [SerializeField] DungeonDetailPopup detailPopup;
 
     bool subscribed;
 
     void Awake()
     {
-        if (entries.Count == 0)
-            entries.AddRange(GetComponentsInChildren<DungeonEntry>(true));
+        if (banners.Count == 0)
+            banners.AddRange(GetComponentsInChildren<DungeonBannerUI>(true));
+
+        foreach (DungeonBannerUI b in banners)
+            if (b != null) b.Init(detailPopup);
+
+        if (detailPopup != null) detailPopup.SetBanners(banners);
     }
 
     void OnEnable()
@@ -34,6 +34,9 @@ public class DungeonPanel : MonoBehaviour
         // NavButtons는 패널을 비활성화하지 않고 화면 밖으로 옮기므로 이벤트로도 갱신
         TrySubscribe();
         Refresh();
+
+        // 시트(던전 이름·부제·열쇠 캡) 로드가 늦게 끝나면 다시 갱신
+        if (DungeonLoader.Instance != null) DungeonLoader.Instance.OnLoaded += Refresh;
     }
 
     void TrySubscribe()
@@ -51,47 +54,14 @@ public class DungeonPanel : MonoBehaviour
             DataManager.Instance.onDungeonFloorChanged.RemoveListener(OnFloorChanged);
             DataManager.Instance.onKeyChanged.RemoveListener(Refresh);
         }
+        if (DungeonLoader.Instance != null) DungeonLoader.Instance.OnLoaded -= Refresh;
     }
 
     void OnFloorChanged(int _) => Refresh();
 
-    void Update()
-    {
-        UpdateChargeTimer(); //충전 남은 시간 카운트다운 갱신
-    }
-
     void Refresh()
     {
-        DataManager dm = DataManager.Instance;
-        if (dm == null) return;
-
-        if (normalKeyText != null) normalKeyText.text = $"{dm.normalKey}/{dm.maxNormalKey}";
-        if (eliteKeyText != null) eliteKeyText.text = $"{dm.eliteKey}/{dm.maxEliteKey}";
-
-        foreach (DungeonEntry e in entries)
-            if (e != null) e.Refresh();
-    }
-
-    void UpdateChargeTimer()
-    {
-        DataManager dm = DataManager.Instance;
-        if (dm == null) return;
-
-        SetTimerText(normalChargeTimerText, dm, KeyType.Normal);
-        SetTimerText(eliteChargeTimerText, dm, KeyType.Elite);
-    }
-
-    void SetTimerText(TextMeshProUGUI text, DataManager dm, KeyType type)
-    {
-        if (text == null) return;
-
-        if (dm.IsKeyFull(type))
-        {
-            text.text = "MAX";
-            return;
-        }
-
-        int total = Mathf.CeilToInt(dm.GetKeyChargeRemaining(type));
-        text.text = $"{total / 60:00}:{total % 60:00}"; //mm:ss
+        foreach (DungeonBannerUI b in banners)
+            if (b != null) b.Refresh();
     }
 }

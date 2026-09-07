@@ -52,6 +52,8 @@ public class SheetService : MonoBehaviour
         loaders.Add(new WeaponCeilingLoader());
         loaders.Add(new WeaponSubStatLoader());
         loaders.Add(new WeaponElemNameLoader());
+        loaders.Add(new DungeonLoader());
+        loaders.Add(new DungeonConfigLoader());
         loaders.Add(new WorldBossOutlawLoader());
         loaders.Add(new WorldBossConfigLoader());
         loaders.Add(new WorldBossRankRewardLoader());

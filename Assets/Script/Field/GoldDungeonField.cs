@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 골드 던전 전용 필드. 단계 없음 · 실패 없음 · 죽음 판정 없음 · 장전 없음.
-// 전용 적(GoldDungeonEnemy)을 다중 표적 모드로 조준해 계속 발사한다.
+// 전용 적(GoldDungeonEnemy)을 전용 표적으로 조준해 계속 발사한다.
 // 적은 죽지 않고 체력바만 닳으면 다음 체력(2배)으로 리필된다. 시간이 끝나면 채굴 종료(실패 아님).
 public class GoldDungeonField : MonoBehaviour
 {
@@ -53,7 +53,7 @@ public class GoldDungeonField : MonoBehaviour
         if (goldEnemy != null) goldEnemy.gameObject.SetActive(false);
     }
 
-    // 6발이 끝나면(다중 표적 모드라 죽음으로 안 끊김) 정상적으로 장전 후 다시 발사.
+    // 6발이 끝나면(적이 죽지 않으므로 사이클이 안 끊김) 정상적으로 장전 후 다시 발사.
     public void OnCycleComplete(bool killed)
     {
         if (ended) return;
@@ -98,6 +98,7 @@ public class GoldDungeonField : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
+        DataManager.Instance.SetBestGoldMined(goldEnemy.EarnedGold); //최고 기록 갱신
         battleResult.ShowResult($"골드 채굴 완료 +{goldEnemy.EarnedGold}");
 
         yield return new WaitForSeconds(2f);

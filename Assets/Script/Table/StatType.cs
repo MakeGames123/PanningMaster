@@ -12,5 +12,7 @@ public enum StatType
     TypeDamage,       // 속성 데미지
     TicketCap,        // 티켓 소지 한도 (+N개)
     OfflineGoldRate,  // 방치 채굴량 (+N%)
-    OfflineTimeCap    // 방치캡 (+N분)
+    OfflineTimeCap,   // 방치캡 (+N분)
+    SuperCritChance,  // 🌠 슈퍼 크리티컬 확률 (v42d 연구 특수 피날레 — 전투 반영은 미구현, Aggregator가 무시)
+    SuperCritDamage   // 💫 슈퍼 크리티컬 데미지 (동상)
 }

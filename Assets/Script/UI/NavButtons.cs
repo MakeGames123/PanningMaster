@@ -20,8 +20,12 @@ public class NavButtons : MonoBehaviour
     [SerializeField] Button characterButton;
     List<Button> allButtons = new();
     Vector2 disablePos = new Vector2(-9999, -9999);
+    CanvasGroup bulletButtonGroup; // GameObject는 켜둔 채 알파/레이캐스트만 제어
     void Awake()
     {
+        bulletButtonGroup = bulletButton.GetComponent<CanvasGroup>();
+        if (bulletButtonGroup == null) bulletButtonGroup = bulletButton.gameObject.AddComponent<CanvasGroup>();
+
         allPanels.Add(bulletPanel);
         allPanels.Add(battlePanel);
         //allPanels.Add(shopPanel);
@@ -96,5 +100,14 @@ public class NavButtons : MonoBehaviour
         }
 
         target.anchoredPosition = Vector2.zero;
+
+        SetBulletButtonVisible(target != bulletPanel);
+    }
+
+    void SetBulletButtonVisible(bool visible)
+    {
+        if (bulletButtonGroup == null) return;
+        bulletButtonGroup.alpha = visible ? 1f : 0f;
+        bulletButtonGroup.blocksRaycasts = visible;
     }
 }
