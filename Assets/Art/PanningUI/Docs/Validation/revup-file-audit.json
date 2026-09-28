@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "exactTextRects": 49,
+  "matchingFontSizeSpacingColorAndAsset": 49,
+  "emptyIcons": 17,
+  "emptyWeaponArtSlots": 2,
+  "closeGlyphReplacedByEmptyIcon": true,
+  "infoExclamationIsTMP": true,
+  "gmarketMaterialUsesGmarketAtlas": true,
+  "approvedPrefabsAndPreviewScenesUnchanged": 6,
+  "tmpSettingsUnchanged": true,
+  "shineCycleSeconds": 2.4,
+  "sheenMoveSeconds": 0.9,
+  "sheenPauseSeconds": 1.5
+}

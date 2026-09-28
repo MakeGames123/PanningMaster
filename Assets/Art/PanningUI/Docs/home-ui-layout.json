@@ -1,0 +1,3808 @@
+{
+  "source": "D:/Dev/260701 panning master/아트 연구/아스트라 하네스/edits/20260927-227/home.html",
+  "sourceSha256": "781486ac2e43e72ebe15b3891b7a8b103aa26cbaf40c085df61b03390eea54f5",
+  "status": "HOME_SOURCE_DRAFT_FOR_BATCH_REVIEW",
+  "note": "Source home-skin-r01 is a prior home proposal, not the popup r4 approval. Current no-emoji/no-sheen rules override it. No raster screenshot is used as UI.",
+  "elements": [
+    {
+      "sel": "#hud",
+      "i": 0,
+      "rect400": [
+        0,
+        0,
+        400,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#nick",
+      "i": 0,
+      "rect400": [
+        14,
+        9,
+        61.41,
+        20
+      ],
+      "color": "#ffffff",
+      "grade": "명사수✎",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#s-pow",
+      "i": 0,
+      "rect400": [
+        12,
+        31,
+        150,
+        19
+      ],
+      "color": "#9d8f7e",
+      "grade": "⚔️전투력274K",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#s-rank",
+      "i": 0,
+      "rect400": [
+        12,
+        53,
+        150,
+        19
+      ],
+      "color": "#9d8f7e",
+      "grade": "🏆랭킹1위",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#c-gold",
+      "i": 0,
+      "rect400": [
+        198,
+        14,
+        88,
+        24
+      ],
+      "color": "#f1e6d4",
+      "grade": "1,155M",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#c-ruby",
+      "i": 0,
+      "rect400": [
+        291,
+        14,
+        78,
+        24
+      ],
+      "color": "#f1e6d4",
+      "grade": "999K",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#menu",
+      "i": 0,
+      "rect400": [
+        374,
+        14,
+        22,
+        24
+      ],
+      "color": "#e8b44a",
+      "grade": "▼",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#stage",
+      "i": 0,
+      "rect400": [
+        12,
+        80,
+        88.39,
+        18
+      ],
+      "color": "#f1e6d4",
+      "grade": "STAGE 1200",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#boss",
+      "i": 0,
+      "rect400": [
+        262,
+        84,
+        128,
+        24
+      ],
+      "color": "#f1e6d4",
+      "grade": "☠️ 보스",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#boss .lb",
+      "i": 0,
+      "rect400": [
+        262,
+        84,
+        128,
+        13
+      ],
+      "color": "#ff8a7a",
+      "grade": "☠️ 보스",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#boss .bar",
+      "i": 0,
+      "rect400": [
+        262,
+        100,
+        128,
+        8
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#boss .bar i",
+      "i": 0,
+      "rect400": [
+        262,
+        100,
+        92.16,
+        8
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#cyl",
+      "i": 0,
+      "rect400": [
+        68,
+        222,
+        264,
+        264
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#hub",
+      "i": 0,
+      "rect400": [
+        156,
+        310,
+        88,
+        88
+      ],
+      "color": "#f1e6d4",
+      "grade": "장전6/16",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#hub img",
+      "i": 0,
+      "rect400": [
+        166,
+        314,
+        70,
+        70
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".ch",
+      "i": 0,
+      "rect400": [
+        163,
+        229,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "4Lv.1",
+      "tier": "",
+      "elementColor": "#4fd8ff"
+    },
+    {
+      "sel": ".ch",
+      "i": 1,
+      "rect400": [
+        239.2,
+        273,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "2Lv.2▲+1",
+      "tier": "",
+      "elementColor": "#e0406a"
+    },
+    {
+      "sel": ".ch",
+      "i": 2,
+      "rect400": [
+        239.2,
+        361,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "3Lv.2▲+1",
+      "tier": "",
+      "elementColor": "#ff8a3d"
+    },
+    {
+      "sel": ".ch",
+      "i": 3,
+      "rect400": [
+        163,
+        405,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "1Lv.1",
+      "tier": "",
+      "elementColor": "#ffd23a"
+    },
+    {
+      "sel": ".ch",
+      "i": 4,
+      "rect400": [
+        86.78,
+        361,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "5Lv.1",
+      "tier": "",
+      "elementColor": "#53e05a"
+    },
+    {
+      "sel": ".ch",
+      "i": 5,
+      "rect400": [
+        86.78,
+        273,
+        74,
+        74
+      ],
+      "color": "#f1e6d4",
+      "grade": "6Lv.1",
+      "tier": "",
+      "elementColor": "#4a7dff"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 0,
+      "rect400": [
+        181,
+        242,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#4fd8ff"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 1,
+      "rect400": [
+        257.2,
+        286,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#e0406a"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 2,
+      "rect400": [
+        257.2,
+        374,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#ff8a3d"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 3,
+      "rect400": [
+        181,
+        418,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#ffd23a"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 4,
+      "rect400": [
+        104.78,
+        374,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#53e05a"
+    },
+    {
+      "sel": ".ch .bl",
+      "i": 5,
+      "rect400": [
+        104.78,
+        286,
+        38,
+        38
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": "#4a7dff"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 0,
+      "rect400": [
+        190,
+        221,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "4",
+      "tier": "",
+      "elementColor": "#4fd8ff"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 1,
+      "rect400": [
+        266.2,
+        265,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "2",
+      "tier": "",
+      "elementColor": "#e0406a"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 2,
+      "rect400": [
+        266.2,
+        353,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "3",
+      "tier": "",
+      "elementColor": "#ff8a3d"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 3,
+      "rect400": [
+        190,
+        397,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "1",
+      "tier": "",
+      "elementColor": "#ffd23a"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 4,
+      "rect400": [
+        113.78,
+        353,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "5",
+      "tier": "",
+      "elementColor": "#53e05a"
+    },
+    {
+      "sel": ".ch .no",
+      "i": 5,
+      "rect400": [
+        113.78,
+        265,
+        20,
+        20
+      ],
+      "color": "#3a2408",
+      "grade": "6",
+      "tier": "",
+      "elementColor": "#4a7dff"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 0,
+      "rect400": [
+        183.9,
+        279.13,
+        32.2,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "",
+      "elementColor": "#4fd8ff"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 1,
+      "rect400": [
+        249.16,
+        323.13,
+        54.09,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.2▲+1",
+      "tier": "",
+      "elementColor": "#e0406a"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 2,
+      "rect400": [
+        249.16,
+        411.13,
+        54.09,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.2▲+1",
+      "tier": "",
+      "elementColor": "#ff8a3d"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 3,
+      "rect400": [
+        183.9,
+        455.13,
+        32.2,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "",
+      "elementColor": "#ffd23a"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 4,
+      "rect400": [
+        107.68,
+        411.13,
+        32.2,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "",
+      "elementColor": "#53e05a"
+    },
+    {
+      "sel": ".ch .lv",
+      "i": 5,
+      "rect400": [
+        107.68,
+        323.13,
+        32.2,
+        14.88
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "",
+      "elementColor": "#4a7dff"
+    },
+    {
+      "sel": "#chat",
+      "i": 0,
+      "rect400": [
+        10,
+        497,
+        190,
+        24
+      ],
+      "color": "#f1e6d4",
+      "grade": "···은빛 나탈리: 출석 14일 완주!",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#auto-f",
+      "i": 0,
+      "rect400": [
+        10,
+        529,
+        87.84,
+        25
+      ],
+      "color": "#fff0b0",
+      "grade": "⚡최적 편성",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest",
+      "i": 0,
+      "rect400": [
+        208,
+        492,
+        184,
+        60
+      ],
+      "color": "#f1e6d4",
+      "grade": "100\n  퀘스트 117스킬 소환 10회진행3/10\n  ›",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest .ico",
+      "i": 0,
+      "rect400": [
+        216,
+        501,
+        42,
+        42
+      ],
+      "color": "#f1e6d4",
+      "grade": "100",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest .ico .dia",
+      "i": 0,
+      "rect400": [
+        228,
+        509,
+        18,
+        20
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest .pg",
+      "i": 0,
+      "rect400": [
+        266,
+        528.5,
+        89,
+        5
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest .pg i",
+      "i": 0,
+      "rect400": [
+        266,
+        528.5,
+        26.69,
+        5
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#quest .go",
+      "i": 0,
+      "rect400": [
+        363,
+        501,
+        20,
+        42
+      ],
+      "color": "#e8b44a",
+      "grade": "›",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#inv",
+      "i": 0,
+      "rect400": [
+        8,
+        570,
+        384,
+        152
+      ],
+      "color": "#f1e6d4",
+      "grade": "보관함18 / 40\n  SSSNEWLv.6SSLv.5SLv.5ALv.4BLv.3CLv.3S1Lv.6A2Lv.6B3Lv.5B4Lv.5C5Lv.4C6Lv.4DLv.2DLv.2ELv.1ELv.1ELv.1CLv.2",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#inv .crest",
+      "i": 0,
+      "rect400": [
+        168,
+        556,
+        64,
+        32
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#grid",
+      "i": 0,
+      "rect400": [
+        18,
+        590,
+        364,
+        180
+      ],
+      "color": "#f1e6d4",
+      "grade": "SSSNEWLv.6SSLv.5SLv.5ALv.4BLv.3CLv.3S1Lv.6A2Lv.6B3Lv.5B4Lv.5C5Lv.4C6Lv.4DLv.2DLv.2ELv.1ELv.1ELv.1CLv.2",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 0,
+      "rect400": [
+        18,
+        590,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "SSSNEWLv.6",
+      "tier": "#7cf5ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 1,
+      "rect400": [
+        79.66,
+        590,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "SSLv.5",
+      "tier": "#ff7ad9",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 2,
+      "rect400": [
+        141.33,
+        590,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "SLv.5",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 3,
+      "rect400": [
+        203,
+        590,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "ALv.4",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 4,
+      "rect400": [
+        264.66,
+        590,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "BLv.3",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 5,
+      "rect400": [
+        326.33,
+        590,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "CLv.3",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 6,
+      "rect400": [
+        18,
+        652,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "S1Lv.6",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 7,
+      "rect400": [
+        79.66,
+        652,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "A2Lv.6",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 8,
+      "rect400": [
+        141.33,
+        652,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "B3Lv.5",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 9,
+      "rect400": [
+        203,
+        652,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "B4Lv.5",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 10,
+      "rect400": [
+        264.66,
+        652,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "C5Lv.4",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 11,
+      "rect400": [
+        326.33,
+        652,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "C6Lv.4",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 12,
+      "rect400": [
+        18,
+        714,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "DLv.2",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 13,
+      "rect400": [
+        79.66,
+        714,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "DLv.2",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 14,
+      "rect400": [
+        141.33,
+        714,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "ELv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 15,
+      "rect400": [
+        203,
+        714,
+        55.66,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "ELv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 16,
+      "rect400": [
+        264.66,
+        714,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "ELv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl",
+      "i": 17,
+      "rect400": [
+        326.33,
+        714,
+        55.67,
+        56
+      ],
+      "color": "#f1e6d4",
+      "grade": "CLv.2",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 0,
+      "rect400": [
+        37.19,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#7cf5ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 1,
+      "rect400": [
+        98.85,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#ff7ad9",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 2,
+      "rect400": [
+        160.52,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 3,
+      "rect400": [
+        222.19,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 4,
+      "rect400": [
+        283.85,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 5,
+      "rect400": [
+        345.52,
+        604.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 6,
+      "rect400": [
+        37.19,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 7,
+      "rect400": [
+        98.85,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 8,
+      "rect400": [
+        160.52,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 9,
+      "rect400": [
+        222.19,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 10,
+      "rect400": [
+        283.85,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 11,
+      "rect400": [
+        345.52,
+        666.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 12,
+      "rect400": [
+        37.19,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 13,
+      "rect400": [
+        98.85,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 14,
+      "rect400": [
+        160.52,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 15,
+      "rect400": [
+        222.19,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 16,
+      "rect400": [
+        283.85,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .bt",
+      "i": 17,
+      "rect400": [
+        345.52,
+        728.76,
+        23.27,
+        29.47
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 0,
+      "rect400": [
+        24,
+        593,
+        33.94,
+        15
+      ],
+      "color": "#7cf5ff",
+      "grade": "SSS",
+      "tier": "#7cf5ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 1,
+      "rect400": [
+        85.66,
+        593,
+        22.63,
+        15
+      ],
+      "color": "#ff7ad9",
+      "grade": "SS",
+      "tier": "#ff7ad9",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 2,
+      "rect400": [
+        147.33,
+        593,
+        11.31,
+        15
+      ],
+      "color": "#ffb84a",
+      "grade": "S",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 3,
+      "rect400": [
+        209,
+        593,
+        12.63,
+        15
+      ],
+      "color": "#b894ff",
+      "grade": "A",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 4,
+      "rect400": [
+        270.66,
+        593,
+        11.73,
+        15
+      ],
+      "color": "#4aa3ff",
+      "grade": "B",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 5,
+      "rect400": [
+        332.33,
+        593,
+        13.81,
+        15
+      ],
+      "color": "#3fd06a",
+      "grade": "C",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 6,
+      "rect400": [
+        24,
+        655,
+        11.31,
+        15
+      ],
+      "color": "#ffb84a",
+      "grade": "S",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 7,
+      "rect400": [
+        85.66,
+        655,
+        12.63,
+        15
+      ],
+      "color": "#b894ff",
+      "grade": "A",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 8,
+      "rect400": [
+        147.33,
+        655,
+        11.73,
+        15
+      ],
+      "color": "#4aa3ff",
+      "grade": "B",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 9,
+      "rect400": [
+        209,
+        655,
+        11.73,
+        15
+      ],
+      "color": "#4aa3ff",
+      "grade": "B",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 10,
+      "rect400": [
+        270.66,
+        655,
+        13.81,
+        15
+      ],
+      "color": "#3fd06a",
+      "grade": "C",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 11,
+      "rect400": [
+        332.33,
+        655,
+        13.81,
+        15
+      ],
+      "color": "#3fd06a",
+      "grade": "C",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 12,
+      "rect400": [
+        24,
+        717,
+        12.94,
+        15
+      ],
+      "color": "#b9c2d4",
+      "grade": "D",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 13,
+      "rect400": [
+        85.66,
+        717,
+        12.94,
+        15
+      ],
+      "color": "#b9c2d4",
+      "grade": "D",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 14,
+      "rect400": [
+        147.33,
+        717,
+        11.06,
+        15
+      ],
+      "color": "#8f9aa8",
+      "grade": "E",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 15,
+      "rect400": [
+        209,
+        717,
+        11.06,
+        15
+      ],
+      "color": "#8f9aa8",
+      "grade": "E",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 16,
+      "rect400": [
+        270.66,
+        717,
+        11.06,
+        15
+      ],
+      "color": "#8f9aa8",
+      "grade": "E",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .g",
+      "i": 17,
+      "rect400": [
+        332.33,
+        717,
+        13.81,
+        15
+      ],
+      "color": "#3fd06a",
+      "grade": "C",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 0,
+      "rect400": [
+        40.08,
+        630,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.6",
+      "tier": "#7cf5ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 1,
+      "rect400": [
+        101.75,
+        630,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.5",
+      "tier": "#ff7ad9",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 2,
+      "rect400": [
+        163.42,
+        630,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.5",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 3,
+      "rect400": [
+        225.08,
+        630,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.4",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 4,
+      "rect400": [
+        286.55,
+        630,
+        28.78,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.3",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 5,
+      "rect400": [
+        348.22,
+        630,
+        28.78,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.3",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 6,
+      "rect400": [
+        40.08,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.6",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 7,
+      "rect400": [
+        101.75,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.6",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 8,
+      "rect400": [
+        163.42,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.5",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 9,
+      "rect400": [
+        225.08,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.5",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 10,
+      "rect400": [
+        286.75,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.4",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 11,
+      "rect400": [
+        348.42,
+        692,
+        28.58,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.4",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 12,
+      "rect400": [
+        40.09,
+        754,
+        28.56,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.2",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 13,
+      "rect400": [
+        101.77,
+        754,
+        28.56,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.2",
+      "tier": "#b9c2d4",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 14,
+      "rect400": [
+        165.7,
+        754,
+        26.3,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 15,
+      "rect400": [
+        227.36,
+        754,
+        26.3,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 16,
+      "rect400": [
+        289.03,
+        754,
+        26.3,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.1",
+      "tier": "#8f9aa8",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .lv",
+      "i": 17,
+      "rect400": [
+        348.44,
+        754,
+        28.56,
+        11
+      ],
+      "color": "#ffffff",
+      "grade": "Lv.2",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 0,
+      "rect400": [
+        53.66,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "1",
+      "tier": "#ffb84a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 1,
+      "rect400": [
+        115.33,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "2",
+      "tier": "#b894ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 2,
+      "rect400": [
+        177,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "3",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 3,
+      "rect400": [
+        238.66,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "4",
+      "tier": "#4aa3ff",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 4,
+      "rect400": [
+        300.33,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "5",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .eq",
+      "i": 5,
+      "rect400": [
+        362,
+        657,
+        15,
+        15
+      ],
+      "color": "#3a2408",
+      "grade": "6",
+      "tier": "#3fd06a",
+      "elementColor": ""
+    },
+    {
+      "sel": ".sl .nw",
+      "i": 0,
+      "rect400": [
+        59.66,
+        596,
+        8,
+        8
+      ],
+      "color": "#f1e6d4",
+      "grade": "NEW",
+      "tier": "#7cf5ff",
+      "elementColor": ""
+    },
+    {
+      "sel": "#tabs",
+      "i": 0,
+      "rect400": [
+        10,
+        727,
+        130,
+        19
+      ],
+      "color": "#f1e6d4",
+      "grade": "x1x10x100",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".tb",
+      "i": 0,
+      "rect400": [
+        10,
+        727,
+        40,
+        19
+      ],
+      "color": "#3a2408",
+      "grade": "x1",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".tb",
+      "i": 1,
+      "rect400": [
+        55,
+        727,
+        40,
+        19
+      ],
+      "color": "#9d8f7e",
+      "grade": "x10",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".tb",
+      "i": 2,
+      "rect400": [
+        100,
+        727,
+        40,
+        19
+      ],
+      "color": "#9d8f7e",
+      "grade": "x100",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#dlv",
+      "i": 0,
+      "rect400": [
+        190,
+        728,
+        200,
+        13
+      ],
+      "color": "#9d8f7e",
+      "grade": "뽑기 Lv.348/70i",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#dlv .pg",
+      "i": 0,
+      "rect400": [
+        240.14,
+        731.5,
+        95.45,
+        6
+      ],
+      "color": "#9d8f7e",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#dlv .pg i",
+      "i": 0,
+      "rect400": [
+        240.14,
+        731.5,
+        53.45,
+        6
+      ],
+      "color": "#9d8f7e",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#dlv .info",
+      "i": 0,
+      "rect400": [
+        377,
+        728,
+        13,
+        13
+      ],
+      "color": "#9d8f7e",
+      "grade": "i",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#chip",
+      "i": 0,
+      "rect400": [
+        8,
+        752,
+        58,
+        50
+      ],
+      "color": "#f1e6d4",
+      "grade": "⚙️자동꺼짐",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#draw",
+      "i": 0,
+      "rect400": [
+        76,
+        752,
+        316,
+        50
+      ],
+      "color": "#3a2408",
+      "grade": "뽑기🎫 1 · 보유 140/200",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": "#nav",
+      "i": 0,
+      "rect400": [
+        0,
+        808,
+        400,
+        59
+      ],
+      "color": "#f1e6d4",
+      "grade": "무기",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 0,
+      "rect400": [
+        0,
+        809,
+        66.66,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 1,
+      "rect400": [
+        66.66,
+        809,
+        66.67,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 2,
+      "rect400": [
+        133.33,
+        809,
+        66.66,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 3,
+      "rect400": [
+        199.98,
+        809,
+        66.67,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "무기",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 4,
+      "rect400": [
+        266.66,
+        809,
+        66.67,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv",
+      "i": 5,
+      "rect400": [
+        333.33,
+        809,
+        66.67,
+        58
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 0,
+      "rect400": [
+        33.33,
+        821,
+        0,
+        34
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 1,
+      "rect400": [
+        99.98,
+        821,
+        0,
+        34
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 2,
+      "rect400": [
+        166.66,
+        821,
+        0,
+        34
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 3,
+      "rect400": [
+        233.31,
+        819,
+        0,
+        32
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 4,
+      "rect400": [
+        299.98,
+        824,
+        0,
+        28
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".nv img",
+      "i": 5,
+      "rect400": [
+        366.66,
+        821,
+        0,
+        34
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    },
+    {
+      "sel": ".dot",
+      "i": 0,
+      "rect400": [
+        43.66,
+        818,
+        7,
+        7
+      ],
+      "color": "#f1e6d4",
+      "grade": "",
+      "tier": "",
+      "elementColor": ""
+    }
+  ],
+  "texts": [
+    {
+      "text": "명사수",
+      "rect400": [
+        14,
+        9,
+        48.56,
+        20
+      ],
+      "rectUnity1200": [
+        42,
+        27,
+        145.68,
+        60
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 51,
+      "color": "#ffffff",
+      "characterSpacing": -1,
+      "align": "start",
+      "selector": "#nick",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "✎",
+      "rect400": [
+        66.56,
+        14,
+        8.84,
+        10
+      ],
+      "rectUnity1200": [
+        199.68,
+        42,
+        26.52,
+        30
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 27,
+      "color": "#9d8f7e",
+      "characterSpacing": -1.8888888888888888,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "전투력",
+      "rect400": [
+        38,
+        35,
+        27.42,
+        11
+      ],
+      "rectUnity1200": [
+        114,
+        105,
+        82.26,
+        33
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 28.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "#s-pow",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "274K",
+      "rect400": [
+        121.83,
+        34,
+        30.17,
+        13
+      ],
+      "rectUnity1200": [
+        365.49,
+        102,
+        90.51,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 33,
+      "color": "#ffd24a",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "랭킹",
+      "rect400": [
+        38,
+        57,
+        18.28,
+        11
+      ],
+      "rectUnity1200": [
+        114,
+        171,
+        54.84,
+        33
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 28.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "#s-rank",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "1위",
+      "rect400": [
+        136.19,
+        56,
+        15.81,
+        13
+      ],
+      "rectUnity1200": [
+        408.57,
+        168,
+        47.43,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 33,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "1,155M",
+      "rect400": [
+        234.95,
+        19.5,
+        40.05,
+        13
+      ],
+      "rectUnity1200": [
+        704.85,
+        58.5,
+        120.15,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 34.5,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "999K",
+      "rect400": [
+        325.41,
+        19.5,
+        32.59,
+        13
+      ],
+      "rectUnity1200": [
+        976.23,
+        58.5,
+        97.77,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 34.5,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "STAGE",
+      "rect400": [
+        22,
+        83.5,
+        38.64,
+        11
+      ],
+      "rectUnity1200": [
+        66,
+        250.5,
+        115.92,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#f1e6d4",
+      "characterSpacing": 4,
+      "align": "start",
+      "selector": "#stage",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "1200",
+      "rect400": [
+        64.64,
+        83.5,
+        25.75,
+        11
+      ],
+      "rectUnity1200": [
+        193.92,
+        250.5,
+        77.25,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffd24a",
+      "characterSpacing": 4,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "장전",
+      "rect400": [
+        178.81,
+        378,
+        15.41,
+        9
+      ],
+      "rectUnity1200": [
+        536.43,
+        1134,
+        46.23,
+        27
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 24,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "center",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "6/16",
+      "rect400": [
+        197.22,
+        376,
+        23.95,
+        12
+      ],
+      "rectUnity1200": [
+        591.66,
+        1128,
+        71.85,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "center",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "은빛 나탈리",
+      "rect400": [
+        39,
+        503.5,
+        48.36,
+        11
+      ],
+      "rectUnity1200": [
+        117,
+        1510.5,
+        145.08,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#7cc8ff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": ": 출석 14일 완주!",
+      "rect400": [
+        92.36,
+        503.5,
+        69.36,
+        11
+      ],
+      "rectUnity1200": [
+        277.08,
+        1510.5,
+        208.08,
+        33
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 28.5,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "최적 편성",
+      "rect400": [
+        41.48,
+        535.5,
+        43.36,
+        12
+      ],
+      "rectUnity1200": [
+        124.44,
+        1606.5,
+        130.08,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#fff0b0",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "#auto-f",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "100",
+      "rect400": [
+        234.16,
+        528,
+        18.84,
+        12
+      ],
+      "rectUnity1200": [
+        702.48,
+        1584,
+        56.52,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "퀘스트 117",
+      "rect400": [
+        266,
+        497.5,
+        47.31,
+        12
+      ],
+      "rectUnity1200": [
+        798,
+        1492.5,
+        141.93,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#ff9d2e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "t1",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "스킬 소환 10회",
+      "rect400": [
+        266,
+        512.5,
+        72.05,
+        13
+      ],
+      "rectUnity1200": [
+        798,
+        1537.5,
+        216.15,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 33,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "t2",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "진행",
+      "rect400": [
+        266,
+        536.5,
+        16.36,
+        10
+      ],
+      "rectUnity1200": [
+        798,
+        1609.5,
+        49.08,
+        30
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 25.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "3/10",
+      "rect400": [
+        335.14,
+        536.5,
+        19.86,
+        10
+      ],
+      "rectUnity1200": [
+        1005.42,
+        1609.5,
+        59.58,
+        30
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 25.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "›",
+      "rect400": [
+        371.08,
+        515.5,
+        4.84,
+        17
+      ],
+      "rectUnity1200": [
+        1113.24,
+        1546.5,
+        14.52,
+        51
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 45,
+      "color": "#e8b44a",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "go",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "보관함",
+      "rect400": [
+        21,
+        576,
+        25.81,
+        10
+      ],
+      "rectUnity1200": [
+        63,
+        1728,
+        77.43,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 5,
+      "align": "start",
+      "selector": "hd",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "18",
+      "rect400": [
+        348.2,
+        576,
+        9.83,
+        10
+      ],
+      "rectUnity1200": [
+        1044.6,
+        1728,
+        29.49,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "/ 40",
+      "rect400": [
+        358.03,
+        576,
+        20.97,
+        10
+      ],
+      "rectUnity1200": [
+        1074.09,
+        1728,
+        62.91,
+        30
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 25.5,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "hd2",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.6",
+      "rect400": [
+        45.08,
+        630,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        135.24,
+        1890,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.5",
+      "rect400": [
+        106.75,
+        630,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        320.25,
+        1890,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.5",
+      "rect400": [
+        168.42,
+        630,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        505.26,
+        1890,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.4",
+      "rect400": [
+        230.08,
+        630,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        690.24,
+        1890,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.3",
+      "rect400": [
+        291.55,
+        630,
+        18.78,
+        10
+      ],
+      "rectUnity1200": [
+        874.65,
+        1890,
+        56.34,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.3",
+      "rect400": [
+        353.22,
+        630,
+        18.78,
+        10
+      ],
+      "rectUnity1200": [
+        1059.66,
+        1890,
+        56.34,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "1",
+      "rect400": [
+        59.13,
+        659.5,
+        4.05,
+        10
+      ],
+      "rectUnity1200": [
+        177.39,
+        1978.5,
+        12.15,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.6",
+      "rect400": [
+        45.08,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        135.24,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "2",
+      "rect400": [
+        119.98,
+        659.5,
+        5.67,
+        10
+      ],
+      "rectUnity1200": [
+        359.94,
+        1978.5,
+        17.01,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.6",
+      "rect400": [
+        106.75,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        320.25,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "3",
+      "rect400": [
+        181.63,
+        659.5,
+        5.73,
+        10
+      ],
+      "rectUnity1200": [
+        544.89,
+        1978.5,
+        17.19,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.5",
+      "rect400": [
+        168.42,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        505.26,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "4",
+      "rect400": [
+        243.22,
+        659.5,
+        5.86,
+        10
+      ],
+      "rectUnity1200": [
+        729.66,
+        1978.5,
+        17.58,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.5",
+      "rect400": [
+        230.08,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        690.24,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "5",
+      "rect400": [
+        304.98,
+        659.5,
+        5.69,
+        10
+      ],
+      "rectUnity1200": [
+        914.94,
+        1978.5,
+        17.07,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.4",
+      "rect400": [
+        291.75,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        875.25,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "6",
+      "rect400": [
+        366.66,
+        659.5,
+        5.69,
+        10
+      ],
+      "rectUnity1200": [
+        1099.98,
+        1978.5,
+        17.07,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "eq",
+      "parent": "inventory",
+      "italic": false
+    },
+    {
+      "text": "Lv.4",
+      "rect400": [
+        353.42,
+        692,
+        18.58,
+        10
+      ],
+      "rectUnity1200": [
+        1060.26,
+        2076,
+        55.74,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.2",
+      "rect400": [
+        45.09,
+        754,
+        18.56,
+        10
+      ],
+      "rectUnity1200": [
+        135.27,
+        2262,
+        55.68,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.2",
+      "rect400": [
+        106.77,
+        754,
+        18.56,
+        10
+      ],
+      "rectUnity1200": [
+        320.31,
+        2262,
+        55.68,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        170.7,
+        754,
+        16.3,
+        10
+      ],
+      "rectUnity1200": [
+        512.1,
+        2262,
+        48.9,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        232.36,
+        754,
+        16.3,
+        10
+      ],
+      "rectUnity1200": [
+        697.08,
+        2262,
+        48.9,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        294.03,
+        754,
+        16.3,
+        10
+      ],
+      "rectUnity1200": [
+        882.09,
+        2262,
+        48.9,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "Lv.2",
+      "rect400": [
+        353.44,
+        754,
+        18.56,
+        10
+      ],
+      "rectUnity1200": [
+        1060.32,
+        2262,
+        55.68,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "inventory",
+      "italic": true
+    },
+    {
+      "text": "x1",
+      "rect400": [
+        24.25,
+        730.5,
+        11.5,
+        12
+      ],
+      "rectUnity1200": [
+        72.75,
+        2191.5,
+        34.5,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "tb on",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "x10",
+      "rect400": [
+        65.72,
+        730.5,
+        18.55,
+        12
+      ],
+      "rectUnity1200": [
+        197.16,
+        2191.5,
+        55.65,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "tb",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "x100",
+      "rect400": [
+        107.2,
+        730.5,
+        25.59,
+        12
+      ],
+      "rectUnity1200": [
+        321.6,
+        2191.5,
+        76.77,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "tb",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "뽑기 Lv.3",
+      "rect400": [
+        190,
+        728.5,
+        44.14,
+        12
+      ],
+      "rectUnity1200": [
+        570,
+        2185.5,
+        132.42,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 30,
+      "color": "#ffd24a",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "48/70",
+      "rect400": [
+        341.59,
+        729.5,
+        29.41,
+        10
+      ],
+      "rectUnity1200": [
+        1024.77,
+        2188.5,
+        88.23,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 27,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "i",
+      "rect400": [
+        382.44,
+        730,
+        2.13,
+        9
+      ],
+      "rectUnity1200": [
+        1147.32,
+        2190,
+        6.39,
+        27
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 24,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "center",
+      "selector": "info",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "자동",
+      "rect400": [
+        26.41,
+        774.16,
+        21.17,
+        13
+      ],
+      "rectUnity1200": [
+        79.23,
+        2322.48,
+        63.51,
+        39
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 33,
+      "color": "#f1e6d4",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "꺼짐",
+      "rect400": [
+        29.3,
+        787.34,
+        15.41,
+        9
+      ],
+      "rectUnity1200": [
+        87.9,
+        2362.02,
+        46.23,
+        27
+      ],
+      "fontAsset": "GmarketSans-Medium SDF",
+      "unityFontSize": 24,
+      "color": "#9d8f7e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "뽑기",
+      "rect400": [
+        215.59,
+        759.59,
+        36.8,
+        20
+      ],
+      "rectUnity1200": [
+        646.77,
+        2278.77,
+        110.4,
+        60
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 54,
+      "color": "#3a2408",
+      "characterSpacing": 6.000000000000001,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "무기",
+      "rect400": [
+        224.17,
+        852,
+        18.28,
+        11
+      ],
+      "rectUnity1200": [
+        672.51,
+        2556,
+        54.84,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ff9d2e",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "4",
+      "rect400": [
+        196.38,
+        225,
+        7.23,
+        12
+      ],
+      "rectUnity1200": [
+        589.14,
+        675,
+        21.69,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        190.9,
+        280.13,
+        18.2,
+        11
+      ],
+      "rectUnity1200": [
+        572.7,
+        840.39,
+        54.6,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "2",
+      "rect400": [
+        272.69,
+        269,
+        7.02,
+        12
+      ],
+      "rectUnity1200": [
+        818.07,
+        807,
+        21.06,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.2",
+      "rect400": [
+        256.16,
+        324.13,
+        20.75,
+        11
+      ],
+      "rectUnity1200": [
+        768.48,
+        972.39,
+        62.25,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "▲+1",
+      "rect400": [
+        278.91,
+        325.13,
+        17.34,
+        10
+      ],
+      "rectUnity1200": [
+        836.73,
+        975.39,
+        52.02,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#53e05a",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "3",
+      "rect400": [
+        272.66,
+        357,
+        7.08,
+        12
+      ],
+      "rectUnity1200": [
+        817.98,
+        1071,
+        21.24,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.2",
+      "rect400": [
+        256.16,
+        412.13,
+        20.75,
+        11
+      ],
+      "rectUnity1200": [
+        768.48,
+        1236.39,
+        62.25,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "▲+1",
+      "rect400": [
+        278.91,
+        413.13,
+        17.34,
+        10
+      ],
+      "rectUnity1200": [
+        836.73,
+        1239.39,
+        52.02,
+        30
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 25.5,
+      "color": "#53e05a",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "1",
+      "rect400": [
+        197.5,
+        401,
+        5,
+        12
+      ],
+      "rectUnity1200": [
+        592.5,
+        1203,
+        15,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        190.9,
+        456.13,
+        18.2,
+        11
+      ],
+      "rectUnity1200": [
+        572.7,
+        1368.39,
+        54.6,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "5",
+      "rect400": [
+        120.27,
+        357,
+        7.03,
+        12
+      ],
+      "rectUnity1200": [
+        360.81,
+        1071,
+        21.09,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        114.68,
+        412.13,
+        18.2,
+        11
+      ],
+      "rectUnity1200": [
+        344.04,
+        1236.39,
+        54.6,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    },
+    {
+      "text": "6",
+      "rect400": [
+        120.27,
+        269,
+        7.03,
+        12
+      ],
+      "rectUnity1200": [
+        360.81,
+        807,
+        21.09,
+        36
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 31.5,
+      "color": "#3a2408",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "no",
+      "parent": "",
+      "italic": true
+    },
+    {
+      "text": "Lv.1",
+      "rect400": [
+        114.68,
+        324.13,
+        18.2,
+        11
+      ],
+      "rectUnity1200": [
+        344.04,
+        972.39,
+        54.6,
+        33
+      ],
+      "fontAsset": "GmarketSans-Bold SDF",
+      "unityFontSize": 28.5,
+      "color": "#ffffff",
+      "characterSpacing": 0,
+      "align": "start",
+      "selector": "lv",
+      "parent": "",
+      "italic": false
+    }
+  ]
+}

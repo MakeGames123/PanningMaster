@@ -1,0 +1,190 @@
+{
+  "homeCases": [
+    {
+      "file": "ScreenMainHome_1080x1920.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1080x2520.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1200x2601.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1206x2622.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1248x1972.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1422x2088.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1600x2560.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1640x2360.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1848x2448.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_1920x2713.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_2448x1848.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "ScreenMainHome_904x2316.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "Simulator_iPhone12_1170x2532.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    },
+    {
+      "file": "Simulator_Pixel5_1080x2340.json",
+      "issues": [],
+      "centreEmpty": true,
+      "providedAssetsCorrect": true
+    }
+  ],
+  "popupRegression": [
+    {
+      "screen": "PopupCombatPower_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupConfirm_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupDrawRates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupFeatureUnlock_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewardsEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewardsFull_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewards_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupInsufficientCurrency_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupMailboxReceived_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupMailbox_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupNickname_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupProductDetail_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverAutoDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverAutoFound_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompareDown_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompareEqual_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompare_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverDiscardWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEquipped_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEquipWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverFirstDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverNoCrates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupStatSources_1200x2601",
+      "pixelExact": true
+    }
+  ],
+  "protectedFileCount": 747,
+  "protectedChanges": [],
+  "homeRegression": "Intentional user-selected four asset families and seven-slot empty-centre navigation; pure anchor migration previously pixel-exact",
+  "sourceAssetsUnchanged": true
+}

@@ -1,0 +1,8 @@
+PanningUI Buy validation / 2026-09-28T09:44:47
+PASS: 16 TMP strings; exact JSON rects; explicit fonts; no missing glyphs.
+PASS: 10 empty transparent icon Images.
+PASS: used sprite imports uncompressed / Sprite; Image types follow sprite borders.
+PASS: Canvas 1200 x 2601 / Scale With Screen Size / Match 0.5.
+Default TMP font preserved: BMJUA_ttf SDF
+Buttons: Purchase is a visual placeholder; close deactivates the popup.
+Preview uses Display 5; original game and approved Mail / Need / Confirm popups are unchanged.

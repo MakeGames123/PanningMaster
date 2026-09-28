@@ -1,0 +1,202 @@
+[
+  {
+    "number": 1,
+    "group": "01_홈",
+    "name": "ScreenMainHome",
+    "label": "홈 부분 적용 검수본",
+    "file": "PNG_2400/ScreenMainHome_2400x5202.png",
+    "sha256": "2eb9f4ee069e1a05d65048cae80bfdddc7db47e933652dbbeeb4f3914d20ec7f"
+  },
+  {
+    "number": 2,
+    "group": "02_공통",
+    "name": "PopupConfirm",
+    "label": "확인",
+    "file": "PNG_2400/PopupConfirm_2400x5202.png",
+    "sha256": "18d7dc5ff1a81d27995651f1f53da20c67f7d7310a68f142ba2af8a371a46af9"
+  },
+  {
+    "number": 3,
+    "group": "02_공통",
+    "name": "PopupInsufficientCurrency",
+    "label": "재화 부족",
+    "file": "PNG_2400/PopupInsufficientCurrency_2400x5202.png",
+    "sha256": "22ede642b515fe31491e875ae810e9a56cdf71b05edb27d0a95e8646305cbe61"
+  },
+  {
+    "number": 4,
+    "group": "02_공통",
+    "name": "PopupProductDetail",
+    "label": "상품 상세",
+    "file": "PNG_2400/PopupProductDetail_2400x5202.png",
+    "sha256": "36e51693bebb8ac2a5a0b6ed985a6e8493808984aaa24817d311cda75fd84d3a"
+  },
+  {
+    "number": 5,
+    "group": "02_공통",
+    "name": "PopupDrawRates",
+    "label": "뽑기 확률표",
+    "file": "PNG_2400/PopupDrawRates_2400x5202.png",
+    "sha256": "c43ba9ffd60c7766438d54fca09513f38c24bd766d9324ad29db6dccea52fe76"
+  },
+  {
+    "number": 6,
+    "group": "02_공통",
+    "name": "PopupFeatureUnlock",
+    "label": "기능 해금",
+    "file": "PNG_2400/PopupFeatureUnlock_2400x5202.png",
+    "sha256": "49370821d8a89f560336a6718dae21c26f936c7b584dae19e5907c6d8bb6e64e"
+  },
+  {
+    "number": 7,
+    "group": "02_공통",
+    "name": "PopupNickname",
+    "label": "닉네임 변경",
+    "file": "PNG_2400/PopupNickname_2400x5202.png",
+    "sha256": "137572c8f3700c8ef76247410a511bc26203b7d16df471471d47f63366cf84f0"
+  },
+  {
+    "number": 8,
+    "group": "03_전투력_우편",
+    "name": "PopupCombatPower",
+    "label": "전투력 상세",
+    "file": "PNG_2400/PopupCombatPower_2400x5202.png",
+    "sha256": "f82644281400467a6de379bfa025b2fc3de7a5ef38461cd17eb3908cf96d0225"
+  },
+  {
+    "number": 9,
+    "group": "03_전투력_우편",
+    "name": "PopupStatSources",
+    "label": "스탯 출처",
+    "file": "PNG_2400/PopupStatSources_2400x5202.png",
+    "sha256": "71cf3af9397f20c5a7eaa5c95f44e418732a96074740bbb9db5ff17ff53571e0"
+  },
+  {
+    "number": 10,
+    "group": "03_전투력_우편",
+    "name": "PopupMailbox",
+    "label": "우편함",
+    "file": "PNG_2400/PopupMailbox_2400x5202.png",
+    "sha256": "668b877fc5586177cf9b1bfe1fe0b59bb333acac60e90bfd285faca7b16bfb95"
+  },
+  {
+    "number": 11,
+    "group": "03_전투력_우편",
+    "name": "PopupMailboxReceived",
+    "label": "우편 보상 획득",
+    "file": "PNG_2400/PopupMailboxReceived_2400x5202.png",
+    "sha256": "f27a7dbf8bf9c047e9655bb05583d0009b027d0c45aab5dc90253060032af08a"
+  },
+  {
+    "number": 12,
+    "group": "04_방치",
+    "name": "PopupIdleRewards",
+    "label": "방치 보상",
+    "file": "PNG_2400/PopupIdleRewards_2400x5202.png",
+    "sha256": "468ca2aaf81604a63b1598b2c8e799fcedaacf404bd652bc58c62c72ec6214da"
+  },
+  {
+    "number": 13,
+    "group": "04_방치",
+    "name": "PopupIdleRewardsFull",
+    "label": "방치 보상 최대",
+    "file": "PNG_2400/PopupIdleRewardsFull_2400x5202.png",
+    "sha256": "0b294eaabbaed67e12fdc15e40b48bfbeda61592cc6800121ec87c5411491aa0"
+  },
+  {
+    "number": 14,
+    "group": "04_방치",
+    "name": "PopupIdleRewardsEmpty",
+    "label": "방치 보상 빈 상태",
+    "file": "PNG_2400/PopupIdleRewardsEmpty_2400x5202.png",
+    "sha256": "00f1d3dd4c482e315ad68459969807d94108479c544203b61d5584f50e64ee77"
+  },
+  {
+    "number": 15,
+    "group": "05_리볼버_비교",
+    "name": "PopupRevolverCompare",
+    "label": "리볼버 상승",
+    "file": "PNG_2400/PopupRevolverCompare_2400x5202.png",
+    "sha256": "630ff952b9b3bada9ff166d396acaca7e2a9b41b5675f182516904220bfbe461"
+  },
+  {
+    "number": 16,
+    "group": "05_리볼버_비교",
+    "name": "PopupRevolverCompareDown",
+    "label": "리볼버 하락",
+    "file": "PNG_2400/PopupRevolverCompareDown_2400x5202.png",
+    "sha256": "447f9c59452d1210986b60b4429fb931799dd846cd532f249d238d1fb186fcfb"
+  },
+  {
+    "number": 17,
+    "group": "05_리볼버_비교",
+    "name": "PopupRevolverCompareEqual",
+    "label": "리볼버 동률",
+    "file": "PNG_2400/PopupRevolverCompareEqual_2400x5202.png",
+    "sha256": "cca5be23e384eb402353c0647dbdcb3b03c079b0725dddce331d28cb910c454b"
+  },
+  {
+    "number": 18,
+    "group": "06_리볼버_단독",
+    "name": "PopupRevolverFirstDraw",
+    "label": "리볼버 첫 뽑기",
+    "file": "PNG_2400/PopupRevolverFirstDraw_2400x5202.png",
+    "sha256": "e198923f39c77ca7803dff71742d65afb7b66c2caa498dfd9d0995fb6efbbfca"
+  },
+  {
+    "number": 19,
+    "group": "06_리볼버_단독",
+    "name": "PopupRevolverEquipped",
+    "label": "리볼버 장착 완료",
+    "file": "PNG_2400/PopupRevolverEquipped_2400x5202.png",
+    "sha256": "0b69d23be4f416cb896e92e4065aa9a4b272be91e1265bf1a050b0282a099ec1"
+  },
+  {
+    "number": 20,
+    "group": "06_리볼버_단독",
+    "name": "PopupRevolverEmpty",
+    "label": "리볼버 없음",
+    "file": "PNG_2400/PopupRevolverEmpty_2400x5202.png",
+    "sha256": "5397888870812c79ea95e6aeee8057c7e3b0ef67db59ac2da35b8307885d2533"
+  },
+  {
+    "number": 21,
+    "group": "07_리볼버_자동",
+    "name": "PopupRevolverAutoDraw",
+    "label": "자동 뽑기",
+    "file": "PNG_2400/PopupRevolverAutoDraw_2400x5202.png",
+    "sha256": "42f3e5eace52ae5d11ff7651c36de56ba1d347189b538974d3802d742e840719"
+  },
+  {
+    "number": 22,
+    "group": "07_리볼버_자동",
+    "name": "PopupRevolverAutoFound",
+    "label": "자동 중 상승 발견",
+    "file": "PNG_2400/PopupRevolverAutoFound_2400x5202.png",
+    "sha256": "63b0cdd5fbee2ad21d30886ad4c7df61d00107d76d3862ff392ce775b52dc932"
+  },
+  {
+    "number": 23,
+    "group": "07_리볼버_자동",
+    "name": "PopupRevolverNoCrates",
+    "label": "상자 부족",
+    "file": "PNG_2400/PopupRevolverNoCrates_2400x5202.png",
+    "sha256": "14ab209310c37e6ffd0b72b09c94b8d4df65dcf6a3a7025903c63a3e91fea422"
+  },
+  {
+    "number": 24,
+    "group": "08_리볼버_경고",
+    "name": "PopupRevolverDiscardWarning",
+    "label": "판매 경고",
+    "file": "PNG_2400/PopupRevolverDiscardWarning_2400x5202.png",
+    "sha256": "258a8ba7651344ae83e03123a897a8785ca7b6336addc51c317716c9583e2b5e"
+  },
+  {
+    "number": 25,
+    "group": "08_리볼버_경고",
+    "name": "PopupRevolverEquipWarning",
+    "label": "장착 경고",
+    "file": "PNG_2400/PopupRevolverEquipWarning_2400x5202.png",
+    "sha256": "faeab4725aa630bf6fee88096bbd4c25cdd6a9cf12bfe4c186f543102fe2a2a1"
+  }
+]

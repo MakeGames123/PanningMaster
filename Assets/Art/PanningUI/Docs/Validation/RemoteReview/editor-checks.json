@@ -1,0 +1,1157 @@
+[
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupCombatPower.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/CombatPowerPreview.unity",
+    "sceneLinked": true,
+    "texts": 36,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "Help",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_3",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_4",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_5",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_6",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StatSource_7",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CharacterPower",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "ChamberDamage",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupCombatPower"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupConfirm.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/ConfirmPreview.unity",
+    "sceneLinked": true,
+    "texts": 6,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "Cancel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupConfirm"
+          }
+        ]
+      },
+      {
+        "name": "Confirm",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupConfirm"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupDrawRates.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/DrawRatesPreview.unity",
+    "sceneLinked": true,
+    "texts": 27,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "LockedGrades",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "PreviousLevel",
+        "interactable": false,
+        "callbacks": []
+      },
+      {
+        "name": "NextLevel",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupDrawRates"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupFeatureUnlock.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/FeatureUnlockPreview.unity",
+    "sceneLinked": true,
+    "texts": 4,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "TapToClose",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupFeatureUnlock"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewards.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/IdleRewardsPreview.unity",
+    "sceneLinked": true,
+    "texts": 22,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "DoubleClaim",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupIdleRewards"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewardsEmpty.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/IdleRewardsEmptyPreview.unity",
+    "sceneLinked": true,
+    "texts": 21,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "InstantClaim",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim",
+        "interactable": false,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupIdleRewardsEmpty"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewardsFull.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/IdleRewardsFullPreview.unity",
+    "sceneLinked": true,
+    "texts": 17,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "DoubleClaim",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupIdleRewardsFull"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupInsufficientCurrency.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/InsufficientCurrencyPreview.unity",
+    "sceneLinked": true,
+    "texts": 14,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "GoToSource_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "GoToSource_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "GoToSource_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupInsufficientCurrency"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupMailbox.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/MailboxPreview.unity",
+    "sceneLinked": true,
+    "texts": 15,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "ClaimAll",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Claim_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupMailbox"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupMailboxReceived.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/MailboxReceivedPreview.unity",
+    "sceneLinked": true,
+    "texts": 24,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "ClaimedAll",
+        "interactable": false,
+        "callbacks": []
+      },
+      {
+        "name": "ReceivedLayer",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "ReceivedLayer"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupMailboxReceived"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/NicknamePreview.unity",
+    "sceneLinked": true,
+    "texts": 8,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "Cancel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupNickname"
+          }
+        ]
+      },
+      {
+        "name": "Save",
+        "interactable": false,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupNickname"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupProductDetail.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/ProductDetailPreview.unity",
+    "sceneLinked": true,
+    "texts": 16,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "Purchase",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupProductDetail"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverAutoDraw.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverAutoDrawPreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Minimize",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "StopAuto",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverAutoDraw"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverAutoFound.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverAutoFoundPreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverAutoFound"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverAutoFound"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompare.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverComparePreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCardBase",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "EquipAndContinue",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabelButton",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompare"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompare"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareDown.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverCompareDownPreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCardBase",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabelButton",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompareDown"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompareDown"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareEqual.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverCompareEqualPreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCardBase",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabelButton",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompareEqual"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverCompareEqual"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverDiscardWarning.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverDiscardWarningPreview.unity",
+    "sceneLinked": true,
+    "texts": 54,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverDiscardWarning"
+          }
+        ]
+      },
+      {
+        "name": "Back",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "WarningLayer"
+          }
+        ]
+      },
+      {
+        "name": "Confirm",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverDiscardWarning"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEmpty.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverEmptyPreview.unity",
+    "sceneLinked": true,
+    "texts": 7,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEmpty"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEmpty"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipped.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity",
+    "sceneLinked": true,
+    "texts": 21,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabelButton",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEquipped"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEquipped"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipWarning.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverEquipWarningPreview.unity",
+    "sceneLinked": true,
+    "texts": 54,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEquipWarning"
+          }
+        ]
+      },
+      {
+        "name": "Back",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "WarningLayer"
+          }
+        ]
+      },
+      {
+        "name": "Confirm",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverEquipWarning"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverFirstDraw.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity",
+    "sceneLinked": true,
+    "texts": 23,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabelButton",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverFirstDraw"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverFirstDraw"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverNoCrates.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/RevolverNoCratesPreview.unity",
+    "sceneLinked": true,
+    "texts": 49,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "EquippedCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NewCard",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "GetCrates",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "CloseLabel",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverNoCrates"
+          }
+        ]
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupRevolverNoCrates"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupStatSources.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/StatSourcesPreview.unity",
+    "sceneLinked": true,
+    "texts": 70,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "Help",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Back",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Close",
+        "interactable": true,
+        "callbacks": [
+          {
+            "method": "SetActive",
+            "target": "PopupStatSources"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/ScreenMainHome.prefab",
+    "scene": "Assets/Art/PanningUI/Scenes/MainHomePreview.unity",
+    "sceneLinked": true,
+    "texts": 73,
+    "errors": [],
+    "buttons": [
+      {
+        "name": "CombatPower",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Rank",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Menu",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_3",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_4",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chamber_5",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Chat",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "AutoFormation",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Quest",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_3",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_4",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_5",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_6",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_7",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_8",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_9",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_10",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_11",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_12",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_13",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_14",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_15",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_16",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "InventorySlot_17",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "DrawCount_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "DrawCount_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "DrawCount_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "DrawRates",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "AutoDraw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "Draw",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_0",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_1",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_2",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_3",
+        "interactable": true,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_4",
+        "interactable": false,
+        "callbacks": []
+      },
+      {
+        "name": "NavButton_5",
+        "interactable": true,
+        "callbacks": []
+      }
+    ]
+  }
+]

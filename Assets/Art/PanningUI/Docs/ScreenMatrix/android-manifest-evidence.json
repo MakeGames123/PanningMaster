@@ -1,0 +1,26 @@
+{
+  "unity": "6000.0.67f1",
+  "entry": "GameActivity",
+  "appCategory": "game",
+  "source": "Unity.Android.Gradle.Manifest.AndroidManifestUtils.AndroidConfigChanges + AndroidPlayerBuildProgram.Actions.GenerateManifests.PatchLibraryManifest IL",
+  "baseConfigChanges": [
+    "mcc",
+    "mnc",
+    "locale",
+    "touchscreen",
+    "keyboard",
+    "keyboardHidden",
+    "navigation",
+    "orientation",
+    "screenLayout",
+    "uiMode",
+    "screenSize",
+    "smallestScreenSize",
+    "fontScale",
+    "layoutDirection"
+  ],
+  "density": "Generator adds density when resolved TargetSDKVersion > 23; installed SDKs 34/35/36, target Automatic",
+  "requiredFlagsPresent": true,
+  "customManifestAdded": false,
+  "actualApkManifest": "Not built; verification uses the installed Unity manifest generator and current PlayerSettings."
+}

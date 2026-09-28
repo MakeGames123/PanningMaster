@@ -1,0 +1,93 @@
+{
+  "source": {
+    "source": "D:/Dev/260701 panning master/아트 연구/STYLE_BIBLE/composition_only/crumble_idle_layout.jpg",
+    "sourceSha256": "ef1622a14e497b672c9e2ce963f8fc463694a723e9645c2ffc3880230798e357",
+    "measurement": "Manually observed reference landmarks, normalized by width. Art differs; preserve original sprite aspect ratio.",
+    "referencePixels": {
+      "width": 1080,
+      "heroVisibleTop": 196,
+      "heroVisibleBottom": 920,
+      "headerTop": 888
+    },
+    "spriteAlpha128Bounds": [
+      53,
+      56,
+      1497,
+      937
+    ],
+    "spritePixels": [
+      1536,
+      1024
+    ],
+    "visibleHeightToPanelWidth": 0.6703703703703704,
+    "overlapToPanelWidth": 0.02962962962962963,
+    "rect400RelativeToHeader": [
+      -35.885147,
+      -273.3409,
+      467.509144,
+      311.672762
+    ],
+    "drawOrder": "Panel, Header background, RewardHero, existing content and TMP labels",
+    "scope": [
+      "off",
+      "off-cap",
+      "off-empty"
+    ],
+    "nativeImageUnchanged": true
+  },
+  "screens": [
+    {
+      "key": "off",
+      "prefab": "Prefabs/PopupIdleRewards.prefab",
+      "beforeRect": [
+        36.0,
+        621.9,
+        1128.0,
+        752.1
+      ],
+      "afterRect": [
+        -107.65544,
+        505.6773,
+        1402.52743,
+        935.01829
+      ],
+      "onlyHeroRectAndSiblingOrderChanged": true
+    },
+    {
+      "key": "off-cap",
+      "prefab": "Prefabs/PopupIdleRewardsFull.prefab",
+      "beforeRect": [
+        36.0,
+        932.4,
+        1128.0,
+        752.1
+      ],
+      "afterRect": [
+        -107.65544,
+        816.1773,
+        1402.52743,
+        935.01829
+      ],
+      "onlyHeroRectAndSiblingOrderChanged": true
+    },
+    {
+      "key": "off-empty",
+      "prefab": "Prefabs/PopupIdleRewardsEmpty.prefab",
+      "beforeRect": [
+        36.0,
+        508.5,
+        1128.0,
+        752.1
+      ],
+      "afterRect": [
+        -107.65544,
+        392.5773,
+        1402.52743,
+        935.01829
+      ],
+      "onlyHeroRectAndSiblingOrderChanged": true
+    }
+  ],
+  "validation": "FILE_ONLY; desktop not operated; old Game captures precede this revision",
+  "spriteSha256": "9b7fa585520a2b0a64ca3e12ec678d5e6e7782d650db910de859a0047acbcad5"
+}

@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "assets": [
+    {
+      "old": "PanningMail",
+      "new": "PopupMailbox",
+      "guid": "5ca7882b3027e484f884604b2e46e7ef",
+      "guidPreserved": true,
+      "onlyRootNameChanged": true
+    },
+    {
+      "old": "PanningNeed",
+      "new": "PopupInsufficientCurrency",
+      "guid": "579dea36d44a8cb4081862601283ec4f",
+      "guidPreserved": true,
+      "onlyRootNameChanged": true
+    },
+    {
+      "old": "PanningConfirm",
+      "new": "PopupConfirm",
+      "guid": "ce7a7dff209d2164ead755a01842cb33",
+      "guidPreserved": true,
+      "onlyRootNameChanged": true
+    },
+    {
+      "old": "PanningBuy",
+      "new": "PopupProductDetail",
+      "guid": "14a8431896fbe2f478420a0dd6eb45f3",
+      "guidPreserved": true,
+      "onlyRootNameChanged": true
+    },
+    {
+      "old": "PanningPower",
+      "new": "PopupCombatPower",
+      "guid": "f288163992b1a314ca02d2e707ae68fe",
+      "guidPreserved": true,
+      "onlyRootNameChanged": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "exactTextRects": 36,
+  "matchingFontSizeSpacingColorAndAsset": 36,
+  "foldGlyphReplacedByEmptyIcon": true,
+  "emptyIcons": 12,
+  "spriteImports": 107,
+  "slicedBorders": 52,
+  "allFourApprovedPrefabsUnchanged": true,
+  "tmpSettingsUnchanged": true
+}

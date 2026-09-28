@@ -1,0 +1,8 @@
+Installed Unity 6000.0.67f1 base configChanges:
+mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection
+
+PatchLibraryManifest adds density for TargetSDKVersion > 23.
+Current project: Automatic target, installed SDK platforms 34/35/36.
+Expected generated configChanges: mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density
+
+This is generator verification, not a built APK manifest.

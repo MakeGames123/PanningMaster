@@ -1,0 +1,24 @@
+{
+  "stablePolls": 10000,
+  "allocatedBytes": 0,
+  "duplicateEventsOnStableScreen": 0,
+  "deviceSwitch": "iPhone 12 -> Pixel 5",
+  "deviceChangeEvents": 3,
+  "transitionSizes": [
+    [
+      904,
+      2316
+    ],
+    [
+      2448,
+      1848
+    ],
+    [
+      1200,
+      2601
+    ]
+  ],
+  "samePopupInstancePreserved": true,
+  "disabledClaimStatePreserved": true,
+  "note": "Editor Play Mode and Device Simulator; real Android activity/process lifecycle has not been run on hardware."
+}

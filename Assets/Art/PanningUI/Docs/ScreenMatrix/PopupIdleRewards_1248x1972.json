@@ -1,0 +1,43 @@
+{
+    "prefab": "PopupIdleRewards",
+    "width": 1248,
+    "height": 1972,
+    "buttons": 3,
+    "texts": 22,
+    "canvasSize": {
+        "x": 1646.0689697265625,
+        "y": 2601.0
+    },
+    "columnSize": {
+        "x": 1200.0,
+        "y": 2601.0
+    },
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1248.0,
+        "height": 1972.0
+    },
+    "dimRect": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": -0.0000374913215637207,
+        "width": 1248.0,
+        "height": 1972.0
+    },
+    "closeRect": {
+        "serializedVersion": "2",
+        "x": 573.9608154296875,
+        "y": 29.568592071533204,
+        "width": 100.07843017578125,
+        "height": 104.62745666503906
+    },
+    "expand": true,
+    "fullDim": true,
+    "buttonsInsideColumn": true,
+    "uniformScale": true,
+    "closeAtNavigationTop": true,
+    "pillarsCorrect": true,
+    "issues": []
+}

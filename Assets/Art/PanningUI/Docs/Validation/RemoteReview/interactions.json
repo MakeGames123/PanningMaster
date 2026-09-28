@@ -1,0 +1,221 @@
+[
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupCombatPower.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupConfirm.prefab",
+    "button": "Cancel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupConfirm.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupDrawRates.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupFeatureUnlock.prefab",
+    "button": "TapToClose",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewards.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewardsEmpty.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupIdleRewardsFull.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupInsufficientCurrency.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupMailbox.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupMailboxReceived.prefab",
+    "button": "ReceivedLayer",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupMailboxReceived.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "button": "Cancel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "input": "",
+    "saveEnabled": false,
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "input": "명사수",
+    "saveEnabled": false,
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "input": "새이름",
+    "saveEnabled": true,
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupNickname.prefab",
+    "input": "   ",
+    "saveEnabled": false,
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupProductDetail.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverAutoDraw.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverAutoFound.prefab",
+    "button": "CloseLabel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverAutoFound.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompare.prefab",
+    "button": "CloseLabelButton",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompare.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareDown.prefab",
+    "button": "CloseLabelButton",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareDown.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareEqual.prefab",
+    "button": "CloseLabelButton",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverCompareEqual.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverDiscardWarning.prefab",
+    "button": "CloseLabel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverDiscardWarning.prefab",
+    "button": "Back",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverDiscardWarning.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEmpty.prefab",
+    "button": "CloseLabel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEmpty.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipped.prefab",
+    "button": "CloseLabelButton",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipped.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipWarning.prefab",
+    "button": "CloseLabel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipWarning.prefab",
+    "button": "Back",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverEquipWarning.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverFirstDraw.prefab",
+    "button": "CloseLabelButton",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverFirstDraw.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverNoCrates.prefab",
+    "button": "CloseLabel",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupRevolverNoCrates.prefab",
+    "button": "Close",
+    "passed": true
+  },
+  {
+    "prefab": "Assets/Art/PanningUI/Prefabs/PopupStatSources.prefab",
+    "button": "Close",
+    "passed": true
+  }
+]

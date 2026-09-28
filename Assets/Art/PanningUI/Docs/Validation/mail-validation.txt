@@ -1,0 +1,6 @@
+PanningUI mail validation / 2026-09-28T09:44:44
+Sprite audit: 108 PNG / 52 sliced borders match / 0 mismatched metadata reimported.
+Fonts: 6 dynamic / 90 pt / padding 9 / SDFAA / 2048 square / multi atlas / font data / clear on build. Fallback chains assigned.
+Mail: 15 TMP strings, explicit fonts, exact JSON text rects/styles, no missing glyphs, empty icon Images.
+Default TMP font preserved: BMJUA_ttf SDF
+Preview on Display 2. Existing game scene and navigation are untouched.

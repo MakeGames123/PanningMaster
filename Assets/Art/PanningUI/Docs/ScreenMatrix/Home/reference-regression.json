@@ -1,0 +1,101 @@
+{
+  "popupRegression": [
+    {
+      "screen": "PopupCombatPower_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupConfirm_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupDrawRates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupFeatureUnlock_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewardsEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewardsFull_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupIdleRewards_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupInsufficientCurrency_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupMailboxReceived_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupMailbox_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupNickname_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupProductDetail_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverAutoDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverAutoFound_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompareDown_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompareEqual_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverCompare_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverDiscardWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEquipped_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverEquipWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverFirstDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupRevolverNoCrates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "screen": "PopupStatSources_1200x2601",
+      "pixelExact": true
+    }
+  ],
+  "home": "See final-results.json: intentional user-requested changes, not pixel-identical whole home."
+}

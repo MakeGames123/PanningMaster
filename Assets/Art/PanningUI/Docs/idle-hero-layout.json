@@ -1,0 +1,36 @@
+{
+  "source": "D:/Dev/260701 panning master/아트 연구/STYLE_BIBLE/composition_only/crumble_idle_layout.jpg",
+  "sourceSha256": "ef1622a14e497b672c9e2ce963f8fc463694a723e9645c2ffc3880230798e357",
+  "measurement": "Manually observed reference landmarks, normalized by width. Art differs; preserve original sprite aspect ratio.",
+  "referencePixels": {
+    "width": 1080,
+    "heroVisibleTop": 196,
+    "heroVisibleBottom": 920,
+    "headerTop": 888
+  },
+  "spriteAlpha128Bounds": [
+    53,
+    56,
+    1497,
+    937
+  ],
+  "spritePixels": [
+    1536,
+    1024
+  ],
+  "visibleHeightToPanelWidth": 0.6703703703703704,
+  "overlapToPanelWidth": 0.02962962962962963,
+  "rect400RelativeToHeader": [
+    -35.885147,
+    -273.3409,
+    467.509144,
+    311.672762
+  ],
+  "drawOrder": "Panel, Header background, RewardHero, existing content and TMP labels",
+  "scope": [
+    "off",
+    "off-cap",
+    "off-empty"
+  ],
+  "nativeImageUnchanged": true
+}

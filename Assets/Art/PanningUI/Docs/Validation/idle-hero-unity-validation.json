@@ -1,0 +1,111 @@
+{
+  "result": "PASS",
+  "scope": [
+    "off",
+    "off-cap",
+    "off-empty"
+  ],
+  "captureMethod": "Unity Editor Game View targetTexture readback, Display 8, 1200x2601; no HTML rendering",
+  "metricMethod": "Live Unity screen-space Rect and unchanged source sprite alpha>=128 bounds. Not pixel-equivalence between different artworks. Soft glow outside alpha128 excluded.",
+  "reference": "crumble_idle_layout.jpg",
+  "referenceManualHeightRatio": 0.6703703703703704,
+  "referenceManualOverlapRatio": 0.02962962962962963,
+  "metrics": {
+    "off": {
+      "image": "idle-hero-off_game_1200.png",
+      "resolution": [
+        1200,
+        2601
+      ],
+      "sha256": "21a1a35b2e3c7b8abf5f377aebe7372dd8fbe0fe5c4f38d8ad50c8c7d5151d3f",
+      "liveHeroRect": [
+        -107.655457,
+        505.677246,
+        1402.52759,
+        935.0183
+      ],
+      "headerTop": 1325.7,
+      "projectedAlpha128Bounds": [
+        -59.26095031380209,
+        556.81105928125,
+        1259.2610809101561,
+        1361.2555146523437
+      ],
+      "visibleHeightPx": 804.4444553710937,
+      "heightToScreenWidth": 0.6703703794759114,
+      "overlapPx": 35.55551465234362,
+      "overlapToScreenWidth": 0.029629595543619682,
+      "leftClipPx": 59.26095031380209,
+      "rightClipPx": 59.261080910156124,
+      "aspectRatio": 1.5000001497296898,
+      "drawOrderPass": true,
+      "visuallyInspected": true,
+      "titleOccluded": false
+    },
+    "off-cap": {
+      "image": "idle-hero-off-cap_game_1200.png",
+      "resolution": [
+        1200,
+        2601
+      ],
+      "sha256": "05138bdfa0858dccb8969309675ab41ec08a30eebe4ba00f375547a190dca4eb",
+      "liveHeroRect": [
+        -107.655457,
+        816.177246,
+        1402.52759,
+        935.0183
+      ],
+      "headerTop": 1636.2,
+      "projectedAlpha128Bounds": [
+        -59.26095031380209,
+        867.31105928125,
+        1259.2610809101561,
+        1671.7555146523437
+      ],
+      "visibleHeightPx": 804.4444553710937,
+      "heightToScreenWidth": 0.6703703794759114,
+      "overlapPx": 35.55551465234362,
+      "overlapToScreenWidth": 0.029629595543619682,
+      "leftClipPx": 59.26095031380209,
+      "rightClipPx": 59.261080910156124,
+      "aspectRatio": 1.5000001497296898,
+      "drawOrderPass": true,
+      "visuallyInspected": true,
+      "titleOccluded": false
+    },
+    "off-empty": {
+      "image": "idle-hero-off-empty_game_1200.png",
+      "resolution": [
+        1200,
+        2601
+      ],
+      "sha256": "97141832277e163128577498d41fbe618364946dd793caee423cc0775bd452d6",
+      "liveHeroRect": [
+        -107.655457,
+        392.5774,
+        1402.52759,
+        935.0183
+      ],
+      "headerTop": 1212.6,
+      "projectedAlpha128Bounds": [
+        -59.26095031380209,
+        443.71121328125,
+        1259.2610809101561,
+        1248.1556686523436
+      ],
+      "visibleHeightPx": 804.4444553710936,
+      "heightToScreenWidth": 0.6703703794759113,
+      "overlapPx": 35.555668652343684,
+      "overlapToScreenWidth": 0.02962972387695307,
+      "leftClipPx": 59.26095031380209,
+      "rightClipPx": 59.261080910156124,
+      "aspectRatio": 1.5000001497296898,
+      "drawOrderPass": true,
+      "visuallyInspected": true,
+      "titleOccluded": false
+    }
+  },
+  "layoutEditsNeeded": false,
+  "designApproval": "Pending user review; technical validation only.",
+  "captureCaveat": "Blank initial frames rejected. Rebuild/refresh Canvas then RenderView/RepaintImmediately and read Game View render texture. Final PNGs checked nonblank and inspected."
+}

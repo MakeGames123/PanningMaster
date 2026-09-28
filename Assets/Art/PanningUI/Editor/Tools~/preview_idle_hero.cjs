@@ -1,0 +1,26 @@
+// Render a layout proof in an isolated headless browser; never controls the desktop.
+const fs=require('fs'),path=require('path');
+const {chromium}=require('C:/Users/kykyw/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root=path.resolve(__dirname,'../..'),out=path.join(root,'Docs/Validation');
+const data=JSON.parse(fs.readFileSync(path.join(root,'Docs/ui-batch-manifest.json'),'utf8'));
+const cfg=JSON.parse(fs.readFileSync(path.join(root,'Docs/idle-hero-layout.json'),'utf8'));
+const audit=JSON.parse(fs.readFileSync(path.join(out,'idle-hero-proportion-audit.json'),'utf8'));
+const screen=data.screens.find(s=>s.key==='off');
+const find=n=>screen.widgets.find(w=>w.name===n);
+const imageUrl=(file,mime='image/png')=>`data:${mime};base64,${fs.readFileSync(file).toString('base64')}`;
+const hero=imageUrl(path.join(root,'Sprites/Rewards/ui_idle_reward_hero_gold_glow.png'));
+const header=imageUrl(path.join(root,'Sprites/Popups/IdleReward/ui_idle_title_band.png'));
+const panel=imageUrl(path.join(root,'Sprites/Popups/IdleReward/ui_idle_slab_before.png'));
+const ref=imageUrl(cfg.source,'image/jpeg');
+const font=imageUrl(path.join(root,'Fonts/Pretendard-SemiBold.otf'),'font/otf');
+const offset=300-find('Header').rect[1]/3;
+const rectStyle=r=>`left:${r[0]/3}px;top:${r[1]/3+offset}px;width:${r[2]/3}px;height:${r[3]/3}px`;
+const img=(src,r)=>`<img src="${src}" style="${rectStyle(r)}">`;
+const panels=img(panel,find('Panel').rect)+img(header,find('Header').rect);
+const label=screen.widgets.find(w=>w.kind==='text'&&w.text.includes('돌아왔군'));
+const title=`<div class="label" style="${rectStyle(label.rect)};font-size:${label.fontSize/3}px;color:${label.color}">${label.text}</div>`;
+const before=img(hero,audit.screens[0].beforeRect)+panels+title;
+const after=panels+img(hero,find('RewardHero').rect)+title;
+const html=`<!doctype html><meta charset="utf-8"><style>@font-face{font-family:ui;src:url(${font})}*{box-sizing:border-box}body{margin:0;background:#222;color:#eee;font:16px ui}main{display:flex;gap:20px;padding:20px}h2{font-size:18px;margin:0 0 10px}.frame{position:relative;width:400px;height:365px;overflow:hidden;background:#020302}.frame img,.label{position:absolute}.label{display:flex;align-items:center;white-space:nowrap;letter-spacing:.9px}p{margin:8px 0;font-size:13px;color:#bbb}footer{padding:0 20px 18px;color:#aaa;font-size:13px}</style><main><section><h2>크럼블 레퍼런스</h2><div class="frame"><img src="${ref}" style="left:0;top:${300-888/1080*400}px;width:400px;height:auto"></div><p>그림 높이 / 화면 폭 67.0% · 상단 겹침 3.0%</p></section><section><h2>변경 전</h2><div class="frame">${before}</div><p>실제 그림 폭 약 88% · 패널이 앞쪽 금화를 가림</p></section><section><h2>변경 후</h2><div class="frame">${after}</div><p>그림 24.3% 확대 · 양옆 채움 · 앞쪽 금화가 상단을 덮음</p></section></main><footer>프리팹 좌표를 반영한 HTML 배치 비교입니다. Unity Game View 재캡처는 아직 하지 않았습니다. PNG 원본과 종횡비는 유지합니다.</footer>`;
+fs.writeFileSync(path.join(out,'idle-hero-proportion-preview.html'),html);
+(async()=>{const browser=await chromium.launch({channel:'msedge',headless:true});try{const page=await browser.newPage({viewport:{width:1280,height:478},deviceScaleFactor:1});await page.setContent(html,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:path.join(out,'idle-hero-proportion-preview.png'),fullPage:true});console.log('Layout proof rendered.');}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

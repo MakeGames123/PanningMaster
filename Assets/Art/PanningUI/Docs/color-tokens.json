@@ -1,0 +1,163 @@
+{
+ "--k9-bg1": "#241d19",
+ "--k9-bg2": "#17120f",
+ "--k9-line": "rgba(214,172,96,.55)",
+ "--k9-line2": "rgba(214,172,96,.18)",
+ "--k9-title": "#ff9d2e",
+ "--k9-ink": "#f1e6d4",
+ "--k9-dim": "#9d8f7e",
+ "--k9-up": "#53e05a",
+ "--k9-dn": "#ff6a5a",
+ "--k9-gold1": "#fff0b0",
+ "--k9-gold2": "#e8b44a",
+ "--k9-gold3": "#9a6a1c",
+ "grades": [
+  {
+   "grade": "E",
+   "color": "#8f9aa8"
+  },
+  {
+   "grade": "D",
+   "color": "#b9c2d4"
+  },
+  {
+   "grade": "C",
+   "color": "#3fd06a"
+  },
+  {
+   "grade": "B",
+   "color": "#4aa3ff"
+  },
+  {
+   "grade": "A",
+   "color": "#b894ff"
+  },
+  {
+   "grade": "S",
+   "color": "#ffb84a"
+  },
+  {
+   "grade": "SS",
+   "color": "#ff7ad9"
+  },
+  {
+   "grade": "SSS",
+   "color": "#7cf5ff"
+  },
+  {
+   "grade": "SR",
+   "color": "#ffd75e"
+  },
+  {
+   "grade": "SSR",
+   "color": "#ffa63f"
+  },
+  {
+   "grade": "UR",
+   "color": "#ff5252"
+  },
+  {
+   "grade": "LR",
+   "color": "#d84bff"
+  },
+  {
+   "grade": "MR",
+   "color": "#fffdf2"
+  }
+ ],
+ "--cr-slab": "#3a2a22",
+ "--cr-slab2": "#2e211b",
+ "--cr-dot": "rgba(255,220,170,.06)",
+ "--cr-panel": "#4b372c",
+ "--cr-row": "#58412f",
+ "--cr-head": "#241915",
+ "--cr-ink": "#fff4df",
+ "--cr-dim": "#d7bfa0",
+ "--cr-hi": "#ffd24a",
+ "--cr-cta": "#ff9a2a",
+ "--cr-cta2": "#d4640f",
+ "--cr-sub": "#6b4f3c",
+ "--cr-sub2": "#4a3528",
+ "--cr-up": "#6ee05a",
+ "--cr-dn": "#ff6b5b",
+ "revolverButtons": {
+  "_note": "리뷰092 확정: W7 모양 + C5 평면 무광 금. 겹 = line(1px) → bezel(1px) → face, 모서리 3px",
+  "primary": {
+   "line": "linear-gradient(90deg,rgba(214,172,96,.25),#f0cf82 20%,#fff1c0 50%,#f0cf82 80%,rgba(214,172,96,.25))",
+   "bezel": "#0e0b09",
+   "face": "linear-gradient(180deg,#e8c878,#c79d48) + radial rgba(255,250,220,.5) at 50% 100%",
+   "innerTop": "rgba(255,248,220,.8)",
+   "innerBottom": "#8a6420",
+   "ink": "#2a1a08",
+   "sub": "#1f5a0e"
+  },
+  "secondary": {
+   "line": "linear-gradient(90deg,rgba(214,172,96,.15),rgba(214,172,96,.6) 50%,rgba(214,172,96,.15))",
+   "bezel": "#0e0b09",
+   "face": "linear-gradient(180deg,#2e2621,#16120f)",
+   "inner": "rgba(214,172,96,.45)",
+   "ink": "#e6d9c3",
+   "inkAlt": "#ffd87a",
+   "sub": "#a8987f"
+  },
+  "crateChip": {
+   "line": "rgba(214,172,96,.55)",
+   "bezel": "#0b0806",
+   "face": "linear-gradient(180deg,#241d19,#120e0b)"
+  }
+ },
+ "buttonBible_v1": {
+  "_note": "리뷰093 Q2 확정 — 전 화면 버튼 역할별 재질(SPEC §8). 모서리 3px/면 2px, 1px 헤어라인 → 면, drop-shadow 0 3px 4px rgba(0,0,0,.65)",
+  "p": {
+   "face": [
+    "#e8c878",
+    "#c79d48"
+   ],
+   "line": [
+    "#f0cf82",
+    "#fff1c0"
+   ],
+   "innerTop": "rgba(255,248,220,.8)",
+   "innerBottom": "#8a6420",
+   "ink": "#2a1a08",
+   "sub": "#5a3a10"
+  },
+  "s": {
+   "face": [
+    "#2e2621",
+    "#16120f"
+   ],
+   "line": "rgba(214,172,96,.6)",
+   "inner": "rgba(214,172,96,.45)",
+   "ink": "#e6d9c3",
+   "sub": "#a8987f"
+  },
+  "a": {
+   "face": [
+    "#2e2621",
+    "#16120f"
+   ],
+   "line": [
+    "#e6c16e",
+    "#f0cf82"
+   ],
+   "ink": "#ffd87a"
+  },
+  "off": {
+   "face": [
+    "#26201c",
+    "#14100d"
+   ],
+   "line": "rgba(214,172,96,.25)",
+   "ink": "#7d6f5e"
+  },
+  "deprecated": [
+   "--cr-cta",
+   "--cr-cta2",
+   "--cr-sub",
+   "--cr-sub2 (버튼 용도)",
+   "skewX(-6deg)",
+   "확인창 빨강 육각"
+  ]
+ }
+}

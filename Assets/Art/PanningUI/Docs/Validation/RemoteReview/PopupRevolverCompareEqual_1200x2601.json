@@ -1,0 +1,43 @@
+{
+    "prefab": "PopupRevolverCompareEqual",
+    "width": 1200,
+    "height": 2601,
+    "buttons": 5,
+    "texts": 49,
+    "canvasSize": {
+        "x": 1200.0,
+        "y": 2601.0
+    },
+    "columnSize": {
+        "x": 1200.0,
+        "y": 2601.0
+    },
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1200.0,
+        "height": 2601.0
+    },
+    "dimRect": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1200.0,
+        "height": 2601.0
+    },
+    "closeRect": {
+        "serializedVersion": "2",
+        "x": 534.0,
+        "y": 39.0,
+        "width": 132.0,
+        "height": 138.0
+    },
+    "expand": true,
+    "fullDim": true,
+    "buttonsInsideColumn": true,
+    "uniformScale": true,
+    "closeAtNavigationTop": true,
+    "pillarsCorrect": true,
+    "issues": []
+}

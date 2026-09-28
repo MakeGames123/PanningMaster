@@ -1,0 +1,162 @@
+{
+  "result": "PASS",
+  "errors": [],
+  "prefabs": [
+    {
+      "prefab": "PopupCombatPower.prefab",
+      "objects": 77,
+      "tmpCount": 36
+    },
+    {
+      "prefab": "PopupConfirm.prefab",
+      "objects": 26,
+      "tmpCount": 6
+    },
+    {
+      "prefab": "PopupDrawRates.prefab",
+      "objects": 72,
+      "tmpCount": 27
+    },
+    {
+      "prefab": "PopupFeatureUnlock.prefab",
+      "objects": 21,
+      "tmpCount": 4
+    },
+    {
+      "prefab": "PopupIdleRewards.prefab",
+      "objects": 61,
+      "tmpCount": 22
+    },
+    {
+      "prefab": "PopupIdleRewardsEmpty.prefab",
+      "objects": 61,
+      "tmpCount": 21
+    },
+    {
+      "prefab": "PopupIdleRewardsFull.prefab",
+      "objects": 51,
+      "tmpCount": 17
+    },
+    {
+      "prefab": "PopupInsufficientCurrency.prefab",
+      "objects": 45,
+      "tmpCount": 14
+    },
+    {
+      "prefab": "PopupMailbox.prefab",
+      "objects": 56,
+      "tmpCount": 15
+    },
+    {
+      "prefab": "PopupMailboxReceived.prefab",
+      "objects": 80,
+      "tmpCount": 24
+    },
+    {
+      "prefab": "PopupNickname.prefab",
+      "objects": 27,
+      "tmpCount": 8
+    },
+    {
+      "prefab": "PopupProductDetail.prefab",
+      "objects": 51,
+      "tmpCount": 16
+    },
+    {
+      "prefab": "PopupRevolverAutoDraw.prefab",
+      "objects": 114,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupRevolverAutoFound.prefab",
+      "objects": 114,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupRevolverCompare.prefab",
+      "objects": 114,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupRevolverCompareDown.prefab",
+      "objects": 115,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupRevolverCompareEqual.prefab",
+      "objects": 115,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupRevolverDiscardWarning.prefab",
+      "objects": 126,
+      "tmpCount": 54
+    },
+    {
+      "prefab": "PopupRevolverEmpty.prefab",
+      "objects": 32,
+      "tmpCount": 7
+    },
+    {
+      "prefab": "PopupRevolverEquipped.prefab",
+      "objects": 62,
+      "tmpCount": 21
+    },
+    {
+      "prefab": "PopupRevolverEquipWarning.prefab",
+      "objects": 127,
+      "tmpCount": 54
+    },
+    {
+      "prefab": "PopupRevolverFirstDraw.prefab",
+      "objects": 65,
+      "tmpCount": 23
+    },
+    {
+      "prefab": "PopupRevolverNoCrates.prefab",
+      "objects": 114,
+      "tmpCount": 49
+    },
+    {
+      "prefab": "PopupStatSources.prefab",
+      "objects": 116,
+      "tmpCount": 70
+    },
+    {
+      "prefab": "ScreenMainHome.prefab",
+      "objects": 250,
+      "tmpCount": 73
+    }
+  ],
+  "batchScreenCount": 14,
+  "closePrefabCount": 23,
+  "closePrefabs": [
+    "PopupCombatPower.prefab",
+    "PopupConfirm.prefab",
+    "PopupDrawRates.prefab",
+    "PopupIdleRewards.prefab",
+    "PopupIdleRewardsEmpty.prefab",
+    "PopupIdleRewardsFull.prefab",
+    "PopupInsufficientCurrency.prefab",
+    "PopupMailbox.prefab",
+    "PopupMailboxReceived.prefab",
+    "PopupNickname.prefab",
+    "PopupProductDetail.prefab",
+    "PopupRevolverAutoDraw.prefab",
+    "PopupRevolverAutoFound.prefab",
+    "PopupRevolverCompare.prefab",
+    "PopupRevolverCompareDown.prefab",
+    "PopupRevolverCompareEqual.prefab",
+    "PopupRevolverDiscardWarning.prefab",
+    "PopupRevolverEmpty.prefab",
+    "PopupRevolverEquipped.prefab",
+    "PopupRevolverEquipWarning.prefab",
+    "PopupRevolverFirstDraw.prefab",
+    "PopupRevolverNoCrates.prefab",
+    "PopupStatSources.prefab"
+  ],
+  "activeOldSpriteGuidReferences": 0,
+  "protectedBaselineChanges": [],
+  "protectedBaselineAvailable": true,
+  "limitations": "File checks do not replace visual review or game integration. Screen adaptation matrix and exact reference regression are recorded in Docs/ScreenMatrix."
+}

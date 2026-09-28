@@ -1,0 +1,48 @@
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupCombatPower.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupConfirm.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupDrawRates.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupIdleRewards.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupIdleRewardsEmpty.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupIdleRewardsFull.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupInsufficientCurrency.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupMailbox.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupMailboxReceived.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupNickname.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupProductDetail.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverAutoDraw.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverAutoFound.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverCompare.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverCompareDown.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverCompareEqual.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverDiscardWarning.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverEmpty.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverEquipped.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverEquipWarning.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverFirstDraw.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupRevolverNoCrates.prefab
+PASS close sprite / native size / position / button: Assets/Art/PanningUI/Prefabs/PopupStatSources.prefab
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/CombatPowerPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/ConfirmPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/DrawRatesPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/FeatureUnlockPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/IdleRewardsEmptyPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/IdleRewardsFullPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/IdleRewardsPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/InsufficientCurrencyPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/MailboxPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/MailboxReceivedPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/MainHomePreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/NicknamePreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/ProductDetailPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverAutoDrawPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverAutoFoundPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverCompareDownPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverCompareEqualPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverComparePreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverDiscardWarningPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverEmptyPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverEquipWarningPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/RevolverNoCratesPreview.unity
+PASS re-serialized linked preview: Assets/Art/PanningUI/Scenes/StatSourcesPreview.unity

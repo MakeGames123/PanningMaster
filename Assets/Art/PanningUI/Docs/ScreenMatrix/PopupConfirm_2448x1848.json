@@ -1,0 +1,43 @@
+{
+    "prefab": "PopupConfirm",
+    "width": 2448,
+    "height": 1848,
+    "buttons": 3,
+    "texts": 6,
+    "canvasSize": {
+        "x": 3445.48046875,
+        "y": 2601.0
+    },
+    "columnSize": {
+        "x": 1200.0,
+        "y": 2601.0
+    },
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 2448.0,
+        "height": 1848.0
+    },
+    "dimRect": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.00003719329833984375,
+        "width": 2448.0,
+        "height": 1848.0
+    },
+    "closeRect": {
+        "serializedVersion": "2",
+        "x": 1177.1072998046875,
+        "y": 27.70937156677246,
+        "width": 93.7855224609375,
+        "height": 98.0484390258789
+    },
+    "expand": true,
+    "fullDim": true,
+    "buttonsInsideColumn": true,
+    "uniformScale": true,
+    "closeAtNavigationTop": true,
+    "pillarsCorrect": true,
+    "issues": []
+}

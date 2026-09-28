@@ -1,0 +1,43 @@
+{
+    "prefab": "PopupMailbox",
+    "width": 1920,
+    "height": 2713,
+    "buttons": 5,
+    "texts": 15,
+    "canvasSize": {
+        "x": 1840.7373046875,
+        "y": 2601.000244140625
+    },
+    "columnSize": {
+        "x": 1200.0,
+        "y": 2601.000244140625
+    },
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1920.0,
+        "height": 2713.0
+    },
+    "dimRect": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": -0.00010206550359725952,
+        "width": 1920.0,
+        "height": 2713.0
+    },
+    "closeRect": {
+        "serializedVersion": "2",
+        "x": 891.1580200195313,
+        "y": 40.67926025390625,
+        "width": 137.68402099609376,
+        "height": 143.94232177734376
+    },
+    "expand": true,
+    "fullDim": true,
+    "buttonsInsideColumn": true,
+    "uniformScale": true,
+    "closeAtNavigationTop": true,
+    "pillarsCorrect": true,
+    "issues": []
+}

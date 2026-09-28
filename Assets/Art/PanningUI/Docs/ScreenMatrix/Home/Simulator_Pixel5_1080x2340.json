@@ -1,0 +1,42 @@
+{
+    "screen": "ScreenMainHome",
+    "width": 1080,
+    "height": 2340,
+    "buttons": 42,
+    "texts": 73,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1080.0,
+        "height": 2204.0
+    },
+    "column": {
+        "serializedVersion": "2",
+        "x": 0.20761728286743165,
+        "y": -0.00000873245153343305,
+        "width": 1079.584716796875,
+        "height": 2204.0
+    },
+    "navigation": {
+        "serializedVersion": "2",
+        "x": 0.2076416015625,
+        "y": 0.000016629695892333984,
+        "width": 1079.584716796875,
+        "height": 159.23875427246095
+    },
+    "middle": {
+        "serializedVersion": "2",
+        "x": 0.20761728286743165,
+        "y": 1743.5294189453125,
+        "width": 1079.584716796875,
+        "height": 168.982666015625
+    },
+    "expand": true,
+    "uniformScale": true,
+    "pillarsCorrect": true,
+    "navigationAt177": true,
+    "centreEmpty": true,
+    "providedAssetsCorrect": true,
+    "issues": []
+}

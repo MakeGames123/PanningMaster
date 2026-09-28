@@ -1,0 +1,26 @@
+# File-only generators are source, despite the repository-wide *~ rule.
+!Editor/Tools~/
+!Editor/Tools~/**
+Editor/Tools~/__pycache__/
+Editor/Tools~/*.pyc
+# Local remote-control setup is not a game/UI dependency.
+Editor/UnityMcpConnectionSetup.cs
+Editor/UnityMcpConnectionSetup.cs.meta
+# Reproducible local capture history; current review PNGs live in Docs/Delivery.
+Docs/Validation/**/*.png
+Docs/Validation/**/*.png.meta
+Docs/Validation/**/*.jpg
+Docs/Validation/**/*.jpg.meta
+Docs/ScreenMatrix/**/*.png
+Docs/ScreenMatrix/**/*.png.meta
+Docs/ScreenMatrix/**/*.jpg
+Docs/ScreenMatrix/**/*.jpg.meta
+# High-resolution delivery/download files stay local to avoid duplicate binaries.
+Docs/Delivery/PNG_2400/
+Docs/Delivery/PNG_2400.meta
+Docs/Delivery/*.zip
+Docs/Delivery/*.zip.meta
+
+# Recreated by the close-tab capture utility; not a product/review entry.
+Scenes/CloseTabValidationPreview.unity
+Scenes/CloseTabValidationPreview.unity.meta

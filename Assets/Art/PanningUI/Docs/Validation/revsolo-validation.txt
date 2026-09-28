@@ -1,0 +1,8 @@
+PanningUI RevolverEquipped validation / 2026-09-28T09:44:52
+PASS: 21 TMP strings; exact JSON rects; explicit fonts; no missing glyphs.
+PASS: 9 empty transparent icon Images.
+PASS: used sprite imports uncompressed / Sprite; Image types follow sprite borders.
+PASS: Canvas 1200 x 2601 / Scale With Screen Size / Match 0.5.
+Default TMP font preserved: BMJUA_ttf SDF
+Cards and Draw are visual placeholders; both close buttons deactivate the popup.
+Preview uses Display 7; prior down-state scene remains saved. Selected equipment uses one plain card without reflection/glow or combat-power comparison. One weapon art slot is empty.

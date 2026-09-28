@@ -1,0 +1,108 @@
+{
+  "screens": 25,
+  "sceneLinksPassed": true,
+  "referenceErrors": [],
+  "interactionChecks": 43,
+  "interactionFailures": [],
+  "popupReferenceRegression": [
+    {
+      "prefab": "PopupCombatPower_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupConfirm_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupDrawRates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupFeatureUnlock_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupIdleRewardsEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupIdleRewardsFull_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupIdleRewards_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupInsufficientCurrency_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupMailboxReceived_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupMailbox_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupNickname_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupProductDetail_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverAutoDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverAutoFound_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverCompareDown_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverCompareEqual_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverCompare_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverDiscardWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverEmpty_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverEquipped_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverEquipWarning_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverFirstDraw_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupRevolverNoCrates_1200x2601",
+      "pixelExact": true
+    },
+    {
+      "prefab": "PopupStatSources_1200x2601",
+      "pixelExact": true
+    }
+  ],
+  "preservedFileCount": 1126,
+  "changedPreservedFiles": [],
+  "scope": "25 UI preview assets at 1200x2601; not developer scene integration; home draft remains Match 0.5; dungeon deferred"
+}

@@ -1,0 +1,83 @@
+{
+  "result": "PASS",
+  "baseline": "Library/IdleHeroValidation/session-start-hashes.json",
+  "baselineFileCount": 1867,
+  "changedExistingFiles": [],
+  "addedFilesAtCheck": [
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-game-captures.txt",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-game-captures.txt.meta",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off-cap_game_1200.png",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off-cap_game_1200.png.meta",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off-empty_game_1200.png",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off-empty_game_1200.png.meta",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off_game_1200.png",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-off_game_1200.png.meta",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-comparison.png",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-evidence.json",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-evidence.json.meta",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-header-comparison.png",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-validation.json",
+    "Assets/Art/PanningUI/Docs/Validation/idle-hero-unity-validation.md"
+  ],
+  "existingBaselineOverwritten": false,
+  "finalUnityState": {
+    "scenes": [
+      {
+        "name": "RevolverFirstDrawPreview",
+        "path": "Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity",
+        "isDirty": false,
+        "isActive": false
+      },
+      {
+        "name": "RevolverEquippedPreview",
+        "path": "Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity",
+        "isDirty": false,
+        "isActive": false
+      },
+      {
+        "name": "CloseTabValidationPreview",
+        "path": "Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity",
+        "isDirty": false,
+        "isActive": true
+      }
+    ],
+    "canvases": [
+      {
+        "name": "PopupRevolverEquipped",
+        "display": 6,
+        "enabled": true
+      },
+      {
+        "name": "PopupRevolverFirstDraw",
+        "display": 6,
+        "enabled": true
+      },
+      {
+        "name": "PopupIdleRewards",
+        "display": 6,
+        "enabled": true
+      }
+    ],
+    "cameras": [
+      {
+        "name": "Close Tab Preview Camera",
+        "display": 6,
+        "enabled": true
+      },
+      {
+        "name": "Preview Camera (Display 7)",
+        "display": 6,
+        "enabled": true
+      },
+      {
+        "name": "Preview Camera (Display 7)",
+        "display": 6,
+        "enabled": true
+      }
+    ]
+  },
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "savedExistingScenes": false,
+  "commitOrPush": false
+}

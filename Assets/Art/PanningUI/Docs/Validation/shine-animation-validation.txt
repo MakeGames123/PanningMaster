@@ -1,0 +1,3 @@
+PASS: 80 actual Game View samples, 40 distinct rendered frames, 25 fps / 3.2 s.
+PASS: straight white strips; width changes with time, max alpha .20/.12.
+PASS: decreased crit damage +24% is red.

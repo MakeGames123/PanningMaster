@@ -1,0 +1,130 @@
+{
+  "status": "INSTALLED_AND_PROTOCOL_VERIFIED",
+  "package": "com.coplaydev.unity-mcp",
+  "packageVersion": "10.2.0",
+  "packageCommit": "30d22075093d1d35dfb0091c1c7550e9ad948577",
+  "pythonServerVersion": "10.2.0",
+  "uvVersion": "0.12.19",
+  "codexServerName": "unityMCP",
+  "transport": "stdio",
+  "unityBridge": "127.0.0.1:6400",
+  "project": "D:/Dev/PanningMaster",
+  "unityVersion": "6000.0.67f1",
+  "changedProjectFiles": [
+    "Packages/manifest.json",
+    "Packages/packages-lock.json",
+    "Assets/Art/PanningUI/Editor/UnityMcpConnectionSetup.cs",
+    "Assets/Art/PanningUI/Editor/UnityMcpConnectionSetup.cs.meta"
+  ],
+  "clientConfig": "C:/Users/kykyw/.codex/config.toml (unityMCP only; created by package configurator)",
+  "verification": {
+    "mcpforunity://instances": {
+      "meta": null,
+      "contents": [
+        {
+          "uri": "mcpforunity://instances",
+          "mimeType": "text/plain",
+          "meta": null,
+          "text": "{\"success\": true, \"transport\": \"stdio\", \"instance_count\": 1, \"instances\": [{\"id\": \"PanningMaster@98de0df9\", \"name\": \"PanningMaster\", \"path\": \"D:/Dev/PanningMaster/Assets\", \"hash\": \"98de0df9\", \"port\": 6400, \"status\": \"running\", \"last_heartbeat\": \"2026-09-27T22:53:44.054826+00:00\", \"unity_version\": \"6000.0.67f1\", \"project_scoped_tools\": false}]}"
+        }
+      ]
+    },
+    "mcpforunity://project/info": {
+      "meta": null,
+      "contents": [
+        {
+          "uri": "mcpforunity://project/info",
+          "mimeType": "text/plain",
+          "meta": null,
+          "text": "{\"success\":true,\"message\":\"Retrieved project info.\",\"error\":null,\"data\":{\"projectRoot\":\"D:/Dev/PanningMaster\",\"projectName\":\"PanningMaster\",\"unityVersion\":\"6000.0.67f1\",\"platform\":\"StandaloneWindows64\",\"assetsPath\":\"D:/Dev/PanningMaster/Assets\"},\"hint\":null}"
+        }
+      ]
+    },
+    "mcpforunity://editor/state": {
+      "meta": null,
+      "contents": [
+        {
+          "uri": "mcpforunity://editor/state",
+          "mimeType": "text/plain",
+          "meta": null,
+          "text": "{\"success\":true,\"message\":\"Retrieved editor state.\",\"error\":null,\"data\":{\"schema_version\":\"unity-mcp/editor_state@2\",\"observed_at_unix_ms\":1790549624356,\"sequence\":3,\"unity\":{\"instance_id\":\"PanningMaster@98de0df9\",\"unity_version\":\"6000.0.67f1\",\"project_id\":null,\"platform\":\"WindowsEditor\",\"is_batch_mode\":false},\"editor\":{\"is_focused\":false,\"play_mode\":{\"is_playing\":false,\"is_paused\":false,\"is_changing\":false},\"active_scene\":{\"path\":\"Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity\",\"guid\":\"fd3c302da0a14ac41ae0acf12214af72\",\"name\":\"CloseTabValidationPreview\"}},\"activity\":{\"phase\":\"idle\",\"since_unix_ms\":1790549502653,\"reasons\":[\"tick\"]},\"compilation\":{\"is_compiling\":false,\"is_domain_reload_pending\":false,\"last_compile_started_unix_ms\":null,\"last_compile_finished_unix_ms\":null,\"last_domain_reload_before_unix_ms\":null,\"last_domain_reload_after_unix_ms\":1790549502001},\"assets\":{\"is_updating\":false,\"external_changes_dirty\":false,\"external_changes_last_seen_unix_ms\":null,\"external_changes_dirty_since_unix_ms\":null,\"external_changes_last_cleared_unix_ms\":null,\"refresh\":{\"is_refresh_in_progress\":false,\"last_refresh_requested_unix_ms\":null,\"last_refresh_finished_unix_ms\":null}},\"tests\":{\"is_running\":false,\"mode\":null,\"current_job_id\":null,\"started_unix_ms\":null,\"started_by\":\"unknown\",\"last_run\":null},\"transport\":{\"unity_bridge_connected\":null,\"last_message_unix_ms\":null},\"settings\":{\"batch_execute_max_commands\":25},\"advice\":{\"ready_for_tools\":true,\"blocking_reasons\":[],\"recommended_retry_after_ms\":0,\"recommended_next_action\":\"none\"},\"staleness\":{\"age_ms\":136,\"is_stale\":false}},\"hint\":null}"
+        }
+      ]
+    },
+    "manage_scene": {
+      "meta": null,
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"success\":true,\"message\":\"3 scene(s) loaded.\",\"data\":{\"scenes\":[{\"name\":\"RevolverFirstDrawPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":true,\"isActive\":false,\"rootCount\":2},{\"name\":\"RevolverEquippedPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":true,\"isActive\":false,\"rootCount\":2},{\"name\":\"CloseTabValidationPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":false,\"isActive\":true,\"rootCount\":2}]}}",
+          "annotations": null,
+          "meta": null
+        }
+      ],
+      "structuredContent": {
+        "success": true,
+        "message": "3 scene(s) loaded.",
+        "data": {
+          "scenes": [
+            {
+              "name": "RevolverFirstDrawPreview",
+              "path": "Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity",
+              "buildIndex": -1,
+              "isLoaded": true,
+              "isDirty": true,
+              "isActive": false,
+              "rootCount": 2
+            },
+            {
+              "name": "RevolverEquippedPreview",
+              "path": "Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity",
+              "buildIndex": -1,
+              "isLoaded": true,
+              "isDirty": true,
+              "isActive": false,
+              "rootCount": 2
+            },
+            {
+              "name": "CloseTabValidationPreview",
+              "path": "Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity",
+              "buildIndex": -1,
+              "isLoaded": true,
+              "isDirty": false,
+              "isActive": true,
+              "rootCount": 2
+            }
+          ]
+        }
+      },
+      "isError": false
+    },
+    "read_console": {
+      "meta": null,
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"success\":true,\"message\":\"Retrieved 1 log entries.\",\"data\":[{\"type\":\"Warning\",\"message\":\"Assets\\\\PlayFabSDK\\\\Shared\\\\Internal\\\\SingletonMonoBehaviour.cs(24,29): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'\\n\",\"file\":\"Assets\\\\PlayFabSDK\\\\Shared\\\\Internal\\\\SingletonMonoBehaviour.cs\",\"line\":24,\"stackTrace\":null}]}",
+          "annotations": null,
+          "meta": null
+        }
+      ],
+      "structuredContent": {
+        "success": true,
+        "message": "Retrieved 1 log entries.",
+        "data": [
+          {
+            "type": "Warning",
+            "message": "Assets\\PlayFabSDK\\Shared\\Internal\\SingletonMonoBehaviour.cs(24,29): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'\n",
+            "file": "Assets\\PlayFabSDK\\Shared\\Internal\\SingletonMonoBehaviour.cs",
+            "line": 24,
+            "stackTrace": null
+          }
+        ]
+      },
+      "isError": false
+    }
+  },
+  "remaining": "Native Unity tools are still absent from this conversation at handoff. User screenshots confirm unityMCP is enabled but show no Restart button; the earlier button guidance was incorrect. User was advised to fully reopen Codex, but completion is unconfirmed. Next session must inspect its catalog and verify an actual call. Protocol calls using the configured server already succeeded at installation.",
+  "sceneSavesPerformed": false,
+  "committedOrPushed": false
+}

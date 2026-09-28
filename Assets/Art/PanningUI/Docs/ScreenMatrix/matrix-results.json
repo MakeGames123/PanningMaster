@@ -1,0 +1,159 @@
+{
+  "result": "PASS",
+  "rows": [
+    {
+      "resolution": "1206x2622",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1080x1920",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1080x2520",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "904x2316",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1248x1972",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1422x2088",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1920x2713",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1848x2448",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1640x2360",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "1600x2560",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    },
+    {
+      "resolution": "2448x1848",
+      "scenes": 4,
+      "checks": {
+        "noNewClipping": true,
+        "uniformScale": true,
+        "buttonsInColumn": true,
+        "closeAtNavTop": true,
+        "fullScreenDim": true,
+        "pillarVisibility": true,
+        "referencePixelExact": true
+      },
+      "pass": true
+    }
+  ]
+}

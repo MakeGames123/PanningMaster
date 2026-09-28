@@ -1,0 +1,245 @@
+[
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\button-bronze.png",
+    "size": [
+      2076,
+      587
+    ],
+    "sha256": "da2380716a8e17f183b04d2fb88191d1fd7025c63ce1cb93800a965fd0eac77c",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\button-gold-core.png",
+    "size": [
+      2085,
+      293
+    ],
+    "sha256": "d0030f03449553ecbaead1621f599199120a48200bc35405c1198c9f8ffd8b7a",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\button-gold.png",
+    "size": [
+      2112,
+      591
+    ],
+    "sha256": "8fe4157c3a7091f0c2bcbd05a350d303952a77b46b2748be28236da7fcdd385f",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\H11-frame-black-5px.png",
+    "size": [
+      2245,
+      453
+    ],
+    "sha256": "7d73fbcbb2831d568a06fa282aab3af24e4dbc4085453fb8906b66986ec0615c",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\H11-frame-black-8px.png",
+    "size": [
+      2253,
+      461
+    ],
+    "sha256": "8b2ff43076c91fa93bd1007a16300a11dc958f840ab6167d8c96e82e89b10188",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\H11-frame-gap-5px.png",
+    "size": [
+      2245,
+      453
+    ],
+    "sha256": "41e950d1ec0ec65b0343163db0dd7ded37e0814f848de9bc944fb44ed0489d20",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\H11-frame-gap-8px.png",
+    "size": [
+      2253,
+      461
+    ],
+    "sha256": "96ec2b301e984816f274d0f419f3608474b1cd9c1ab34ec135eb500aa3aa5bed",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\popup-original-size.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "07a8ec7b899f0815f5dbcad2be4ffc1638f0b9c3c3aeb3976abeb9000624bdc4",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\기본형 (2).png",
+    "size": [
+      700,
+      700
+    ],
+    "sha256": "4e748586c6586acb01560f98542bffb3f55444370238cd6a2db8e275f80ae9bc",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_slot_magenta.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\기본형 (3).png",
+    "size": [
+      700,
+      700
+    ],
+    "sha256": "7d3d534cc374b41c41102bcbb0bcaa1a97a4f73a1ba7b0dc403679edd5873d5e",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_slot_cyan.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\기본형 (4).png",
+    "size": [
+      700,
+      700
+    ],
+    "sha256": "e62891bb801ba648a87441556dda0626afff9e5ece13804e3b8b5f3c745f3697",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_slot_green.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\기본형 (5).png",
+    "size": [
+      700,
+      700
+    ],
+    "sha256": "91c459984d3b6b2e8f9dc871401b761ff6de84564030b358e4d8bfc3cdaba2a8",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_slot_gray.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\기본형.png",
+    "size": [
+      700,
+      700
+    ],
+    "sha256": "ec3a92fa5b37a623e83ee945b9a531b742f88bd1a9ae3b47029f380a3e2e9938",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_slot_yellow.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\장착중.png",
+    "size": [
+      700,
+      329
+    ],
+    "sha256": "48dbab7ce4114ed9adadc9096811905e58f95965a23a86b1894400ac6c1ad611",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Inventory/ui_badge_equipped_ko.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\재화칸.png",
+    "size": [
+      700,
+      266
+    ],
+    "sha256": "13282046c70e467b9603a43d324e0f50842988d9e1f929658a882a87441ded93",
+    "unityFile": "Assets/Art/PanningUI/Sprites/HUD/ui_hud_currency_frame.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\로비화면\\알림칸(말풍선).png",
+    "size": [
+      1000,
+      188
+    ],
+    "sha256": "11f609117114555c5f4c49bdf559ceff502ccfc2b51dcda869fd391e63b06e54",
+    "unityFile": "Assets/Art/PanningUI/Sprites/Chat/ui_chat_bubble.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\로비화면\\알림칸(배경).png",
+    "size": [
+      1000,
+      188
+    ],
+    "sha256": "ca628f158bbda01b38be70701d9f0bf72fb87956c525fdbdfc1ba96b689f0650",
+    "unityFile": "Assets/Art/PanningUI/Sprites/HUD/ui_hud_notice_background.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\로비화면\\최적편성.png",
+    "size": [
+      500,
+      156
+    ],
+    "sha256": "a17c0b139067d911a51a6aa8576edb58e9b8879d542575574b407616773ca7ee",
+    "unityFile": "Assets/Art/PanningUI/Sprites/HUD/ui_hud_auto_formation.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\로비화면\\퀘스트.png",
+    "size": [
+      1000,
+      298
+    ],
+    "sha256": "7b575953e5f428208931d728f8e4b179d4779feaf50a3492664bb1dc33e2c0be",
+    "unityFile": "Assets/Art/PanningUI/Sprites/HUD/ui_hud_quest.png"
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\button-bronze.png",
+    "size": [
+      2076,
+      587
+    ],
+    "sha256": "da2380716a8e17f183b04d2fb88191d1fd7025c63ce1cb93800a965fd0eac77c",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\button-gold-core.png",
+    "size": [
+      2085,
+      293
+    ],
+    "sha256": "d0030f03449553ecbaead1621f599199120a48200bc35405c1198c9f8ffd8b7a",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\button-gold.png",
+    "size": [
+      2112,
+      591
+    ],
+    "sha256": "8fe4157c3a7091f0c2bcbd05a350d303952a77b46b2748be28236da7fcdd385f",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\H11-frame-black-5px.png",
+    "size": [
+      2245,
+      453
+    ],
+    "sha256": "7d73fbcbb2831d568a06fa282aab3af24e4dbc4085453fb8906b66986ec0615c",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\H11-frame-black-8px.png",
+    "size": [
+      2253,
+      461
+    ],
+    "sha256": "8b2ff43076c91fa93bd1007a16300a11dc958f840ab6167d8c96e82e89b10188",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\H11-frame-gap-5px.png",
+    "size": [
+      2245,
+      453
+    ],
+    "sha256": "41e950d1ec0ec65b0343163db0dd7ded37e0814f848de9bc944fb44ed0489d20",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\H11-frame-gap-8px.png",
+    "size": [
+      2253,
+      461
+    ],
+    "sha256": "96ec2b301e984816f274d0f419f3608474b1cd9c1ab34ec135eb500aa3aa5bed",
+    "unityFile": null
+  },
+  {
+    "source": "C:\\Users\\kykyw\\OneDrive\\Documents\\카카오톡 받은 파일\\결과\\전달용\\popup-original-size.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "07a8ec7b899f0815f5dbcad2be4ffc1638f0b9c3c3aeb3976abeb9000624bdc4",
+    "unityFile": null
+  }
+]

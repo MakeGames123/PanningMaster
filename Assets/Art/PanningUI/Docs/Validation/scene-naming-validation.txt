@@ -1,0 +1,6 @@
+PopupMailbox / prefab reference preserved
+PopupInsufficientCurrency / prefab reference preserved
+PopupConfirm / prefab reference preserved
+PopupProductDetail / prefab reference preserved
+PopupCombatPower / prefab reference preserved
+PopupStatSources / prefab reference preserved

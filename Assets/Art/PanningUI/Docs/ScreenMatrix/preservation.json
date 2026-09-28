@@ -1,0 +1,13 @@
+{
+  "protectedChanges": [],
+  "spriteChanges": [],
+  "homeChanges": [],
+  "missingFiles": [],
+  "originalFilesCompared": 1400,
+  "scope": "Resources, Script, developer Scenes, default TMP, ProjectSettings, Packages plus existing PanningUI. PlayFab not scanned.",
+  "playerSettingsChangedFields": [
+    "defaultScreenOrientation:4->0",
+    "androidMaxAspectRatio:2.4->2.6"
+  ],
+  "passed": true
+}

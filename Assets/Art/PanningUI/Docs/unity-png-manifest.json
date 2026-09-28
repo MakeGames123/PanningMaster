@@ -1,0 +1,1146 @@
+[
+ {
+  "file": "RevolverCompare/ui_rev_card_frame_normal.png",
+  "selector": ".rgc[data-kind=cur]",
+  "mode": "empty",
+  "css400": [
+   8,
+   235.2,
+   188,
+   417.4
+  ],
+  "pad": 6,
+  "note": "카드 판(기본). 9-slice"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_card_frame_stronger.png",
+  "selector": ".rgc[data-kind=new]",
+  "mode": "empty",
+  "css400": [
+   106,
+   235.2,
+   188,
+   417.4
+  ],
+  "pad": 48,
+  "note": "더 강한 쪽(상승 NEW·첫 뽑기) 금백 광 테 — 리뷰080 A 추천안 적용. 빛 줄기는 ui_rev_card_better_sheen"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_card_section_band.png",
+  "selector": ".rgc[data-kind=cur] .k9-lb",
+  "mode": "notext",
+  "css400": [
+   9,
+   466.6,
+   382,
+   24
+  ],
+  "pad": 0,
+  "note": "\"장착 효과\" 띠 배경"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_lv_pill.png",
+  "selector": ".rgc[data-kind=cur] .hx .lv",
+  "mode": "notext",
+  "css400": [
+   341.3,
+   370.6,
+   43.7,
+   18
+  ],
+  "pad": 2,
+  "note": "Lv 알약 배경"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_info_pill.png",
+  "selector": ".dk-pill",
+  "mode": "empty",
+  "css400": [
+   12,
+   664.6,
+   376,
+   30
+  ],
+  "pad": 3,
+  "note": "안내 줄 배경. 9-slice(가로)"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_info_icon.png",
+  "selector": ".dk-pi",
+  "mode": "full",
+  "css400": [
+   20,
+   671.6,
+   16,
+   16
+  ],
+  "pad": 2,
+  "note": "! 아이콘"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_crate_chip.png",
+  "selector": ".dk-chip",
+  "mode": "shell",
+  "css400": [
+   8,
+   706.6,
+   58,
+   49.4
+  ],
+  "pad": 3,
+  "note": "[ico_crate] 보유 칩 배경(W7 3겹 테)"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_btn_gold_equip.png",
+  "selector": ".dk-cta.gold",
+  "mode": "notext",
+  "css400": [
+   76,
+   706.6,
+   316,
+   49.4
+  ],
+  "pad": 3,
+  "note": "주 버튼 · 장착하고 계속(상승) — C5 무광 금"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_01_E.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_01_E.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   27.1,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_02_D.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_02_D.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   34,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_03_C.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_03_C.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   29.8,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_04_B.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_04_B.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   31.3,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_05_A.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_05_A.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   31.3,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_06_S.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_06_S.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   25.6,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_07_SS.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_07_SS.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   51.3,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_08_SSS.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_08_SSS.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   76.9,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_09_SR.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_09_SR.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   55.5,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_10_SSR.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_10_SSR.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   81.2,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_11_UR.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_11_UR.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   62.2,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_12_LR.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_12_LR.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   54,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/HeroBackground/ui_rev_hero_bg_13_MR.png",
+  "selector": ".rgc[data-kind=new] .hx",
+  "mode": "empty",
+  "css400": [
+   107,
+   277.6,
+   186,
+   108
+  ],
+  "pad": 0,
+  "note": "히어로 칸 배경(무기 그림·글자 제외)"
+ },
+ {
+  "file": "RevolverCompare/GradeLetter/ui_rev_grade_13_MR.png",
+  "selector": ".rgc[data-kind=new] .hx .g",
+  "mode": "full",
+  "css400": [
+   114,
+   340.6,
+   69.6,
+   42
+  ],
+  "pad": 14,
+  "note": "등급 글자(외곽선·광 포함)"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_card_frame_recommend.png",
+  "selector": ".rgc[data-kind=cur]",
+  "mode": "empty",
+  "css400": [
+   8,
+   235.2,
+   188,
+   417.4
+  ],
+  "pad": 22,
+  "note": "하락 시 추천(장착 중) 금 테 — 미결 Q3"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_btn_gold.png",
+  "selector": ".dk-cta.gold",
+  "mode": "notext",
+  "css400": [
+   76,
+   706.6,
+   316,
+   49.4
+  ],
+  "pad": 3,
+  "note": "주 버튼 · 뽑기 — C5 무광 금"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_btn_dark.png",
+  "selector": ".dk-cta.dark",
+  "mode": "notext",
+  "css400": [
+   76,
+   706.6,
+   316,
+   49.4
+  ],
+  "pad": 3,
+  "note": "자동 중 접어두기 — W7 차콜 보조"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_btn_alt.png",
+  "selector": ".dk-cta.alt",
+  "mode": "notext",
+  "css400": [
+   76,
+   706.6,
+   316,
+   49.4
+  ],
+  "pad": 3,
+  "note": "상자 0 · 상자 얻기 — W7 차콜 보조(금 글자)"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_confirm_panel.png",
+  "selector": ".cf-box",
+  "mode": "empty",
+  "css400": [
+   40,
+   359.2,
+   320,
+   148.6
+  ],
+  "pad": 6,
+  "note": "확인창 판"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_confirm_btn_back.png",
+  "selector": ".cf-cancel",
+  "mode": "notext",
+  "css400": [
+   61,
+   447.8,
+   134,
+   43
+  ],
+  "pad": 2,
+  "note": "확인창 돌아가기 — W7 차콜 보조"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_confirm_btn_ok.png",
+  "selector": ".cf-ok",
+  "mode": "notext",
+  "css400": [
+   205,
+   447.8,
+   134,
+   43
+  ],
+  "pad": 2,
+  "note": "확인창 진행 — C5 무광 금"
+ },
+ {
+  "file": "Common/ui_pop_slab.png",
+  "selector": "#mail-popup .dgr-box",
+  "mode": "empty",
+  "css400": [
+   0,
+   513,
+   400,
+   287
+  ],
+  "pad": 0,
+  "note": "큰 팝업 공용 판(화면 폭, 무채 차콜 세로 그라데이션)"
+ },
+ {
+  "file": "Common/ui_pop_title_band.png",
+  "selector": "#mail-popup .dgr-title",
+  "mode": "notext",
+  "css400": [
+   0,
+   513,
+   400,
+   37
+  ],
+  "pad": 0,
+  "note": "제목 띠 + 왼쪽 \"//\" 표식 + 아래 1px 금선. 제목 글자는 TMP(왼쪽 정렬)"
+ },
+ {
+  "file": "Common/ui_pop_icon_frame.png",
+  "selector": "#mail-popup .c3-mi",
+  "mode": "notext",
+  "css400": [
+   22,
+   566,
+   36,
+   36
+  ],
+  "pad": 2,
+  "note": "줄 왼쪽 아이콘 틀(1px 금선). 아이콘은 위에 따로(그릴 것)"
+ },
+ {
+  "file": "Common/ui_pop_btn_small.png",
+  "selector": "#mail-popup .mi-go",
+  "mode": "notext",
+  "css400": [
+   334.8,
+   570.5,
+   43.2,
+   27
+  ],
+  "pad": 6,
+  "note": "줄 안 작은 주 버튼(받기·바로 가기) — 바이블 p"
+ },
+ {
+  "file": "Common/ui_pop_btn_main.png",
+  "selector": "#mail-claim",
+  "mode": "notext",
+  "css400": [
+   12,
+   738,
+   376,
+   48
+  ],
+  "pad": 8,
+  "note": "큰 주 버튼(모두 받기·구매·다음 단계) — 바이블 p"
+ },
+ {
+  "file": "Common/ui_pop_got_band.png",
+  "selector": ".c3-gotband",
+  "mode": "empty",
+  "css400": [
+   0,
+   582.3,
+   400,
+   148.4
+  ],
+  "pad": 0,
+  "note": "받은 뒤 \"보상 획득\" 띠 바탕(위아래 페이드). 문구는 TMP"
+ },
+ {
+  "file": "Common/ui_pop_btn_main_off.png",
+  "selector": "#mail-claim",
+  "mode": "notext",
+  "css400": [
+   12,
+   738,
+   376,
+   48
+  ],
+  "pad": 8,
+  "note": "큰 버튼 비활성(모두 받음) — 바이블 off"
+ },
+ {
+  "file": "Common/ui_pop_bracket_panel.png",
+  "selector": ".c3-need",
+  "mode": "empty",
+  "css400": [
+   12,
+   516,
+   376,
+   79
+  ],
+  "pad": 0,
+  "note": "꺾쇠 판(네 모서리 12css 꺾쇠, 면 검정 18%) — 재화 부족·상품 그림·전투력 공용"
+ },
+ {
+  "file": "Common/ui_pop_row_paid.png",
+  "selector": ".nd-row.c3-paid",
+  "mode": "empty",
+  "css400": [
+   12,
+   624,
+   376,
+   50
+  ],
+  "pad": 0,
+  "note": "유료(구매) 줄 강조"
+ },
+ {
+  "file": "Common/ui_pop_card.png",
+  "selector": "#confirm-popup .cf-box",
+  "mode": "shell",
+  "css400": [
+   45,
+   336.2,
+   310,
+   194.6
+  ],
+  "pad": 6,
+  "note": "작은 팝업 카드(확인·닉네임) — 1px 금 안쪽 선 + 왼쪽 위 44css 금 막대"
+ },
+ {
+  "file": "Common/ui_pop_cost_bracket.png",
+  "selector": ".c3-cost",
+  "mode": "empty",
+  "css400": [
+   129.3,
+   385.6,
+   141.3,
+   50.4
+  ],
+  "pad": 2,
+  "note": "소모 재화 꺾쇠 틀(10css 꺾쇠)"
+ },
+ {
+  "file": "Common/ui_pop_btn_sub.png",
+  "selector": "#confirm-popup .cf-cancel",
+  "mode": "notext",
+  "css400": [
+   59,
+   474.8,
+   136,
+   40
+  ],
+  "pad": 6,
+  "note": "보조 버튼(취소) — 바이블 s 차콜"
+ },
+ {
+  "file": "Common/ui_pop_btn_ok.png",
+  "selector": "#confirm-popup .cf-ok",
+  "mode": "notext",
+  "css400": [
+   205,
+   474.8,
+   136,
+   40
+  ],
+  "pad": 6,
+  "note": "작은 주 버튼 — 바이블 p"
+ },
+ {
+  "file": "Common/ui_pop_item_cell.png",
+  "selector": ".c3-chips span",
+  "mode": "empty",
+  "css400": [
+   57.8,
+   512,
+   66.6,
+   82.6
+  ],
+  "pad": 1,
+  "note": "구성품 칸"
+ },
+ {
+  "file": "Common/ui_pop_grid_cell.png",
+  "selector": ".c3-grid div",
+  "mode": "empty",
+  "css400": [
+   12,
+   592.7,
+   186,
+   25
+  ],
+  "pad": 0,
+  "note": "2열 합계 칸"
+ },
+ {
+  "file": "Common/ui_pop_fold_row.png",
+  "selector": ".c3-fold",
+  "mode": "empty",
+  "css400": [
+   12,
+   711.7,
+   376,
+   33.3
+  ],
+  "pad": 0,
+  "note": "접힘 줄"
+ },
+ {
+  "file": "Common/ui_pop_help.png",
+  "selector": ".c3-help",
+  "mode": "notext",
+  "css400": [
+   368,
+   446.8,
+   20,
+   20
+  ],
+  "pad": 3,
+  "note": "? 도움말 원 — \"?\"는 TMP"
+ },
+ {
+  "file": "Common/ui_pop_clear_burst.png",
+  "selector": ".c3-fx-burst",
+  "mode": "full",
+  "css400": [
+   -110,
+   123.5,
+   620,
+   620
+  ],
+  "pad": 0,
+  "note": "클리어 연출 방사광(회전 권장). \"클리어!\" 글자는 TMP(PNG 없음)"
+ },
+ {
+  "file": "Common/ui_pop_clear_band.png",
+  "selector": ".c3-fx-band",
+  "mode": "empty",
+  "css400": [
+   0,
+   325.2,
+   400,
+   165.6
+  ],
+  "pad": 8,
+  "note": "클리어 연출 띠"
+ },
+ {
+  "file": "Common/ui_pop_badge_lines.png",
+  "selector": ".dgr-badge",
+  "mode": "notext",
+  "css400": [
+   134.2,
+   540.2,
+   131.6,
+   21.5
+  ],
+  "pad": 4,
+  "note": "최고 기록 — 위아래 금선 띠(문구 TMP)"
+ },
+ {
+  "file": "Common/ui_pop_auto_bar.png",
+  "selector": ".c3-auto",
+  "mode": "empty",
+  "css400": [
+   12,
+   684,
+   376,
+   42
+  ],
+  "pad": 0,
+  "note": "자동 도전 카운트다운 줄"
+ },
+ {
+  "file": "Common/ui_pop_btn_stop.png",
+  "selector": ".c3-auto button",
+  "mode": "notext",
+  "css400": [
+   324.8,
+   692,
+   53.2,
+   26
+  ],
+  "pad": 4,
+  "note": "멈추기 — 바이블 s"
+ },
+ {
+  "file": "Common/ui_pop_strip_panel.png",
+  "selector": ".c3-strip",
+  "mode": "empty",
+  "css400": [
+   12,
+   469,
+   376,
+   79
+  ],
+  "pad": 0,
+  "note": "13등급 요약 줄 판"
+ },
+ {
+  "file": "Common/ui_pop_pct_pill.png",
+  "selector": "#forge-info-popup .fi-pct",
+  "mode": "notext",
+  "css400": [
+   299.6,
+   582,
+   76.4,
+   30
+  ],
+  "pad": 1,
+  "note": "확률 칸"
+ },
+ {
+  "file": "Common/ui_pop_nav_btn.png",
+  "selector": "#forge-info-popup .fi-nav-btn:not([disabled])",
+  "mode": "notext",
+  "css400": [
+   174.9,
+   426,
+   28,
+   26
+  ],
+  "pad": 3,
+  "note": "레벨 이동 버튼 틀(화살표는 그릴 아이콘)"
+ },
+ {
+  "file": "Common/ui_pop_unlock_banner.png",
+  "selector": ".ul-banner",
+  "mode": "notext",
+  "css400": [
+   136.1,
+   393.7,
+   127.8,
+   24
+  ],
+  "pad": 8,
+  "note": "해금 라벨 띠"
+ },
+ {
+  "file": "Common/ui_pop_unlock_desc.png",
+  "selector": ".ul-desc",
+  "mode": "notext",
+  "css400": [
+   71.1,
+   482.3,
+   257.9,
+   34
+  ],
+  "pad": 0,
+  "note": "해금 설명 판"
+ },
+ {
+  "file": "Common/ui_pop_input.png",
+  "selector": "#nick-in",
+  "mode": "notext",
+  "css400": [
+   60,
+   401.9,
+   280,
+   32
+  ],
+  "pad": 0,
+  "note": "입력 칸"
+ },
+ {
+  "file": "IdleReward/ui_idle_slab_before.png",
+  "selector": "#off-popup .dgr-box",
+  "mode": "empty",
+  "css400": [
+   0,
+   437.3,
+   400,
+   362.7
+  ],
+  "pad": 0,
+  "note": "하단 판(받기 전 높이)"
+ },
+ {
+  "file": "IdleReward/ui_idle_title_band.png",
+  "selector": "#off-popup .dgr-title",
+  "mode": "notext",
+  "css400": [
+   0,
+   441.9,
+   400,
+   37
+  ],
+  "pad": 0,
+  "note": "제목 띠 + \"//\" 표식(ui_pop_title_band와 같은 문법)"
+ },
+ {
+  "file": "IdleReward/ui_idle_breakthrough_panel.png",
+  "selector": "#offp-stage",
+  "mode": "empty",
+  "css400": [
+   12,
+   488.9,
+   376,
+   96
+  ],
+  "pad": 0,
+  "note": "방치 중 돌파 꺾쇠 판"
+ },
+ {
+  "file": "IdleReward/ui_idle_tiles_panel.png",
+  "selector": ".i2-tiles",
+  "mode": "empty",
+  "css400": [
+   12,
+   595,
+   376,
+   105.6
+  ],
+  "pad": 0,
+  "note": "누적 보상 타일 판"
+ },
+ {
+  "file": "IdleReward/ui_idle_tile.png",
+  "selector": ".i2-t:not(.big) .i2-tile",
+  "mode": "empty",
+  "css400": [
+   93.2,
+   605,
+   67.2,
+   72.6
+  ],
+  "pad": 5,
+  "note": "보상 타일(일반, 무채 면 + 1px 선)"
+ },
+ {
+  "file": "IdleReward/ui_idle_tile_gold.png",
+  "selector": ".i2-t.big .i2-tile",
+  "mode": "empty",
+  "css400": [
+   20,
+   605,
+   67.2,
+   72.6
+  ],
+  "pad": 5,
+  "note": "보상 타일(대표, 금선)"
+ },
+ {
+  "file": "IdleReward/ui_idle_btn_side.png",
+  "selector": ".i2-side",
+  "mode": "notext",
+  "css400": [
+   12,
+   734,
+   74,
+   52
+  ],
+  "pad": 7,
+  "note": "왼쪽 보조(2배 받기·즉시수령) — 바이블 a"
+ },
+ {
+  "file": "IdleReward/ui_idle_btn_claim.png",
+  "selector": ".i2-claim",
+  "mode": "notext",
+  "css400": [
+   96,
+   734,
+   292,
+   52
+  ],
+  "pad": 8,
+  "note": "받기 — 바이블 p"
+ },
+ {
+  "file": "IdleReward/ui_idle_badge_max_bg.png",
+  "selector": ".i2-time em",
+  "mode": "notext",
+  "css400": [
+   262.3,
+   708,
+   37.1,
+   16
+  ],
+  "pad": 2,
+  "note": "MAX 딱지 바탕 — \"MAX\"는 TMP"
+ },
+ {
+  "file": "IdleReward/ui_idle_slab_after.png",
+  "selector": "#off-popup .dgr-box",
+  "mode": "empty",
+  "css400": [
+   0,
+   399.5,
+   400,
+   400.5
+  ],
+  "pad": 0,
+  "note": "하단 판(받은 뒤 높이)"
+ },
+ {
+  "file": "IdleReward/ui_idle_stage_box.png",
+  "selector": ".i2-stage",
+  "mode": "empty",
+  "css400": [
+   12,
+   451.2,
+   195,
+   57.8
+  ],
+  "pad": 0,
+  "note": "현재 스테이지 꺾쇠 칸"
+ },
+ {
+  "file": "IdleReward/ui_idle_next_chip.png",
+  "selector": ".i2-next",
+  "mode": "empty",
+  "css400": [
+   215,
+   451.2,
+   173,
+   57.8
+  ],
+  "pad": 0,
+  "note": "다음 도달 시 증가 칩"
+ },
+ {
+  "file": "IdleReward/ui_idle_rates_panel.png",
+  "selector": ".i2-rates",
+  "mode": "empty",
+  "css400": [
+   12,
+   519,
+   376,
+   182
+  ],
+  "pad": 0,
+  "note": "현재 획득 중인 보상 판"
+ },
+ {
+  "file": "IdleReward/ui_idle_rate_row.png",
+  "selector": ".i2-r:not(.big)",
+  "mode": "empty",
+  "css400": [
+   20,
+   598,
+   177,
+   44
+  ],
+  "pad": 0,
+  "note": "1시간 당 줄"
+ },
+ {
+  "file": "IdleReward/ui_idle_rate_icon_bg.png",
+  "selector": ".i2-r:not(.big) .i2-ico",
+  "mode": "notext",
+  "css400": [
+   25,
+   603,
+   34,
+   34
+  ],
+  "pad": 2,
+  "note": "아이콘 받침(일반)"
+ },
+ {
+  "file": "IdleReward/ui_idle_rate_icon_bg_gold.png",
+  "selector": ".i2-r.big .i2-ico",
+  "mode": "notext",
+  "css400": [
+   25,
+   553,
+   34,
+   34
+  ],
+  "pad": 2,
+  "note": "아이콘 받침(골드)"
+ },
+ {
+  "file": "IdleReward/ui_idle_btn_claim_disabled.png",
+  "selector": ".i2-claim",
+  "mode": "notext",
+  "css400": [
+   96,
+   734,
+   292,
+   52
+  ],
+  "pad": 8,
+  "note": "받기 비활성 — 바이블 off"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_tag_equipped_bg.png",
+  "selector": ".rgc[data-kind=cur] .hx .tag",
+  "mode": "notext",
+  "css400": [
+   138.2,
+   283,
+   50.8,
+   20
+  ],
+  "pad": 2,
+  "note": "\"장착 중\" 태그 바탕 — 문구 TMP"
+ },
+ {
+  "file": "RevolverCompare/ui_rev_tag_new_bg.png",
+  "selector": ".rgc[data-kind=new] .hx .tag",
+  "mode": "notext",
+  "css400": [
+   338.6,
+   283,
+   46.4,
+   18
+  ],
+  "pad": 2,
+  "note": "\"NEW\" 태그 바탕 — 문구 TMP"
+ }
+]

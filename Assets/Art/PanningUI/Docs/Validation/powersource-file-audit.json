@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "exactTextRects": 70,
+  "matchingFontSizeSpacingColorAndAsset": 70,
+  "emptyIcons": 17,
+  "allFiveApprovedPrefabsOnlyRootNameChanged": true,
+  "prefabGuidsAndSceneReferencesPreserved": true,
+  "tmpSettingsUnchanged": true
+}

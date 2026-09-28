@@ -1,0 +1,660 @@
+{
+  "date": "2026-09-28",
+  "method": "Native Unity MCP execute_code + existing PanningMailBuilder Game View targetTexture capture. Display 8, additive unsaved temporary scene. No desktop input.",
+  "inspection": {
+    "prefabs": [
+      {
+        "name": "PopupIdleRewards",
+        "canvas": "ScreenSpaceOverlay",
+        "rects": [
+          {
+            "name": "Panel",
+            "parent": "Design1200x2601",
+            "index": 0,
+            "rect": [
+              0,
+              1311.9,
+              1200,
+              1088.1
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          },
+          {
+            "name": "Header",
+            "parent": "Design1200x2601",
+            "index": 1,
+            "rect": [
+              0,
+              1325.7,
+              1200,
+              111
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Sliced",
+            "preserveAspect": false
+          },
+          {
+            "name": "RewardHero",
+            "parent": "Design1200x2601",
+            "index": 2,
+            "rect": [
+              -107.655441,
+              505.6773,
+              1402.52747,
+              935.0183
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          }
+        ],
+        "scripts": [
+          "UnityEngine.UI.CanvasScaler",
+          "UnityEngine.UI.GraphicRaycaster",
+          "UnityEngine.UI.Image",
+          "UnityEngine.UI.Button",
+          "TMPro.TextMeshProUGUI"
+        ]
+      },
+      {
+        "name": "PopupIdleRewardsFull",
+        "canvas": "ScreenSpaceOverlay",
+        "rects": [
+          {
+            "name": "Panel",
+            "parent": "Design1200x2601",
+            "index": 0,
+            "rect": [
+              0,
+              1622.4,
+              1200,
+              777.6
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          },
+          {
+            "name": "Header",
+            "parent": "Design1200x2601",
+            "index": 1,
+            "rect": [
+              0,
+              1636.2,
+              1200,
+              111
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Sliced",
+            "preserveAspect": false
+          },
+          {
+            "name": "RewardHero",
+            "parent": "Design1200x2601",
+            "index": 2,
+            "rect": [
+              -107.655441,
+              816.1773,
+              1402.52747,
+              935.0183
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          }
+        ],
+        "scripts": [
+          "UnityEngine.UI.CanvasScaler",
+          "UnityEngine.UI.GraphicRaycaster",
+          "UnityEngine.UI.Image",
+          "UnityEngine.UI.Button",
+          "TMPro.TextMeshProUGUI"
+        ]
+      },
+      {
+        "name": "PopupIdleRewardsEmpty",
+        "canvas": "ScreenSpaceOverlay",
+        "rects": [
+          {
+            "name": "Panel",
+            "parent": "Design1200x2601",
+            "index": 0,
+            "rect": [
+              0,
+              1198.5,
+              1200,
+              1201.5
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          },
+          {
+            "name": "Header",
+            "parent": "Design1200x2601",
+            "index": 1,
+            "rect": [
+              0,
+              1212.6,
+              1200,
+              111
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Sliced",
+            "preserveAspect": false
+          },
+          {
+            "name": "RewardHero",
+            "parent": "Design1200x2601",
+            "index": 2,
+            "rect": [
+              -107.655441,
+              392.5773,
+              1402.52747,
+              935.0183
+            ],
+            "scale": [
+              1,
+              1
+            ],
+            "imageType": "Simple",
+            "preserveAspect": false
+          }
+        ],
+        "scripts": [
+          "UnityEngine.UI.CanvasScaler",
+          "UnityEngine.UI.GraphicRaycaster",
+          "UnityEngine.UI.Image",
+          "UnityEngine.UI.Button",
+          "TMPro.TextMeshProUGUI"
+        ]
+      }
+    ]
+  },
+  "geometry": {
+    "off": {
+      "prefab": "PopupIdleRewards",
+      "scale": 1,
+      "rects": [
+        {
+          "name": "Header",
+          "index": 1,
+          "screenRect": [
+            0,
+            1325.7,
+            1200,
+            111
+          ]
+        },
+        {
+          "name": "RewardHero",
+          "index": 2,
+          "screenRect": [
+            -107.655457,
+            505.677246,
+            1402.52759,
+            935.0183
+          ]
+        }
+      ],
+      "texts": [
+        {
+          "name": "Text_00_idle_SB_15_titleGold_sh",
+          "text": "돌아왔군, 총잡이!",
+          "index": 23
+        },
+        {
+          "name": "Text_01_idle_SB_10_dim",
+          "text": "— 방치 중 돌파 —",
+          "index": 24
+        },
+        {
+          "name": "Text_02_idle_SB_16_dim",
+          "text": "1182",
+          "index": 25
+        },
+        {
+          "name": "Text_03_idle_SB_14_text",
+          "text": "",
+          "index": 26
+        },
+        {
+          "name": "Text_04_idle_SB_26_accentGold_sh",
+          "text": "1200",
+          "index": 28
+        },
+        {
+          "name": "Text_05_idle_SB_11_up",
+          "text": "+18 스테이지 돌파!",
+          "index": 29
+        },
+        {
+          "name": "Text_06_idle_M_9p5_dim",
+          "text": "지나온 관문 1곳 — 전리품도 챙겨뒀네",
+          "index": 30
+        },
+        {
+          "name": "Text_07_idle_SB_13_num",
+          "text": "480M",
+          "index": 31
+        },
+        {
+          "name": "Text_08_idle_SB_9_dim",
+          "text": "골드",
+          "index": 32
+        },
+        {
+          "name": "Text_09_idle_SB_13_num",
+          "text": "40",
+          "index": 33
+        },
+        {
+          "name": "Text_10_idle_SB_9_dim",
+          "text": "티켓",
+          "index": 34
+        },
+        {
+          "name": "Text_11_idle_SB_13_num",
+          "text": "15",
+          "index": 35
+        },
+        {
+          "name": "Text_12_idle_SB_9_dim",
+          "text": "무기 상자",
+          "index": 36
+        },
+        {
+          "name": "Text_13_idle_SB_13_num",
+          "text": "5",
+          "index": 37
+        },
+        {
+          "name": "Text_14_idle_SB_9_dim",
+          "text": "모집서",
+          "index": 38
+        },
+        {
+          "name": "Text_15_idle_SB_13_num",
+          "text": "25",
+          "index": 39
+        },
+        {
+          "name": "Text_16_idle_SB_9_dim",
+          "text": "루비",
+          "index": 40
+        },
+        {
+          "name": "Text_17_idle_SB_11_dim",
+          "text": "방치 시간",
+          "index": 41
+        },
+        {
+          "name": "Text_18_idle_SB_11_accentGold",
+          "text": "8시간 0분",
+          "index": 42
+        },
+        {
+          "name": "Text_19_idle_SB_11_dim",
+          "text": "/ 12시간",
+          "index": 43
+        },
+        {
+          "name": "Text_20_idle_SB_9p5_btnAsub",
+          "text": "2배 받기",
+          "index": 44
+        },
+        {
+          "name": "Text_21_idle_SB_18_btnP_sh",
+          "text": "받기",
+          "index": 45
+        }
+      ]
+    },
+    "off-cap": {
+      "prefab": "PopupIdleRewardsFull",
+      "scale": 1,
+      "rects": [
+        {
+          "name": "Header",
+          "index": 1,
+          "screenRect": [
+            0,
+            1636.2,
+            1200,
+            111
+          ]
+        },
+        {
+          "name": "RewardHero",
+          "index": 2,
+          "screenRect": [
+            -107.655457,
+            816.177246,
+            1402.52759,
+            935.0183
+          ]
+        }
+      ],
+      "texts": [
+        {
+          "name": "Text_00_idle_SB_15_titleGold_sh",
+          "text": "돌아왔군, 총잡이!",
+          "index": 19
+        },
+        {
+          "name": "Text_01_idle_SB_13_num",
+          "text": "630M",
+          "index": 20
+        },
+        {
+          "name": "Text_02_idle_SB_9_dim",
+          "text": "골드",
+          "index": 21
+        },
+        {
+          "name": "Text_03_idle_SB_13_num",
+          "text": "54",
+          "index": 22
+        },
+        {
+          "name": "Text_04_idle_SB_9_dim",
+          "text": "티켓",
+          "index": 23
+        },
+        {
+          "name": "Text_05_idle_SB_13_num",
+          "text": "18",
+          "index": 24
+        },
+        {
+          "name": "Text_06_idle_SB_9_dim",
+          "text": "무기 상자",
+          "index": 25
+        },
+        {
+          "name": "Text_07_idle_SB_13_num",
+          "text": "6",
+          "index": 26
+        },
+        {
+          "name": "Text_08_idle_SB_9_dim",
+          "text": "모집서",
+          "index": 27
+        },
+        {
+          "name": "Text_09_idle_SB_13_num",
+          "text": "37",
+          "index": 28
+        },
+        {
+          "name": "Text_10_idle_SB_9_dim",
+          "text": "루비",
+          "index": 29
+        },
+        {
+          "name": "Text_11_idle_SB_11_dim",
+          "text": "방치 시간",
+          "index": 30
+        },
+        {
+          "name": "Text_12_idle_SB_11_accentGold",
+          "text": "12시간 0분",
+          "index": 31
+        },
+        {
+          "name": "Text_13_idle_SB_11_dim",
+          "text": "/ 12시간",
+          "index": 32
+        },
+        {
+          "name": "Text_14_idle_SB_10_white_I",
+          "text": "MAX",
+          "index": 33
+        },
+        {
+          "name": "Text_15_idle_SB_9p5_btnAsub",
+          "text": "2배 받기",
+          "index": 34
+        },
+        {
+          "name": "Text_16_idle_SB_18_btnP_sh",
+          "text": "받기",
+          "index": 35
+        }
+      ]
+    },
+    "off-empty": {
+      "prefab": "PopupIdleRewardsEmpty",
+      "scale": 1,
+      "rects": [
+        {
+          "name": "Header",
+          "index": 1,
+          "screenRect": [
+            0,
+            1212.6,
+            1200,
+            111
+          ]
+        },
+        {
+          "name": "RewardHero",
+          "index": 2,
+          "screenRect": [
+            -107.655457,
+            392.5774,
+            1402.52759,
+            935.0183
+          ]
+        }
+      ],
+      "texts": [
+        {
+          "name": "Text_00_idle_SB_15_titleGold_sh",
+          "text": "돌아왔군, 총잡이!",
+          "index": 25
+        },
+        {
+          "name": "Text_01_idle_SB_10p5_text",
+          "text": "현재 스테이지",
+          "index": 26
+        },
+        {
+          "name": "Text_02_idle_SB_28_accentGold_sh",
+          "text": "1200",
+          "index": 27
+        },
+        {
+          "name": "Text_03_idle_SB_10p5_text_I",
+          "text": "스테이지 1201 도달 시",
+          "index": 28
+        },
+        {
+          "name": "Text_04_idle_SB_10p5_text_I",
+          "text": "보상",
+          "index": 29
+        },
+        {
+          "name": "Text_05_idle_SB_10p5_up_I",
+          "text": "+2%",
+          "index": 30
+        },
+        {
+          "name": "Text_06_idle_SB_12_text_I",
+          "text": "현재 획득 중인 보상",
+          "index": 31
+        },
+        {
+          "name": "Text_07_idle_SB_11_text",
+          "text": "1시간 당",
+          "index": 32
+        },
+        {
+          "name": "Text_08_idle_SB_13_text",
+          "text": "1324K",
+          "index": 33
+        },
+        {
+          "name": "Text_09_idle_SB_11_text",
+          "text": "1시간 당",
+          "index": 34
+        },
+        {
+          "name": "Text_10_idle_SB_13_text",
+          "text": "24",
+          "index": 35
+        },
+        {
+          "name": "Text_11_idle_SB_11_text",
+          "text": "1시간 당",
+          "index": 36
+        },
+        {
+          "name": "Text_12_idle_SB_13_text",
+          "text": "3",
+          "index": 37
+        },
+        {
+          "name": "Text_13_idle_SB_11_text",
+          "text": "1시간 당",
+          "index": 38
+        },
+        {
+          "name": "Text_14_idle_SB_13_text",
+          "text": "1",
+          "index": 39
+        },
+        {
+          "name": "Text_15_idle_SB_11_text",
+          "text": "1시간 당",
+          "index": 40
+        },
+        {
+          "name": "Text_16_idle_SB_13_text",
+          "text": "5.2",
+          "index": 41
+        },
+        {
+          "name": "Text_17_idle_SB_11_dim",
+          "text": "최대 누적 시간 :",
+          "index": 42
+        },
+        {
+          "name": "Text_18_idle_SB_11_accentGold",
+          "text": "12시간",
+          "index": 43
+        },
+        {
+          "name": "Text_19_idle_SB_9p5_btnAsub",
+          "text": "즉시수령 0/4",
+          "index": 44
+        },
+        {
+          "name": "Text_20_idle_SB_18_btnP_sh",
+          "text": "받기",
+          "index": 45
+        }
+      ]
+    }
+  },
+  "startup": [
+    {
+      "status": "fulfilled",
+      "value": "{\"server\":\"unityMCP\",\"uri\":\"mcpforunity://project/info\",\"contents\":[{\"uri\":\"mcpforunity://project/info\",\"mimeType\":\"text/plain\",\"text\":\"{\\\"success\\\":true,\\\"message\\\":\\\"Retrieved project info.\\\",\\\"error\\\":null,\\\"data\\\":{\\\"projectRoot\\\":\\\"D:/Dev/PanningMaster\\\",\\\"projectName\\\":\\\"PanningMaster\\\",\\\"unityVersion\\\":\\\"6000.0.67f1\\\",\\\"platform\\\":\\\"StandaloneWindows64\\\",\\\"assetsPath\\\":\\\"D:/Dev/PanningMaster/Assets\\\"},\\\"hint\\\":null}\"}]}"
+    },
+    {
+      "status": "fulfilled",
+      "value": "{\"server\":\"unityMCP\",\"uri\":\"mcpforunity://editor/state\",\"contents\":[{\"uri\":\"mcpforunity://editor/state\",\"mimeType\":\"text/plain\",\"text\":\"{\\\"success\\\":true,\\\"message\\\":\\\"Retrieved editor state.\\\",\\\"error\\\":null,\\\"data\\\":{\\\"schema_version\\\":\\\"unity-mcp/editor_state@2\\\",\\\"observed_at_unix_ms\\\":1790553915205,\\\"sequence\\\":3,\\\"unity\\\":{\\\"instance_id\\\":\\\"PanningMaster@98de0df9\\\",\\\"unity_version\\\":\\\"6000.0.67f1\\\",\\\"project_id\\\":null,\\\"platform\\\":\\\"WindowsEditor\\\",\\\"is_batch_mode\\\":false},\\\"editor\\\":{\\\"is_focused\\\":false,\\\"play_mode\\\":{\\\"is_playing\\\":false,\\\"is_paused\\\":false,\\\"is_changing\\\":false},\\\"active_scene\\\":{\\\"path\\\":\\\"Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity\\\",\\\"guid\\\":\\\"fd3c302da0a14ac41ae0acf12214af72\\\",\\\"name\\\":\\\"CloseTabValidationPreview\\\"}},\\\"activity\\\":{\\\"phase\\\":\\\"idle\\\",\\\"since_unix_ms\\\":1790553907023,\\\"reasons\\\":[\\\"tick\\\"]},\\\"compilation\\\":{\\\"is_compiling\\\":false,\\\"is_domain_reload_pending\\\":false,\\\"last_compile_started_unix_ms\\\":null,\\\"last_compile_finished_unix_ms\\\":null,\\\"last_domain_reload_before_unix_ms\\\":null,\\\"last_domain_reload_after_unix_ms\\\":1790553900006},\\\"assets\\\":{\\\"is_updating\\\":false,\\\"external_changes_dirty\\\":false,\\\"external_changes_last_seen_unix_ms\\\":null,\\\"external_changes_dirty_since_unix_ms\\\":null,\\\"external_changes_last_cleared_unix_ms\\\":null,\\\"refresh\\\":{\\\"is_refresh_in_progress\\\":false,\\\"last_refresh_requested_unix_ms\\\":null,\\\"last_refresh_finished_unix_ms\\\":null}},\\\"tests\\\":{\\\"is_running\\\":false,\\\"mode\\\":null,\\\"current_job_id\\\":null,\\\"started_unix_ms\\\":null,\\\"started_by\\\":\\\"unknown\\\",\\\"last_run\\\":null},\\\"transport\\\":{\\\"unity_bridge_connected\\\":null,\\\"last_message_unix_ms\\\":null},\\\"settings\\\":{\\\"batch_execute_max_commands\\\":25},\\\"advice\\\":{\\\"ready_for_tools\\\":true,\\\"blocking_reasons\\\":[],\\\"recommended_retry_after_ms\\\":0,\\\"recommended_next_action\\\":\\\"none\\\"},\\\"staleness\\\":{\\\"age_ms\\\":63,\\\"is_stale\\\":false}},\\\"hint\\\":null}\"}]}"
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"message\":\"3 scene(s) loaded.\",\"data\":{\"scenes\":[{\"name\":\"RevolverFirstDrawPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":false,\"isActive\":false,\"rootCount\":2},{\"name\":\"RevolverEquippedPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":false,\"isActive\":false,\"rootCount\":2},{\"name\":\"CloseTabValidationPreview\",\"path\":\"Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity\",\"buildIndex\":-1,\"isLoaded\":true,\"isDirty\":false,\"isActive\":true,\"rootCount\":2}]}}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "message": "3 scene(s) loaded.",
+          "data": {
+            "scenes": [
+              {
+                "name": "RevolverFirstDrawPreview",
+                "path": "Assets/Art/PanningUI/Scenes/RevolverFirstDrawPreview.unity",
+                "buildIndex": -1,
+                "isLoaded": true,
+                "isDirty": false,
+                "isActive": false,
+                "rootCount": 2
+              },
+              {
+                "name": "RevolverEquippedPreview",
+                "path": "Assets/Art/PanningUI/Scenes/RevolverEquippedPreview.unity",
+                "buildIndex": -1,
+                "isLoaded": true,
+                "isDirty": false,
+                "isActive": false,
+                "rootCount": 2
+              },
+              {
+                "name": "CloseTabValidationPreview",
+                "path": "Assets/Art/PanningUI/Scenes/CloseTabValidationPreview.unity",
+                "buildIndex": -1,
+                "isLoaded": true,
+                "isDirty": false,
+                "isActive": true,
+                "rootCount": 2
+              }
+            ]
+          }
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"message\":\"Retrieved 0 log entries.\",\"data\":[]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "message": "Retrieved 0 log entries.",
+          "data": []
+        },
+        "isError": false
+      }
+    }
+  ]
+}
